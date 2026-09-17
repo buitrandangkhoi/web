@@ -1,140 +1,536 @@
 {
-  "updated": "2026-09-17T00:00:00Z",
+  "updated": "2026-09-17T15:58:01Z",
+  "count": 53,
   "articles": [
     {
-      "title": "Fed Holds Rates Steady, Signals Possible Cut in Q4 2026 as Inflation Cools",
-      "desc": "The Federal Reserve kept its benchmark rate at 5.25–5.50% on Wednesday, while Fed Chair Powell hinted that a reduction could come before year-end if inflation continues its downward trajectory toward the 2% target.",
-      "url": "https://example.com/fed-rates",
-      "source": "Finnhub",
+      "title": "Cambridge Savings Bank Supports Belle Brands&apos; Acquisition of Vegamour",
+      "desc": "CAMBRIDGE, Mass.--(BUSINESS WIRE)--Cambridge Savings Bank (\"CSB\"), a full-service community bank with $7 billion in assets, continued its support of Belle Brands through its acquisition of Vegamour, a biotech-powered hair longevity brand pioneering the future of hair wellness through clean, clinical",
+      "url": "http://www.businesswire.com/news/home/20260917435351/en/Cambridge-Savings-Bank-Supports-Belle-Brands-Acquisition-of-Vegamour/?feedref=JjAwJuNHiystnCoBq_hl-Rc4vIAVcHHkbDcwJimU8QtrtlakeQ9hNboBqTAWIjTge3KWq9s9jif-UkBjBsFRyYAbRTSLTc1mgvhPlnaBA55M-oupQnbXnhKsYk8RmHF_kAy2gZikaX3QWV6xOvgFlA==",
+      "image": "https://res.cloudinary.com/whirlpooldata/image/upload/v1567047386/bw_flnhy4.jpg",
+      "source": "BusinessWire",
       "cat": "finance",
-      "time": "2026-09-17T01:30:00Z",
-      "sentiment": "pos"
+      "time": "2026-09-17T15:00:00+00:00",
+      "sentiment": null
     },
     {
-      "title": "S&P 500 Climbs 0.8% After CPI Data Shows Inflation Hitting 28-Month Low",
-      "desc": "US equities rallied broadly on Tuesday after the Bureau of Labor Statistics reported consumer prices rose just 2.8% year-over-year in August, the third consecutive monthly decline and the softest reading since early 2024.",
-      "url": "https://example.com/sp500",
-      "source": "Marketaux",
-      "cat": "stock",
-      "time": "2026-09-17T02:00:00Z",
-      "sentiment": "pos"
+      "title": "GFL Environmental gains on report of interest from Blackstone, Brookfield",
+      "desc": "",
+      "url": "https://seekingalpha.com/news/4643824-gfl-environmental-gains-on-report-of-interest-from-blackstone-brookfield?utm_source=feed_news_m_a&utm_medium=referral&feed_item_type=news",
+      "image": "https://res.cloudinary.com/whirlpooldata/image/upload/v1567050932/sa_jgen9y.png",
+      "source": "SeekingAlpha",
+      "cat": "finance",
+      "time": "2026-09-17T14:49:00+00:00",
+      "sentiment": null
     },
     {
-      "title": "NVIDIA Unveils Blackwell Ultra GPU, Projects $40B Revenue Quarter Driven by AI Demand",
-      "desc": "NVIDIA announced its next-generation Blackwell Ultra architecture at its annual GTC conference, promising a 2.5× performance leap over the current H100 for large language model training. The company raised Q3 guidance to $40–42B.",
-      "url": "https://example.com/nvidia",
-      "source": "NewsData.io",
-      "cat": "tech",
-      "time": "2026-09-17T03:00:00Z",
-      "sentiment": "pos"
+      "title": "USDCAD breaks higher after the Fed. Can buyers hold the breakout? Or will sellers take back control?",
+      "desc": "<p>The USDCAD has moved higher following the FOMC rate decision, breaking above a cluster of important technical levels. That has shifted more control to the buyers, but the next step is holding the breakout and working through resistance near the 1.4000 level.</p><p></p><p>Before the decision, the ",
+      "url": "https://investinglive.com/technical-analysis/usdcad-breaks-higher-after-the-fed-can-buyers-hold-the-breakout-or-will-sellers-take-back-control/",
+      "image": "https://investinglive.com/cms/media/2026-09-17_07-23-00.jpg?width=960&format=webp",
+      "source": "Forexlive",
+      "cat": "finance",
+      "time": "2026-09-17T14:47:06+00:00",
+      "sentiment": null
     },
     {
-      "title": "Samsung Expands Vietnam Plant by $2.5B, Adding 5,000 Jobs to Support AI Chip Output",
-      "desc": "Samsung Electronics confirmed plans to invest an additional $2.5 billion at its Thai Nguyen complex, shifting production focus toward advanced AI components for foldable devices and server applications.",
-      "url": "https://example.com/samsung",
-      "source": "CurrentsAPI",
+      "title": "Davidson Kempner Capital Management LP : Form 8.3 - Tate & Lyle plc",
+      "desc": "FORM 8.3",
+      "url": "https://www.globenewswire.com/news-release/2026/09/17/3364157/0/en/davidson-kempner-capital-management-lp-form-8-3-tate-lyle-plc.html",
+      "image": "https://res.cloudinary.com/whirlpooldata/image/upload/v1567047094/gnw_ngwqnq.png",
+      "source": "GlobalNewswire",
+      "cat": "finance",
+      "time": "2026-09-17T14:20:00+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Caesars Entertainment gets FTC 2nd request on Fertitta deal",
+      "desc": "",
+      "url": "https://seekingalpha.com/news/4643792-caesars-entertainment-gets-ftc-2nd-request-on-fertitta-deal?utm_source=feed_news_m_a&utm_medium=referral&feed_item_type=news",
+      "image": "https://res.cloudinary.com/whirlpooldata/image/upload/v1567050932/sa_jgen9y.png",
+      "source": "SeekingAlpha",
+      "cat": "finance",
+      "time": "2026-09-17T14:07:47+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Impoverished by war in Iran, Afghan migrants return to Taliban rule - Reuters",
+      "desc": "Impoverished by war in Iran, Afghan migrants return to Taliban rule  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQbUtnR01KbXZwRU1yS09FNXhXdnFRaXRXR1YyaWwyOWFvYWl1VC1MbVJFb1dvVWgxNGVFR0xKV3pCQkNycmVDaUJpVjFLYmt4MTVhSmR5dXRlVU54MWFRTG9LY2V4a1g3d2cyblNlVkU2MjNUTWJXaEY0MFNpNG9uZ3dWMWFEZ0ZIZ1dGMFdQby1jd1A5RzZ2TXNsQlJzdEFER2ZjRHE2SWstblhoVFRWWVhGcXFMZw?oc=5",
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "source": "Reuters",
+      "cat": "finance",
+      "time": "2026-09-17T14:05:08+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Aptean Adds Leading End-to-End Logistics Suite for Road Transport Through Acquisition of European Based FleetGO from Main Capital Partners",
+      "desc": "Aptean Adds Leading End-to-End Logistics Suite for Road Transport Through Acquisition of European Based FleetGO from Main Capital Partners",
+      "url": "https://www.globenewswire.com/news-release/2026/09/17/3364132/29866/en/aptean-adds-leading-end-to-end-logistics-suite-for-road-transport-through-acquisition-of-european-based-fleetgo-from-main-capital-partners.html",
+      "image": "https://res.cloudinary.com/whirlpooldata/image/upload/v1567047094/gnw_ngwqnq.png",
+      "source": "GlobalNewswire",
+      "cat": "finance",
+      "time": "2026-09-17T14:00:00+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Workday gains on report take-private financing effort continues",
+      "desc": "",
+      "url": "https://seekingalpha.com/news/4643801-workday-gains-on-report-take-private-financing-effort-continues?utm_source=feed_news_m_a&utm_medium=referral&feed_item_type=news",
+      "image": "https://res.cloudinary.com/whirlpooldata/image/upload/v1567050932/sa_jgen9y.png",
+      "source": "SeekingAlpha",
+      "cat": "finance",
+      "time": "2026-09-17T13:44:40+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "How Yemen's Houthis went from a small mountain militia to a big regional threat - Reuters",
+      "desc": "How Yemen's Houthis went from a small mountain militia to a big regional threat  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNcGthY0luQlRSdV83a2g1VktUVlRKMVJCeXVjME5lNEU3MUNocU55OUhIQXhoRThxT0ZiVlUyMkM1ZENVVlowLWNaX0p5bFpjVnpfMDhPTl9EYU01MV94Y19fOE91Ym9oQS1XdENUbGotVjVRcjNsZzFGbnJDQi13Z0tSSEhMYlBiZ2pSallYMkRBb2F0Q24xT0ZpcnRUdzR0OEJLTUo4NEZtazJidEl5N3ItbkhFZmdpWVM5Mw?oc=5",
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "source": "Reuters",
+      "cat": "finance",
+      "time": "2026-09-17T13:43:06+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "EXCLUSIVE: China presses Iran to help rein in Houthis after Saudi appeal, sources say - Reuters",
+      "desc": "EXCLUSIVE: China presses Iran to help rein in Houthis after Saudi appeal, sources say  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNUnJncHUxLTNvV25NTHFxQzVwcnljdzdsTkJCNFNjSlJybF95bFBhcW9DTWV1dnlYQ0prMkI0SmdnNjBrdXNLV0ZNM1pQNW1FcUxuaWpqd3NnRXJ6U2lkQWFqQlR0UVE2X3lYU0RXNXlBdno3QkRkSzB2SEwxUzdYV2NZWlc3SGhZdGRMbUFCVDJZeXZsTy0zOHF4R013c2xyMl8zNmVkaHlFOXM1MmtuZHJRREI3UQ?oc=5",
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "source": "Reuters",
+      "cat": "finance",
+      "time": "2026-09-17T13:42:27+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Data Center Pumps Market to Reach USD 7.35 Billion by 2032, at a CAGR of 17.9% — MarketsandMarkets™",
+      "desc": "Delray Beach, FL, Sept.  17, 2026  (GLOBE NEWSWIRE) -- The global Data Center Pumps Market is projected to grow from USD 2.74 billion in 2026 to USD 7.35 billion by 2032, registering a CAGR of 17.9% during 2026–2032.",
+      "url": "https://www.globenewswire.com/news-release/2026/09/17/3364099/0/en/data-center-pumps-market-to-reach-usd-7-35-billion-by-2032-at-a-cagr-of-17-9-marketsandmarkets.html",
+      "image": "https://res.cloudinary.com/whirlpooldata/image/upload/v1567047094/gnw_ngwqnq.png",
+      "source": "GlobalNewswire",
+      "cat": "finance",
+      "time": "2026-09-17T13:30:00+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Form 8.3 - Advanced Medical Solutions Group plc - Octopus Investments",
+      "desc": "FORM 8.3",
+      "url": "https://www.globenewswire.com/news-release/2026/09/17/3364097/0/en/form-8-3-advanced-medical-solutions-group-plc-octopus-investments.html",
+      "image": "https://res.cloudinary.com/whirlpooldata/image/upload/v1567047094/gnw_ngwqnq.png",
+      "source": "GlobalNewswire",
+      "cat": "finance",
+      "time": "2026-09-17T13:29:00+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Form 8.3 - Gooch & Housego plc - Octopus Investments",
+      "desc": "FORM 8.3",
+      "url": "https://www.globenewswire.com/news-release/2026/09/17/3364094/0/en/form-8-3-gooch-housego-plc-octopus-investments.html",
+      "image": "https://res.cloudinary.com/whirlpooldata/image/upload/v1567047094/gnw_ngwqnq.png",
+      "source": "GlobalNewswire",
+      "cat": "finance",
+      "time": "2026-09-17T13:26:00+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Lisata Therapeutics Announces Acquisition of Marea Therapeutics and $225 Million Concurrent Private Placement",
+      "desc": "Combined company to focus on developing first-in-class next-generation medicines for cardioendocrine diseases",
+      "url": "https://www.globenewswire.com/news-release/2026/09/17/3364095/18623/en/lisata-therapeutics-announces-acquisition-of-marea-therapeutics-and-225-million-concurrent-private-placement.html",
+      "image": "https://res.cloudinary.com/whirlpooldata/image/upload/v1567047094/gnw_ngwqnq.png",
+      "source": "GlobalNewswire",
+      "cat": "finance",
+      "time": "2026-09-17T13:26:00+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "US-Iran conflict helps drive wave of supertanker orders - Reuters",
+      "desc": "US-Iran conflict helps drive wave of supertanker orders  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxONHQ5ZjFKUlRNeTl4YXFuSUNzZ0FpZHRoUGRjMUJ0WjJhbVZOY2tQazZuVUdtMURzNzNnTlVadTZoT3gxUmYyYWdxS2o2bEdtSWRUcGExWjFOQXNsdmwzMm9EOFljblVTdk1OTXY2UUtuZ3pyOXhjSmhQTy0yQkFXUDFHN2tqR2p4VWhDcW1FbE9PY2lwLVJDcWhmWnFSMFZpSVBoUUJiOA?oc=5",
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "source": "Reuters",
+      "cat": "finance",
+      "time": "2026-09-17T13:13:47+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Our top 10 things to watch in the stock market Thursday",
+      "desc": "Stocks are set for a big bounce-back rally after yesterday's Fed sell-off.",
+      "url": "https://www.cnbc.com/2026/09/17/our-top-10-things-to-watch-in-the-stock-market-thursday.html",
+      "image": "https://image.cnbcfm.com/api/v1/image/108309527-1779255938140-gettyimages-1139073776-20192996-2019-v1_editorial.jpeg?v=1779255952&w=1920&h=1080",
+      "source": "CNBC",
+      "cat": "finance",
+      "time": "2026-09-17T13:11:55+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "UN mission finds grounds to believe US committed war crimes in Iran, and Tehran crimes against humanity - Reuters",
+      "desc": "UN mission finds grounds to believe US committed war crimes in Iran, and Tehran crimes against humanity  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPbmJVNS1uc3FDVDUwbUJ5bjJkZzRwbTdzNFZYUW00SEloak4wZl9yeXJhWlQ2bEExbjZBSzh6T2lRVjNjQ2VvR1lNZGNBc3BwLXZ6QXJCTmZ3M3BfQVdURWZaaUVOV2k0VkNOTFMwcnhsdXR1VU5IWFRWYlVYNDgzeGNwTDB6d3FURHV4YnZZdFpibE45Qm1tTVJxMi1QZG9lbFFqVW16M1ZzQzRLQW1PVkhud2RLeWtxUVV6OFJweE0wOXZuVG5RRg?oc=5",
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "source": "Reuters",
+      "cat": "finance",
+      "time": "2026-09-17T12:17:52+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Charities say gifts by deceased donors are getting held up at financial firms",
+      "desc": "Nonprofits are pushing back against policies by financial institutions to collect personal information of charity employees before releasing a gift.",
+      "url": "https://www.cnbc.com/2026/09/17/charities-ira-gifts-hurdles.html",
+      "image": "https://image.cnbcfm.com/api/v1/image/108363826-1789579623582-gettyimages-573107485-bld167417.jpeg?v=1789579706&w=1920&h=1080",
+      "source": "CNBC",
+      "cat": "finance",
+      "time": "2026-09-17T11:31:34+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Number of ships transiting Strait of Hormuz falls to three on Wednesday, data shows - Reuters",
+      "desc": "Number of ships transiting Strait of Hormuz falls to three on Wednesday, data shows  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPY040VUp0a3duZlRTZW9xeHNnQ0hIUm42eUZRUmZvcjFfaW53SWFZTFZlaElfaXM5bW0zdlhib2M1N3BqZGJUV2tHeGdydFlMMFg3dngyLUJtREtjZVFLUGxCZ2ZMX3FZSHp6MjlPS29sR2xwbkRvd2M4c3BGajFGWFZadkVORTdwWGxJYVVRc2RsTWxZY3ZLMXJJWUp1TlZMX0QtUUEyaE9Gc01hOHA5bHNyN3ZsdWZFWFV2bENmV3pkZw?oc=5",
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "source": "Reuters",
+      "cat": "finance",
+      "time": "2026-09-17T05:22:00+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Bank of England set to defy Fed’s rate-hike lead, despite rising inflation",
+      "desc": "The Bank of England is expected to keep rates steady Thursday, even after U.K. inflation rose to 3.1% and energy costs keep pressure on prices.",
+      "url": "https://www.cnbc.com/2026/09/17/bank-of-england-interest-rate-decision-fed-rate-hike-uk-inflation.html",
+      "image": "https://image.cnbcfm.com/api/v1/image/108355817-1787935170986-108355817-1787932538588-_05A6238-1.jpg?v=1787943832&w=1920&h=1080",
+      "source": "CNBC",
+      "cat": "finance",
+      "time": "2026-09-17T05:20:23+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Yemenis take to boats to flee as Middle East war spreads - Reuters",
+      "desc": "Yemenis take to boats to flee as Middle East war spreads  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPdUdfN2t1cTlMdHJXa1FQN0ZiU1M1dklpd2llNGtrTW1ndEEwSjZqc2VNcjY0VkFOQXFmLVUzNXFYUHdQTUU1Tm1leURSclhSajZPS29nZng3Sl83eUs2clpyMS1XbW0tNXpnbDdDc25SMVB6cHYtMWY2aFdYRzZsSEtPS1FBSHpQSGp6dFF6NV9mSkJBbXM4UnNWSDYyRzJjc0RtMkZod3l0Q0ZYSzljc3JPYmVFMlVZUGc?oc=5",
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "source": "Reuters",
+      "cat": "finance",
+      "time": "2026-09-17T04:23:00+00:00",
+      "sentiment": null
+    },
+    {
+      "title": "Court dismisses R1 million claim against Makro after elderly shopper falls outside Alberton store",
+      "desc": "A Gauteng court dismissed a R1 million damages claim against Makro Alberton after finding that the shopper failed to prove laminated paper caused his fall.",
+      "url": "https://iol.co.za/news/crime-and-courts/2026-09-17-court-dismisses-r1-million-claim-against-makro-after-elderly-shopper-falls-outside-alberton-store/",
+      "image": "https://iol-prod.appspot.com/image/d4215310c5a69aa12df2a3a408079a36793dec0a/1000/jpeg",
+      "source": "IOL",
       "cat": "biz",
-      "time": "2026-09-17T04:00:00Z",
-      "sentiment": "pos"
+      "time": "2026-09-17T03:55:00Z",
+      "sentiment": null
     },
     {
-      "title": "Apple Intelligence Launches Across Asia with Vietnamese Language Support",
-      "desc": "Apple's on-device AI suite, Apple Intelligence, went live in 30 Asian markets including Vietnam on Monday, adding support for Vietnamese Siri queries and Writing Tools on iPhone 16 and later models running iOS 18.3.",
-      "url": "https://example.com/apple",
-      "source": "GNews",
-      "cat": "tech",
-      "time": "2026-09-17T04:30:00Z",
-      "sentiment": "pos"
-    },
-    {
-      "title": "Vietnam's Central Bank Injects $320M Liquidity to Steady Dong Amid Dollar Weakness",
-      "desc": "The State Bank of Vietnam conducted open-market operations on Tuesday, injecting VND 8 trillion to maintain the USD/VND rate near 25,400 as a softer US dollar and easing Treasury yields reduced external pressure on the currency.",
-      "url": "https://example.com/sbv",
-      "source": "Finnhub",
-      "cat": "finance",
-      "time": "2026-09-17T05:00:00Z",
-      "sentiment": "neu"
-    },
-    {
-      "title": "Anthropic Launches Claude 4 Opus, Tops GPT-5 on Coding and Reasoning Benchmarks",
-      "desc": "AI safety company Anthropic released Claude 4 Opus, its most capable model to date, achieving state-of-the-art results on SWE-bench (72.4%) and HumanEval (96.1%), outpacing OpenAI's GPT-5 on programming tasks.",
-      "url": "https://example.com/claude4",
-      "source": "NewsData.io",
-      "cat": "tech",
-      "time": "2026-09-17T05:30:00Z",
-      "sentiment": "pos"
-    },
-    {
-      "title": "Real Estate Stocks Surge as Vietnam Moves to Clear Regulatory Backlog",
-      "desc": "Shares of Novaland, Vinhomes, and DIG rose between 3–6% on heavy volume after a draft decree expected to resolve project-approval delays was circulated for public comment, the most significant regulatory move in two years.",
-      "url": "https://example.com/realestate",
-      "source": "Marketaux",
-      "cat": "stock",
-      "time": "2026-09-17T06:00:00Z",
-      "sentiment": "pos"
-    },
-    {
-      "title": "Goldman Sachs Raises Vietnam 2026 GDP Forecast to 7.2%, Fastest in ASEAN",
-      "desc": "In a research note released Thursday, Goldman Sachs upgraded its Vietnam growth outlook from 6.8% to 7.2%, citing robust manufacturing exports, rising FDI inflows, and stabilising global demand for electronics.",
-      "url": "https://example.com/goldman",
-      "source": "Finnhub",
-      "cat": "finance",
-      "time": "2026-09-17T06:30:00Z",
-      "sentiment": "pos"
-    },
-    {
-      "title": "Google DeepMind Releases AlphaFold 4 With 99.1% Protein Structure Accuracy",
-      "desc": "DeepMind unveiled AlphaFold 4, predicting protein structures with unprecedented 99.1% accuracy across 200 million tested sequences. The model also introduces RNA and small-molecule binding predictions, opening new doors in drug discovery.",
-      "url": "https://example.com/alphafold",
-      "source": "NewsData.io",
-      "cat": "tech",
-      "time": "2026-09-17T07:00:00Z",
-      "sentiment": "pos"
-    },
-    {
-      "title": "Viettel Activates 5G in 15 Provinces, Covering 60% of Urban Population",
-      "desc": "Vietnam's largest telecoms operator Viettel officially launched commercial 5G services in 15 cities and provinces on Wednesday, reaching 60% of the country's urban population and setting the stage for full national rollout by mid-2027.",
-      "url": "https://example.com/viettel",
-      "source": "CurrentsAPI",
+      "title": "Cybersecurity Newsletter September 2026",
+      "desc": "From lifetime identity protection for federal breach victims to AI-powered threat intelligence sharing, this cybersecurity roundup examines how government agencies, private firms...",
+      "url": "https://www.mondaq.com/unitedstates/new-technology/1843916/cybersecurity-newsletter-september-2026",
+      "image": "http://www.mondaq.com/images/MondaqThumb.png",
+      "source": "Mondaq",
       "cat": "biz",
-      "time": "2026-09-17T07:30:00Z",
-      "sentiment": "pos"
+      "time": "2026-09-17T03:53:53Z",
+      "sentiment": null
     },
     {
-      "title": "Foreign Investors Net-Buy $48M on HOSE, Focus on VHM, MSN and VIC Shares",
-      "desc": "Overseas funds were net buyers of VND 1.2 trillion ($48M) on the Ho Chi Minh Stock Exchange on Wednesday, with the three largest positions in Vinhomes, Masan Group and Vingroup, reversing six consecutive sessions of net selling.",
-      "url": "https://example.com/fii",
-      "source": "Marketaux",
-      "cat": "stock",
-      "time": "2026-09-17T08:00:00Z",
-      "sentiment": "pos"
-    },
-    {
-      "title": "Vingroup Signs MOU with South Korean Consortium for Semiconductor Joint Venture",
-      "desc": "Vingroup announced a memorandum of understanding with a consortium of South Korean chip firms to establish a semiconductor design and packaging facility in Hanoi's Hoa Lac Hi-Tech Park, with initial investment of $500M.",
-      "url": "https://example.com/vingroup",
-      "source": "CurrentsAPI",
+      "title": "‘I need money bro’: Postie thief stole cards for debts",
+      "desc": "A postman’s crippling gambling addiction drove him to steal bank cards from the mail in a six-figure fraud scheme.",
+      "url": "https://www.nine.com.au/australia-news/i-need-money-bro-postie-thief-stole-cards-for-debts-20260917-p60y9r.html",
+      "image": "https://static.ffx.io/images/$zoom_1.767%2C$multiply_1%2C$ratio_1.777778%2C$width_1059%2C$x_0%2C$y_0/t_crop_custom/c_scale%2Cw_1200%2Cq_88%2Cf_auto/5b9ae4425ae879ad321d84da09d07a1720906bd1",
+      "source": "Nine.com.au",
       "cat": "biz",
-      "time": "2026-09-17T08:30:00Z",
-      "sentiment": "pos"
+      "time": "2026-09-17T03:48:47Z",
+      "sentiment": null
     },
     {
-      "title": "Bitcoin Reclaims $68,000 as Risk Appetite Returns Following Fed Pivot Signals",
-      "desc": "Bitcoin rose 4.1% to $68,200 on Tuesday, its highest level in three months, as investors interpreted Powell's cautious tone on rate policy as a green light to return to risk assets. Ethereum gained 5.3% to $2,840.",
-      "url": "https://example.com/bitcoin",
-      "source": "Finnhub",
-      "cat": "finance",
-      "time": "2026-09-17T09:00:00Z",
-      "sentiment": "pos"
+      "title": "CCK Consolidated no longer a ‘buy’ as Indonesian plant fire leaves lasting burn",
+      "desc": "CCK Consolidated Holdings Bhd (KL:CCK) is no longer a ‘buy’ amid slower-than-expected recovery from a fire incident at one of its plants in Indonesia, said an analyst.",
+      "url": "https://theedgemalaysia.com/node/818357",
+      "image": "https://assets.theedgemarkets.com/CCK-Consolidated_www.cck_.com_.my__0.jpg",
+      "source": "The Edge Malaysia",
+      "cat": "biz",
+      "time": "2026-09-17T03:48:37Z",
+      "sentiment": null
     },
     {
-      "title": "Microsoft Azure Revenue Jumps 35% on Enterprise AI Adoption, Beats Estimates",
-      "desc": "Microsoft reported Azure cloud revenue growth of 35% year-over-year for the fiscal first quarter, driven by enterprise adoption of Copilot and OpenAI-powered services, beating the analyst consensus of 31% growth.",
-      "url": "https://example.com/microsoft",
-      "source": "GNews",
+      "title": "Melvin Ooi joins Bank Islam as group chief technology officer",
+      "desc": "KUALA LUMPUR: Bank Islam Malaysia Bhd has appointed Melvin Ooi as group chief technology and transformation officer (GCTTO), further strengthening the group's leadership capabilities in technology, innovation and enterprise transformation.",
+      "url": "https://www.thestar.com.my/business/business-news/2026/09/17/melvin-ooi-joins-bank-islam-as-group-chief-technology-officer",
+      "image": "https://apicms.thestar.com.my/uploads/images/2026/09/17/4114612.png",
+      "source": "The Star",
+      "cat": "biz",
+      "time": "2026-09-17T03:43:00Z",
+      "sentiment": null
+    },
+    {
+      "title": "Rupee crashes past 96 against the dollar after Fed's first rate hike in 3 years",
+      "desc": "The Federal Reserve hiked its overnight benchmark rates by 25 basis points to 3.75%-4%, with most policymakers expecting at least one more hike this year",
+      "url": "https://www.moneycontrol.com/news/business/banks/rupee-crashes-past-96-against-the-dollar-after-fed-s-first-rate-hike-in-3-years-14031697.html",
+      "image": "https://images.moneycontrol.com/static-mcnews/2025/05/20250503042901_rupee_dollar.jpg",
+      "source": "Moneycontrol.com",
+      "cat": "biz",
+      "time": "2026-09-17T03:41:16Z",
+      "sentiment": null
+    },
+    {
+      "title": "Quarter of Singtel special discounted shares sold ahead of CPF Board transfer",
+      "desc": "Around 27% of all SDS holders have sold their stakes Read more at The Business Times.",
+      "url": "https://www.businesstimes.com.sg/companies-markets/quarter-singtel-special-discounted-shares-sold-ahead-cpf-board-transfer",
+      "image": "https://cassette.sphdigital.com.sg/image/businesstimes/508deacfdfb7f6485ec16f010497d459d9313241c95ca47b7423df8412200b3d?w=1920&f=webp",
+      "source": "The Business Times",
+      "cat": "biz",
+      "time": "2026-09-17T03:39:00Z",
+      "sentiment": null
+    },
+    {
+      "title": "Supreme Court Asks RBI To Issue Directions To Prevent Forcible Repossession Of Vehicles By Banks, NBFCs",
+      "desc": "The Supreme Court on Wednesday (16.09.2026) has directed the Reserve Bank of India (RBI) to take effective steps to secure genuine compliance by Non-Banking Financial Companies (NBFC) and Scheduled...",
+      "url": "https://www.livelaw.in/supreme-court/supreme-court-asks-rbi-to-issue-directions-to-prevent-forcible-repossession-of-vehicles-by-banks-nbfcs-550376",
+      "image": "https://www.livelaw.in/h-upload/2026/09/16/700572-750x450437374-rbi-and-sc.jpg",
+      "source": "Live Law",
+      "cat": "biz",
+      "time": "2026-09-17T03:35:19Z",
+      "sentiment": null
+    },
+    {
+      "title": "YTL Power worth accumulating on pullback and new gas turbines",
+      "desc": "Analysts say now is a good opportunity to buy and accumulate YTL Power International Bhd's (KL:YTLPOWR) shares, given the recent pullback and the company's reservation of four new gas turbines amid a global backlog.",
+      "url": "https://theedgemalaysia.com/node/818354",
+      "image": "https://assets.theedgemarkets.com/YTL-Corp-Bhd-2_ytl.com_20260128212846_YTL_Corp_6.jpg",
+      "source": "The Edge Malaysia",
+      "cat": "biz",
+      "time": "2026-09-17T03:31:44Z",
+      "sentiment": null
+    },
+    {
+      "title": "Learn about AI in HR at Disrupt 2026",
+      "desc": "Your startup’s next teammate might be an AI agent. Gusto, Insight Partners, and Leland explain at TechCrunch Disrupt 2026. Register to save up to $200.",
+      "url": "https://techcrunch.com/2026/09/16/your-startups-next-teammate-might-be-an-ai-agent-gusto-insight-partners-and-leland-explain-what-that-changes-at-techcrunch-disrupt-2026/",
+      "image": "https://techcrunch.com/wp-content/uploads/2026/05/Disrupt-2025-Builders-Stage-Crowd.png?resize=1200,800",
+      "source": "TechCrunch",
+      "cat": "biz",
+      "time": "2026-09-17T03:30:00Z",
+      "sentiment": null
+    },
+    {
+      "title": "TELUS Digital Walk-in Drive for Customer Service Role – Voice/ Non Voice",
+      "desc": "<p>The post TELUS Digital Walk-in Drive for Customer Service Role – Voice/ Non Voice first appeared on Job4freshers .</p>",
+      "url": "https://job4freshers.co.in/telus-digital-walk-in-customer-service/",
+      "image": "https://job4freshers.co.in/wp-content/uploads/2026/07/Off-Campus-Recruitment-Drive-95.webp",
+      "source": "job4freshers_co_in",
       "cat": "tech",
-      "time": "2026-09-17T09:30:00Z",
-      "sentiment": "pos"
+      "time": "2026-09-17 03:57:58",
+      "sentiment": null
+    },
+    {
+      "title": "Trump calls Canada's potential EU associate membership 'laughable,' warns Europe of 'very heavy tariffs'",
+      "desc": "Trump called Canada's proposed European Union associate membership \"laughable\" and threatened heavy tariffs on Europe if made with \"bad intention.\"",
+      "url": "https://www.foxbusiness.com/politics/trump-calls-canadas-potential-eu-associate-membership-laughable-warns-europe-very-heavy-tariffs",
+      "image": "https://static.foxbusiness.com/foxbusiness.com/content/uploads/2025/11/trump-carney-handshake3.jpg",
+      "source": "foxbusiness",
+      "cat": "biz",
+      "time": "2026-09-17 03:57:55",
+      "sentiment": null
+    },
+    {
+      "title": "HAL to BEL: HSBC initiates coverage on 7 defence stocks with up to 30% upside",
+      "desc": "",
+      "url": "https://www.financialexpress.com/market/defence-stocks-hsbc-hal-bel-bharat-dynamics-solar-industries-target-price-4341043/",
+      "image": "https://images.financialexpressdigital.com/2026/09/949494.jpg",
+      "source": "financialexpress",
+      "cat": "biz",
+      "time": "2026-09-17 03:57:52",
+      "sentiment": null
+    },
+    {
+      "title": "Mastercard launches Wallet Pay, connecting GCash, KakaoPay, and more",
+      "desc": "Mastercard Wallet Pay expands secure global wallet payments. The post Mastercard launches Wallet Pay, connecting GCash, KakaoPay, and more appeared first on Technobaboy .",
+      "url": "https://www.technobaboy.com/2026/09/17/mastercard-launches-wallet-pay-connecting-gcash-kakaopay-and-more/",
+      "image": "https://www.technobaboy.com/wp-content/uploads/mastercard.webp",
+      "source": "technobaboy",
+      "cat": "tech",
+      "time": "2026-09-17 03:57:49",
+      "sentiment": null
+    },
+    {
+      "title": "Public Invited to Provide Feedback on Owings Town Center Sept. 24th, 2026",
+      "desc": "The Calvert County Department of Planning & Zoning invites residents, business owners and community members to provide input on the Owings Town Center Master Plan during a community meeting Thursday, Sept. 24, 2026, at 6 p.m. at Grace Brethren Church, 9870 Old Solomons Island Road in Owings. The mee",
+      "url": "https://smnewsnet.com/archives/564739/public-invited-to-provide-feedback-on-owings-town-center-sept-24th-2026/",
+      "image": "https://smnewsnet.com/wp-content/uploads/2025/06/Calvert-County-Maryland-300x157.jpg",
+      "source": "smnewsnet",
+      "cat": "biz",
+      "time": "2026-09-17 03:57:37",
+      "sentiment": null
+    },
+    {
+      "title": "Liberty Global (LBTYA): Can £600M of Proposed Virgin Media O2 Cuts Reduce Debt?",
+      "desc": "Liberty Global Ltd. (NASDAQ:LBTYA) is reportedly pursuing a £600 million reduction in Virgin Media O2’s costs alongside its joint-venture partner. September 11 reporting by Data Center Dynamics, citing the Financial Times, described proposals involving workforce reductions and lower operating and ca",
+      "url": "https://www.insidermonkey.com/news/liberty-global-lbtya-can-600m-of-proposed-virgin-media-o2-cuts-reduce-debt-1837445/",
+      "image": "https://d2w7kw43nye0pi.cloudfront.net/UNm5pQ4YmQI-7sBLuLhqfArPiwtsSJfI1nHDKYCAy4A/resize:fit:1456:816:0/plain/https://imonkeyblog.s3.us-east-1.amazonaws.com/blog/wp-content/uploads/2023/10/06150912/LBTYA-insidermonkey-1696619350218.jpg",
+      "source": "insidermonkey",
+      "cat": "biz",
+      "time": "2026-09-17 03:57:30",
+      "sentiment": null
+    },
+    {
+      "title": "Snap Inc. Introduces SPECS Intelligence, an Anticipatory AI Service",
+      "desc": "Snap Inc. introduced SPECS Intelligence, a new anticipatory AI service designed to work across iPhone, Mac, and SPECS augmented reality(AR) glasses, helping you manage what needs attention today while making progress towards your longer-term goals.SPECS Intelligence builds an understanding of your g",
+      "url": "https://www.itbiznews.com/news/articleView.html?idxno=225228",
+      "image": "https://cdn.itbiznews.com/news/photo/202609/225228_228725_3551.jpg",
+      "source": "itbiznews",
+      "cat": "tech",
+      "time": "2026-09-17 03:57:19",
+      "sentiment": null
+    },
+    {
+      "title": "OpenAI reveals six new cases of AI misbehaviour, vows transparency",
+      "desc": "OpenAI reveals six new cases of AI misbehavior, vows transparency",
+      "url": "https://www.khaleejtimes.com/business/tech/open-ai-reveals-misbehaviour-cases-transparency-pledge",
+      "image": "https://imgengine.khaleejtimes.com/khaleejtimes-english/2026-09-16/nra0v6tt/2026newsmlRC2QRLA6CH7I1416002070.jpeg",
+      "source": "khaleejtimes",
+      "cat": "biz",
+      "time": "2026-09-17 03:57:19",
+      "sentiment": null
+    },
+    {
+      "title": "OpenAI flags new concerning AI behavior, to track model misalignment regularly",
+      "desc": "OpenAI has disclosed six reports of “unexpected or concerning” behavior in artificial-intelligence models as the debate on AI safety becomes increasingly heated. The AI company also said Wednesday it was introducing a new framework for tracking, probing and disclosing AI model misalignment instances",
+      "url": "https://www.wsav.com/news/national-news/ap-openai-flags-new-concerning-ai-behavior-to-track-model-misalignment-regularly/",
+      "image": "https://www.wsav.com/wp-content/uploads/sites/75/2026/09/6aab670df04313.70981075.jpeg?w=900",
+      "source": "wsav",
+      "cat": "tech",
+      "time": "2026-09-17 03:57:17",
+      "sentiment": null
+    },
+    {
+      "title": "Japan’s Katayama says expect BoJ to conduct appropriate monetary policy to achieve 2% price target",
+      "desc": "Japanese Finance Minister (FM) Satsuki Katayama said on Thursday that official will review budget requests, control debt issuance at a level that can gain market credibility. Katayama also expect the Bank of Japan (BoJ) to steer policy properly to achieve stable, sustainable 2% inflation.",
+      "url": "https://www.fxstreet.com/news/japans-katayama-says-expect-boj-to-conduct-appropriate-monetary-policy-to-achieve-2-price-target-202609170357",
+      "image": "https://editorial.fxsstatic.com/images/i/Japanese-Bank_2.png",
+      "source": "fxstreet",
+      "cat": "biz",
+      "time": "2026-09-17 03:57:14",
+      "sentiment": null
+    },
+    {
+      "title": "Todd Boehly and Mark Walter sell Chelsea shares, Clearlake now has full control",
+      "desc": "",
+      "url": "https://www.ptinews.com/story/sports/todd-boehly-and-mark-walter-sell-chelsea-shares-clearlake-now-has-full-control/4073145",
+      "image": "",
+      "source": "ptinews",
+      "cat": "biz",
+      "time": "2026-09-17 03:57:03",
+      "sentiment": null
+    },
+    {
+      "title": "Heavy Minerals Limited Revises Expired Performance Rights Total to 1,440,408 HVYAK Units",
+      "desc": "",
+      "url": "https://kalkinemedia.com/au/news/announcements/heavy-minerals-limited-revises-expired-performance-rights-total-to-1440408-hvyak-units",
+      "image": "https://kalkinemedia.com/storage/uploads/large/shutterstock_2742049913_07_02_2026_01_36_24_900043.jpg",
+      "source": "kalkinemedia",
+      "cat": "biz",
+      "time": "2026-09-17 03:57:00",
+      "sentiment": null
+    },
+    {
+      "title": "Scientists find a hidden health advantage in black and green rice - ScienceDaily",
+      "desc": "Scientists find a hidden health advantage in black and green rice ScienceDaily",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFB3X0RzZkpFNU1yZFRUd3c2czdyNnFQS21hZ09nMzJGTnpNR3FNVzZ0TVNNN2YtZ1pCalpTZzlxREI0YXRIQzg3SzFfdzRXSkQ5cERQQW0zQllEVWVZRGhGS3ZGWC1CbXB5RU5lNnRR?oc=5",
+      "image": "",
+      "source": "google",
+      "cat": "tech",
+      "time": "2026-09-17 03:53:47",
+      "sentiment": null
+    },
+    {
+      "title": "Foresta Group Holdings Partners with Bioeconomy Science Institute for Radiata Pine Chemicals Research",
+      "desc": "",
+      "url": "https://kalkinemedia.com/au/news/announcements/foresta-group-holdings-partners-with-bioeconomy-science-institute-for-radiata-pine-chemicals-research",
+      "image": "https://kalkinemedia.com/storage/uploads/large/shutterstock_2765269355_07_02_2026_23_45_45_484072.jpg",
+      "source": "kalkinemedia",
+      "cat": "tech",
+      "time": "2026-09-17 03:51:03",
+      "sentiment": null
+    },
+    {
+      "title": "Bạch Mai Hospital, Mescells collaborate on stem cell research",
+      "desc": "This cooperation aims to research the clinical application of mesenchymal stem cells, in line with the Prime Minister's Decision 1131/QĐ-TTg regarding national key technology groups.",
+      "url": "https://vietnamnews.vn/society/1799912/bach-mai-hospital-mescells-collaborate-on-stem-cell-research.html",
+      "image": "https://image.vietnamnews.vn/uploadvnnews/Article/2026/9/17/530691_5588085299497275_%C4%90%E1%BA%A1i%20di%E1%BB%87n%202%20b%C3%AAn%20k%C3%BD%20k%E1%BA%BFt%2001.jpg",
+      "source": "vietnamnews_vn",
+      "cat": "tech",
+      "time": "2026-09-17 03:49:07",
+      "sentiment": null
+    },
+    {
+      "title": "All in on nuclear",
+      "desc": "It is encouraging to see Bangladesh’s reaffirmation of its commitment to the peaceful use of nuclear science -- one that is both timely and pivotal for its future. Science and Technology Minister Faqir Mahbub Anam stressed the importance of safety, security, international cooperation, and using nucl",
+      "url": "https://www.dhakatribune.com/opinion/editorial/419997/all-in-on-nuclear",
+      "image": "",
+      "source": "dhakatribune",
+      "cat": "tech",
+      "time": "2026-09-17 03:47:56",
+      "sentiment": null
+    },
+    {
+      "title": "NASA scan discovers new, ‘once in a century’ moon crater - The Straits Times",
+      "desc": "NASA scan discovers new, ‘once in a century’ moon crater The Straits Times NASA's Lunar Reconnaissance Orbiter Discovers a New 222-m Diameter Lunar Crater PR Newswire NASA has discovered the largest recent impact crater in the Solar System on the Moon Українські Національні Новини (УНН) Asteroid hi",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNZldmaXRyeHFBSHZVT2ZqS2h3WTNta2I2YURPRWdyV0Z5Q2VWbklkZ1pFTmtBeWhpTFd1cEFqbTliMGd0X3dyOUdXVUVqWnItVk1oWWNkLXBYTXJDWVhwWlhic2h1NzJxaklYYWxFclNrdVluOVdfUG9NM1E2NExqTE1Oc010blNfZjZzUWozX3pmLWV5SnB2d3lTcFlaUjBJUllsdg?oc=5",
+      "image": "",
+      "source": "google",
+      "cat": "tech",
+      "time": "2026-09-17 03:44:00",
+      "sentiment": null
+    },
+    {
+      "title": "Sheboygan residents pack data center forum to hear research on community impacts",
+      "desc": "University of Michigan professor Ben Green presented research on the potential negative impacts of data centers on communities across the country.",
+      "url": "https://www.tmj4.com/news/local-news/in-your-community/sheboygan-county/sheboygan-residents-pack-data-center-forum-to-hear-research-on-community-impacts",
+      "image": "https://ewscripps.brightspotcdn.com/dims4/default/47c1fb5/2147483647/strip/true/crop/1920x1008+0+36/resize/1200x630!/quality/90/?url=http%3A%2F%2Fewscripps-brightspot.s3.amazonaws.com%2F10%2F53%2F8b804d5e4d72a8c77a8a28f99703%2Fthumbnail.jpg",
+      "source": "tmj4",
+      "cat": "tech",
+      "time": "2026-09-17 03:39:50",
+      "sentiment": null
+    },
+    {
+      "title": "Duke researchers discover hidden mechanisms behind physical, chemical cold sensations",
+      "desc": "Researchers in the Lee Lab uncovered how the TRPM8 ion channel responds differently to a drop in temperatures relative to cooling compounds like menthol. The findings could be used in future therapies for conditions like dry eye disease and migraines.",
+      "url": "https://dukechronicle.com/article/duke-university-researchers-uncover-hidden-mechanism-physical-chemical-cooling-sensation-nerve-protein-20260917",
+      "image": "https://snworksceo.imgix.net/dtc/bd21db73-352f-4c4e-a23b-a823589f45b6.sized-1000x1000.jpg",
+      "source": "dukechronicle",
+      "cat": "tech",
+      "time": "2026-09-17 03:38:43",
+      "sentiment": null
+    },
+    {
+      "title": "Google DeepMind Launches New Institute To Study AGI’s Impact On Society",
+      "desc": "Google DeepMind has formally launched a new institute to explore how artificial general intelligence could impact society, science and the economy, bringing researchers together to examine AI’s biggest opportunities and challenges.",
+      "url": "https://www.timesnownews.com/technology-science/google-deepmind-launches-new-institute-to-study-agis-impact-on-society-article-156172217",
+      "image": "https://images.timesnownews.com/thumb/msid-156172249,thumbsize-2548782,width-1280,height-720,resizemode-75/156172249.jpg",
+      "source": "timesnownews",
+      "cat": "tech",
+      "time": "2026-09-17 03:38:34",
+      "sentiment": null
+    },
+    {
+      "title": "'Deeply regrets': FIDE apologises over Chess Olympiad lodging crisis",
+      "desc": "FIDE has apologised after accommodation problems disrupted the opening day of the 2026 Chess Olympiad in Samarkand, leaving some teams without proper lodging. The governing body said affected federations will be reimbursed for suitable accommodation for up to three days, while teams staying in subst",
+      "url": "https://timesofindia.indiatimes.com/sports/chess/deeply-regrets-fide-apologises-over-chess-olympiad-lodging-crisis-assures-teams-of-compensation/articleshow/134300656.cms",
+      "image": "https://static.toiimg.com/thumb/resizemode-4,width-1280,height-720,msid-134300946/134300946.jpg",
+      "source": "toi",
+      "cat": "tech",
+      "time": "2026-09-17 03:37:22",
+      "sentiment": null
+    },
+    {
+      "title": "HENON CubeSat: A New Era in Space Weather Forecasting",
+      "desc": "The HENON CubeSat, developed by Imperial College London, is poised to revolutionize space weather prediction. By positioning itself significantly further from Earth (15 million km) than current satellites, HENON aims to extend the warning time for solar storms from minutes to hours, allowing for bet",
+      "url": "https://us.headtopics.com/news/henon-cubesat-a-new-era-in-space-weather-forecasting-87826063",
+      "image": "https://i.headtopics.com/images/2026/9/17/universetoday/henon-cubesat-a-new-era-in-space-weather-forecasti-henon-cubesat-a-new-era-in-space-weather-forecasti-70641938C381F5ECDACD3F6000219832-16x9.webp",
+      "source": "headtopics",
+      "cat": "tech",
+      "time": "2026-09-17 03:36:59",
+      "sentiment": null
     }
   ]
 }
