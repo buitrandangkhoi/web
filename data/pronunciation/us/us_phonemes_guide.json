@@ -1,0 +1,232 @@
+{
+  "monophthongs": [
+    {
+      "symbol": "/i/",
+      "name": "Close front unrounded",
+      "examples": [
+        "fleece",
+        "tree",
+        "seat"
+      ],
+      "us_tip": "High, tense vowel. Lips spread."
+    },
+    {
+      "symbol": "/ɪ/",
+      "name": "Near-close near-front unrounded",
+      "examples": [
+        "kit",
+        "bid",
+        "ship"
+      ],
+      "us_tip": "Shorter and more relaxed than /i/."
+    },
+    {
+      "symbol": "/eɪ/",
+      "name": "Close-mid front diphthongized",
+      "examples": [
+        "face",
+        "day",
+        "make"
+      ],
+      "us_tip": "Starts at /e/ and glides up towards /ɪ/."
+    },
+    {
+      "symbol": "/ɛ/",
+      "name": "Open-mid front unrounded",
+      "examples": [
+        "dress",
+        "bed",
+        "head"
+      ],
+      "us_tip": "Mouth slightly more open than /e/."
+    },
+    {
+      "symbol": "/æ/",
+      "name": "Near-open front unrounded",
+      "examples": [
+        "trap",
+        "cat",
+        "black"
+      ],
+      "us_tip": "Very distinct in GenAm, jaw drops significantly."
+    },
+    {
+      "symbol": "/ɑ/",
+      "name": "Open back unrounded (Father-Bother)",
+      "examples": [
+        "lot",
+        "hot",
+        "father"
+      ],
+      "us_tip": "In US English, 'hot' and 'father' share this same unrounded open vowel."
+    },
+    {
+      "symbol": "/ɔ/",
+      "name": "Open-mid back rounded",
+      "examples": [
+        "thought",
+        "caught",
+        "law"
+      ],
+      "us_tip": "Slight lip rounding; merges with /ɑ/ in many US dialects."
+    },
+    {
+      "symbol": "/oʊ/",
+      "name": "Close-mid back diphthongized",
+      "examples": [
+        "goat",
+        "home",
+        "show"
+      ],
+      "us_tip": "Back rounded glide starting from /o/ to /ʊ/."
+    },
+    {
+      "symbol": "/ʊ/",
+      "name": "Near-close near-back rounded",
+      "examples": [
+        "foot",
+        "book",
+        "put"
+      ],
+      "us_tip": "Relaxed back vowel with moderate lip rounding."
+    },
+    {
+      "symbol": "/u/",
+      "name": "Close back rounded",
+      "examples": [
+        "goose",
+        "food",
+        "blue"
+      ],
+      "us_tip": "High, tense, fully rounded lips."
+    },
+    {
+      "symbol": "/ʌ/",
+      "name": "Open-mid back-central unrounded",
+      "examples": [
+        "strut",
+        "cup",
+        "love"
+      ],
+      "us_tip": "Stressed mid-central vowel."
+    },
+    {
+      "symbol": "/ə/",
+      "name": "Mid-central (Schwa)",
+      "examples": [
+        "about",
+        "sofa",
+        "banana"
+      ],
+      "us_tip": "Most common English sound, completely unstressed."
+    },
+    {
+      "symbol": "/ɝ/",
+      "name": "R-colored mid-central (Stressed)",
+      "examples": [
+        "nurse",
+        "bird",
+        "word"
+      ],
+      "us_tip": "Characteristic GenAm rhotic vowel. Tongue curls or bunches back."
+    },
+    {
+      "symbol": "/ɚ/",
+      "name": "R-colored schwa (Unstressed)",
+      "examples": [
+        "letter",
+        "doctor",
+        "water"
+      ],
+      "us_tip": "Unstressed syllable ending with rhotic coloring."
+    }
+  ],
+  "diphthongs": [
+    {
+      "symbol": "/aɪ/",
+      "name": "Price diphthong",
+      "examples": [
+        "price",
+        "my",
+        "time"
+      ],
+      "us_tip": "Glide from open /a/ to near-close /ɪ/."
+    },
+    {
+      "symbol": "/aʊ/",
+      "name": "Mouth diphthong",
+      "examples": [
+        "mouth",
+        "now",
+        "out"
+      ],
+      "us_tip": "Glide from open /a/ to rounded /ʊ/."
+    },
+    {
+      "symbol": "/ɔɪ/",
+      "name": "Choice diphthong",
+      "examples": [
+        "choice",
+        "boy",
+        "oil"
+      ],
+      "us_tip": "Glide from rounded /ɔ/ to front /ɪ/."
+    }
+  ],
+  "american_special_features": [
+    {
+      "name": "Flap T (/ɾ/)",
+      "description": "When /t/ or /d/ occurs between two vowels and the second vowel is unstressed, it turns into an alveolar tap.",
+      "examples": [
+        {
+          "word": "water",
+          "ipa": "/ˈwɔtɝ/ → [ˈwɔɾɚ]"
+        },
+        {
+          "word": "butter",
+          "ipa": "/ˈbʌtɝ/ → [ˈbʌɾɚ]"
+        },
+        {
+          "word": "city",
+          "ipa": "/ˈsɪti/ → [ˈsɪɾi]"
+        }
+      ]
+    },
+    {
+      "name": "Rhoticity (R-coloring)",
+      "description": "Unlike British Received Pronunciation, General American pronounces /r/ in all positions (after vowels and at word endings).",
+      "examples": [
+        {
+          "word": "car",
+          "ipa": "/kɑɹ/"
+        },
+        {
+          "word": "hard",
+          "ipa": "/hɑɹd/"
+        },
+        {
+          "word": "doctor",
+          "ipa": "/ˈdɑktɝ/"
+        }
+      ]
+    },
+    {
+      "name": "Yod-Dropping",
+      "description": "General American omits the /j/ glide after alveolar consonants /t, d, n, s, z, θ/.",
+      "examples": [
+        {
+          "word": "tune",
+          "ipa": "/tun/ (vs UK /tjuːn/)"
+        },
+        {
+          "word": "news",
+          "ipa": "/nuz/ (vs UK /njuːz/)"
+        },
+        {
+          "word": "student",
+          "ipa": "/ˈstudənt/ (vs UK /ˈstjuːdənt/)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "level": "C1_Advanced",
+  "lessons": [
+    {
+      "id": "bc_c1_01",
+      "title": "Inversion for Emphasis",
+      "description": "Inverting subject and auxiliary verb after negative or restrictive adverbs.",
+      "formula": "Negative adverb (Never/Rarely/Seldom) + Aux + Subject + Verb",
+      "key_examples": [
+        "Rarely have I witnessed such dedication.",
+        "No sooner had we arrived than it started to pour."
+      ],
+      "exercises": [
+        {
+          "q": "Seldom ___ such remarkable talent in an audition.",
+          "options": [
+            "we have seen",
+            "have we seen",
+            "we saw"
+          ],
+          "a": "have we seen",
+          "explanation": "Inversion requires auxiliary before subject after 'seldom'."
+        }
+      ]
+    },
+    {
+      "id": "bc_c1_02",
+      "title": "Mixed Conditionals and Subjunctive Structures",
+      "description": "Combining past condition with present result, or unreal present condition with past result.",
+      "formula": "If + past perfect, would + V_inf (Past cause -> Present effect)",
+      "key_examples": [
+        "If I had taken that plane, I would be in Sydney now.",
+        "I demand that he be present at the hearing."
+      ],
+      "exercises": [
+        {
+          "q": "If she had accepted the promotion last year, she ___ a director now.",
+          "options": [
+            "would be",
+            "would have been",
+            "will be"
+          ],
+          "a": "would be",
+          "explanation": "Past condition leading to present result."
+        }
+      ]
+    }
+  ]
+}

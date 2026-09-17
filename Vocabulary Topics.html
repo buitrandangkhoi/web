@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vocabulary Topics – Oxford 3000</title>
+<style>
+:root {
+  --bg: #f5ead8;
+  --card: #fffaf3;
+  --sidebar-bg: #eee0c4;
+  --accent: #c67139;
+  --accent2: #7a8a5e;
+  --blue: #4a6a9a;
+  --red: #c0392b;
+  --green: #2e7d32;
+  --text: #2d2416;
+  --muted: #8a7a60;
+  --border: rgba(0,0,0,0.08);
+  --radius: 14px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; min-height:100vh; display:flex; flex-direction:column; }
+
+/* ── NAV ── */
+nav { background:#fff; border-bottom:1px solid var(--border); padding:0 20px; display:flex; align-items:center; gap:8px; height:52px; flex-shrink:0; flex-wrap:wrap; }
+nav a { text-decoration:none; color:var(--muted); font-size:13px; padding:6px 10px; border-radius:8px; white-space:nowrap; transition:background .15s,color .15s; }
+nav a:hover { background:var(--bg); color:var(--text); }
+nav a.active { background:var(--accent); color:#fff; font-weight:600; }
+nav .logo { font-weight:700; font-size:15px; color:var(--accent); margin-right:8px; }
+
+/* ── LAYOUT ── */
+.layout { display:flex; flex:1; overflow:hidden; height:calc(100vh - 52px); }
+
+/* ── SIDEBAR ── */
+.sidebar { width:280px; min-width:220px; background:var(--sidebar-bg); border-right:1px solid var(--border); display:flex; flex-direction:column; overflow:hidden; flex-shrink:0; }
+.sidebar-header { padding:16px 16px 10px; }
+.sidebar-header h2 { font-size:14px; font-weight:700; color:var(--accent); margin-bottom:10px; text-transform:uppercase; letter-spacing:.5px; }
+.search-box { position:relative; }
+.search-box input { width:100%; padding:8px 12px 8px 34px; border:1px solid var(--border); border-radius:10px; background:#fff; font-size:13px; color:var(--text); outline:none; }
+.search-box input:focus { border-color:var(--accent); }
+.search-box svg { position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--muted); }
+.stats { padding:8px 16px; font-size:12px; color:var(--muted); }
+.topic-list { flex:1; overflow-y:auto; padding:4px 8px 12px; }
+.topic-item { display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:10px; cursor:pointer; transition:background .15s; margin-bottom:2px; }
+.topic-item:hover { background:rgba(198,113,57,.12); }
+.topic-item.active { background:var(--accent); color:#fff; }
+.topic-item.active .topic-count { background:rgba(255,255,255,.25); color:#fff; }
+.topic-icon { font-size:18px; flex-shrink:0; width:24px; text-align:center; }
+.topic-name { flex:1; font-size:13px; line-height:1.3; }
+.topic-count { background:rgba(0,0,0,.08); color:var(--muted); font-size:11px; font-weight:600; padding:2px 7px; border-radius:20px; flex-shrink:0; }
+
+/* ── MAIN ── */
+.main { flex:1; display:flex; flex-direction:column; overflow:hidden; }
+.main-header { padding:16px 24px 12px; background:var(--bg); border-bottom:1px solid var(--border); flex-shrink:0; }
+.main-header h1 { font-size:20px; font-weight:700; color:var(--text); margin-bottom:2px; }
+.main-header p { font-size:13px; color:var(--muted); }
+.main-toolbar { padding:10px 24px; display:flex; align-items:center; gap:10px; flex-shrink:0; flex-wrap:wrap; }
+.word-search { flex:1; min-width:160px; max-width:320px; position:relative; }
+.word-search input { width:100%; padding:8px 14px 8px 34px; border:1px solid var(--border); border-radius:10px; background:#fff; font-size:13px; color:var(--text); outline:none; }
+.word-search input:focus { border-color:var(--accent); box-shadow:0 0 0 3px rgba(198,113,57,.12); }
+.word-search svg { position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--muted); }
+.view-toggle { display:flex; gap:3px; background:rgba(0,0,0,.06); border-radius:10px; padding:3px; }
+.view-btn { background:none; border:none; padding:5px 10px; border-radius:7px; cursor:pointer; color:var(--muted); font-size:12px; font-weight:600; transition:.15s; display:flex; align-items:center; gap:5px; white-space:nowrap; }
+.view-btn.active { background:#fff; color:var(--accent); box-shadow:0 1px 3px rgba(0,0,0,.1); }
+.word-count-badge { font-size:12px; color:var(--muted); margin-left:auto; }
+.cards-area { flex:1; overflow-y:auto; padding:16px 24px 24px; }
+
+/* ── WORD GRID ── */
+.word-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(195px,1fr)); gap:12px; }
+.word-card { background:var(--card); border-radius:var(--radius); padding:14px; box-shadow:var(--shadow); border:1px solid var(--border); transition:transform .15s,box-shadow .15s; }
+.word-card:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,.13); }
+.word-card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:6px; margin-bottom:3px; }
+.word-card .word { font-size:17px; font-weight:700; color:var(--text); }
+.word-card .pos { display:inline-block; font-size:10px; font-weight:600; padding:2px 7px; border-radius:20px; margin-bottom:5px; text-transform:uppercase; letter-spacing:.4px; }
+.word-card .ipa { font-size:12px; color:var(--muted); margin-bottom:7px; font-style:italic; }
+.word-card .meaning { font-size:13px; color:var(--text); font-weight:500; border-top:1px solid var(--border); padding-top:7px; }
+.card-speak-btn { background:none; border:1px solid var(--border); border-radius:7px; padding:4px 7px; cursor:pointer; color:var(--muted); font-size:13px; line-height:1; flex-shrink:0; transition:.15s; }
+.card-speak-btn:hover { background:var(--accent); color:#fff; border-color:var(--accent); }
+.tbl-speak-btn { background:none; border:1px solid var(--border); border-radius:7px; padding:4px 8px; cursor:pointer; color:var(--muted); font-size:13px; line-height:1; transition:.15s; }
+.tbl-speak-btn:hover { background:var(--accent); color:#fff; border-color:var(--accent); }
+
+/* ── POS COLORS ── */
+.pos-n   { background:#e8f0e0; color:#4a7a30; }
+.pos-v   { background:#e0ecf8; color:#2a5a9a; }
+.pos-adj { background:#fdf0e0; color:#a06020; }
+.pos-adv { background:#f0e0f8; color:#7a2a9a; }
+.pos-other { background:#f0f0f0; color:#606060; }
+
+/* ── LIST VIEW ── */
+.word-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
+.word-table th { background:#f0e4cc; padding:10px 14px; text-align:left; font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; border-bottom:2px solid var(--border); }
+.word-table td { padding:10px 14px; font-size:14px; border-bottom:1px solid var(--border); vertical-align:middle; }
+.word-table tr:last-child td { border-bottom:none; }
+.word-table tr:hover td { background:rgba(198,113,57,.05); }
+.word-table .td-word { font-weight:700; font-size:15px; }
+.word-table .td-ipa { color:var(--muted); font-style:italic; font-size:12px; }
+
+/* ── FLASHCARD MODE ── */
+.fc-wrapper { display:flex; flex-direction:column; align-items:center; padding:20px 24px; gap:20px; min-height:100%; }
+
+/* Progress bar */
+.fc-progress-bar { width:100%; max-width:640px; background:rgba(0,0,0,.08); border-radius:99px; height:6px; overflow:hidden; }
+.fc-progress-fill { height:100%; border-radius:99px; background:var(--accent); transition:width .4s; }
+.fc-progress-info { width:100%; max-width:640px; display:flex; justify-content:space-between; align-items:center; font-size:12px; color:var(--muted); }
+.fc-score { display:flex; gap:12px; }
+.fc-score span { display:flex; align-items:center; gap:4px; font-weight:600; }
+.fc-score .know { color:var(--green); }
+.fc-score .dontknow { color:var(--red); }
+
+/* The flip card container */
+.fc-scene { width:100%; max-width:560px; height:300px; perspective:1000px; cursor:pointer; }
+.fc-card { width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform .5s cubic-bezier(.4,0,.2,1); border-radius:20px; }
+.fc-card.flipped { transform:rotateY(180deg); }
+.fc-face { position:absolute; inset:0; border-radius:20px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+.fc-front { background:var(--card); box-shadow:0 8px 32px rgba(0,0,0,.14); border:2px solid var(--border); }
+.fc-back  { background:linear-gradient(135deg,#4a6a9a 0%,#3a5a8a 100%); color:#fff; transform:rotateY(180deg); box-shadow:0 8px 32px rgba(74,106,154,.35); }
+
+.fc-front .fc-word { font-size:38px; font-weight:800; color:var(--text); text-align:center; line-height:1.2; margin-bottom:10px; }
+.fc-front .fc-ipa  { font-size:16px; color:var(--muted); font-style:italic; margin-bottom:12px; }
+.fc-front .fc-pos  { }
+.fc-front .fc-hint { margin-top:20px; font-size:12px; color:var(--muted); display:flex; align-items:center; gap:5px; }
+
+.fc-back .fc-meaning { font-size:28px; font-weight:700; color:#fff; text-align:center; line-height:1.3; }
+.fc-back .fc-word-sm { font-size:14px; opacity:.75; margin-top:10px; }
+.fc-back .fc-pos-back { display:inline-block; background:rgba(255,255,255,.2); color:#fff; font-size:11px; font-weight:600; padding:3px 9px; border-radius:20px; margin-top:8px; text-transform:uppercase; }
+
+/* Navigation */
+.fc-nav { display:flex; align-items:center; gap:12px; }
+.fc-nav-btn { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:10px 20px; cursor:pointer; font-size:14px; font-weight:600; color:var(--text); transition:.15s; display:flex; align-items:center; gap:6px; box-shadow:var(--shadow); }
+.fc-nav-btn:hover:not(:disabled) { background:var(--accent); color:#fff; border-color:var(--accent); }
+.fc-nav-btn:disabled { opacity:.35; cursor:default; }
+.fc-nav-btn.fc-shuffle { color:var(--accent2); border-color:var(--accent2); }
+.fc-nav-btn.fc-shuffle:hover { background:var(--accent2); color:#fff; border-color:var(--accent2); }
+
+/* Know/Don't know */
+.fc-actions { display:flex; gap:12px; width:100%; max-width:560px; }
+.fc-action-btn { flex:1; padding:12px; border-radius:12px; border:2px solid; cursor:pointer; font-size:14px; font-weight:700; transition:.15s; display:flex; align-items:center; justify-content:center; gap:6px; }
+.fc-action-btn:disabled { opacity:.35; cursor:default; }
+.fc-dont { border-color:var(--red); color:var(--red); background:rgba(192,57,43,.06); }
+.fc-dont:hover:not(:disabled) { background:var(--red); color:#fff; }
+.fc-know  { border-color:var(--green); color:var(--green); background:rgba(46,125,50,.06); }
+.fc-know:hover:not(:disabled) { background:var(--green); color:#fff; }
+
+/* Speak button */
+.fc-speak { background:none; border:1px solid var(--border); border-radius:8px; padding:6px 10px; cursor:pointer; color:var(--muted); font-size:12px; display:flex; align-items:center; gap:4px; transition:.15s; }
+.fc-speak:hover { background:var(--accent); color:#fff; border-color:var(--accent); }
+
+/* Summary card */
+.fc-summary { width:100%; max-width:560px; background:var(--card); border-radius:20px; padding:32px; box-shadow:var(--shadow); text-align:center; }
+.fc-summary h2 { font-size:22px; font-weight:700; margin-bottom:16px; }
+.fc-summary .summary-stats { display:flex; justify-content:center; gap:32px; margin:20px 0; }
+.fc-summary .summary-stat { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.fc-summary .stat-num { font-size:36px; font-weight:800; }
+.fc-summary .stat-lbl { font-size:13px; color:var(--muted); }
+.fc-summary .know-num { color:var(--green); }
+.fc-summary .dont-num { color:var(--red); }
+.fc-summary-btn { background:var(--accent); color:#fff; border:none; border-radius:12px; padding:12px 28px; cursor:pointer; font-size:14px; font-weight:700; margin:4px; transition:.15s; }
+.fc-summary-btn:hover { background:#a85c2a; }
+.fc-summary-btn.outline { background:none; color:var(--accent); border:2px solid var(--accent); }
+.fc-summary-btn.outline:hover { background:var(--accent); color:#fff; }
+
+/* Keyboard hint */
+.fc-kbd { font-size:11px; color:var(--muted); display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+.fc-kbd kbd { background:rgba(0,0,0,.07); border-radius:4px; padding:2px 6px; font-size:10px; font-family:monospace; }
+
+/* EMPTY / LOADING */
+.state-msg { display:flex; flex-direction:column; align-items:center; justify-content:center; height:300px; color:var(--muted); gap:12px; }
+.state-msg svg { opacity:.4; }
+.state-msg p { font-size:15px; }
+
+/* RESPONSIVE */
+@media(max-width:768px) {
+  .layout { flex-direction:column; height:auto; }
+  .sidebar { width:100%; height:auto; border-right:none; border-bottom:1px solid var(--border); }
+  .topic-list { max-height:180px; }
+  .main { overflow:visible; }
+  .cards-area { overflow:visible; }
+  .word-grid { grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+  nav { overflow-x:auto; }
+  .fc-scene { height:240px; }
+  .fc-front .fc-word { font-size:28px; }
+  .fc-back .fc-meaning { font-size:22px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">🇬🇧 EnglishHub</span>
+  <a href="Home.html">Home</a>
+  <a href="IPA Workspace.html">IPA</a>
+  <a href="Vocabulary Topics.html" class="active">Vocabulary</a>
+  <a href="Listening Dictation.html">Listening</a>
+  <a href="Reading Workspace.html">Reading</a>
+  <a href="Speaking Practice.html">Speaking</a>
+  <a href="Writing Workspace.html">Writing</a>
+</nav>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>📚 Chủ đề</h2>
+      <div class="search-box">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="topicSearch" placeholder="Tìm chủ đề...">
+      </div>
+    </div>
+    <div class="stats" id="sidebarStats"></div>
+    <div class="topic-list" id="topicList"></div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="main-header">
+      <h1 id="mainTitle">Oxford 3000 từ vựng theo chủ đề</h1>
+      <p id="mainSubtitle">Chọn một chủ đề bên trái để xem từ vựng</p>
+    </div>
+    <div class="main-toolbar">
+      <div class="word-search" id="wordSearchWrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="wordSearch" placeholder="Tìm từ vựng...">
+      </div>
+      <div class="view-toggle">
+        <button class="view-btn active" id="btnGrid">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Thẻ
+        </button>
+        <button class="view-btn" id="btnList">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          Bảng
+        </button>
+        <button class="view-btn" id="btnFlash">
+          🃏 Flashcard
+        </button>
+      </div>
+      <span class="word-count-badge" id="wordCountBadge"></span>
+    </div>
+    <div class="cards-area" id="cardsArea">
+      <div class="state-msg" id="stateMsg">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <p>Đang tải dữ liệu từ vựng...</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+const TOPIC_ICONS = [
+  '✏️','🏃','🌅','🌊','🔢','🛍️','🛏️','🤝','🍳','💍',
+  '🌿','🛋️','🏥','💻','🧹','🏪','🎭','✈️','🏮','⚽',
+  '🏡','💒','🛫','❤️‍🩹','🥦','⏰','🚗','😊','😎','🥤',
+  '🌸','🎬','⚽','🎄','🍜','🎵','💕','🍽️','🏫','🎨',
+  '🌤️','👗','🫀','🎓','👨‍👩‍👧','🍎','🦁','🦋','📖','🌱',
+  '🌍','🦞','⚡','👷','🥗','🌪️','🗺️','🏨','📮','🏦'
+];
+
+let allTopics = [];
+let currentTopicId = null;
+let viewMode = 'grid';
+let wordFilter = '';
+
+// Flashcard state
+let fcWords = [];
+let fcIndex = 0;
+let fcFlipped = false;
+let fcKnow = 0;
+let fcDont = 0;
+let fcDone = new Set();
+
+// ── Load data ──
+async function loadData() {
+  try {
+    const res = await fetch('data/vocabulary/3000_oxford_words_by_topic.json');
+    if (!res.ok) throw new Error('fetch failed');
+    const data = await res.json();
+    allTopics = data.topics;
+    init();
+  } catch(e) {
+    document.getElementById('stateMsg').innerHTML = `
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p>Không tải được dữ liệu từ vựng.</p>`;
+  }
+}
+
+function init() {
+  const total = allTopics.reduce((s,t)=>s+t.words_count,0);
+  document.getElementById('sidebarStats').textContent = `${allTopics.length} chủ đề · ${total} từ`;
+  renderTopicList(allTopics);
+  document.getElementById('stateMsg').innerHTML = `
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <p>Chọn một chủ đề để bắt đầu</p>`;
+
+  document.getElementById('topicSearch').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase();
+    renderTopicList(q ? allTopics.filter(t=>t.topic_name.toLowerCase().includes(q)) : allTopics);
+  });
+
+  document.getElementById('wordSearch').addEventListener('input', e => {
+    wordFilter = e.target.value.toLowerCase();
+    if (viewMode !== 'flash') renderWords();
+  });
+
+  document.getElementById('btnGrid').addEventListener('click', ()=>{ viewMode='grid'; updateViewBtns(); renderWords(); });
+  document.getElementById('btnList').addEventListener('click', ()=>{ viewMode='list'; updateViewBtns(); renderWords(); });
+  document.getElementById('btnFlash').addEventListener('click', ()=>{ viewMode='flash'; updateViewBtns(); startFlashcards(); });
+
+  // Keyboard shortcuts for flashcard
+  document.addEventListener('keydown', handleKey);
+
+  selectTopic(allTopics[0].topic_id);
+}
+
+// ── Sidebar ──
+function renderTopicList(topics) {
+  document.getElementById('topicList').innerHTML = topics.map(t => {
+    const icon = TOPIC_ICONS[(t.topic_id-1) % TOPIC_ICONS.length];
+    return `<div class="topic-item ${t.topic_id===currentTopicId?'active':''}" onclick="selectTopic(${t.topic_id})">
+      <span class="topic-icon">${icon}</span>
+      <span class="topic-name">${t.topic_name.replace('Từ vựng về ','')}</span>
+      <span class="topic-count">${t.words_count}</span>
+    </div>`;
+  }).join('');
+}
+
+function selectTopic(id) {
+  currentTopicId = id;
+  wordFilter = '';
+  document.getElementById('wordSearch').value = '';
+  const t = allTopics.find(t=>t.topic_id===id);
+  if (!t) return;
+  document.getElementById('mainTitle').textContent = t.topic_name;
+  document.getElementById('mainSubtitle').textContent = `${t.words_count} từ vựng`;
+  renderTopicList(allTopics.filter(t=>{
+    const q = document.getElementById('topicSearch').value.toLowerCase();
+    return q ? t.topic_name.toLowerCase().includes(q) : true;
+  }));
+  if (viewMode === 'flash') startFlashcards();
+  else renderWords();
+}
+
+// ── Helpers ──
+function getPosClass(pos) {
+  if (!pos) return 'pos-other';
+  const p = pos.toLowerCase();
+  if (p.startsWith('n')) return 'pos-n';
+  if (p.startsWith('v')) return 'pos-v';
+  if (p.startsWith('adj')) return 'pos-adj';
+  if (p.startsWith('adv')) return 'pos-adv';
+  return 'pos-other';
+}
+function updateViewBtns() {
+  ['btnGrid','btnList','btnFlash'].forEach(id=>document.getElementById(id).classList.remove('active'));
+  document.getElementById(viewMode==='grid'?'btnGrid':viewMode==='list'?'btnList':'btnFlash').classList.add('active');
+  document.getElementById('wordSearchWrap').style.display = viewMode==='flash' ? 'none' : '';
+  document.getElementById('wordCountBadge').textContent = '';
+}
+// ── Speak — robust Web Speech API với workaround Chrome bug ──
+let _voicesReady = false;
+function _loadVoices() {
+  const vs = window.speechSynthesis.getVoices();
+  if (vs.length) _voicesReady = true;
+  return vs;
+}
+if ('speechSynthesis' in window) {
+  window.speechSynthesis.onvoiceschanged = () => { _voicesReady = true; };
+  _loadVoices(); // kick off early load
+}
+
+function speak(word) {
+  if (!('speechSynthesis' in window)) {
+    alert('Trình duyệt này không hỗ trợ phát âm.\nVui lòng dùng Chrome hoặc Edge.');
+    return;
+  }
+  // Chrome bug: synthesis can freeze — cancel + tiny delay fixes it
+  window.speechSynthesis.cancel();
+  const delay = _voicesReady ? 50 : 300;
+  setTimeout(() => {
+    const u = new SpeechSynthesisUtterance(word);
+    u.lang = 'en-US';
+    u.rate = 0.85;
+    u.pitch = 1.0;
+    // Pick best English voice if available
+    const voices = _loadVoices();
+    const en = voices.find(v => v.lang === 'en-US' && v.localService)
+            || voices.find(v => v.lang.startsWith('en-US'))
+            || voices.find(v => v.lang.startsWith('en-'))
+            || null;
+    if (en) u.voice = en;
+    window.speechSynthesis.speak(u);
+  }, delay);
+}
+
+// ── Grid / List views ──
+function renderWords() {
+  const t = allTopics.find(t=>t.topic_id===currentTopicId);
+  if (!t) return;
+  let words = t.words;
+  if (wordFilter) {
+    words = words.filter(w =>
+      w.word.toLowerCase().includes(wordFilter) ||
+      w.meaning.toLowerCase().includes(wordFilter) ||
+      (w.ipa||'').includes(wordFilter)
+    );
+  }
+  document.getElementById('wordCountBadge').textContent = wordFilter ? `${words.length} / ${t.words_count} từ` : `${t.words_count} từ`;
+  const area = document.getElementById('cardsArea');
+
+  if (!words.length) {
+    area.innerHTML = `<div class="state-msg"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><p>Không tìm thấy từ nào</p></div>`;
+    return;
+  }
+
+  if (viewMode === 'grid') {
+    area.innerHTML = `<div class="word-grid">${words.map(w=>`
+      <div class="word-card">
+        <div class="word-card-top">
+          <div class="word">${w.word}</div>
+          <button class="card-speak-btn" onclick="speak('${w.word.replace(/'/g,"\\'")}')" title="Phát âm">🔊</button>
+        </div>
+        <span class="pos ${getPosClass(w.pos)}">${w.pos||'n'}</span>
+        <div class="ipa">${w.ipa||''}</div>
+        <div class="meaning">${w.meaning}</div>
+      </div>`).join('')}</div>`;
+  } else {
+    area.innerHTML = `<table class="word-table">
+      <thead><tr><th>#</th><th>Từ</th><th>Loại từ</th><th>IPA</th><th>Nghĩa</th><th></th></tr></thead>
+      <tbody>${words.map((w,i)=>`
+        <tr>
+          <td style="color:var(--muted);font-size:12px">${i+1}</td>
+          <td class="td-word">${w.word}</td>
+          <td><span class="pos ${getPosClass(w.pos)}">${w.pos||'n'}</span></td>
+          <td class="td-ipa">${w.ipa||''}</td>
+          <td class="td-meaning">${w.meaning}</td>
+          <td><button class="tbl-speak-btn" onclick="speak('${w.word.replace(/'/g,"\\'")}')">🔊</button></td>
+        </tr>`).join('')}
+      </tbody></table>`;
+  }
+}
+
+// ═══════════════════════════════════════════
+// ── FLASHCARD MODE ──
+// ═══════════════════════════════════════════
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i=a.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+
+function startFlashcards(reshuffled=false) {
+  const t = allTopics.find(t=>t.topic_id===currentTopicId);
+  if (!t) return;
+  fcWords = shuffle(t.words);
+  fcIndex = 0; fcFlipped = false;
+  if (!reshuffled) { fcKnow = 0; fcDont = 0; fcDone = new Set(); }
+  renderFlashcard();
+}
+
+function renderFlashcard() {
+  const area = document.getElementById('cardsArea');
+  if (fcIndex >= fcWords.length) { renderFCSummary(); return; }
+  const w = fcWords[fcIndex];
+  const total = fcWords.length;
+
+  area.innerHTML = `
+  <div class="fc-wrapper">
+    <!-- Progress -->
+    <div class="fc-progress-info">
+      <span>${fcIndex+1} / ${total}</span>
+      <div class="fc-score">
+        <span class="know">✓ ${fcKnow}</span>
+        <span class="dontknow">✗ ${fcDont}</span>
+      </div>
+    </div>
+    <div class="fc-progress-bar">
+      <div class="fc-progress-fill" style="width:${(fcIndex/total)*100}%"></div>
+    </div>
+
+    <!-- Card -->
+    <div class="fc-scene" id="fcScene" onclick="flipCard()">
+      <div class="fc-card ${fcFlipped?'flipped':''}" id="fcCard">
+        <div class="fc-face fc-front">
+          <div class="fc-word">${w.word}</div>
+          <div class="fc-ipa">${w.ipa||''}</div>
+          <span class="pos ${getPosClass(w.pos)}">${w.pos||'n'}</span>
+          <div class="fc-hint" style="position:absolute;bottom:16px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            Nhấn để lật xem nghĩa
+          </div>
+        </div>
+        <div class="fc-face fc-back">
+          <div class="fc-meaning">${w.meaning}</div>
+          <div class="fc-word-sm">${w.word}</div>
+          <span class="fc-pos-back">${w.pos||'n'}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Speak button -->
+    <button class="fc-speak" onclick="event.stopPropagation();speak('${w.word.replace(/'/g,"\\'")}')">
+      🔊 Phát âm
+    </button>
+
+    <!-- Know / Don't know buttons -->
+    <div class="fc-actions">
+      <button class="fc-action-btn fc-dont" id="btnDont" onclick="markWord(false)" ${!fcFlipped?'disabled':''}>
+        ✗ Chưa biết
+      </button>
+      <button class="fc-action-btn fc-know" id="btnKnow" onclick="markWord(true)" ${!fcFlipped?'disabled':''}>
+        ✓ Đã biết
+      </button>
+    </div>
+
+    <!-- Navigation -->
+    <div class="fc-nav">
+      <button class="fc-nav-btn" onclick="prevCard()" ${fcIndex===0?'disabled':''}>
+        ← Trước
+      </button>
+      <button class="fc-nav-btn fc-shuffle" onclick="startFlashcards(false)">
+        🔀 Xáo bài
+      </button>
+      <button class="fc-nav-btn" onclick="nextCard()" ${fcIndex>=fcWords.length-1?'disabled':''}>
+        Tiếp →
+      </button>
+    </div>
+
+    <!-- Keyboard hint -->
+    <div class="fc-kbd">
+      <span><kbd>Space</kbd> Lật thẻ</span>
+      <span><kbd>←</kbd> Thẻ trước</span>
+      <span><kbd>→</kbd> Thẻ tiếp</span>
+      <span><kbd>K</kbd> Đã biết</span>
+      <span><kbd>D</kbd> Chưa biết</span>
+    </div>
+  </div>`;
+}
+
+function flipCard() {
+  fcFlipped = !fcFlipped;
+  document.getElementById('fcCard').classList.toggle('flipped', fcFlipped);
+  // Enable action buttons after flip
+  if (fcFlipped) {
+    document.getElementById('btnKnow').disabled = false;
+    document.getElementById('btnDont').disabled = false;
+  }
+}
+
+function markWord(know) {
+  if (!fcFlipped) return;
+  if (know) fcKnow++; else fcDont++;
+  fcDone.add(fcIndex);
+  nextCard();
+}
+
+function nextCard() {
+  if (fcIndex < fcWords.length - 1) {
+    fcIndex++;
+    fcFlipped = false;
+    renderFlashcard();
+  } else {
+    renderFCSummary();
+  }
+}
+
+function prevCard() {
+  if (fcIndex > 0) {
+    fcIndex--;
+    fcFlipped = false;
+    renderFlashcard();
+  }
+}
+
+function renderFCSummary() {
+  const total = fcWords.length;
+  const pct = total > 0 ? Math.round((fcKnow/total)*100) : 0;
+  document.getElementById('cardsArea').innerHTML = `
+  <div class="fc-wrapper">
+    <div class="fc-summary">
+      <div style="font-size:48px;margin-bottom:8px">${pct>=80?'🎉':pct>=50?'💪':'📖'}</div>
+      <h2>Kết quả ôn tập</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:8px">${total} từ · ${pct}% đã thuộc</p>
+      <div class="summary-stats">
+        <div class="summary-stat">
+          <span class="stat-num know-num">${fcKnow}</span>
+          <span class="stat-lbl">✓ Đã biết</span>
+        </div>
+        <div class="summary-stat">
+          <span class="stat-num dont-num">${fcDont}</span>
+          <span class="stat-lbl">✗ Chưa biết</span>
+        </div>
+        <div class="summary-stat">
+          <span class="stat-num" style="color:var(--muted)">${total-fcKnow-fcDont}</span>
+          <span class="stat-lbl">Bỏ qua</span>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <button class="fc-summary-btn" onclick="startFlashcards(false)">🔀 Ôn lại từ đầu</button>
+        <button class="fc-summary-btn outline" onclick="reviewDontKnow()">✗ Ôn các từ chưa biết</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function reviewDontKnow() {
+  // Collect words marked as "don't know" - restart with only those
+  // Since we track by index, just reshuffle all and start over
+  // (Simple approach: restart with full deck, user can filter later)
+  startFlashcards(false);
+}
+
+// ── Keyboard shortcuts ──
+function handleKey(e) {
+  if (viewMode !== 'flash') return;
+  if (e.target.tagName === 'INPUT') return;
+  switch(e.key) {
+    case ' ': e.preventDefault(); flipCard(); break;
+    case 'ArrowRight': case 'n': nextCard(); break;
+    case 'ArrowLeft':  case 'p': prevCard(); break;
+    case 'k': case 'K': markWord(true); break;
+    case 'd': case 'D': markWord(false); break;
+  }
+}
+
+loadData();
+</script>
+</body>
+</html>

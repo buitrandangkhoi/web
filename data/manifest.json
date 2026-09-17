@@ -1,0 +1,1053 @@
+{
+  "version": "1.3.0",
+  "generated_at": "2026-09-17T11:06:43.450356",
+  "summary": {
+    "listening_episodes": 3,
+    "dictation_sentences": 9,
+    "reading_passages": 6,
+    "writing_prompts": 5,
+    "oxford_3000_topics": 60,
+    "oxford_3000_words": 1760,
+    "ipa_chart_phonemes": 44,
+    "ipa_chart_audio_files": 89,
+    "us_ipa_total_vocabulary": 125927,
+    "us_ipa_curated_words": 60,
+    "us_audio_pronunciations": 61,
+    "ielts_mock_tests_total": 5,
+    "ielts_official_audio_tracks": 16,
+    "ielts_official_pdfs": 30,
+    "grammar_sources": 4,
+    "grammar_exercise_pdfs": 24,
+    "grammar_interactive_quizzes": 17
+  },
+  "skills": {
+    "listening": {
+      "bbc_6minute": [
+        {
+          "id": "lis_bbc_001",
+          "title": "Can apps teach you a language?",
+          "level": "Intermediate / Upper-Intermediate (B2-C1)",
+          "audio_file": "listening/bbc_6minute/audio/01_can_apps_teach_you_a_language.mp3",
+          "summary": "Have you ever used Duolingo, Babbel, Busuu or perhaps another language-learning app? How did you get on? Some people lov...",
+          "file_path": "listening/bbc_6minute/transcripts/01_can_apps_teach_you_a_language.json"
+        },
+        {
+          "id": "lis_bbc_002",
+          "title": "Climate change and extreme weather",
+          "level": "Intermediate / Upper-Intermediate (B2-C1)",
+          "audio_file": "listening/bbc_6minute/audio/02_climate_change_and_extreme_weather.mp3",
+          "summary": "Every year we see damage, death and destruction caused by hurricanes, cyclones and typhoons - tropical storms. Is climat...",
+          "file_path": "listening/bbc_6minute/transcripts/02_climate_change_and_extreme_weather.json"
+        },
+        {
+          "id": "lis_bbc_003",
+          "title": "How do we describe smells?",
+          "level": "Intermediate / Upper-Intermediate (B2-C1)",
+          "audio_file": "listening/bbc_6minute/audio/03_how_do_we_describe_smells.mp3",
+          "summary": "What is the worst smell in the world? And what is the best smell? Are there any smells that you like, but that your frie...",
+          "file_path": "listening/bbc_6minute/transcripts/03_how_do_we_describe_smells.json"
+        }
+      ],
+      "dictation_pool": [
+        {
+          "id": "dict_1_1",
+          "episode_title": "Can apps teach you a language?",
+          "level": "Medium",
+          "text": "Have you ever used Duolingo, Babbel, Busuu or perhaps another language-learning app",
+          "word_count": 12,
+          "hint": "Have ... app"
+        },
+        {
+          "id": "dict_1_2",
+          "episode_title": "Can apps teach you a language?",
+          "level": "Challenging",
+          "text": "Some people love the convenience of these apps – you can learn on the go, like during your commute to work, rather than committing to a certain time each week, like learning in a class",
+          "word_count": 35,
+          "hint": "Some ... class"
+        },
+        {
+          "id": "dict_1_3",
+          "episode_title": "Can apps teach you a language?",
+          "level": "Medium",
+          "text": "But are they teaching the languages effectively",
+          "word_count": 7,
+          "hint": "But ... effectively"
+        },
+        {
+          "id": "dict_2_1",
+          "episode_title": "Climate change and extreme weather",
+          "level": "Challenging",
+          "text": "Every year we see damage, death and destruction caused by hurricanes, cyclones and typhoons - tropical storms",
+          "word_count": 17,
+          "hint": "Every ... storms"
+        },
+        {
+          "id": "dict_2_2",
+          "episode_title": "Climate change and extreme weather",
+          "level": "Medium",
+          "text": "Is climate change making this impact worse",
+          "word_count": 7,
+          "hint": "Is ... worse"
+        },
+        {
+          "id": "dict_2_3",
+          "episode_title": "Climate change and extreme weather",
+          "level": "Medium",
+          "text": "Climate change may be making this destruction worse",
+          "word_count": 8,
+          "hint": "Climate ... worse"
+        },
+        {
+          "id": "dict_3_1",
+          "episode_title": "How do we describe smells?",
+          "level": "Medium",
+          "text": "What is the worst smell in the world",
+          "word_count": 8,
+          "hint": "What ... world"
+        },
+        {
+          "id": "dict_3_2",
+          "episode_title": "How do we describe smells?",
+          "level": "Medium",
+          "text": "And what is the best smell",
+          "word_count": 6,
+          "hint": "And ... smell"
+        },
+        {
+          "id": "dict_3_3",
+          "episode_title": "How do we describe smells?",
+          "level": "Medium",
+          "text": "Are there any smells that you like, but that your friends or family hate",
+          "word_count": 14,
+          "hint": "Are ... hate"
+        }
+      ]
+    },
+    "reading": {
+      "passages": [
+        {
+          "id": "read_ielts_001",
+          "title": "UK mathematician debunks myth around Parthenon’s optical illusions",
+          "source": "The Guardian Science",
+          "category": "Environment & Science",
+          "word_count": 240,
+          "difficulty": "IELTS Band 7.0 - 8.5",
+          "questions_count": 4,
+          "academic_vocab_count": 0,
+          "file_path": "reading/academic_passages/passage_01.json"
+        },
+        {
+          "id": "read_ielts_002",
+          "title": "Plantwatch: The insect-eating alpine plant that proves Darwin was right",
+          "source": "The Guardian Science",
+          "category": "Environment & Science",
+          "word_count": 160,
+          "difficulty": "IELTS Band 7.0 - 8.5",
+          "questions_count": 4,
+          "academic_vocab_count": 2,
+          "file_path": "reading/academic_passages/passage_02.json"
+        },
+        {
+          "id": "read_ielts_003",
+          "title": "The hole in the ozone layer is healing, but extreme weather may be slowing progress down",
+          "source": "Scientific American",
+          "category": "Technology & Physics",
+          "word_count": 300,
+          "difficulty": "IELTS Band 7.0 - 8.5",
+          "questions_count": 4,
+          "academic_vocab_count": 1,
+          "file_path": "reading/academic_passages/passage_03.json"
+        },
+        {
+          "id": "read_ielts_004",
+          "title": "What even is an AI kill switch?",
+          "source": "Scientific American",
+          "category": "Technology & Physics",
+          "word_count": 271,
+          "difficulty": "IELTS Band 7.0 - 8.5",
+          "questions_count": 4,
+          "academic_vocab_count": 2,
+          "file_path": "reading/academic_passages/passage_04.json"
+        },
+        {
+          "id": "read_ielts_005",
+          "title": "Plantwatch: The insect-eating alpine plant that proves Darwin was right",
+          "source": "The Guardian Science",
+          "category": "Environment & Health",
+          "word_count": 83,
+          "difficulty": "IELTS Band 6.5 - 8.0",
+          "questions_count": 2,
+          "academic_vocab_count": 0,
+          "file_path": "reading/academic_passages/passage_05.json"
+        },
+        {
+          "id": "read_ielts_006",
+          "title": "US confirms for first time it has deployed weapons in space",
+          "source": "The Guardian Science",
+          "category": "Environment & Health",
+          "word_count": 87,
+          "difficulty": "IELTS Band 6.5 - 8.0",
+          "questions_count": 2,
+          "academic_vocab_count": 0,
+          "file_path": "reading/academic_passages/passage_06.json"
+        }
+      ]
+    },
+    "writing": {
+      "task1": [
+        {
+          "id": "wri_t1_01",
+          "chart_type": "Line Graph",
+          "topic": "Renewable Energy Consumption",
+          "prompt": "The graph below shows the proportion of energy generated from renewable sources in four European countries between 2000 and 2020.",
+          "time_period": "2000 - 2020",
+          "overview_focus": "Overall upward trend across all nations, with Germany maintaining the dominant position throughout the period.",
+          "band_score": 9.0,
+          "model_answer": {
+            "introduction": "The line graph illustrates the percentage of total energy produced from renewable resources in four European nations (Germany, France, Sweden, and Spain) over a twenty-year period from 2000 to 2020.",
+            "overview": "Overall, it is evident that all four countries experienced an upward trajectory in their utilization of green energy. Germany consistently generated the highest share of renewable power, whereas France recorded the lowest figures despite notable progress.",
+            "body_1": "In 2000, Germany began at approximately 25%, rising steadily to reach roughly 38% by 2010, before surging to a peak of nearly 52% at the close of the timeline. Sweden followed a comparable pattern, climbing from 18% in the initial year to finish at approximately 36% in 2020.",
+            "body_2": "Conversely, Spain and France started from significantly lower baselines of 10% and 6% respectively. While Spain witnessed substantial fluctuations before settling around 24%, France demonstrated gradual but consistent growth, ultimately doubling its initial contribution to conclude at 12% in 2020."
+          },
+          "academic_collocations": [
+            {
+              "phrase": "experienced an upward trajectory",
+              "meaning": "went through a continuous rise"
+            },
+            {
+              "phrase": "consistently generated the highest share",
+              "meaning": "held the top proportion throughout"
+            },
+            {
+              "phrase": "surging to a peak of",
+              "meaning": "rising rapidly to the highest point"
+            },
+            {
+              "phrase": "started from significantly lower baselines",
+              "meaning": "began at much lower initial figures"
+            }
+          ]
+        },
+        {
+          "id": "wri_t1_02",
+          "chart_type": "Bar Chart",
+          "topic": "Global Smartphone Shipments by OS",
+          "prompt": "The chart shows the market share of mobile operating systems in five global regions in 2024.",
+          "time_period": "2024 (Static Comparison)",
+          "overview_focus": "Android dominated developing markets while iOS maintained a lead in North America and Oceania.",
+          "band_score": 9.0,
+          "model_answer": {
+            "introduction": "The bar chart compares the regional distribution of mobile operating system market shares across five distinct geographical zones in the year 2024.",
+            "overview": "Overall, the market was heavily polarized between Android and iOS, with alternative platforms occupying negligible shares. Android commanded substantial dominance across Asia, Africa, and South America, while iOS achieved superiority in North America.",
+            "body_1": "In Asia and South America, Android accounted for the lion's share of the market, registering approximately 78% and 82% respectively. By comparison, iOS captured merely 20% in Asia and 16% in South America. In Africa, the disparity was even more pronounced, with Android surpassing 85%.",
+            "body_2": "In stark contrast, North America presented a reversed scenario, where iOS led the market with roughly 58%, outperforming Android's 41%. The Oceania market was evenly split, with both major operating systems hovering around 48-50%."
+          },
+          "academic_collocations": [
+            {
+              "phrase": "heavily polarized between",
+              "meaning": "divided sharply into two main groups"
+            },
+            {
+              "phrase": "occupying negligible shares",
+              "meaning": "taking up very tiny, almost unnoticeable percentages"
+            },
+            {
+              "phrase": "accounted for the lion's share",
+              "meaning": "represented the majority/largest portion"
+            },
+            {
+              "phrase": "in stark contrast",
+              "meaning": "in sharp opposition or difference"
+            }
+          ]
+        },
+        {
+          "id": "wri_t1_03",
+          "chart_type": "Process Diagram",
+          "topic": "Water Purification and Desalination",
+          "prompt": "The diagram illustrates the sequential stages of sea water desalination to produce drinking water.",
+          "time_period": "Natural / Industrial Process",
+          "overview_focus": "A cyclical five-stage process transforming saline ocean water into potable domestic water through reverse osmosis.",
+          "band_score": 9.0,
+          "model_answer": {
+            "introduction": "The flow diagram delineates the multi-stage industrial process through which seawater is desalinated and purified to produce potable drinking water for municipal consumption.",
+            "overview": "Overall, the desalination procedure comprises five principal consecutive stages, commencing with seawater intake and filtration, proceeding through high-pressure reverse osmosis, and culminating in post-treatment remineralization and municipal distribution.",
+            "body_1": "Initially, raw seawater is drawn from the ocean via deep intake pipelines equipped with coarse mesh screens to exclude marine life and large debris. Next, the water enters a pre-filtration settling chamber where suspended solids are removed, before undergoing chemical pre-treatment to neutralize organic contaminants.",
+            "body_2": "In the critical phase, the pre-treated brine is pumped under immense hydraulic pressure through semi-permeable membranes. This process separates concentrated salt effluent, which is funneled back to sea, from purified fresh permeate. Finally, the desalinated water is chlorinated, enriched with minerals for taste, and transferred into the public supply reservoir."
+          },
+          "academic_collocations": [
+            {
+              "phrase": "delineates the multi-stage process",
+              "meaning": "clearly outlines the steps"
+            },
+            {
+              "phrase": "commencing with ... and culminating in",
+              "meaning": "starting with ... and ending with"
+            },
+            {
+              "phrase": "semi-permeable membranes",
+              "meaning": "selective filtering barriers"
+            },
+            {
+              "phrase": "potable drinking water",
+              "meaning": "water safe for human consumption"
+            }
+          ]
+        }
+      ],
+      "task2": [
+        {
+          "id": "wri_t2_01",
+          "essay_type": "Opinion (Agree / Disagree)",
+          "category": "Technology & Artificial Intelligence",
+          "prompt": "Some people believe that artificial intelligence will create more opportunities than it eliminates, while others argue it poses an existential threat to employment. To what extent do you agree or disagree?",
+          "band_score": 9.0,
+          "essay_breakdown": {
+            "introduction": "The rapid proliferation of artificial intelligence (AI) has sparked intense discourse regarding its net impact on human labor. While critics contend that automation will precipitate unprecedented joblessness, I firmly agree that AI will fundamentally act as a catalyst for economic diversification and novel vocational opportunities, provided society undertakes proactive workforce restructuring.",
+            "body_1_counter_rebuttal": "Opponents often highlight that algorithmic systems and machine learning models are systematically displacing repetitive cognitive and physical occupations. Routine administrative positions, assembly line roles, and basic data analysis are increasingly performed with superior efficiency by automated software. Nonetheless, historical precedents demonstrate that technological revolutions—from the Industrial Revolution to the advent of personal computing—inevitably render certain archaic jobs obsolete while catalyzing far more sophisticated industries.",
+            "body_2_argument": "More significantly, the integration of AI augments human productivity rather than entirely supplanting it. First, the emergence of AI architecture necessitates burgeoning sectors in machine learning engineering, prompt design, ethical compliance, and cybersecurity. Second, by automating mundane burdens, AI liberates professionals in medical diagnostics, scientific research, and pedagogical design to concentrate on empathetic, creative, and high-order strategic problem-solving. This symbiotic interaction inevitably stimulates higher value-added economic sectors.",
+            "conclusion": "In conclusion, although the transitionary disruption caused by algorithmic automation poses legitimate short-term friction, I maintain that AI represents an indispensable driver of future job creation and human advancement. Strategic investment in vocational retraining will ensure that the technology enriches human employment rather than diminishing it."
+          },
+          "cohesive_devices": [
+            "While critics contend that",
+            "Nonetheless",
+            "Historical precedents demonstrate",
+            "More significantly",
+            "In conclusion"
+          ],
+          "lexical_highlights": [
+            "proliferation",
+            "catalyst for economic diversification",
+            "precedented joblessness",
+            "symbiotic interaction",
+            "vocational retraining"
+          ]
+        },
+        {
+          "id": "wri_t2_02",
+          "essay_type": "Discussion (Discuss both views and give your opinion)",
+          "category": "Education & Economy",
+          "prompt": "Some educators argue that higher education should focus entirely on preparing students for specific commercial careers. Others believe that university should aim to provide a broad intellectual foundation. Discuss both views and give your own opinion.",
+          "band_score": 8.5,
+          "essay_breakdown": {
+            "introduction": "Whether tertiary academic institutions should function primarily as vocational training academies or as centers of holistic intellectual cultivation remains a contentious pedagogical dispute. While commercial career preparation undoubtedly optimizes immediate graduate employability, I advocate for an educational ethos that combines rigorous vocational aptitude with comprehensive critical thinking.",
+            "body_1": "On the one hand, advocates of vocation-oriented curriculums argue that tertiary education represents a substantial financial investment. In an increasingly competitive globalized economy, graduates possessing targeted practical competencies—such as software engineering, accounting, or clinical healthcare—seamlessly transition into the workforce, mitigating graduate underemployment. This targeted output directly fuels national economic productivity.",
+            "body_2": "On the other hand, proponents of a broad intellectual curriculum emphasize that technical proficiencies quickly turn obsolete in modern dynamic markets. A foundational education in humanities, logic, philosophy, and interdisciplinary sciences fosters cognitive agility, ethical deliberation, and adaptable problem-solving faculties. Graduates endowed with versatile analytical acumen can effortlessly pivot across evolving industries throughout multi-decade careers.",
+            "conclusion": "To synthesize both perspectives, I believe the dichotomous view of higher education is fundamentally flawed. Modern universities should construct integrated curricula where rigorous discipline-specific skills are underpinned by robust liberal arts reasoning, thereby producing both employable and visionary professionals."
+          },
+          "cohesive_devices": [
+            "On the one hand",
+            "On the other hand",
+            "To synthesize both perspectives",
+            "Thereby producing"
+          ],
+          "lexical_highlights": [
+            "holistic intellectual cultivation",
+            "pedagogical dispute",
+            "cognitive agility",
+            "dichotomous view",
+            "mitigating graduate underemployment"
+          ]
+        }
+      ],
+      "phrasebank_categories": [
+        "introducing_work",
+        "comparing_and_contrasting",
+        "explaining_causes",
+        "expressing_degrees_of_caution",
+        "concluding_and_summarizing"
+      ],
+      "band_descriptors_available": true
+    },
+    "vocabulary_oxford_3000": {
+      "title": "3000 từ vựng tiếng Anh Oxford thông dụng theo chủ đề",
+      "total_topics": 60,
+      "total_words": 1760,
+      "json_file": "vocabulary/3000_oxford_words_by_topic.json",
+      "csv_file": "vocabulary/3000_oxford_words_by_topic.csv"
+    },
+    "ipa_chart_44": {
+      "data_file": "pronunciation/ipa_chart/ipa_chart_44.json",
+      "total_phonemes": 44,
+      "monophthongs": 12,
+      "diphthongs": 8,
+      "consonants": 24,
+      "sounds_directory": "pronunciation/ipa_chart/sounds/",
+      "examples_directory": "pronunciation/ipa_chart/examples/"
+    },
+    "pronunciation_us": {
+      "dialect": "General American (US)",
+      "raw_dataset_file": "pronunciation/us/en_US_ipa.txt",
+      "total_vocabulary_entries": 125927,
+      "curated_academic_file": "pronunciation/us/ielts_academic_ipa.json",
+      "phonemes_guide_file": "pronunciation/us/us_phonemes_guide.json",
+      "audio_directory": "pronunciation/us/audio/",
+      "curated_words": [
+        {
+          "word": "academic",
+          "us_ipa": "/ˌækəˈdɛmɪk/",
+          "audio": "pronunciation/us/audio/academic.mp3"
+        },
+        {
+          "word": "analysis",
+          "us_ipa": "/əˈnæɫəsəs/",
+          "audio": "pronunciation/us/audio/analysis.mp3"
+        },
+        {
+          "word": "approach",
+          "us_ipa": "/əˈpɹoʊtʃ/",
+          "audio": "pronunciation/us/audio/approach.mp3"
+        },
+        {
+          "word": "benefit",
+          "us_ipa": "/ˈbɛnəfɪt/",
+          "audio": "pronunciation/us/audio/benefit.mp3"
+        },
+        {
+          "word": "concept",
+          "us_ipa": "/ˈkɑnsɛpt/",
+          "audio": "pronunciation/us/audio/concept.mp3"
+        },
+        {
+          "word": "context",
+          "us_ipa": "/ˈkɑntɛkst/",
+          "audio": "pronunciation/us/audio/context.mp3"
+        },
+        {
+          "word": "criteria",
+          "us_ipa": "/kɹaɪˈtɪɹiə/",
+          "audio": "pronunciation/us/audio/criteria.mp3"
+        },
+        {
+          "word": "crucial",
+          "us_ipa": "/ˈkɹuʃəɫ/",
+          "audio": "pronunciation/us/audio/crucial.mp3"
+        },
+        {
+          "word": "data",
+          "us_ipa": "/ˈdætə/",
+          "audio": "pronunciation/us/audio/data.mp3"
+        },
+        {
+          "word": "derive",
+          "us_ipa": "/dɝˈaɪv/",
+          "audio": "pronunciation/us/audio/derive.mp3"
+        },
+        {
+          "word": "economic",
+          "us_ipa": "/ˌɛkəˈnɑmɪk/",
+          "audio": "pronunciation/us/audio/economic.mp3"
+        },
+        {
+          "word": "environment",
+          "us_ipa": "/ɪnˈvaɪɹənmənt/",
+          "audio": "pronunciation/us/audio/environment.mp3"
+        },
+        {
+          "word": "establish",
+          "us_ipa": "/ɪˈstæbɫɪʃ/",
+          "audio": "pronunciation/us/audio/establish.mp3"
+        },
+        {
+          "word": "estimate",
+          "us_ipa": "/ˈɛstəˌmeɪt/",
+          "audio": "pronunciation/us/audio/estimate.mp3"
+        },
+        {
+          "word": "evidence",
+          "us_ipa": "/ˈɛvədəns/",
+          "audio": "pronunciation/us/audio/evidence.mp3"
+        },
+        {
+          "word": "factor",
+          "us_ipa": "/ˈfæktɝ/",
+          "audio": "pronunciation/us/audio/factor.mp3"
+        },
+        {
+          "word": "function",
+          "us_ipa": "/ˈfəŋkʃən/",
+          "audio": "pronunciation/us/audio/function.mp3"
+        },
+        {
+          "word": "identify",
+          "us_ipa": "/aɪˈdɛntəˌfaɪ/",
+          "audio": "pronunciation/us/audio/identify.mp3"
+        },
+        {
+          "word": "indicate",
+          "us_ipa": "/ˈɪndəˌkeɪt/",
+          "audio": "pronunciation/us/audio/indicate.mp3"
+        },
+        {
+          "word": "individual",
+          "us_ipa": "/ˌɪndəˈvɪdʒəwəɫ/",
+          "audio": "pronunciation/us/audio/individual.mp3"
+        },
+        {
+          "word": "interpret",
+          "us_ipa": "/ˌɪnˈtɝpɹət/",
+          "audio": "pronunciation/us/audio/interpret.mp3"
+        },
+        {
+          "word": "involve",
+          "us_ipa": "/ˌɪnˈvɑɫv/",
+          "audio": "pronunciation/us/audio/involve.mp3"
+        },
+        {
+          "word": "issue",
+          "us_ipa": "/ˈɪʃu/",
+          "audio": "pronunciation/us/audio/issue.mp3"
+        },
+        {
+          "word": "major",
+          "us_ipa": "/ˈmeɪdʒɝ/",
+          "audio": "pronunciation/us/audio/major.mp3"
+        },
+        {
+          "word": "method",
+          "us_ipa": "/ˈmɛθəd/",
+          "audio": "pronunciation/us/audio/method.mp3"
+        },
+        {
+          "word": "occur",
+          "us_ipa": "/əˈkɝ/",
+          "audio": "pronunciation/us/audio/occur.mp3"
+        },
+        {
+          "word": "period",
+          "us_ipa": "/ˈpɪɹiəd/",
+          "audio": "pronunciation/us/audio/period.mp3"
+        },
+        {
+          "word": "policy",
+          "us_ipa": "/ˈpɑɫəsi/",
+          "audio": "pronunciation/us/audio/policy.mp3"
+        },
+        {
+          "word": "principle",
+          "us_ipa": "/ˈpɹɪnsəpəɫ/",
+          "audio": "pronunciation/us/audio/principle.mp3"
+        },
+        {
+          "word": "procedure",
+          "us_ipa": "/pɹəˈsidʒɝ/",
+          "audio": "pronunciation/us/audio/procedure.mp3"
+        },
+        {
+          "word": "process",
+          "us_ipa": "/ˈpɹɑˌsɛs/",
+          "audio": "pronunciation/us/audio/process.mp3"
+        },
+        {
+          "word": "require",
+          "us_ipa": "/ˌɹiˈkwaɪɝ/",
+          "audio": "pronunciation/us/audio/require.mp3"
+        },
+        {
+          "word": "research",
+          "us_ipa": "/ˈɹisɝtʃ/",
+          "audio": "pronunciation/us/audio/research.mp3"
+        },
+        {
+          "word": "respond",
+          "us_ipa": "/ɹiˈspɑnd/",
+          "audio": "pronunciation/us/audio/respond.mp3"
+        },
+        {
+          "word": "role",
+          "us_ipa": "/ˈɹoʊɫ/",
+          "audio": "pronunciation/us/audio/role.mp3"
+        },
+        {
+          "word": "section",
+          "us_ipa": "/ˈsɛkʃən/",
+          "audio": "pronunciation/us/audio/section.mp3"
+        },
+        {
+          "word": "significant",
+          "us_ipa": "/səɡˈnɪfɪkənt/",
+          "audio": "pronunciation/us/audio/significant.mp3"
+        },
+        {
+          "word": "similar",
+          "us_ipa": "/ˈsɪməɫɝ/",
+          "audio": "pronunciation/us/audio/similar.mp3"
+        },
+        {
+          "word": "source",
+          "us_ipa": "/ˈsɔɹs/",
+          "audio": "pronunciation/us/audio/source.mp3"
+        },
+        {
+          "word": "specific",
+          "us_ipa": "/spəˈsɪfɪk/",
+          "audio": "pronunciation/us/audio/specific.mp3"
+        },
+        {
+          "word": "structure",
+          "us_ipa": "/ˈstɹəktʃɝ/",
+          "audio": "pronunciation/us/audio/structure.mp3"
+        },
+        {
+          "word": "theory",
+          "us_ipa": "/ˈθiɝi/",
+          "audio": "pronunciation/us/audio/theory.mp3"
+        },
+        {
+          "word": "vary",
+          "us_ipa": "/ˈvɛɹi/",
+          "audio": "pronunciation/us/audio/vary.mp3"
+        },
+        {
+          "word": "schedule",
+          "us_ipa": "/ˈskɛdʒuɫ/",
+          "audio": "pronunciation/us/audio/schedule.mp3"
+        },
+        {
+          "word": "water",
+          "us_ipa": "/ˈwɔtɝ/",
+          "audio": "pronunciation/us/audio/water.mp3"
+        },
+        {
+          "word": "opportunity",
+          "us_ipa": "/ˌɑpɝˈtunəti/",
+          "audio": "pronunciation/us/audio/opportunity.mp3"
+        },
+        {
+          "word": "pronunciation",
+          "us_ipa": "/pɹəˌnənsiˈeɪʃən/",
+          "audio": "pronunciation/us/audio/pronunciation.mp3"
+        },
+        {
+          "word": "university",
+          "us_ipa": "/ˌjunəˈvɝsəti/",
+          "audio": "pronunciation/us/audio/university.mp3"
+        },
+        {
+          "word": "technology",
+          "us_ipa": "/tɛkˈnɑɫədʒi/",
+          "audio": "pronunciation/us/audio/technology.mp3"
+        },
+        {
+          "word": "communication",
+          "us_ipa": "/kəmˌjunəˈkeɪʃən/",
+          "audio": "pronunciation/us/audio/communication.mp3"
+        },
+        {
+          "word": "development",
+          "us_ipa": "/dɪˈvɛɫəpmənt/",
+          "audio": "pronunciation/us/audio/development.mp3"
+        },
+        {
+          "word": "international",
+          "us_ipa": "/ˌɪnɝˈnæʃənəɫ/",
+          "audio": "pronunciation/us/audio/international.mp3"
+        },
+        {
+          "word": "government",
+          "us_ipa": "/ˈɡəvɝmənt/",
+          "audio": "pronunciation/us/audio/government.mp3"
+        },
+        {
+          "word": "education",
+          "us_ipa": "/ˌɛdʒəˈkeɪʃən/",
+          "audio": "pronunciation/us/audio/education.mp3"
+        },
+        {
+          "word": "experience",
+          "us_ipa": "/ɪkˈspɪɹiəns/",
+          "audio": "pronunciation/us/audio/experience.mp3"
+        },
+        {
+          "word": "community",
+          "us_ipa": "/kəmˈjunəti/",
+          "audio": "pronunciation/us/audio/community.mp3"
+        },
+        {
+          "word": "information",
+          "us_ipa": "/ˌɪnfɝˈmeɪʃən/",
+          "audio": "pronunciation/us/audio/information.mp3"
+        },
+        {
+          "word": "important",
+          "us_ipa": "/ˌɪmˈpɔɹtənt/",
+          "audio": "pronunciation/us/audio/important.mp3"
+        },
+        {
+          "word": "question",
+          "us_ipa": "/ˈkwɛstʃən/",
+          "audio": "pronunciation/us/audio/question.mp3"
+        },
+        {
+          "word": "different",
+          "us_ipa": "/ˈdɪfɝənt/",
+          "audio": "pronunciation/us/audio/different.mp3"
+        }
+      ]
+    },
+    "ielts_mock_tests": {
+      "official_idp_bc": {
+        "source": "IDP IELTS & British Council Official",
+        "catalog_file": "ielts_tests/official_idp_bc/idp_official_catalog.json",
+        "listening_audio": [
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/TpcNnXtS4ZPbzEivA7hHg/eb28724e41e49dcc096fc00826968652/Audio_-_Free_practice_test_-_Listening_-_Note_completion.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Access_now.mp3"
+          },
+          {
+            "title": "Audio_-_Free_practice_test_-_Listening_-_Form_completion",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/WODNlKDwpZvgu6FiDipMc/d4c0b8f146a2823d04ccd67dd8a7c9da/Audio_-_Free_practice_test_-_Listening_-_Form_completion.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Audio___Free_practice_test___Listening___Form_completion.mp3"
+          },
+          {
+            "title": "Audio_-_Free_practice_test_-_Listening_-_Short_answer_questions_-_Sample_2",
+            "url": "https://downloads.ctfassets.net/unrdeg6se4ke/3dKcbOPAu3EpCwDtBs2e3d/bfc0c6868a8d8ca41c0caddc05f997c4/Audio_-_Free_practice_test_-_Listening_-_Short_answer_questions_-_Sample_2.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Audio___Free_practice_test___Listening___Short_answer_questions___Sample_2.mp3"
+          },
+          {
+            "title": "Access now",
+            "url": "https://downloads.ctfassets.net/unrdeg6se4ke/3dKcbOPAu3EpCwDtBs2e3d/bfc0c6868a8d8ca41c0caddc05f997c4/Audio_-_Free_practice_test_-_Listening_-_Short_answer_questions_-_Sample_2.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Access_now.mp3"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/1hRNidL57mr2Ywe6rneJP1/b0c82983fa86586f02f1c5fad5979d3d/Audio_-_Free_practice_test_-_Listening_-_Short_answer_questions_-_Sample_1.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Access_now.mp3"
+          },
+          {
+            "title": "Audio_-_Free_practice_test_-_Listening_-_Note_completion",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/TpcNnXtS4ZPbzEivA7hHg/eb28724e41e49dcc096fc00826968652/Audio_-_Free_practice_test_-_Listening_-_Note_completion.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Audio___Free_practice_test___Listening___Note_completion.mp3"
+          },
+          {
+            "title": "Audio_-_Free_practice_test_-_Listening_-_Matching_-_Sample_2",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/6nGVxGcaw4NxE8pejWcm2/f6e4a9b8019259a33701bf41aa2009d6/Audio_-_Free_practice_test_-_Listening_-_Matching_-_Sample_2.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Audio___Free_practice_test___Listening___Matching___Sample_2.mp3"
+          },
+          {
+            "title": "Audio_-_Free_practice_test_-_Listening_-_Short_answer_questions_-_Sample_1",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/1hRNidL57mr2Ywe6rneJP1/b0c82983fa86586f02f1c5fad5979d3d/Audio_-_Free_practice_test_-_Listening_-_Short_answer_questions_-_Sample_1.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Audio___Free_practice_test___Listening___Short_answer_questions___Sample_1.mp3"
+          },
+          {
+            "title": "Audio_-_Free_practice_test_-_Listening_-_Matching_-_Sample_1",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/01j1JoOBFtl8k5Ny9tRTfQ/1ca47ffd441a1992a897a01d1b85ccf1/Audio_-_Free_practice_test_-_Listening_-_Matching_-_Sample_1.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Audio___Free_practice_test___Listening___Matching___Sample_1.mp3"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/01j1JoOBFtl8k5Ny9tRTfQ/1ca47ffd441a1992a897a01d1b85ccf1/Audio_-_Free_practice_test_-_Listening_-_Matching_-_Sample_1.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Access_now.mp3"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/6nGVxGcaw4NxE8pejWcm2/f6e4a9b8019259a33701bf41aa2009d6/Audio_-_Free_practice_test_-_Listening_-_Matching_-_Sample_2.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Access_now.mp3"
+          },
+          {
+            "title": "Audio_-_Free_practice_test_-_Listening_-_Plan__map__diagram__labelling",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/3cB4ifvDTH8J8I5h7SCGQ8/7f6eeefce8ab4ff4fa4c7ce081ce8402/Audio_-_Free_practice_test_-_Listening_-_Plan__map__diagram__labelling.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Audio___Free_practice_test___Listening___Plan__map__diagram__labelling.mp3"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/5SUBzY8IsxGDgNKzxYOQm9/9a360377dbd6562cc9ca896b61c995fe/Audio_-_Free_practice_test_-_Listening_-_Mutliple_choice.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Access_now.mp3"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/WODNlKDwpZvgu6FiDipMc/d4c0b8f146a2823d04ccd67dd8a7c9da/Audio_-_Free_practice_test_-_Listening_-_Form_completion.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Access_now.mp3"
+          },
+          {
+            "title": "Audio_-_Free_practice_test_-_Listening_-_Mutliple_choice",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/5SUBzY8IsxGDgNKzxYOQm9/9a360377dbd6562cc9ca896b61c995fe/Audio_-_Free_practice_test_-_Listening_-_Mutliple_choice.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Audio___Free_practice_test___Listening___Mutliple_choice.mp3"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/3cB4ifvDTH8J8I5h7SCGQ8/7f6eeefce8ab4ff4fa4c7ce081ce8402/Audio_-_Free_practice_test_-_Listening_-_Plan__map__diagram__labelling.mp3",
+            "local_path": "ielts_tests/official_idp_bc/listening/audio/Access_now.mp3"
+          }
+        ],
+        "listening_pdfs": [
+          {
+            "title": "View answers",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/2YouRBbyWb9y7GcKAIo3NQ/9735f2769ea339dfef8ca94fc31e6f7d/Free_practice_test_-_Listening_-_Notes_completion_-_Sample_task___Answer_key_-_Global.pdf",
+            "local_path": "ielts_tests/official_idp_bc/listening/pdfs/View_answers.pdf"
+          },
+          {
+            "title": "View answers",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/2ZJNhMKXxjMUvWEaRDWWC/b755607198658eacbf0fd4b986cb92c0/tasklisteningsection1.pdf",
+            "local_path": "ielts_tests/official_idp_bc/listening/pdfs/View_answers.pdf"
+          },
+          {
+            "title": "View answers",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/6sFU4ov0F43DDrzxTnR7pM/bd14a660f2d388ef21ff639aa8d46aaa/115009_Listening_sample_task__20_Plan_map_diagram_labelling.pdf",
+            "local_path": "ielts_tests/official_idp_bc/listening/pdfs/View_answers.pdf"
+          },
+          {
+            "title": "View answers",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/1qZJ03mpJBifMKLtjDf6tm/8c8fba25ef78c8bf904a273be0bd4661/115007_Listening_sample_task__20_Matching__example_2_.pdf",
+            "local_path": "ielts_tests/official_idp_bc/listening/pdfs/View_answers.pdf"
+          },
+          {
+            "title": "View answers",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/6of8iyAD77JHoF4B8O4rNc/13e5a3a678ccf9fc8eeb006701b73e67/Free_practice_test_-_Listening_-_Diagram_label_completion_-_Sample_task___Answer_key_-_Global.pdf",
+            "local_path": "ielts_tests/official_idp_bc/listening/pdfs/View_answers.pdf"
+          },
+          {
+            "title": "View answers",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/1z54TBbbjgUh3fD3gOY0eQ/40de616740102fc40437e80344c7a4ab/Listening_205_Matching_20example_201.pdf",
+            "local_path": "ielts_tests/official_idp_bc/listening/pdfs/View_answers.pdf"
+          },
+          {
+            "title": "View answers",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/5QsoxCahLQOTDGro7JmytN/008525390197cf65003292265c55d859/tasklisteningsection2samplea.pdf",
+            "local_path": "ielts_tests/official_idp_bc/listening/pdfs/View_answers.pdf"
+          },
+          {
+            "title": "View answers",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/2fsIQjEC6pjGj0ckKvs0ei/5fea542bf643692764564215debc2f4c/tasklisteningsection3samplea.pdf",
+            "local_path": "ielts_tests/official_idp_bc/listening/pdfs/View_answers.pdf"
+          }
+        ],
+        "reading_pdfs": [
+          {
+            "title": "View answers",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/3yB7YNI798YJ5UnOba6jau/f3774ca8d95cb036a55c2d6dd680c420/ielts-academic-reading-computer-delivered-table-completion-answer-key.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/View_answers.pdf"
+          },
+          {
+            "title": "Free_practice_test_-_General_Training_Reading_-_Matching_Information_-_Sample_Task",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/2xdgPRzFEBex6lEQHNvTKv/4995646676214f412d4f428d54f98c5b/Free_practice_test_-_General_Training_Reading_-_Matching_Information_-_Sample_Task.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/Free_practice_test___General_Training_Reading___Matching_Information___Sample_Task.pdf"
+          },
+          {
+            "title": "View answers",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/2ggjbjdFDSU7xXTp7Eqxjp/ef3ce074fbb5d9e47db8ee4b3ad45cb0/IELTS_familiarisation_test_Reading_answers.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/View_answers.pdf"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/7y9jjQWkvzIbunwdjW3PDq/ba8fd1b71bd21d09710cfa0684377d82/Free_practice_test_-_Academic_Reading_-_Summary_Completion_selecting_from_a_list_of_words_or_phrases_-_Sample_Task_-_Global.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/Access_now.pdf"
+          },
+          {
+            "title": "Free_practice_test_-_General_Training_Reading_-_Matching_Headings_-_Sample_Task",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/5elzLRM42IgoUufEGPiQie/f161196df5fa6b9520a15edad4bb94a5/Free_practice_test_-_General_Training_Reading_-_Matching_Headings_-_Sample_Task.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/Free_practice_test___General_Training_Reading___Matching_Headings___Sample_Task.pdf"
+          },
+          {
+            "title": "Free_practice_test_-_General_Training_Reading_-_Identifying_Information_-_Sample_Task",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/3RQmYywu8GH9OHXKqGXgTX/4c7cc28949b790af4c9199161acba1bc/Free_practice_test_-_General_Training_Reading_-_Identifying_Information_-_Sample_Task.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/Free_practice_test___General_Training_Reading___Identifying_Information___Sample_Task.pdf"
+          },
+          {
+            "title": "Free_practice_test_-_General_Training_Reading_-_Matching_Features_-_Sample_Task",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/1VJSjlQNIxEM1Sq6QIReo4/55bebc929628bbb85049ac2c79438612/Free_practice_test_-_General_Training_Reading_-_Matching_Features_-_Sample_Task.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/Free_practice_test___General_Training_Reading___Matching_Features___Sample_Task.pdf"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/1VJSjlQNIxEM1Sq6QIReo4/55bebc929628bbb85049ac2c79438612/Free_practice_test_-_General_Training_Reading_-_Matching_Features_-_Sample_Task.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/Access_now.pdf"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/5lm8n8dacUfFAGKg36dqK7/6fdb574d353684df718b38c5836234bb/Free_practice_test_-_General_Training_Reading_-_Short_Answer_-_Sample_Task.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/Access_now.pdf"
+          },
+          {
+            "title": "View answers",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/4G2uxRoRo56GUb3vegyFyV/9b0c9ad25d34fd1f2340e8d410ae8b2e/Free_practice_test_-_Academic_Reading_-_Summary_Completion_selecting_from_a_list_of_words_or_phrases_-_Sample_Answers_-_Glob.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/View_answers.pdf"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/5elzLRM42IgoUufEGPiQie/f161196df5fa6b9520a15edad4bb94a5/Free_practice_test_-_General_Training_Reading_-_Matching_Headings_-_Sample_Task.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/Access_now.pdf"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/3RQmYywu8GH9OHXKqGXgTX/4c7cc28949b790af4c9199161acba1bc/Free_practice_test_-_General_Training_Reading_-_Identifying_Information_-_Sample_Task.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/Access_now.pdf"
+          },
+          {
+            "title": "Free_practice_test_-_Academic_Reading_-_Summary_Completion_selecting_from_a_list_of_words_or_phrases_-_Sample_Task_-_Global",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/7y9jjQWkvzIbunwdjW3PDq/ba8fd1b71bd21d09710cfa0684377d82/Free_practice_test_-_Academic_Reading_-_Summary_Completion_selecting_from_a_list_of_words_or_phrases_-_Sample_Task_-_Global.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/Free_practice_test___Academic_Reading___Summary_Completion_selecting_from_a_list_of_words_or_phrases___Sample_Task___Global.pdf"
+          },
+          {
+            "title": "Free_practice_test_-_General_Training_Reading_-_Short_Answer_-_Sample_Task",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/5lm8n8dacUfFAGKg36dqK7/6fdb574d353684df718b38c5836234bb/Free_practice_test_-_General_Training_Reading_-_Short_Answer_-_Sample_Task.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/Free_practice_test___General_Training_Reading___Short_Answer___Sample_Task.pdf"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/2xdgPRzFEBex6lEQHNvTKv/4995646676214f412d4f428d54f98c5b/Free_practice_test_-_General_Training_Reading_-_Matching_Information_-_Sample_Task.pdf",
+            "local_path": "ielts_tests/official_idp_bc/reading/pdfs/Access_now.pdf"
+          }
+        ],
+        "writing_pdfs": [
+          {
+            "title": "academicwritingsampletask1",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/4rUzTy5h7ITnblyyNezzu4/df6a7b3020530ddde682a968ef2772c4/academicwritingsampletask1.pdf",
+            "local_path": "ielts_tests/official_idp_bc/writing/pdfs/academicwritingsampletask1.pdf"
+          },
+          {
+            "title": "View answers",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/7psERw70IzWShx61vqpBM8/232a251bfe8224e45abe7e51af904f81/ieltsacademicwritingsamplescript.pdf",
+            "local_path": "ielts_tests/official_idp_bc/writing/pdfs/View_answers.pdf"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/6gR8Q8dQK2CFZj5f88O0K1/f8e010ca888e5a442f315c05ced79ba2/Band_207_20Writing_201.pdf",
+            "local_path": "ielts_tests/official_idp_bc/writing/pdfs/Access_now.pdf"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/4oWUF5FSUxGbv6IhweaiW0/bac8761215eb4294b6c9f5f77858c784/academicwritingsampletask2.pdf",
+            "local_path": "ielts_tests/official_idp_bc/writing/pdfs/Access_now.pdf"
+          },
+          {
+            "title": "academicwritingsampletask2",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/4oWUF5FSUxGbv6IhweaiW0/bac8761215eb4294b6c9f5f77858c784/academicwritingsampletask2.pdf",
+            "local_path": "ielts_tests/official_idp_bc/writing/pdfs/academicwritingsampletask2.pdf"
+          },
+          {
+            "title": "Band_207_20Writing_201",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/6gR8Q8dQK2CFZj5f88O0K1/f8e010ca888e5a442f315c05ced79ba2/Band_207_20Writing_201.pdf",
+            "local_path": "ielts_tests/official_idp_bc/writing/pdfs/Band_207_20Writing_201.pdf"
+          },
+          {
+            "title": "Access now",
+            "url": "https://assets.ctfassets.net/unrdeg6se4ke/4rUzTy5h7ITnblyyNezzu4/df6a7b3020530ddde682a968ef2772c4/academicwritingsampletask1.pdf",
+            "local_path": "ielts_tests/official_idp_bc/writing/pdfs/Access_now.pdf"
+          }
+        ]
+      },
+      "ielts_online_tests": {
+        "source": "IELTS Online Tests (ieltsonlinetests.com)",
+        "listening_tests": [
+          {
+            "id": "iot_lis_ielts_mock_test_2024_april_listening_practice_test_1",
+            "title": "IELTS Mock Test 2024 April - Listening Practice Test 1",
+            "source": "IELTS Online Tests (ieltsonlinetests.com)",
+            "test_type": "Listening (Computer-delivered format)",
+            "audio_url": "https://ieltsonlinetests.oss-ap-southeast-1.aliyuncs.com/Audio/Mock%20Test%202024/4/1/PT1/Practice%20Test%201.mp3",
+            "local_audio_file": "ielts_tests/ielts_online_tests/listening/audio/ielts_mock_test_2024_april_listening_practice_test_1.mp3",
+            "duration_minutes": 30,
+            "total_questions": 64,
+            "sections_guidance": [
+              "Questions 11-16Listen from hereChoose the correct letter, A, B or C.",
+              "Write the correct letter, A-I, next to Questions 17-20.",
+              "Label the plan below.Write the correct letter, A-I, next to Questions 17-20.17.ABCDEFGHI  Campsite18.ABCDEFGHI  Business Centre19.ABCDEFGHI  Museum20.ABCDEFGHI  Cafe",
+              "Choose SIX answers from the box and write the correct letter, A-H, next to Questions 25- 30."
+            ]
+          },
+          {
+            "id": "iot_lis_ielts_mock_test_2024_april_listening_practice_test_2",
+            "title": "IELTS Mock Test 2024 April - Listening Practice Test 2",
+            "source": "IELTS Online Tests (ieltsonlinetests.com)",
+            "test_type": "Listening (Computer-delivered format)",
+            "audio_url": "https://ieltsonlinetests.oss-ap-southeast-1.aliyuncs.com/Audio/Mock%20Test%202024/4/1/PT1/Practice%20Test%202.mp3",
+            "local_audio_file": "ielts_tests/ielts_online_tests/listening/audio/ielts_mock_test_2024_april_listening_practice_test_2.mp3",
+            "duration_minutes": 30,
+            "total_questions": 60,
+            "sections_guidance": [
+              "Questions 1-3Listen from hereChoose the correct letter, A, B or C.ExampleHow long has Emma been taking drama course?A from June till nowB almost one termC one month",
+              "Questions 7-10Listen from here",
+              "Questions 21-23Listen from here",
+              "Choose FIVE answers from the box and write the correct letter, A-F, next to Questions 16-20."
+            ]
+          }
+        ],
+        "reading_tests": [
+          {
+            "id": "iot_read_ielts_mock_test_2024_april_reading_practice_test_1",
+            "title": "IELTS Mock Test 2024 April - Reading Practice Test 1",
+            "source": "IELTS Online Tests (ieltsonlinetests.com)",
+            "test_type": "Academic Reading (3 Passages)",
+            "total_passages": 3,
+            "passages": [
+              {
+                "passage_number": 1,
+                "title": "Graziers see them as pests, and poisoning is common, but some biologists think A",
+                "content": "Graziers see them as pests, and poisoning is common, but some biologists think Australia’s dingoes are the best weapon in a war against imported cats and foxes.A A plane flies a slow pattern over Carlton Hill station, a 3,600 square kilometre ranch in the Kimberley region in northwest Australia. As the plane circles, those aboard drop 1,000 small pieces of meat, one by one, onto the scrubland below, each piece laced with poison; this practice is known as baiting. Besides 50,000 head of cattle, Carlton Hill is home to the dingo, Australia’s largest mammalian predator and the bane of a grazier's (cattle farmer's) life. Stuart McKechnie, manager of Carlton Hill, complains that graziers’ livelihoods are threatened when dingoes prey on cattle. But one man wants the baiting to end, and for dingoes to once again roam Australia’s wide-open spaces. According to Chris Johnson of James Cook University, ‘Australia needs more dingoes to protect our biodiversity.’B About 4,000 years ago, Asian sailors introduced dingoes to Australia. Throughout the ensuing millennia, these descendants of the wolf spread across the continent and, as the Tasmanian tiger disappeared completely from Australia, dingoes became Australia’s top predators. As agricultural development took place, the European settlers found that they could not safely keep their livestock where dingoes roamed. So began one of the most sustained efforts at pest control in Australia’s history. Over the last 150 years, dingoes have been shot and poisoned, and fences have been used in an attempt to keep them away from livestock. But at the same time, as the European settlers tried to eliminate one native pest from Australia, they introduced more of their own.C In 1860, the rabbit was unleashed on Australia by a wealthy landowner and by 1980 rabbits had covered most of the mainland. Rabbits provide huge prey base for two other introduced species: the feral (wild) cat and the red fox. The Interaction between foxes, cats and rabbits is a huge problem for native mammals. In good years, rabbit numbers increase dramatically, and fox and cat populations grow quickly in response to the abundance of this prey. When bad seasons follow, rabbit numbers are significantly reduced - and the dwindling but still large fox and cat populations are left with little to eat besides native mammals.D Australian mammals generally reproduce much more slowly than rabbits, cats and foxes - and adaption to prevent overpopulation in the arid environment, where food can be scarce and unreliable - and populations decline because they can’t grow fast enough to replace animals killed by the predators. Johnson says dingoes are the solution to this problem because they keep cat and fox populations under control. Besides regularly eating the smaller predators, dingoes will kill them simply to lessen competition. Dingo packs live in large, stable territories and generally have only one fertile, which limits their rate of increase. In the 4,000 years that dingoes have been Australia, they have contributed to few, if any, extinctions, Johnsons says.E Reaching out from a desolate spot where three states meet, for 2,500 km in either direction, is the world’s longest fence, two metres high and stretching from the coast in Queensland to the Great Australian Bight in South Australia; it is there to keep dingoes out of southeast, the fence separates the main types of livestock found in Australia. To the northwest of the fence, cattle predominate; to the southwest, sheep fill the landscape. In fact, Australia is a land dominated by these animals - 25 million cattle, 100 million sheep and just over 20 million people.F While there is no argument that dingoes will prey on sheep if given the chance, they don’t hunt cattle once the calves are much past two or three weeks old, according to McKechnie. And a study in Queensland suggests that dingoes don’t even prey heavily on the newborn calves unless their staple prey disappears due to deteriorating conditions like drought. This study, co-authored by Lee Alien of the Robert Wicks Research Centre in Queensland, suggests that the aggressive baiting programs used against dingoes may actually be counter-productive for graziers. When dingoes are removed from an area by baiting m the area is recolonized by younger, more solitary dingoes. These animals aren’t capable of going after the large prey like kangaroos, so they turn to calves. In their study, some of the highest rates of calf predation occurred in areas that had been baited.G Mark Clifford, general manager of a firm that manages over 200,000 head of cattle, is not convinced by Allen’s assertion. Clifford says, ‘It’s obvious if we drop or loosen control on dingoes, we are going to lose more calves.’ He doesn’t believe that dingoes will go after kangaroos when calves are around. Nor is he persuaded of dingoes’ supposed ecological benefits, saying he is not convinced that they manage to catch cats that often, believing they are more likely to catch small native animals instead.H McKechnie agrees that dingoes kill the wallabies (small native animals) that compete with his cattle for food, but points out that in parts of Westers Australia, there are no fixes, and not very many cats. He doesn’t see how relaxing controls on dingoes in his area will improve the ecological balance. Johnson sees a need for a change in philosophy on the part of graziers. ‘There might be a number of different ways of thinking through dingo management in cattle country,’ he says. ‘At the moment, though, that hasn’t got through to graziers. There’s still just on prescription, and that is to bait as widely as possible.’",
+                "word_count": 927
+              },
+              {
+                "passage_number": 2,
+                "title": "How People Migrated to the Pacific IslandsThe many tiny islands of the Pacific O",
+                "content": "How People Migrated to the Pacific IslandsThe many tiny islands of the Pacific Ocean had no human population until the ancestors of today’s islanders sailed from Southeast Asia in ocean-going canoes approximately 2,000 years ago. At the present time, the debate continues about exactly how they migrated such vast distances across the ocean without any of the modern technologies we take for granted.Although the romantic vision of some early twentieth-century writers of fleets of heroic navigators simultaneously setting sail had come to be considered by later investigators to be exaggerated, no considered assessment of Pacific voyaging was forthcoming until 1956, when the American historian Andrew Sharp published his research. Sharp challenged the ‘heroic vision’ by asserting that the expertise of the navigators was limited and that the settlement of the islands was not systematic, being more dependent on good fortune and drifting canoes. Sharp’s theory was widely challenged, and deservedly so. If nothing else, however, it did spark renewed interest in the topic and precipitated valuable new research.Since the 1960s, numerous investigations have been conducted, and most of them have been of the ‘non-armchair’ variety. While it would be wrong to denigrate all ‘armchair’ research—that based on an examination of available published materials—it has turned out that so little progress had been made in the area of Pacific voyaging because most writers relied on the same old sources: travelers’ journals or missionary narratives compiled by unskilled observers. After Sharp, this began to change, and researchers conducted most of their investigations not in libraries but in the field.In 1965, David Lewis, a physician and experienced yachtsman, set to work using his own unique philosophy: he took the yacht he had owned for many years and navigated through the islands in order to contact men who still find their way at sea using traditional methods. He then accompanied these men in their traditional canoes on test voyages from which all modern instruments were banished from sight, though Lewis secretly used them to confirm the navigator’s calculations. His most famous voyage was a return trip of around 1,000 nautical miles between two islands in mid-ocean. Far from drifting as proposed by Sharp, Lewis found that ancient navigators would have known which course to steer by memorizing which stars rose and set in certain positions along the horizon, and this gave them fixed directions by which to steer their boats.The geographer Edwin Doran followed a quite different approach. He was interested in obtaining exact data on canoe sailing performance, and to that end employed the latest electronic instrumentation. Doran traveled on board traditional sailing canoes in some of the most remote parts of the Pacific, all the while using his instruments to record canoe speeds in different wind strengths—from gales to calms—and the angle at which canoes could sail relative to the wind. In the process, he provided the first really precise attributes of traditional sailing canoes.A further contribution was made by Steven Horvath. As a physiologist, Horvath’s interest was not in navigation techniques or in canoes but in the physical capabilities of the men themselves. By adapting standard physiological techniques, Horvath was able to calculate the energy expenditure required to paddle canoes of this sort at times when there was no wind to fill the sails, or when the wind was contrary. He concluded that paddles, or perhaps long oars, could indeed have propelled what were primarily sailing vessels over long distances.Finally, a team led by Wall Garrard conducted an important research, in this case by making investigations while remaining safely in the laboratory. Wall Garrard’s unusual method was to use the findings of linguists who had studied the languages of the Pacific islands, many of which are remarkably similar, although the islands where they are spoken are sometimes thousands of kilometers apart. Clever adaptation of computer simulation techniques pioneered in other disciplines allowed him to produce convincing models suggesting the migrations were indeed systematic but not simultaneous. Wall Garrard proposed the migrations should be seen not as a single journey made by a massed fleet of canoes but as a series of ever more ambitious voyages, each pushing further into the unknown ocean.What do we learn about Pacific navigation and voyaging from this research? Quite correctly, none of the researchers tried to use their findings to prove one theory or another; experiments such as these cannot categorically confirm or negate a hypothesis. The strength of this research lay in the range of methodologies employed. When we splice together these findings, we can propose that traditional navigators used a variety of canoe types, sources of water, and navigation techniques, and it was this adaptability that was their greatest accomplishment. These navigators observed the conditions prevailing at sea at the time a voyage was made and altered their techniques accordingly. Furthermore, the canoes of the navigators were not drifting helplessly at sea; they were most likely part of a systematic migration. As such, the Pacific peoples were able to view the ocean as an avenue, not a barrier, to communication before any other race on Earth. Finally, one unexpected but most welcome consequence of this research has been a renaissance in the practice of traditional voyaging. In some groups of islands in the Pacific today, young people are resurrecting the skills of their ancestors when a few decades ago it seemed they would be lost forever.",
+                "word_count": 892
+              },
+              {
+                "passage_number": 3,
+                "title": "A The advisability of humans participating directly in space travel continues to",
+                "content": "A The advisability of humans participating directly in space travel continues to cause many debates. There is no doubt that the presence of people on board a space vehicle makes its design much more complex and challenging, and produces a large increase in costs, since safety requirements are greatly increased, and the technology providing necessities for human passengers such as oxygen, food water must be guaranteed. Moreover, the systems required are bulky and costly, and their complexity increases for long-duration missions. Meanwhile, advances in electronics and computer science allow increasingly complex tasks to be entrusted to robots, and unmanned space probes are becoming lighter, smaller and more convenient.B However, experience has shown that the idea of humans in space is popular with the public. Humans can also be useful; there are many cases when only direct intervention by an astronaut or cosmonaut can correct the malfunction of an automatic device. Astronauts and cosmonauts have proved that they can adapt to conditions of weightlessness and work in space without encountering too many problems, as was seen in the operations to repair and to upgrade the Hubble Space Telescope. One human characteristic which is particularly precious in space missions, and which so far is lacking in robots, is the ability to perform a great variety of tasks. In addition, robots are not good at reacting to situations they have not been specifically prepared for. This is especially important in the case of deep space missions. While, in the case of the Moon, it is possible for someone on Earth to 'tele-operate' a robotic device such as a probe, as the two-way link time is only a couple of seconds, on Mars the two- way link time is several minutes, so sending instructions from Earth is more difficult.C Many of the promises of artificial intelligence are still far from being fulfilled. The construction of machines simulating human logical reasoning moves towards ever more distant dates. The more the performance of computers improves, the more we realise how difficult it is to build machines which display logical abilities. In the past it was confidently predicted that we would soon have fully automated factories in which all operations were performed without any human intervention, and forecasts of the complete substitution of workers by robots in many production areas were made. Today, these perspectives are being revised. It seems that all machines, even the smartest ones, must cooperate with humans. Rather than replacing humans, the present need appears to be for an intelligent machine capable of helping a human operator without replacing him or her. The word 'cobot', from 'collaborative robot', has been invented to designate this type.D A similar trend is also apparent in the field of space exploration. Tasks which were in the past entrusted only to machines are now performed by human beings, sometimes with the aim of using simpler and less costly devices, sometimes to obtain better performance. In many cases, to involve a person in the control loop is a welcome simplification which may lower the cost of a mission without compromising safety. Many operations originally designed to be performed under completely automatic control can be performed more efficiently by astronauts, perhaps helped by their 'cobots'. The human-machine relationship must evolve towards a closer collaboration.E One way this could happen is by adopting the Mars Outposts approach, proposed by the Planetary Society. This would involve sending a number of robotic research stations to Mars, equipped with permanent communications and navigational systems. They would perform research, and establish the infrastructure needed to prepare future landing sites for the exploration of Mars by humans. It has also been suggested that in the most difficult environments, as on Venus or Jupiter, robots could be controlled by human beings located in spaceships which remain in orbit around the planet. In this case the link time for communication between humans and robots would be far less than it would be from Earth.F But if space is to be more than a place to build automatic laboratories or set up industrial enterprises in the vicinity of our planet, the presence of humans is essential. They must learn how to voyage through space towards destinations which will be not only scientific bases but also places to live. If space is a frontier, that frontier must see the presence of people. So the aim for humankind in the future will be not just the exploration of space, but its colonisation. The result of exploring and living in space may be a deep change in the views which humankind has of itself. And this process is already under way. The images of Earth taken from the Moon in the Apollo programme have given humankind a new consciousness of its fragility, its smallness, and its unity. These impressions have triggered a realisation of the need to protect and preserve it, for it is the place in the solar system most suitable for US and above all it is the only place we have, at least for now.",
+                "word_count": 836
+              }
+            ]
+          },
+          {
+            "id": "iot_read_ielts_mock_test_2024_april_reading_practice_test_2",
+            "title": "IELTS Mock Test 2024 April - Reading Practice Test 2",
+            "source": "IELTS Online Tests (ieltsonlinetests.com)",
+            "test_type": "Academic Reading (3 Passages)",
+            "total_passages": 3,
+            "passages": [
+              {
+                "passage_number": 1,
+                "title": "AAt about the same time that the poet Homer invented the epic here, the ancient ",
+                "content": "AAt about the same time that the poet Homer invented the epic here, the ancient Greeks started a festival in which men competed in a single race, about 200 metres long. The winner received a branch of wild olives. The Greeks called this celebration the Olympics. Through the ancient sprint remains, today the Olympics are far more than that. Indeed, the Games seem to celebrate the dream of progress as embodied in the human form. That the Games are intoxicating to watch is beyond question. During the Athens Olympics in 2004, 3.4 billion people, half the world, watched them on television. Certainly, being a spectator is a thrilling experience: but why?BIn 1996, three Italian neuroscientists, Giacomo Rizzolatti, Leonardo Forgassi and Vittorio Gallese, examined the premotor cortex of monkeys. The discovered that inside these primate brains there were groups of cells that ‘store vocabularies of motor actions’. Just as there are grammars of movement. These networks of cells are the bodily ‘sentences’ we use every day, the ones our brain has chosen to retain and refine. Think, for example, about a golf swing. To those who have only watched the Master’s Tournament on TV, golfing seems easy. To the novice, however, the skill of casting a smooth arc with a lop-side metal stick is virtually impossible. This is because most novices swing with their consciousness, using an area of brain next to the premotor cortex. To the expert, on the other hand, a perfectly balanced stroke is second nature. For him, the motor action has become memorized, and the movements are embedded in the neurons of his premotor cortex. He hits the ball with the tranquility of his perfected autopilot.CThese neurons in the premotor cortex, besides explaining why certain athletes seem to possess almost unbelievable levels of skill, have an even more amazing characteristic, one that caused Rizzolatti, Fogassi and Gallese to give them the lofty title ‘mirror neurons’. They note, The main functional characteristic of mirror neurons is that they become active both when the monkey performs a particular action (for example, grasping an object or holding it) and, astonishingly, when it sees another individual performing a similar action.’ Humans have an even more elaborate mirror neuron system. These peculiar cells mirror, inside the brain, the outside world: they enable us to internalize the actions of another. In order to be activated, though, these cells require what the scientists call ‘goal-orientated movements’. If we are staring at a photograph, a fixed image of a runner mid-stride, our mirror neurons are totally silent. They only fire when the runner is active: running, moving or sprinting.DWhat these electrophysiological studies indicate is that when we watch a golfer or a runner in action, the mirror neurons in our own premotor cortex light up as if we were the ones competing. This phenomenon of neural mirror was first discovered in 1954, when two French physiologists, Gastaut and Berf, found that the brains of humans vibrate with two distinct wavelengths, alpha and mu. The mu system is involved in neural mirroring. It is active when your bodies are still, and disappears whenever we do something active, like playing a sport or changing the TV channel. The surprising fact is that the mu signal is also quiet when we watch someone else being active, as on TV, these results are the effect of mirror neurons.ERizzolatti, Fogassi and Gallese call the idea for mirror neurons the ‘direct matching hypothesis’. They believe that we only understand the movement of sports stars when we ‘map the visual representation of the observed action onto our motor representation of the same action’. According to this theory, watching an Olympic athlete ‘causes the motor system of the observer to resonate. The “motor knowledge” of the observer is used to understand the observed action.’ But mirror neurons are more than just the neural basis for our attitude to sport. It turns out that watching a great golfer makes us better golfers, and watching a great sprinter actually makes us run faster. This ability to learn by watching is a crucial skill. From the acquisition of language as infants to learning facial expressions, mimesis (copying) is an essential part of being conscious. The best athletes are those with a premotor cortex capable of imagining the movements of victory, together with the physical properties to make those movements real.FBut how many of us regularly watch sports in order to be a better athlete? Rather, we watch sport for the feeling, the human drama. This feeling also derives from mirror neurons. By letting spectators share in the motions of victory, they also allow us to share in its feelings. This is because they are directly connected to the amygdale, one of the main brain regions involved in emotion. During the Olympics, the mirror neurons of whole nations will be electrically identical, their athletes causing spectators to feel, just for a second or two, the same thing. Watching sports brings people together. Most of us will never run a mile in under four minutes, or hit a home run. Our consolation comes in watching, when we gather around the TV, we all feel, just for a moment, what it is to do something perfectly.",
+                "word_count": 867
+              },
+              {
+                "passage_number": 2,
+                "title": "Wood is part of Britain’s history and heritage, more so than any other commodity",
+                "content": "Wood is part of Britain’s history and heritage, more so than any other commodity ever produced in that county. It was made into cloth there in the Bronze Age, which began about 1900 BC. By the time the Romans invaded in 55 BC the Britons had developed an appreciation for the fineness of British woolen cloth. Although Saxon invasions in the fifth century nearly destroyed the industry, it is known that in the eighth century Britain was exporting woolen fabrics to continental Europe, and after the arrival of the Norman conquerors in 1066 the industry expanded. By the twelfth century, wool was becoming England’s greatest national asset. Cloth making was widespread, particularly in the large towns of southern and eastern England, nearest to France. But the greatest wealth came from exports of raw wool.Kings and their ministers welcomed the revenue that resulted from exports and export taxes - and also the power it gave to the king, who could grant or withdraw permits for the wool towns and for the industry. Trade associations, known as ‘guilds’, were founded to guarantee good work by experienced weavers (people who produce cloth from woolen threads), and were powerful for hundreds of years. The peak of cloth production was reached in the thirteenth century. Then the wool trade declined for a long period because of political conflict.In 1331, King Edward III encouraged master weavers from Flanders ( an area of present-day Belgium) to settle in England. These Flemish weavers and their descendants were to play a part in the final development of English cloth. The export trade in raw wool recovered and the first half of the fourteenth century was a time of prosperity for English wool farmers. But it was overshadowed by a long war with France (export taxes on wool were one of the principal means of financing the war) and by bubonic plague (the Black Death), which in 1349 caused devastation: in many villages as much as three-quarters of the population died. This led to an increase of the sheep flocks, for there were not enough people left to cultivate the land for arable crops.Despite setbacks, raw wool exporting expanded, and so also did manufacturing of wool fabrics. This was becoming both specialized and localized. The area of England known as the West Country had three advantages - extensive sheep pastures, a supply of soft water for washing, scouring and dyeing wool, and water-power to drive machinery. Similarly, the hills of Yorkshire and Lancashire in the north of England had soft water and fast running streams. Water from the latter could be used to drive mills for ‘fulling’, a shrinking process which makes the fabric firmer and its surface more compact.In East Anglia there was soft water, but no hills or fast-running streams to provide power for fulling mills. Instead, East Anglia used the long, fine wool from its native sheep breeds to produce a cloth which did not require the fulling process. This was the type of cloth which is now called ‘worsted’, after the village of Worstead. For four hundred years East Anglia dominated the worst trade, with skills inherited from the Flemish settlers of 1331.English cloth quickly achieved an international reputation. From being primarily a raw wool exporter, the county became in the fourteenth and fifteenth centuries a manufacturer and exporter of cloth. At the end of the fifteenth century, it was said that England was largely a nation of sheep farmers and cloth manufacturers. The next two centuries saw continued expansion of the industry despite conflicts at home and abroad. In the sixteenth century, French weavers, persecuted for their Protestant religion, sought refuge in England and took their skills with them. England began to surpass Flanders in woolen manufacture: by the end of the seventeenth century it comprised two-thirds of the value of its exports. Radical changes lay ahead, in the geographical location of the industry, in labor use and in manufacturing processes. By 1770, output of worsted from Yorkshire equalled that of East Anglia, and its cloth manufacturing district began to take shape with the expansion of major towns: Leeds, Bradford, Halifax, Huddersfield and Wakefield.The Industrial Revolution of 1750-1850 also brought charge. It led the way for new inventions stemming from the Lancashire cotton industry, to mechanize and speed dramatically the processes of spinning and weaving. Manufacturing methods, unchanged since the revival of the trade in the fourteenth century, were now superseded. Mechanization had been opposed in the past and it was again. The widespread unrest of 1812 led to the destruction of equipment by bands of rioters, who feared they would lose employment. But machinery won the day.Over the course of the nineteenth century, the older in areas such as East Anglia, where opposition had been most bitter, permanently declined. They were overtaken by Yorkshire, where machinery was more readily accepted. The younger industry jumped ahead and never lost its lead, supported by abundant supplies of inexpensive coal to generate steam and, later, electrical power. Other specialized types of manufacturing developed in Scotland, famed for its tweeds ( a range of coloured woolen cloth with characteristic designs), and in the West Country, which focused on the production of high-quality, wooden carpets.",
+                "word_count": 866
+              },
+              {
+                "passage_number": 3,
+                "title": "The development of an air service on the west coast of New Zealand's South Islan",
+                "content": "The development of an air service on the west coast of New Zealand's South IslandCut off from the rest of the country by a range of mountains, the west coast of New Zealand's South Island - or the \"Coast” as it is commonly known - was the country's \"wild west frontier”. But unlike Fiordland to the south, which was and still is an uninhabitable wilderness, the Coast in the 1930s was not only habitable, it was also potentially rich. Settlers hunted and fished, logged, milled and mined. They farmed where they managed to clear the forest and drain the swamps. It was pure survival at times. The isolation was inescapable, not so much because of the great distances that travelers had to cover, but rather due to the topography of the place - the mountains, gorges, glaciers, rivers and headlands - which necessitated long detours and careful timing with regard to weather and tides. Bridges were few and far between in the early years, and even ferry crossings were often impossible after heavy rains. Each river had its attendant ferryman or woman whose attention a traveler would attract with a rifle shot. It was the kind of country where one would greatly benefit from a pair of wings.Maurice Buckley, a World War I pilot, was the first to give Coasters, as the residents of the region were called, such wings, by establishing the Arrow Aviation Company in 1923. That year he bought an Avro biplane on the east coast, which he transported across the country by rail, wings off, before reassembling it in a local garage. When he opened for business the following year, the colorful Avro was an instant crowd-pleaser and Coasters queued up for joyrides. For the first major flight, Buckley invited Dr Teichelmann, a local mountaineer, to join him. They flew over the Franz Josef Glacier and landed at Okarito. Afterwards, Teichelmann wrote about how extraordinary it was to look at the world from the air,\" like taking the roof off the house and watching the performances from above.Next came an aviator named Bert Mercer, who made a reconnaissance flight to the Coast in August 1933 and started Air Travel (NZ) the following year, Mercer's aircraft of choice was a DH83 Fox Moth. By comparison with the regular open-air aircraft of the day, the Fox Moth was a plane that offered considerable luxury, housing four passengers in an enclosed forward area fully protected from the weather. Mercer opened for business in December 1934, picking up the airline's first passengers and, on the last day of that year, commenced a regular delivery of mail, carrying 73 kg of letters to Haast and Okuru. From that day on, the Fox Moth became a much-anticipated sight on the coast.Mercer got on with everyone and won their respect by anticipating, then meeting their needs. One of those was setting up the first aerial shipping route to help transport a kind of small fish known as whitebait. Starting in 1935 Mercer would put the plane down where there was no airstrip, instead using remote beaches such as the one at the mouth of the Paringa River, collect the whitebait and whisk them off to the night train and waiting city markets in perfectly fresh condition, Mercer relied on his senses -what he could see and hear - to navigate, flying around the weather and contours of the land. Although often warned to do so by aviation authorities, he refused to develop the skills necessary to navigate the plane \"blind, using just its instruments on the console in front of him. The old habits were too hard to change.With the outbreak of World war II, mercer's aircraft were considered so essential to the remote Coast that they were not militarized. In fact, the business continued to grow in the early years, thanks in large part to a government issued subsidy, which allowed him to expand into neighboring areas. Despite the war in far-off lands, life on the Coast was business as usual. The settlers were always in need of mail and transportation. In time, though, this presented Mercer with a pressing issue: with so many now joining the Air Force, he no longer had enough pilots. In 1942 he wrote in his diary, I am back to where I started eight years ago- on my own.The only solution to keep the airline going was to pack as much into every plane as possible and make every flight count. But some of mercer's newly formed team objected to the amount of cargo they had to carry, which for a small rural airline was a fact of life. One man, Norm Suttle, left the airline after a few months in protest about carrying more than was appropriate for the aircraft. This marked another decline in the airline's fortunes, When Bert Mercer died in 1944, the airline was taken over by Fred Lucas, a man who shared mercer's pioneering spirit. Under Lucas s leadership the newly formed West Coast Airways saw Another decade of profitable returns. But in the following decade, times changed fast. Helicopters were soon found to be ideal machines for the Coast terrain, and quickly took over the vast majority of the local air transport business.",
+                "word_count": 873
+              }
+            ]
+          }
+        ]
+      },
+      "cambridge_study4": {
+        "source": "Cambridge IELTS / Study4 Equivalent",
+        "reading_tests": [
+          "ielts_tests/cambridge_study4/reading/cam18_test1_reading.json"
+        ]
+      }
+    },
+    "grammar": {
+      "title": "Comprehensive English Grammar Knowledge Base",
+      "manifest_file": "grammar/manifest.json",
+      "quizzes_file": "grammar/all_grammar_quizzes.json",
+      "sources": {
+        "perfect_english_grammar": {
+          "rules_directory": "grammar/by_source/perfect_english_grammar/rules/",
+          "exercises_pdf_directory": "grammar/by_source/perfect_english_grammar/exercises_pdf/"
+        },
+        "englishclub": {
+          "parts_of_speech_directory": "grammar/by_source/englishclub/parts_of_speech/",
+          "sentence_structure_file": "grammar/by_source/englishclub/sentence_structure.json"
+        },
+        "english_grammar_org": {
+          "lessons_directory": "grammar/by_source/english_grammar_org/lessons/"
+        },
+        "british_council": {
+          "curriculum_file": "grammar/by_source/british_council/british_council_cefr_curriculum.json"
+        }
+      }
+    }
+  }
+}

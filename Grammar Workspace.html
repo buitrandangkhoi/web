@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grammar Workspace</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #fdf6ec;
+  --surface: #f5ead8;
+  --surface2: #fff8f0;
+  --text: #201e1d;
+  --text2: #4a4340;
+  --muted: #7a6f67;
+  --accent: #c67139;
+  --accent-lt: #fdf0e6;
+  --accent-dk: #9e5728;
+  --green: #2e7d32;
+  --green-lt: #e8f5e9;
+  --red: #c62828;
+  --red-lt: #ffebee;
+  --blue: #1565c0;
+  --blue-lt: #e3f2fd;
+  --border: rgba(32,30,29,0.14);
+  --shadow: 0 2px 8px rgba(32,30,29,0.10);
+  --r: 12px;
+  --font: 'Figtree', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a1410; --surface: #252018; --surface2: #2e2720;
+    --text: #f0e8dc; --text2: #c0b4a8; --muted: #8a7e76;
+    --accent: #e08040; --accent-lt: #3a2010; --accent-dk: #f0a060;
+    --green-lt: #0a2a0c; --red-lt: #2a0a0a; --blue-lt: #0a1a2e;
+    --border: rgba(240,232,220,0.12);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1a1410; --surface: #252018; --surface2: #2e2720;
+  --text: #f0e8dc; --text2: #c0b4a8; --muted: #8a7e76;
+  --accent: #e08040; --accent-lt: #3a2010; --accent-dk: #f0a060;
+  --green-lt: #0a2a0c; --red-lt: #2a0a0a; --blue-lt: #0a1a2e;
+  --border: rgba(240,232,220,0.12);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { height: 100%; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100%;
+  padding: env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);
+}
+
+/* ── Header ── */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: env(safe-area-inset-top,0px);
+  z-index: 100;
+}
+.back-btn {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background .15s;
+}
+.back-btn:hover { background: var(--accent-lt); }
+.header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  flex: 1;
+}
+.header-title span { color: var(--accent); }
+
+/* ── Page tabs ── */
+.page-tabs {
+  display: flex;
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 0 20px;
+  gap: 4px;
+}
+.page-tab {
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color .15s, border-color .15s;
+  font-family: var(--font);
+}
+.page-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.page-tab:hover:not(.active) { color: var(--text2); }
+
+/* ── Page content ── */
+.page { display: none; padding: 20px; max-width: 860px; margin: 0 auto; }
+.page.active { display: block; }
+
+/* ── Level filter bar ── */
+.level-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.level-bar label { font-size: 14px; color: var(--muted); font-weight: 500; margin-right: 4px; }
+.lvl-btn {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--surface2);
+  color: var(--text2);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+  font-family: var(--font);
+}
+.lvl-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.lvl-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+/* ── Theory: chapter cards ── */
+.chapter-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.chapter-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s;
+}
+.chapter-head:hover { background: var(--accent-lt); }
+.ch-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ch-title { font-size: 15px; font-weight: 600; flex: 1; }
+.ch-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--accent-lt);
+  color: var(--accent);
+}
+.ch-arrow { color: var(--muted); font-size: 18px; transition: transform .2s; }
+.chapter-card.open .ch-arrow { transform: rotate(180deg); }
+.chapter-body { display: none; padding: 0 16px 16px; }
+.chapter-card.open .chapter-body { display: block; }
+
+/* ── Theory content blocks ── */
+.theory-block { margin-top: 12px; }
+.theory-block h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.theory-block p { font-size: 14px; line-height: 1.7; color: var(--text2); margin-bottom: 8px; }
+.theory-block ul { padding-left: 18px; }
+.theory-block li { font-size: 14px; line-height: 1.7; color: var(--text2); margin-bottom: 4px; }
+.formula-box {
+  background: var(--blue-lt);
+  border-left: 3px solid var(--blue);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: monospace;
+  color: var(--blue);
+  margin: 8px 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.note-box {
+  background: var(--accent-lt);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--text2);
+  margin: 8px 0;
+}
+.note-box strong { color: var(--accent); }
+.example-box {
+  background: var(--green-lt);
+  border-left: 3px solid var(--green);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--text2);
+  margin: 8px 0;
+}
+.example-box strong { color: var(--green); }
+.table-wrap { overflow-x: auto; margin: 10px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { background: var(--accent); color: #fff; padding: 8px 10px; text-align: left; font-weight: 600; }
+td { padding: 7px 10px; border-bottom: 1px solid var(--border); color: var(--text2); }
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: var(--surface); }
+
+/* ── Progress bar ── */
+.progress-wrap { margin-bottom: 18px; }
+.progress-top { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+.progress-bar { height: 8px; background: var(--surface); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--accent); border-radius: 4px; transition: width .4s; }
+
+/* ── MCQ ── */
+.ex-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 20px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+}
+.mcq-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+}
+.mcq-num { font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+.mcq-q { font-size: 15px; font-weight: 600; margin-bottom: 12px; line-height: 1.5; }
+.mcq-opts { display: flex; flex-direction: column; gap: 8px; }
+.mcq-opt {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text2);
+  transition: all .15s;
+  text-align: left;
+  font-family: var(--font);
+  line-height: 1.5;
+}
+.mcq-opt:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-lt); color: var(--accent); }
+.mcq-opt.correct { border-color: var(--green); background: var(--green-lt); color: var(--green); font-weight: 600; }
+.mcq-opt.wrong { border-color: var(--red); background: var(--red-lt); color: var(--red); }
+.mcq-opt:disabled { cursor: not-allowed; opacity: .85; }
+.mcq-feedback {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  display: none;
+}
+.mcq-feedback.show { display: block; }
+.mcq-feedback.correct-fb { background: var(--green-lt); border-left: 3px solid var(--green); color: var(--text2); }
+.mcq-feedback.wrong-fb { background: var(--red-lt); border-left: 3px solid var(--red); color: var(--text2); }
+.fb-label { font-weight: 700; margin-bottom: 4px; }
+.fb-label.ok { color: var(--green); }
+.fb-label.no { color: var(--red); }
+
+/* ── Sentence exercises ── */
+.sent-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+}
+.sent-num { font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+.sent-q { font-size: 14px; color: var(--text2); margin-bottom: 12px; line-height: 1.6; }
+.sent-q strong { color: var(--accent); }
+.drop-zone {
+  min-height: 44px;
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  background: var(--surface);
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: border-color .15s;
+}
+.drop-zone:hover { border-color: var(--accent); }
+.drop-zone .placed-word {
+  background: var(--accent);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: opacity .15s;
+}
+.drop-zone .placed-word:hover { opacity: .8; }
+.drop-zone .zone-hint { color: var(--muted); font-size: 13px; }
+.word-bank { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.word-chip {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--text2);
+  transition: all .15s;
+  font-family: var(--font);
+}
+.word-chip:hover:not(.used) { border-color: var(--accent); background: var(--accent-lt); color: var(--accent); }
+.word-chip.used { opacity: .35; cursor: not-allowed; pointer-events: none; }
+.sent-actions { display: flex; gap: 8px; margin-bottom: 10px; }
+.btn-check {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: background .15s;
+}
+.btn-check:hover { background: var(--accent-dk); }
+.btn-reset {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--text2);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all .15s;
+}
+.btn-reset:hover { border-color: var(--accent); color: var(--accent); }
+.sent-feedback {
+  font-size: 13px;
+  line-height: 1.7;
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: none;
+}
+.sent-feedback.show { display: block; }
+.sent-feedback.ok { background: var(--green-lt); border-left: 3px solid var(--green); color: var(--text2); }
+.sent-feedback.no { background: var(--red-lt); border-left: 3px solid var(--red); color: var(--text2); }
+
+/* ── Reset all btn ── */
+.reset-all-wrap { text-align: right; margin-bottom: 14px; }
+.btn-reset-all {
+  padding: 7px 16px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all .15s;
+}
+.btn-reset-all:hover { border-color: var(--red); color: var(--red); }
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .page { padding: 14px 12px; }
+  .page-tabs { padding: 0 12px; }
+  .page-tab { padding: 10px 14px; font-size: 14px; }
+  .site-header { padding: 12px; }
+  .header-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="back-btn" href="index.html">← Trang chủ</a>
+  <div class="header-title">📚 <span>Ngữ pháp</span> Tiếng Anh</div>
+</header>
+
+<nav class="page-tabs">
+  <button class="page-tab active" onclick="switchPage('theory',this)">📖 Lý thuyết</button>
+  <button class="page-tab" onclick="switchPage('practice',this)">✏️ Luyện tập</button>
+</nav>
+
+<!-- ════════════════ THEORY PAGE ════════════════ -->
+<div id="page-theory" class="page active">
+  <div class="level-bar">
+    <label>Cấp độ:</label>
+    <button class="lvl-btn active" onclick="filterTheory('all',this)">Tất cả</button>
+    <button class="lvl-btn" onclick="filterTheory('a1a2',this)">A1–A2</button>
+    <button class="lvl-btn" onclick="filterTheory('b1b2',this)">B1–B2</button>
+    <button class="lvl-btn" onclick="filterTheory('c1c2',this)">C1–C2</button>
+  </div>
+  <div id="theory-list"></div>
+</div>
+
+<!-- ════════════════ PRACTICE PAGE ════════════════ -->
+<div id="page-practice" class="page">
+  <div class="level-bar">
+    <label>Cấp độ:</label>
+    <button class="lvl-btn active" onclick="filterExercises('a1a2',this)">A1–A2</button>
+    <button class="lvl-btn" onclick="filterExercises('b1b2',this)">B1–B2</button>
+    <button class="lvl-btn" onclick="filterExercises('c1c2',this)">C1–C2</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-top">
+      <span id="prog-label">0 / 25 câu hoàn thành</span>
+      <span id="prog-pct">0%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0"></div></div>
+  </div>
+  <div class="reset-all-wrap">
+    <button class="btn-reset-all" onclick="resetAll()">🔄 Làm lại tất cả</button>
+  </div>
+  <div id="practice-list"></div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+// DATA — THEORY
+// ══════════════════════════════════════════════
+const CHAPTERS = [
+  // ── A1–A2 ──
+  {
+    num: 1, level: 'a1a2',
+    title: 'Cấu trúc câu cơ bản S + V + O',
+    content: `
+<div class="theory-block">
+  <h4>Cấu trúc</h4>
+  <div class="formula-box">S (Subject) + V (Verb) + O (Object/Complement)</div>
+  <p>Câu tiếng Anh bắt buộc phải có <strong>Chủ ngữ (S)</strong> và <strong>Động từ (V)</strong>. Không bao giờ bỏ chủ ngữ.</p>
+</div>
+<div class="theory-block">
+  <h4>Ví dụ</h4>
+  <div class="example-box"><strong>Ví dụ:</strong><br>
+  • I study English every day.<br>
+  • She likes coffee.<br>
+  • They play football.
+  </div>
+</div>
+<div class="theory-block">
+  <h4>Chú ý — Lỗi Vietnglish thường gặp</h4>
+  <div class="note-box"><strong>⚠️</strong> Không nói: <em>"Is hot today"</em> → Phải nói: <em>"It is hot today."</em><br>
+  Không nói: <em>"Have a dog."</em> → Phải nói: <em>"I have a dog."</em></div>
+</div>`
+  },
+  {
+    num: 2, level: 'a1a2',
+    title: 'Danh từ — Countable & Uncountable',
+    content: `
+<div class="theory-block">
+  <h4>Danh từ đếm được (Countable Nouns)</h4>
+  <p>Có thể đếm được, có số ít và số nhiều.</p>
+  <div class="formula-box">a/an + N (số ít) | N + s/es (số nhiều)</div>
+  <div class="example-box"><strong>Ví dụ:</strong> a book → books | a box → boxes | a child → children | a man → men</div>
+</div>
+<div class="theory-block">
+  <h4>Quy tắc thêm -s / -es</h4>
+  <ul>
+    <li>Thêm <strong>-es</strong>: kết thúc bằng -s, -x, -sh, -ch, -o → buses, boxes, dishes, watches, tomatoes</li>
+    <li>Đuôi <strong>-y</strong> (trước phụ âm) → đổi thành <strong>-ies</strong>: baby → babies, city → cities</li>
+    <li>Đuôi <strong>-f/-fe</strong> → đổi thành <strong>-ves</strong>: leaf → leaves, wife → wives</li>
+    <li>Bất quy tắc: man→men, woman→women, child→children, tooth→teeth, foot→feet, mouse→mice</li>
+  </ul>
+</div>
+<div class="theory-block">
+  <h4>Danh từ không đếm được (Uncountable Nouns)</h4>
+  <p>Không có số nhiều, không dùng a/an.</p>
+  <div class="example-box"><strong>Ví dụ:</strong> water, milk, rice, bread, information, advice, money, music, weather</div>
+  <div class="note-box"><strong>⚠️</strong> KHÔNG nói: <em>"an information"</em>, <em>"advices"</em>. Dùng: <em>some information, a piece of advice</em></div>
+</div>`
+  },
+  {
+    num: 3, level: 'a1a2',
+    title: 'Đại từ — Nhân xưng, Sở hữu',
+    content: `
+<div class="theory-block">
+  <h4>Bảng đại từ</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Chủ ngữ</th><th>Tân ngữ</th><th>Sở hữu tính từ</th><th>Sở hữu đại từ</th></tr>
+    <tr><td>I</td><td>me</td><td>my</td><td>mine</td></tr>
+    <tr><td>you</td><td>you</td><td>your</td><td>yours</td></tr>
+    <tr><td>he</td><td>him</td><td>his</td><td>his</td></tr>
+    <tr><td>she</td><td>her</td><td>her</td><td>hers</td></tr>
+    <tr><td>it</td><td>it</td><td>its</td><td>—</td></tr>
+    <tr><td>we</td><td>us</td><td>our</td><td>ours</td></tr>
+    <tr><td>they</td><td>them</td><td>their</td><td>theirs</td></tr>
+  </table></div>
+</div>
+<div class="theory-block">
+  <h4>Sở hữu cách ('s)</h4>
+  <div class="formula-box">N + 's + N  |  Ns' + N (số nhiều)</div>
+  <div class="example-box"><strong>Ví dụ:</strong> Tom's book | the students' books</div>
+</div>`
+  },
+  {
+    num: 4, level: 'a1a2',
+    title: 'To Be & Động từ thường — Hiện tại',
+    content: `
+<div class="theory-block">
+  <h4>To Be (am / is / are)</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Chủ ngữ</th><th>Khẳng định</th><th>Phủ định</th><th>Nghi vấn</th></tr>
+    <tr><td>I</td><td>am</td><td>am not</td><td>Am I...?</td></tr>
+    <tr><td>He/She/It</td><td>is</td><td>isn't</td><td>Is he/she/it...?</td></tr>
+    <tr><td>You/We/They</td><td>are</td><td>aren't</td><td>Are you/we/they...?</td></tr>
+  </table></div>
+</div>
+<div class="theory-block">
+  <h4>Hiện tại đơn (Present Simple)</h4>
+  <div class="formula-box">I/You/We/They + V(原形) | He/She/It + V(s/es)</div>
+  <div class="example-box"><strong>Dấu hiệu:</strong> always, usually, often, sometimes, never, every day/week/month, on Mondays...</div>
+  <div class="note-box"><strong>Chia -s/-es cho He/She/It:</strong><br>
+  • Thêm -es: -s, -x, -sh, -ch, -o → watches, goes<br>
+  • -y → -ies: study→studies, try→tries<br>
+  • Bất quy tắc: have→has, be→is, do→does
+  </div>
+</div>
+<div class="theory-block">
+  <h4>Phủ định & Nghi vấn — Hiện tại đơn</h4>
+  <div class="formula-box">I/You/We/They: do not (don't) + V(原形)
+He/She/It: does not (doesn't) + V(原形)
+Nghi vấn: Do/Does + S + V(原形)?</div>
+</div>`
+  },
+  {
+    num: 5, level: 'a1a2',
+    title: 'Hiện tại tiếp diễn (Present Continuous)',
+    content: `
+<div class="theory-block">
+  <h4>Cấu trúc</h4>
+  <div class="formula-box">S + am/is/are + V-ing</div>
+  <div class="example-box"><strong>Dấu hiệu:</strong> now, right now, at the moment, at present, Look!, Listen!</div>
+</div>
+<div class="theory-block">
+  <h4>Cách thêm -ing</h4>
+  <ul>
+    <li>Thêm thẳng: play→playing, read→reading</li>
+    <li>Kết thúc -e → bỏ -e, thêm -ing: make→making, write→writing</li>
+    <li>Âm ngắn + 1 phụ âm → gấp đôi phụ âm: run→running, sit→sitting, swim→swimming</li>
+  </ul>
+</div>
+<div class="theory-block">
+  <h4>Chú ý — Stative Verbs (không dùng -ing)</h4>
+  <div class="note-box"><strong>⚠️</strong> Các động từ trạng thái KHÔNG dùng thì tiếp diễn:<br>
+  <em>know, like, love, hate, want, need, seem, have (sở hữu), understand, believe, remember, prefer</em><br>
+  ✗ "I am knowing the answer." → ✓ "I know the answer."</div>
+</div>`
+  },
+  {
+    num: 6, level: 'a1a2',
+    title: 'Quá khứ đơn (Past Simple)',
+    content: `
+<div class="theory-block">
+  <h4>Cấu trúc</h4>
+  <div class="formula-box">S + V2 (quá khứ)    [Động từ quy tắc: V + -ed]
+S + did not (didn't) + V(原形)
+Did + S + V(原形)?</div>
+  <div class="example-box"><strong>Dấu hiệu:</strong> yesterday, last week/month/year, ago, in 2020, when I was young...</div>
+</div>
+<div class="theory-block">
+  <h4>Động từ bất quy tắc thông dụng</h4>
+  <div class="table-wrap"><table>
+    <tr><th>V1</th><th>V2</th><th>V1</th><th>V2</th></tr>
+    <tr><td>go</td><td>went</td><td>come</td><td>came</td></tr>
+    <tr><td>see</td><td>saw</td><td>take</td><td>took</td></tr>
+    <tr><td>make</td><td>made</td><td>give</td><td>gave</td></tr>
+    <tr><td>get</td><td>got</td><td>have</td><td>had</td></tr>
+    <tr><td>say</td><td>said</td><td>know</td><td>knew</td></tr>
+    <tr><td>think</td><td>thought</td><td>buy</td><td>bought</td></tr>
+  </table></div>
+  <div class="note-box"><strong>To Be quá khứ:</strong> I/He/She/It → <strong>was</strong> | You/We/They → <strong>were</strong></div>
+</div>`
+  },
+  {
+    num: 7, level: 'a1a2',
+    title: 'Tương lai — will & going to',
+    content: `
+<div class="theory-block">
+  <h4>Will (quyết định tức thì / dự đoán)</h4>
+  <div class="formula-box">S + will + V(原形)
+S + will not (won't) + V(原形)
+Will + S + V(原形)?</div>
+  <div class="example-box"><strong>Dùng:</strong> Quyết định ngay lúc nói | Lời hứa | Dự đoán không chắc<br>
+  • "I'll help you." (quyết định tức thì)<br>
+  • "I think it will rain tomorrow." (dự đoán)</div>
+</div>
+<div class="theory-block">
+  <h4>Going to (kế hoạch / dự đoán có bằng chứng)</h4>
+  <div class="formula-box">S + am/is/are + going to + V(原形)</div>
+  <div class="example-box"><strong>Dùng:</strong> Kế hoạch đã định trước | Dự đoán có bằng chứng rõ ràng<br>
+  • "I'm going to visit Paris next month." (kế hoạch)<br>
+  • "Look at those clouds! It's going to rain." (có bằng chứng)</div>
+</div>`
+  },
+  {
+    num: 8, level: 'a1a2',
+    title: 'Động từ khuyết thiếu — can, must, should',
+    content: `
+<div class="theory-block">
+  <h4>Cấu trúc chung</h4>
+  <div class="formula-box">S + modal verb + V(原形)  [KHÔNG thêm -s, KHÔNG dùng "to"]</div>
+</div>
+<div class="theory-block">
+  <h4>Bảng Modal Verbs</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Modal</th><th>Ý nghĩa</th><th>Phủ định</th></tr>
+    <tr><td>can</td><td>có thể (khả năng)</td><td>can't / cannot</td></tr>
+    <tr><td>could</td><td>có thể (quá khứ / lịch sự)</td><td>couldn't</td></tr>
+    <tr><td>must</td><td>phải (bắt buộc)</td><td>must not (cấm)</td></tr>
+    <tr><td>should</td><td>nên</td><td>shouldn't</td></tr>
+    <tr><td>have to</td><td>phải (nghĩa vụ)</td><td>don't have to (không cần)</td></tr>
+    <tr><td>may / might</td><td>có thể (50/50)</td><td>may not / might not</td></tr>
+  </table></div>
+  <div class="note-box"><strong>⚠️ must not ≠ don't have to:</strong><br>
+  • <em>You must not smoke here.</em> = Bạn bị cấm hút thuốc ở đây.<br>
+  • <em>You don't have to come.</em> = Bạn không cần phải đến (không bắt buộc).</div>
+</div>`
+  },
+  {
+    num: 9, level: 'a1a2',
+    title: 'Mạo từ — a, an, the',
+    content: `
+<div class="theory-block">
+  <h4>A / An (mạo từ bất định)</h4>
+  <ul>
+    <li><strong>a</strong> + danh từ bắt đầu bằng phụ âm: <em>a book, a university (/juː/)</em></li>
+    <li><strong>an</strong> + danh từ bắt đầu bằng nguyên âm: <em>an apple, an hour (/aʊ/)</em></li>
+    <li>Dùng khi đề cập lần đầu / không xác định</li>
+  </ul>
+  <div class="note-box"><strong>⚠️</strong> Phụ thuộc vào <strong>âm đọc</strong>, không phải chữ cái: <em>an hour</em> (h câm), <em>a uniform</em> (/j/ âm)</div>
+</div>
+<div class="theory-block">
+  <h4>The (mạo từ xác định)</h4>
+  <ul>
+    <li>Đã đề cập trước đó: <em>I saw a dog. The dog was friendly.</em></li>
+    <li>Duy nhất: <em>the sun, the moon, the Earth</em></li>
+    <li>Các đại dương, sông, dãy núi: <em>the Pacific, the Amazon, the Alps</em></li>
+    <li>Nhạc cụ: <em>play the piano, play the guitar</em></li>
+  </ul>
+</div>
+<div class="theory-block">
+  <h4>Không dùng mạo từ (Zero Article)</h4>
+  <ul>
+    <li>Danh từ số nhiều chung: <em>Dogs are friendly.</em></li>
+    <li>Tên riêng, quốc gia, ngôn ngữ: <em>Vietnam, English</em></li>
+    <li>Bữa ăn: <em>have breakfast, after lunch</em></li>
+    <li>Môn thể thao: <em>play football, play chess</em></li>
+  </ul>
+</div>`
+  },
+  {
+    num: 10, level: 'a1a2',
+    title: 'Giới từ — in, on, at (nơi chốn & thời gian)',
+    content: `
+<div class="theory-block">
+  <h4>Giới từ Thời gian</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Giới từ</th><th>Dùng với</th><th>Ví dụ</th></tr>
+    <tr><td><strong>at</strong></td><td>Giờ cụ thể | at night | at noon | at midnight</td><td>at 7 o'clock, at night</td></tr>
+    <tr><td><strong>on</strong></td><td>Ngày, thứ trong tuần | ngày lễ</td><td>on Monday, on 5th May, on Christmas Day</td></tr>
+    <tr><td><strong>in</strong></td><td>Tháng, năm, mùa, buổi</td><td>in March, in 2024, in summer, in the morning</td></tr>
+  </table></div>
+</div>
+<div class="theory-block">
+  <h4>Giới từ Nơi chốn</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Giới từ</th><th>Dùng với</th><th>Ví dụ</th></tr>
+    <tr><td><strong>at</strong></td><td>Điểm cụ thể, địa chỉ</td><td>at the door, at 10 Main Street</td></tr>
+    <tr><td><strong>on</strong></td><td>Bề mặt</td><td>on the table, on the wall, on the floor</td></tr>
+    <tr><td><strong>in</strong></td><td>Không gian bao quanh</td><td>in the box, in Hanoi, in the car</td></tr>
+  </table></div>
+</div>`
+  },
+  {
+    num: 11, level: 'a1a2',
+    title: 'Tính từ & Trạng từ',
+    content: `
+<div class="theory-block">
+  <h4>Tính từ (Adjectives)</h4>
+  <p>Mô tả danh từ, đứng <strong>trước danh từ</strong> hoặc sau động từ nối (be, seem, look...).</p>
+  <div class="example-box">• a <strong>beautiful</strong> girl | the <strong>big</strong> house<br>
+  • She is <strong>tall</strong>. | It seems <strong>strange</strong>.</div>
+  <div class="note-box"><strong>⚠️</strong> Tính từ trong tiếng Anh KHÔNG đổi theo số: <em>two tall men</em> (không phải "talls")</div>
+</div>
+<div class="theory-block">
+  <h4>Trạng từ (Adverbs)</h4>
+  <p>Mô tả động từ, tính từ, hoặc trạng từ khác. Thường thêm <strong>-ly</strong> vào tính từ.</p>
+  <div class="formula-box">Adj + -ly = Adv
+quick → quickly | careful → carefully | slow → slowly</div>
+  <div class="example-box">• She runs <strong>quickly</strong>. | He speaks <strong>clearly</strong>.</div>
+  <div class="note-box"><strong>Bất quy tắc:</strong> good → well | fast → fast | hard → hard | early → early</div>
+</div>`
+  },
+  {
+    num: 12, level: 'a1a2',
+    title: 'Câu hỏi — Yes/No & Wh-',
+    content: `
+<div class="theory-block">
+  <h4>Câu hỏi Yes/No</h4>
+  <div class="formula-box">Hiện tại đơn: Do/Does + S + V(原形)?
+Quá khứ đơn: Did + S + V(原形)?
+To be: Am/Is/Are/Was/Were + S...?
+Modal: Can/Will/Should + S + V?</div>
+</div>
+<div class="theory-block">
+  <h4>Câu hỏi Wh-</h4>
+  <div class="formula-box">Wh- + trợ động từ + S + V?
+What/Where/When/Why/Who/Which/How</div>
+  <div class="example-box">• <strong>What</strong> do you do? | <strong>Where</strong> does she live?<br>
+  • <strong>Who</strong> is your teacher? | <strong>Why</strong> did they leave?<br>
+  • <strong>How</strong> old are you? | <strong>How many</strong> books do you have?</div>
+</div>
+<div class="theory-block">
+  <h4>Who là chủ ngữ</h4>
+  <div class="note-box">Khi <strong>Who</strong> là chủ ngữ → KHÔNG dùng trợ động từ:<br>
+  • <em>Who teaches English?</em> (Who = chủ ngữ, không cần does)<br>
+  • <em>Who loves coffee?</em></div>
+</div>`
+  },
+  {
+    num: 13, level: 'a1a2',
+    title: 'Liên từ — FANBOYS & because/so/although',
+    content: `
+<div class="theory-block">
+  <h4>FANBOYS (Liên từ kết hợp)</h4>
+  <div class="example-box"><strong>For</strong> (vì), <strong>And</strong> (và), <strong>Nor</strong> (cũng không), <strong>But</strong> (nhưng), <strong>Or</strong> (hoặc), <strong>Yet</strong> (nhưng mà), <strong>So</strong> (vì vậy)</div>
+  <p>Nối 2 mệnh đề độc lập: S + V, + FANBOYS + S + V</p>
+  <div class="example-box">• I was tired, <strong>but</strong> I finished the work.<br>
+  • She studied hard, <strong>so</strong> she passed the exam.</div>
+</div>
+<div class="theory-block">
+  <h4>Liên từ phụ thuộc thông dụng</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Liên từ</th><th>Ý nghĩa</th></tr>
+    <tr><td>because / since / as</td><td>vì, bởi vì</td></tr>
+    <tr><td>although / even though / though</td><td>mặc dù</td></tr>
+    <tr><td>when / while / after / before</td><td>khi / trong khi / sau khi / trước khi</td></tr>
+    <tr><td>if / unless</td><td>nếu / trừ khi</td></tr>
+  </table></div>
+</div>`
+  },
+  // ── C1–C2 ──
+  {
+    num: 22, level: 'c1c2',
+    title: 'Inversion — Đảo ngữ',
+    content: `
+<div class="theory-block">
+  <h4>Bản chất & mục đích</h4>
+  <p>Đảo ngữ đưa thành phần nhấn mạnh lên đầu câu, sau đó trợ động từ/be đứng trước chủ ngữ. Dùng để: <strong>Emphasis</strong> (nhấn mạnh), <strong>Formal register</strong>, <strong>Information structure</strong>.</p>
+  <div class="note-box"><strong>⚠️</strong> Đảo ngữ không phải để "làm câu khó hơn" — chỉ dùng khi phần đầu câu thực sự cần được nhấn mạnh.</div>
+</div>
+<div class="theory-block">
+  <h4>Nhóm trạng từ phủ định/bán phủ định</h4>
+  <div class="formula-box">Never / Rarely / Seldom / Little / Nowhere / At no time / Under no circumstances / On no account / Not until / Hardly / Scarcely / Barely / No sooner
+→ [Từ/cụm] + auxiliary + S + V</div>
+  <div class="example-box">• <strong>Rarely does the government consider</strong> the long-term consequences.<br>
+  • <strong>Under no circumstances should</strong> policymakers ignore social costs.<br>
+  • <strong>Hardly had</strong> she arrived <strong>when</strong> the meeting began.<br>
+  • <strong>No sooner had</strong> the regulation come into effect <strong>than</strong> problems emerged.</div>
+  <div class="note-box"><strong>⚠️</strong> Hardly/Scarcely/Barely → dùng <em>when</em> | No sooner → dùng <em>than</em>. Không trộn lẫn!</div>
+</div>
+<div class="theory-block">
+  <h4>Nhóm ONLY</h4>
+  <div class="formula-box">Only after / Only when / Only by + V-ing / Only then / Only later
++ auxiliary + S + V (mệnh đề CHÍNH đảo, không đảo mệnh đề sau "only")</div>
+  <div class="example-box">• <strong>Only by addressing</strong> structural causes of inequality <strong>can</strong> governments achieve...<br>
+  • <strong>Only after</strong> the data had been verified <strong>did the researchers publish</strong> their findings.</div>
+</div>
+<div class="theory-block">
+  <h4>Đảo ngữ điều kiện (bỏ If)</h4>
+  <div class="formula-box">Type 1: Should + S + V, ...  (If you should need...)
+Type 2: Were + S + to V, ...  (If the government were to...)
+Type 3: Had + S + V3, ...  (If policymakers had acted...)</div>
+  <div class="example-box">• <strong>Had policymakers acted</strong> earlier, the crisis might have been avoided.<br>
+  • <strong>Were governments to rely</strong> exclusively on market mechanisms, vulnerable groups would suffer.</div>
+</div>
+<div class="theory-block">
+  <h4>Not only...but also & So/Such...that</h4>
+  <div class="formula-box">Not only + auxiliary + S + V, but S also + V
+So + adj + be + S + that...
+Such + be + noun + that...</div>
+  <div class="example-box">• <strong>Not only does</strong> the policy reduce emissions, but it also creates jobs.<br>
+  • <strong>So profound was</strong> the disruption that several industries required assistance.</div>
+</div>`
+  },
+  {
+    num: 23, level: 'c1c2',
+    title: 'Clause Reduction — Rút gọn mệnh đề',
+    content: `
+<div class="theory-block">
+  <h4>Rút gọn mệnh đề quan hệ chủ động → V-ing</h4>
+  <div class="formula-box">N + who/which + V → N + V-ing</div>
+  <div class="example-box">• Researchers <strong>who investigate</strong> climate change... → Researchers <strong>investigating</strong> climate change...<br>
+  • Students <strong>who study</strong> abroad... → Students <strong>studying</strong> abroad...</div>
+</div>
+<div class="theory-block">
+  <h4>Mệnh đề quan hệ bị động → V3</h4>
+  <div class="formula-box">N + which/that was + V3 → N + V3</div>
+  <div class="example-box">• The data <strong>which were collected</strong> from rural areas... → The data <strong>collected</strong> from rural areas...</div>
+</div>
+<div class="theory-block">
+  <h4>Rút gọn với to-infinitive</h4>
+  <p>Sau: the first / the last / the only / superlatives</p>
+  <div class="formula-box">the first/last/only + N + who + V → the first/last/only + N + to V</div>
+  <div class="example-box">• She was the first researcher <strong>to identify</strong> the pattern.</div>
+</div>
+<div class="theory-block">
+  <h4>Participle clauses & Having + V3</h4>
+  <div class="formula-box">Having + V3, S + V...  (hành động hoàn tất TRƯỚC mệnh đề chính)
+Having been + V3, S + V...  (bị động hoàn thành)</div>
+  <div class="example-box">• <strong>Having reviewed</strong> the evidence, the committee decided to revise the policy.<br>
+  • <strong>Having been exposed</strong> to uncertainty, households became more cautious.</div>
+</div>
+<div class="theory-block">
+  <h4>⚠️ Dangling Participle — Lỗi "treo phân từ"</h4>
+  <div class="note-box"><strong>Quy tắc vàng:</strong> Chủ thể ngầm của participle clause phải trùng với chủ thể mệnh đề chính.<br><br>
+  ❌ <em>Having completed the experiment, <strong>the results</strong> were analysed.</em> (results không hoàn thành thí nghiệm)<br>
+  ✅ <em>Having completed the experiment, <strong>the researchers</strong> analysed the results.</em></div>
+</div>
+<div class="theory-block">
+  <h4>Appositive phrases — cụm đồng vị</h4>
+  <div class="formula-box">N, [noun phrase], V</div>
+  <div class="example-box">• The European Union, <strong>a major trading bloc</strong>, has introduced stringent environmental regulations.</div>
+</div>`
+  },
+  {
+    num: 24, level: 'c1c2',
+    title: 'Advanced & Mixed Conditionals',
+    content: `
+<div class="theory-block">
+  <h4>Mixed Conditional Type 3 → 2 (Quá khứ → Hiện tại)</h4>
+  <div class="formula-box">If + had + V3, S + would + V (now/today)</div>
+  <p>Nguyên nhân không có thật trong <strong>quá khứ</strong> → kết quả không có thật ở <strong>hiện tại</strong>.</p>
+  <div class="example-box">• <em>If governments had invested in transport a decade ago, urban congestion <strong>would be</strong> less severe today.</em></div>
+</div>
+<div class="theory-block">
+  <h4>Mixed Conditional Type 2 → 3 (Hiện tại → Quá khứ)</h4>
+  <div class="formula-box">If + Past Simple (were), S + would have + V3</div>
+  <p>Điều kiện không có thật ở <strong>hiện tại</strong> → hậu quả đã xảy ra trong <strong>quá khứ</strong>.</p>
+  <div class="example-box">• <em>If she <strong>were</strong> more confident, she <strong>would have accepted</strong> the offer.</em></div>
+</div>
+<div class="theory-block">
+  <h4>Alternatives to If</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Cụm từ</th><th>Ý nghĩa</th></tr>
+    <tr><td>Provided/Providing that</td><td>với điều kiện là (formal)</td></tr>
+    <tr><td>As long as</td><td>miễn là</td></tr>
+    <tr><td>On condition that</td><td>với điều kiện rằng (very formal)</td></tr>
+    <tr><td>But for + noun</td><td>nếu không có... = If it had not been for...</td></tr>
+    <tr><td>Without</td><td>nếu không có...</td></tr>
+    <tr><td>Were it not for</td><td>nếu không có... (hiện tại)</td></tr>
+    <tr><td>Had it not been for</td><td>nếu không có... (quá khứ)</td></tr>
+  </table></div>
+  <div class="example-box">• <em><strong>But for</strong> government intervention, the industry would have collapsed.</em><br>
+  • <em><strong>Had it not been for</strong> international cooperation, the crisis might have escalated.</em></div>
+</div>`
+  },
+  {
+    num: 25, level: 'c1c2',
+    title: 'Subjunctive Mood — Thức giả định',
+    content: `
+<div class="theory-block">
+  <h4>Present Subjunctive (Mandative)</h4>
+  <div class="formula-box">demand/recommend/insist/propose/require/urge/suggest + that + S + V-bare (bare infinitive)</div>
+  <div class="example-box">• The report recommends that governments <strong>adopt</strong> a more integrated approach. (không phải "adopts")<br>
+  • Experts have urged that stricter safeguards <strong>be introduced</strong>. (bị động)</div>
+  <div class="note-box"><strong>⚠️</strong> Động từ trong that-clause KHÔNG thêm -s dù chủ ngữ là he/she/it. Đây là subjunctive thuần.</div>
+</div>
+<div class="theory-block">
+  <h4>It is + adjective + that + subjunctive</h4>
+  <div class="formula-box">It is vital/essential/imperative/crucial/necessary + that + S + V-bare</div>
+  <div class="example-box">• <em>It is essential that every applicant <strong>provide</strong> accurate information.</em><br>
+  • <em>It is imperative that every member <strong>disclose</strong> any conflict of interest.</em></div>
+</div>
+<div class="theory-block">
+  <h4>It's (high) time + Past Simple</h4>
+  <div class="formula-box">It's time / It's high time + S + Past Simple</div>
+  <p>Past Simple ở đây không chỉ quá khứ mà thể hiện <strong>unreal/remoteness</strong>.</p>
+  <div class="example-box">• <em>It's time governments <strong>took</strong> stronger action against environmental degradation.</em><br>
+  • <em>It's high time policymakers <strong>recognised</strong> the limitations of the existing system.</em></div>
+</div>
+<div class="theory-block">
+  <h4>Would rather & As if/As though</h4>
+  <div class="formula-box">Would rather + S + Past Simple  (khác chủ thể, hiện/tương lai)
+Would rather + S + Past Perfect  (khác chủ thể, quá khứ)
+As if/As though + Past Simple  (unreal present)
+As if/As though + Past Perfect  (unreal past)</div>
+  <div class="example-box">• <em>I'd rather you <strong>didn't disclose</strong> the information.</em><br>
+  • <em>Some policymakers behave as though economic growth <strong>were</strong> the sole determinant of welfare.</em></div>
+</div>`
+  },
+  {
+    num: 26, level: 'c1c2',
+    title: 'Cleft Sentences — Câu chẻ',
+    content: `
+<div class="theory-block">
+  <h4>Bản chất</h4>
+  <p>Cleft sentence chia thông tin thành 2 phần để trả lời: <em>"Tôi muốn người đọc chú ý vào cái gì?"</em></p>
+</div>
+<div class="theory-block">
+  <h4>It-cleft — nhấn mạnh các thành phần</h4>
+  <div class="formula-box">It + be + [focused element] + that/who + clause</div>
+  <div class="example-box">• <strong>It was the government that</strong> introduced the policy. (nhấn chủ ngữ)<br>
+  • <strong>It was in 2022 that</strong> the government introduced the policy. (nhấn thời gian)<br>
+  • <strong>It was in rural communities that</strong> the programme had its greatest impact. (nhấn nơi chốn)<br>
+  • <em>It is the unequal distribution of resources <strong>that</strong> contributes most to regional disparities.</em></div>
+</div>
+<div class="theory-block">
+  <h4>Wh-cleft / Pseudo-cleft</h4>
+  <div class="formula-box">What + clause + be + [focused element]
+All + clause + be + ...
+The thing that + clause + be + ...</div>
+  <div class="example-box">• <strong>What the economy needs is</strong> greater investment in productivity.<br>
+  • <strong>What is particularly concerning is</strong> the widening gap between access and attainment.<br>
+  • <strong>What policymakers need to recognise is that</strong> growth alone does not equal welfare.</div>
+</div>
+<div class="theory-block">
+  <h4>Reversed Wh-cleft</h4>
+  <div class="formula-box">[focused element] + is + what + clause</div>
+  <div class="example-box">• <strong>Greater transparency is what</strong> the current regulatory framework urgently requires.</div>
+  <div class="note-box"><strong>Tip:</strong> Dùng wh-cleft để xây dựng thesis/argument, đặc biệt hiệu quả để đóng khung kết luận trong Academic Writing.</div>
+</div>`
+  },
+  {
+    num: 27, level: 'c1c2',
+    title: 'Causative & Advanced Passive',
+    content: `
+<div class="theory-block">
+  <h4>Causative structures</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Cấu trúc</th><th>Ý nghĩa</th><th>Ví dụ</th></tr>
+    <tr><td>have + person + bare inf</td><td>sắp xếp/yêu cầu ai làm</td><td>I had the technician <em>check</em> the system.</td></tr>
+    <tr><td>have + object + V3</td><td>cho/thuê làm gì</td><td>The company had the equipment <em>repaired</em>.</td></tr>
+    <tr><td>get + person + to V</td><td>thuyết phục ai làm</td><td>She got the team <em>to reconsider</em> the proposal.</td></tr>
+    <tr><td>get + object + V3</td><td>cho làm (ít formal)</td><td>We need to get the system <em>updated</em>.</td></tr>
+    <tr><td>need + V-ing</td><td>cần được làm = need to be V3</td><td>The framework <em>needs strengthening</em>.</td></tr>
+  </table></div>
+</div>
+<div class="theory-block">
+  <h4>Passive Reporting Structures</h4>
+  <div class="formula-box">Impersonal: It is believed/said/reported/thought + that + clause
+Personal: S + is believed/said/reported/thought + to V (hiện tại)
+          S + is believed + to have + V3 (hành động đã xảy ra trước)</div>
+  <div class="example-box">• <em>It is widely believed that the policy has failed.</em><br>
+  • <em>The researchers are believed <strong>to have achieved</strong> a breakthrough.</em><br>
+  • <em>The intervention is widely believed <strong>to have produced</strong> only limited benefits.</em></div>
+  <div class="note-box"><strong>⚠️</strong> Dùng "to have + V3" khi hành động xảy ra TRƯỚC thời điểm nhận định, không dùng "to V" đơn thuần.</div>
+</div>
+<div class="theory-block">
+  <h4>Passive với 2 tân ngữ</h4>
+  <div class="formula-box">give/send/offer/lend/show/tell/award → 2 dạng bị động</div>
+  <div class="example-box">• They gave the researcher an award.<br>
+  → <em>The researcher was given an award.</em> | <em>An award was given to the researcher.</em></div>
+</div>`
+  },
+  {
+    num: 28, level: 'c1c2',
+    title: 'Complex Subject-Verb Agreement',
+    content: `
+<div class="theory-block">
+  <h4>Either...or / Neither...nor</h4>
+  <p>Động từ hòa hợp với <strong>chủ ngữ GẦN NÓ NHẤT</strong>.</p>
+  <div class="example-box">• Either the participant or the <strong>researchers are</strong> responsible.<br>
+  • Neither the government nor private enterprises <strong>are</strong> currently willing to bear the full cost.</div>
+</div>
+<div class="theory-block">
+  <h4>As well as / Together with / Along with / In addition to</h4>
+  <div class="note-box"><strong>⚠️ Không tạo compound subject!</strong> Động từ hòa hợp với chủ ngữ CHÍNH (A).<br>
+  <em>The manager, as well as his assistants, <strong>is</strong> responsible.</em><br>
+  <em>The availability of data, together with improvements in methods, <strong>has</strong> strengthened validity.</em></div>
+</div>
+<div class="theory-block">
+  <h4>A number of vs The number of</h4>
+  <div class="formula-box">A number of + plural noun → plural verb  (một số...)
+The number of + plural noun → singular verb  (số lượng...)</div>
+  <div class="example-box">• <em>A number of studies <strong>have</strong> questioned this assumption.</em><br>
+  • <em>The number of studies <strong>has</strong> increased significantly.</em></div>
+</div>
+<div class="theory-block">
+  <h4>Each / Every / Fractions / Measurement</h4>
+  <div class="example-box">• Each student <strong>is</strong> required to submit... (mỗi người, singular)<br>
+  • 50% of the population <strong>is</strong>... | 50% of the participants <strong>are</strong>...<br>
+  • Ten years <strong>is</strong> a long period. (khoảng thời gian = một đơn vị)</div>
+</div>
+<div class="theory-block">
+  <h4>⚠️ Lỗi cực phổ biến: Head Noun Rule</h4>
+  <div class="note-box"><strong>Quy tắc:</strong> Tìm HEAD NOUN của chủ ngữ — bỏ qua mọi cụm "of..., along with..., together with..., as well as..."<br><br>
+  ❌ <em>The impact of social media on young people <strong>have</strong> become...</em><br>
+  ✅ <em>The <strong>impact</strong> of social media on young people <strong>has</strong> become...</em><br><br>
+  HEAD NOUN = <strong>impact</strong> (số ít) → động từ singular.</div>
+</div>`
+  },
+  // ── B1–B2 ──
+  {
+    num: 14, level: 'b1b2',
+    title: 'Hiện tại hoàn thành & HTTD',
+    content: `
+<div class="theory-block">
+  <h4>Present Perfect (HTHT)</h4>
+  <div class="formula-box">S + have/has + V3 (past participle)</div>
+  <div class="example-box"><strong>Dấu hiệu:</strong> for (khoảng thời gian), since (từ khi), ever, never, already, yet, just, recently, lately, so far</div>
+  <div class="note-box"><strong>⚠️ for vs since:</strong><br>
+  • <em>for</em> + khoảng thời gian: <em>for two years, for a long time</em><br>
+  • <em>since</em> + mốc thời gian: <em>since 2020, since Monday</em></div>
+</div>
+<div class="theory-block">
+  <h4>Present Perfect Continuous (HTTD)</h4>
+  <div class="formula-box">S + have/has + been + V-ing</div>
+  <p>Nhấn mạnh <strong>tính liên tục / kéo dài</strong> của hành động từ quá khứ đến hiện tại.</p>
+  <div class="example-box">• I <strong>have been reading</strong> this book for two weeks. (vẫn đang đọc)<br>
+  • She <strong>has been working</strong> here since 2020.</div>
+</div>`
+  },
+  {
+    num: 15, level: 'b1b2',
+    title: 'Quá khứ tiếp diễn & Quá khứ hoàn thành',
+    content: `
+<div class="theory-block">
+  <h4>Past Continuous (QKTD)</h4>
+  <div class="formula-box">S + was/were + V-ing</div>
+  <div class="example-box"><strong>Dùng:</strong><br>
+  • Hành động đang xảy ra tại thời điểm trong quá khứ: <em>I was sleeping at 10pm.</em><br>
+  • Hành động bị gián đoạn (when + Past Simple): <em>I was cooking <strong>when</strong> she called.</em><br>
+  • 2 hành động đồng thời (while): <em>He was reading <strong>while</strong> she was watching TV.</em></div>
+</div>
+<div class="theory-block">
+  <h4>Past Perfect (QKHT)</h4>
+  <div class="formula-box">S + had + V3</div>
+  <p>Hành động xảy ra <strong>trước</strong> một hành động khác trong quá khứ.</p>
+  <div class="example-box">• By the time she arrived, he <strong>had already left</strong>.<br>
+  • I was tired because I <strong>hadn't slept</strong> well.</div>
+  <div class="note-box"><strong>Dấu hiệu:</strong> before, after, by the time, when, already, just, never</div>
+</div>`
+  },
+  {
+    num: 16, level: 'b1b2',
+    title: 'Tương lai tiếp diễn & Tương lai hoàn thành',
+    content: `
+<div class="theory-block">
+  <h4>Future Continuous (TLTD)</h4>
+  <div class="formula-box">S + will be + V-ing</div>
+  <div class="example-box"><strong>Dùng:</strong><br>
+  • Hành động đang diễn ra tại thời điểm trong tương lai: <em>At 8pm tomorrow, I <strong>will be studying</strong>.</em><br>
+  • Hành động theo kế hoạch/thông lệ trong tương lai</div>
+</div>
+<div class="theory-block">
+  <h4>Future Perfect (TLHT)</h4>
+  <div class="formula-box">S + will have + V3</div>
+  <div class="example-box"><strong>Dùng:</strong> Hành động sẽ hoàn thành <strong>trước</strong> một thời điểm trong tương lai.<br>
+  • <em>By next June, I <strong>will have graduated</strong>.</em><br>
+  • <em>By the time you arrive, I <strong>will have cooked</strong> dinner.</em></div>
+  <div class="note-box"><strong>Dấu hiệu:</strong> by (next year/then/the time...), before + future time</div>
+</div>`
+  },
+  {
+    num: 17, level: 'b1b2',
+    title: 'So sánh — Comparative & Superlative',
+    content: `
+<div class="theory-block">
+  <h4>So sánh hơn (Comparative)</h4>
+  <div class="formula-box">Adj ngắn: adj-er + than
+Adj dài: more + adj + than
+Bất quy tắc: good→better, bad→worse, far→farther/further, little→less, many/much→more</div>
+  <div class="example-box">• She is <strong>taller than</strong> me. | This is <strong>more expensive than</strong> that.</div>
+</div>
+<div class="theory-block">
+  <h4>So sánh nhất (Superlative)</h4>
+  <div class="formula-box">Adj ngắn: the + adj-est
+Adj dài: the most + adj</div>
+  <div class="example-box">• He is <strong>the tallest</strong> in class. | This is <strong>the most beautiful</strong> city.</div>
+</div>
+<div class="theory-block">
+  <h4>So sánh bội & ngang bằng</h4>
+  <div class="formula-box">Ngang bằng: as + adj + as
+So sánh bội: twice/three times + as + adj + as
+So sánh kép: The + compar, the + compar</div>
+  <div class="example-box">• This bag is <strong>twice as expensive as</strong> that one.<br>
+  • <strong>The more</strong> you practice, <strong>the better</strong> you become.</div>
+</div>`
+  },
+  {
+    num: 18, level: 'b1b2',
+    title: 'Câu bị động (Passive Voice)',
+    content: `
+<div class="theory-block">
+  <h4>Công thức chung</h4>
+  <div class="formula-box">S + be (chia thì) + V3 (+ by + tân ngữ)</div>
+</div>
+<div class="theory-block">
+  <h4>Bảng bị động theo thì</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Thì</th><th>Bị động</th></tr>
+    <tr><td>Present Simple</td><td>am/is/are + V3</td></tr>
+    <tr><td>Past Simple</td><td>was/were + V3</td></tr>
+    <tr><td>Present Perfect</td><td>have/has been + V3</td></tr>
+    <tr><td>Past Perfect</td><td>had been + V3</td></tr>
+    <tr><td>Future Simple</td><td>will be + V3</td></tr>
+    <tr><td>Future Perfect</td><td>will have been + V3</td></tr>
+    <tr><td>Modal</td><td>modal + be + V3</td></tr>
+  </table></div>
+</div>
+<div class="theory-block">
+  <h4>It is said that...</h4>
+  <div class="formula-box">It is said/believed/reported + that + clause
+S + is said/believed/reported + to + V</div>
+  <div class="example-box">• <em>It is said that he is brilliant.</em> = <em>He is said to be brilliant.</em></div>
+</div>`
+  },
+  {
+    num: 19, level: 'b1b2',
+    title: 'Câu điều kiện (Conditionals)',
+    content: `
+<div class="theory-block">
+  <h4>Bảng tổng hợp</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Loại</th><th>If clause</th><th>Main clause</th><th>Dùng khi</th></tr>
+    <tr><td>Zero</td><td>V(现在)</td><td>V(现在)</td><td>Sự thật hiển nhiên</td></tr>
+    <tr><td>Type 1</td><td>Present Simple</td><td>will + V</td><td>Có thể xảy ra (tương lai)</td></tr>
+    <tr><td>Type 2</td><td>Past Simple</td><td>would + V</td><td>Giả định (hiện tại/tương lai)</td></tr>
+    <tr><td>Type 3</td><td>Past Perfect</td><td>would have + V3</td><td>Giả định (quá khứ)</td></tr>
+  </table></div>
+  <div class="note-box"><strong>⚠️ Type 2:</strong> Dùng <em>were</em> cho TẤT CẢ chủ ngữ (kể cả I, he, she): <em>If I <strong>were</strong> you...</em></div>
+</div>
+<div class="theory-block">
+  <h4>Wish / If only</h4>
+  <div class="formula-box">Wish + S + V(过去)  → ước hiện tại trái thực
+Wish + S + had + V3  → ước quá khứ trái thực
+Wish + S + would + V  → ước tương lai (mong muốn thay đổi)</div>
+  <div class="example-box">• I <strong>wish</strong> I <strong>were</strong> taller. | I <strong>wish</strong> I <strong>had studied</strong> harder.</div>
+</div>`
+  },
+  {
+    num: 20, level: 'b1b2',
+    title: 'Mệnh đề quan hệ (Relative Clauses)',
+    content: `
+<div class="theory-block">
+  <h4>Đại từ quan hệ</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Đại từ</th><th>Dùng cho</th><th>Vai trò</th></tr>
+    <tr><td>who</td><td>Người</td><td>Chủ ngữ</td></tr>
+    <tr><td>whom</td><td>Người</td><td>Tân ngữ (văn viết)</td></tr>
+    <tr><td>which</td><td>Vật/Sự việc</td><td>Chủ ngữ/Tân ngữ</td></tr>
+    <tr><td>that</td><td>Người/Vật</td><td>Chủ ngữ/Tân ngữ</td></tr>
+    <tr><td>whose</td><td>Sở hữu</td><td>—</td></tr>
+    <tr><td>where</td><td>Nơi chốn</td><td>—</td></tr>
+    <tr><td>when</td><td>Thời gian</td><td>—</td></tr>
+  </table></div>
+</div>
+<div class="theory-block">
+  <h4>Defining vs Non-defining</h4>
+  <div class="note-box"><strong>Defining</strong> (xác định): Không có dấu phẩy. <em>The man <strong>who</strong> called is my brother.</em><br>
+  <strong>Non-defining</strong> (bổ sung): Có dấu phẩy, KHÔNG dùng "that". <em>My brother, <strong>who</strong> lives in Hanoi, is a doctor.</em></div>
+</div>`
+  },
+  {
+    num: 21, level: 'b1b2',
+    title: 'Gerund vs To-infinitive & Câu tường thuật',
+    content: `
+<div class="theory-block">
+  <h4>Gerund (V-ing)</h4>
+  <p>Sau: <em>enjoy, mind, finish, avoid, suggest, consider, keep, imagine, practice, admit, deny</em></p>
+  <p>Sau giới từ: <em>interested in doing, good at playing, tired of waiting</em></p>
+</div>
+<div class="theory-block">
+  <h4>To-infinitive</h4>
+  <p>Sau: <em>want, need, hope, plan, decide, agree, refuse, manage, promise, expect, forget (tương lai)</em></p>
+</div>
+<div class="theory-block">
+  <h4>Verbs đặc biệt (nghĩa thay đổi)</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Verb</th><th>+ V-ing</th><th>+ to-inf</th></tr>
+    <tr><td>stop</td><td>dừng hẳn (cease)</td><td>dừng để làm gì đó</td></tr>
+    <tr><td>remember</td><td>nhớ đã làm (quá khứ)</td><td>nhớ để làm (tương lai)</td></tr>
+    <tr><td>forget</td><td>quên đã làm</td><td>quên chưa làm</td></tr>
+    <tr><td>try</td><td>thử xem sao</td><td>cố gắng</td></tr>
+    <tr><td>regret</td><td>hối tiếc đã làm</td><td>tiếc phải nói rằng</td></tr>
+  </table></div>
+</div>
+<div class="theory-block">
+  <h4>Câu tường thuật (Reported Speech)</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Direct</th><th>Reported</th></tr>
+    <tr><td>am/is/are</td><td>was/were</td></tr>
+    <tr><td>will</td><td>would</td></tr>
+    <tr><td>can</td><td>could</td></tr>
+    <tr><td>Present Simple</td><td>Past Simple</td></tr>
+    <tr><td>Past Simple</td><td>Past Perfect</td></tr>
+    <tr><td>Present Perfect</td><td>Past Perfect</td></tr>
+  </table></div>
+  <div class="note-box"><strong>say vs tell:</strong> say (không cần tân ngữ) | tell + tân ngữ: <em>He told me that...</em><br>
+  <strong>KHÔNG lùi thì</strong> khi nói về sự thật, khoa học: <em>She said the Earth is round.</em></div>
+</div>`
+  }
+];
+
+// ══════════════════════════════════════════════
+// DATA — MCQ A1–A2
+// ══════════════════════════════════════════════
+const MCQ_A1A2 = [
+  { num:1, text:'My sister _____ English every evening.', opts:['is study','studies','is studying','study'], ans:1, explain:'Chủ ngữ "my sister" = she (ngôi 3 số ít). Dấu hiệu "every evening" → Present Simple → thêm -s. "study" có đuôi -y trước phụ âm → -ies. → <strong>studies</strong>.' },
+  { num:2, text:'Look! The children _____ football.', opts:['play','plays','are playing','were playing'], ans:2, explain:'"Look!" là tín hiệu của Present Continuous. Chủ ngữ "the children" = they → <strong>are playing</strong>.' },
+  { num:3, text:'I _____ coffee every morning.', opts:['am drinking','drinks','drink','drank'], ans:2, explain:'Chủ ngữ "I" + dấu hiệu "every morning" → Present Simple. I dùng V nguyên thể → <strong>drink</strong>.' },
+  { num:4, text:'She _____ TV right now.', opts:['watches','watch','is watching','was watching'], ans:2, explain:'"Right now" là dấu hiệu Present Continuous. She → <strong>is watching</strong>.' },
+  { num:5, text:'We _____ to the cinema yesterday.', opts:['go','goes','are going','went'], ans:3, explain:'"Yesterday" → Quá khứ đơn. "go" bất quy tắc → <strong>went</strong>.' },
+  { num:6, text:'Tom _____ at home last night.', opts:['is','were','was','be'], ans:2, explain:'"Last night" → quá khứ. Tom = he (ngôi 3 số ít) → <strong>was</strong>.' },
+  { num:7, text:'_____ you like pizza?', opts:['Are','Does','Do','Is'], ans:2, explain:'"like" là động từ thường (không phải be). Chủ ngữ "you" → dùng <strong>Do</strong>.' },
+  { num:8, text:'_____ your brother work in a bank?', opts:['Are','Does','Do','Is'], ans:1, explain:'"work" là động từ thường. "your brother" = he (ngôi 3 số ít) → <strong>Does</strong> + V nguyên thể.' },
+  { num:9, text:'She _____ like spicy food.', opts:["doesn't","don't","isn't","aren't"], ans:0, explain:'Câu phủ định Present Simple. She (ngôi 3 số ít) → <strong>doesn\'t</strong> + V nguyên thể.' },
+  { num:10, text:'I _____ my homework last night.', opts:["didn't do","don't do","wasn't doing","hadn't done"], ans:0, explain:'"Last night" → quá khứ. Phủ định Past Simple: didn\'t + V nguyên thể → <strong>didn\'t do</strong>.' },
+  { num:11, text:'There is _____ apple on the table.', opts:['a','an','the','—'], ans:1, explain:'"apple" bắt đầu bằng nguyên âm /æ/ → dùng <strong>an</strong>.' },
+  { num:12, text:'I need _____ information about the course.', opts:['a','an','some','the'], ans:2, explain:'"information" là danh từ không đếm được → không dùng a/an → dùng <strong>some</strong>.' },
+  { num:13, text:'My birthday is _____ Monday.', opts:['in','on','at','—'], ans:1, explain:'Ngày trong tuần (Monday, Tuesday...) → dùng <strong>on</strong>.' },
+  { num:14, text:'The meeting starts _____ 9:00 a.m.', opts:['in','on','at','by'], ans:2, explain:'Giờ cụ thể → dùng <strong>at</strong>.' },
+  { num:15, text:'My father _____ a doctor.', opts:['am','are','is','be'], ans:2, explain:'"My father" = he (ngôi 3 số ít) → to be → <strong>is</strong>.' },
+  { num:16, text:'You _____ speak English. You _____ speak Vietnamese here.', opts:['can / can\'t','can / cannot','could / can\'t','should / mustn\'t'], ans:0, explain:'Khả năng + cấm: <strong>can</strong> (có thể) + <strong>can\'t</strong> (không thể). Modal + V nguyên thể, không có "to".' },
+  { num:17, text:'You _____ see a doctor. You look sick.', opts:['should','shoulds','should to','are should'], ans:0, explain:'"should" là modal verb → + V nguyên thể, không thêm -s, không có "to" → <strong>should</strong>.' },
+  { num:18, text:'Tomorrow is a holiday, so I _____ go to work.', opts:["don't have to","must not","needn't to","haven't to"], ans:0, explain:'"don\'t have to" = không cần thiết (không bắt buộc). "must not" = bị cấm. Ngày nghỉ → không cần đi làm, không bị cấm → <strong>don\'t have to</strong>.' },
+  { num:19, text:'_____ are you crying? – Because I\'m sad.', opts:['What','Why','When','Where'], ans:1, explain:'Câu trả lời nêu lý do (Because...) → hỏi lý do → <strong>Why</strong>.' },
+  { num:20, text:'Which sentence is correct?', opts:['She like coffee.','She is like coffee.','She doesn\'t like coffee.','She don\'t like coffee.'], ans:2, explain:'Phủ định Present Simple: she (ngôi 3 số ít) + <strong>doesn\'t</strong> + V nguyên thể (like). → <strong>She doesn\'t like coffee.</strong>' }
+];
+
+// ══════════════════════════════════════════════
+// DATA — MCQ B1–B2
+// ══════════════════════════════════════════════
+const MCQ_B1B2 = [
+  { num:1, text:'By the time the rescue team arrived, the villagers _____ for help for over six hours.', opts:['were calling','had called','had been calling','have been calling'], ans:2, explain:'Hành động kéo dài (over six hours) và kết thúc trước một thời điểm trong quá khứ (arrived) → <strong>Past Perfect Continuous</strong>: had been calling.' },
+  { num:2, text:'She _____ at the company for 10 years when she decided to resign.', opts:['has worked','was working','had been working','worked'], ans:2, explain:'Khoảng thời gian kéo dài (10 years) trước điểm quá khứ (decided) → <strong>Past Perfect Continuous</strong>: had been working.' },
+  { num:3, text:'I _____ this book for two weeks, and I still haven\'t finished it.', opts:['have been reading','had been reading','was reading','am reading'], ans:0, explain:'Hành động bắt đầu trong quá khứ, còn tiếp tục đến hiện tại (still haven\'t finished) → <strong>Present Perfect Continuous</strong>: have been reading.' },
+  { num:4, text:'The new bridge _____ by the end of next month.', opts:['will complete','will be completing','will have been completed','is completed'], ans:2, explain:'Bị động (bridge được hoàn thành), hoàn thành trước thời điểm tương lai (by the end of next month) → <strong>Future Perfect Passive</strong>: will have been completed.' },
+  { num:5, text:'If water _____ to below 0°C, it _____ into ice.', opts:['fell / turns','falls / turns','would fall / would turn','fell / would turn'], ans:1, explain:'Sự thật tự nhiên, hiển nhiên → <strong>Zero Conditional</strong>: If + Present Simple, Present Simple.' },
+  { num:6, text:'If I _____ about the road closure, I would have taken a different route.', opts:['knew','had known','would know','have known'], ans:1, explain:'Giả định quá khứ trái thực (đã không biết) → <strong>Type 3 Conditional</strong>: If + Past Perfect, would have + V3.' },
+  { num:7, text:'If Sarah _____ more confident, she would apply for the job.', opts:['is','was','were','would be'], ans:2, explain:'Giả định hiện tại trái thực → <strong>Type 2 Conditional</strong>. Dùng "were" cho TẤT CẢ chủ ngữ kể cả she/he/it.' },
+  { num:8, text:'The scientist _____ discovered the vaccine was awarded the Nobel Prize.', opts:['which','whom','that','who'], ans:3, explain:'Đại từ quan hệ thay thế cho người (scientist), làm <strong>chủ ngữ</strong> mệnh đề quan hệ → <strong>who</strong>.' },
+  { num:9, text:'The apartment _____ we rented last year has been sold.', opts:['who','that','which','whose'], ans:2, explain:'Đại từ quan hệ thay thế cho vật (apartment), làm tân ngữ → <strong>which</strong>. (Cũng có thể dùng "that" nhưng "which" phổ biến hơn ở đây.)' },
+  { num:10, text:'I regret _____ him about the problem.', opts:['telling','to tell','told','having told'], ans:0, explain:'"regret + V-ing" = hối tiếc về điều đã làm trong quá khứ. → <strong>telling</strong>.' },
+  { num:11, text:'She stopped _____ to her colleague after the argument.', opts:['talking','to talk','talk','having talked'], ans:0, explain:'"stop + V-ing" = dừng hẳn hành động đó lại. → <strong>talking</strong>.' },
+  { num:12, text:'The manager promised _____ the issue as soon as possible.', opts:['resolving','resolved','to resolve','resolve'], ans:2, explain:'"promise + to-infinitive" (hứa sẽ làm gì). → <strong>to resolve</strong>.' },
+  { num:13, text:'Tom said that he _____ the report the following day.', opts:['will finish','would finish','finishes','had finished'], ans:1, explain:'Câu tường thuật: "will" → <strong>would</strong>. "the following day" = ngày hôm sau. → <strong>would finish</strong>.' },
+  { num:14, text:'The teacher asked me why I _____ my assignment.', opts:["didn't submit","hadn't submitted","haven't submitted","wouldn't submit"], ans:1, explain:'Câu hỏi gián tiếp (tường thuật): Past Simple → <strong>Past Perfect</strong>. Đảo ngữ YES/NO không dùng trong câu hỏi gián tiếp. → <strong>hadn\'t submitted</strong>.' },
+  { num:15, text:'That was the most challenging course _____ I have ever taken.', opts:['which','who','that','whose'], ans:2, explain:'Sau superlative (most challenging), thường dùng <strong>that</strong> trong defining relative clause. → <strong>that</strong>.' },
+  { num:16, text:'My new laptop is _____ my old one.', opts:['more expensive as','more expensive than','expensiver than','the most expensive than'], ans:1, explain:'"expensive" là tính từ dài → so sánh hơn dùng "more + adj + than". → <strong>more expensive than</strong>.' },
+  { num:17, text:'The longer you wait, _____ it will be to find a solution.', opts:['the more difficult','more difficult','most difficult','the most difficult'], ans:0, explain:'Cấu trúc so sánh kép: The + comparative, the + comparative → <strong>the more difficult</strong>.' },
+  { num:18, text:'The project _____ by a team of experts before it was presented to the board.', opts:['reviewed','was reviewed','has been reviewed','had been reviewed'], ans:3, explain:'Bị động trước một thời điểm trong quá khứ (before it was presented) → <strong>Past Perfect Passive</strong>: had been reviewed.' },
+  { num:19, text:'Having _____ all the required documents, she submitted her application.', opts:['prepared','been prepared','prepare','preparing'], ans:0, explain:'"Having + V3" (Perfect Participle Active) diễn tả hành động hoàn thành trước. Chủ ngữ (she) thực hiện hành động chuẩn bị → Active → <strong>prepared</strong>.' },
+  { num:20, text:'He _____ for the company for 6 years before he was promoted.', opts:['worked','has worked','was working','had been working'], ans:3, explain:'Khoảng thời gian kéo dài (6 years) trước điểm quá khứ (was promoted) → <strong>Past Perfect Continuous</strong>: had been working.' }
+];
+
+// ══════════════════════════════════════════════
+// DATA — MCQ C1–C2
+// ══════════════════════════════════════════════
+const MCQ_C1C2 = [
+  { num:1, text:'Only after the central bank had released its revised inflation projections _____ the financial markets begin to reassess the sustainability of the current monetary policy.', opts:['did','had','were','have'], ans:0, explain:'Cấu trúc: <strong>Only after + mệnh đề phụ + auxiliary + S + V</strong>. Khi "Only after" đứng đầu câu, mệnh đề CHÍNH đảo ngữ: "the financial markets began" → <strong>did the financial markets begin</strong>.' },
+  { num:2, text:'Having been subjected to rigorous peer review, _____.', opts:['the researchers\' findings were considered sufficiently robust for publication','the journal published the researchers\' findings','the findings were regarded by the researchers as methodologically sound','the research team considered the findings sufficiently robust'], ans:2, explain:'<strong>Dangling participle:</strong> Chủ thể ngầm của "Having been subjected" phải là "the findings" (thứ bị peer-review). Câu C đúng vì "the findings" làm chủ ngữ mệnh đề chính. D sai vì "the research team" không phải đối tượng được peer-review.' },
+  { num:3, text:'Had the government implemented the structural reforms a decade ago, the economy _____ considerably more resilient to the present energy crisis.', opts:['would have been','would be','had been','were'], ans:1, explain:'<strong>Mixed Conditional Type 3 → 2:</strong> If-clause ở quá khứ (Had + V3) → kết quả ở HIỆN TẠI → dùng "would + V" (không phải "would have + V3"). → <strong>would be</strong>.' },
+  { num:4, text:'If the country were less dependent on imported technology, it _____ so severely affected by last year\'s semiconductor shortage.', opts:['would not have been','would not be','had not been','would not have'], ans:0, explain:'<strong>Mixed Conditional Type 2 → 3:</strong> Điều kiện hiện tại giả định (If + were) → kết quả trong QUÁ KHỨ (last year) → dùng "would not have been". → <strong>would not have been</strong>.' },
+  { num:5, text:'Were the proposed educational reforms to be implemented nationwide, _____.', opts:['substantial disparities in educational attainment might gradually diminish','substantial disparities in educational attainment will gradually diminish','substantial disparities in educational attainment had gradually diminished','substantial disparities in educational attainment would have gradually diminished'], ans:0, explain:'"Were S to V" = If S were to V → giả định trang trọng về tương lai. Mệnh đề kết quả dùng modal có tính giả định: <strong>might</strong>. "will" (B) quá chắc chắn; C và D sai thì.' },
+  { num:6, text:'It is imperative that every member of the ethics committee _____ any potential conflict of interest before the proposal is considered.', opts:['discloses','disclose','disclosed','has disclosed'], ans:1, explain:'Sau "It is imperative that" → <strong>mandative subjunctive</strong> → động từ dạng bare infinitive (không thêm -s dù chủ ngữ là "every member"). → <strong>disclose</strong>.' },
+  { num:7, text:'The committee recommended that the preliminary findings _____ before any definitive conclusions were drawn.', opts:['were independently verified','be independently verified','had been independently verified','have independently verified'], ans:1, explain:'Sau "recommend that" → subjunctive → bị động dùng <strong>be + V3</strong> (không phải "were" dù động từ chính ở quá khứ). → <strong>be independently verified</strong>.' },
+  { num:8, text:'It was not the lack of funding _____ the project, but the absence of a coherent implementation strategy.', opts:['that ultimately undermined','which ultimately undermined','what ultimately undermined','ultimately that undermined'], ans:0, explain:'Cấu trúc <strong>It-cleft</strong>: "It was + [focused element] + <strong>that</strong> + clause". "which" không dùng trong cleft chuẩn này; "what" không đứng sau "It was X"; D sai trật tự. → <strong>that ultimately undermined</strong>.' },
+  { num:9, text:'_____ the scientific community found most troubling was the lack of reproducible evidence supporting the original hypothesis.', opts:['That','Which','What','It'], ans:2, explain:'<strong>Pseudo-cleft sentence:</strong> "What + clause + be + focused element". "What the community found most troubling <strong>was</strong>..." → <strong>What</strong>.' },
+  { num:10, text:'The university had the outdated laboratory equipment _____ before the accreditation inspection.', opts:['replacing','replaced','to replace','replace'], ans:1, explain:'<strong>Causative: have + object + V3</strong> → thuê/nhờ người khác thực hiện. "have the equipment <strong>replaced</strong>". "replacing" có nghĩa khác; "to replace" và "replace" sai cấu trúc causative này. → <strong>replaced</strong>.' },
+  { num:11, text:'The researchers are believed _____ a breakthrough in the treatment of antibiotic-resistant infections.', opts:['to have achieved','to achieve','having achieved','that they achieved'], ans:0, explain:'<strong>Personal passive reporting:</strong> S + be believed + <strong>to have + V3</strong> → khi hành động xảy ra TRƯỚC thời điểm đánh giá hiện tại. → <strong>to have achieved</strong>.' },
+  { num:12, text:'The new regulatory framework is expected _____ a substantial impact on how financial institutions assess systemic risk.', opts:['having','to have','that it has','to having'], ans:1, explain:'"be expected + <strong>to + V</strong>" → is expected <strong>to have</strong>. Không dùng "having" hay "to having". → <strong>to have</strong>.' },
+  { num:13, text:'The extent to which technological innovations can reduce regional inequality _____ still subject to considerable debate.', opts:['remain','remains','have remained','are remaining'], ans:1, explain:'Head noun của chủ ngữ là "<strong>The extent</strong>" (số ít), không phải "technological innovations" (nằm trong mệnh đề quan hệ). → <strong>remains</strong>.' },
+  { num:14, text:'A substantial number of empirical studies _____ questioned the assumption that economic growth automatically leads to greater social mobility.', opts:['has','is','have','was'], ans:2, explain:'"<strong>A number of + plural noun → plural verb</strong>". Khác với "The number of studies <em>has</em>...". → <strong>have</strong>.' },
+  { num:15, text:'The principal investigator, along with several senior researchers, _____ responsible for ensuring that the experimental protocols are strictly followed.', opts:['are','have been','is','were'], ans:2, explain:'"along with several senior researchers" chỉ là cụm chèn, KHÔNG tạo compound subject. Chủ ngữ chính: "<strong>The principal investigator</strong>" (số ít) → <strong>is</strong>.' },
+  { num:16, text:'Rarely _____ such a comprehensive longitudinal study been conducted on the socioeconomic consequences of automation.', opts:['has','have','had','was'], ans:0, explain:'Cấu trúc đảo ngữ: "Rarely + <strong>auxiliary + S + main verb</strong>". "such a comprehensive... study" là số ít → <strong>has</strong> such a study been conducted." → <strong>has</strong>.' },
+  { num:17, text:'Under no circumstances _____ policymakers ignore the distributional consequences of the proposed taxation system.', opts:['policymakers should','should policymakers','policymakers ought','ought policymakers to'], ans:1, explain:'Đảo ngữ: "Under no circumstances + <strong>auxiliary + S + V</strong>" → <strong>should policymakers ignore</strong>. Không đặt S trước auxiliary. → <strong>should policymakers</strong>.' },
+  { num:18, text:'Having _____ the data for several months, the researchers were finally able to identify a statistically significant pattern.', opts:['analysed','been analysed','analysing','analyse'], ans:0, explain:'"Having + <strong>V3</strong>" = hành động hoàn tất trước mệnh đề chính. Chủ thể của "Having..." là "the researchers" (researchers phân tích dữ liệu, không bị phân tích). → <strong>analysed</strong>.' },
+  { num:19, text:'Should further evidence _____ to emerge, the regulatory authorities may reconsider their current position.', opts:['happen','happens','happened','have happened'], ans:0, explain:'"Should + S + V" = If S should V... → đảo ngữ điều kiện Type 1 trang trọng. Sau "should" (modal-like inversion) → bare infinitive. → <strong>happen</strong>.' },
+  { num:20, text:'What appear to be minor methodological discrepancies in the original study _____, upon closer examination, capable of significantly affecting the reported results.', opts:['is','has been','are','was'], ans:2, explain:'Trong "What appear to be minor discrepancies", head noun thực là "<strong>discrepancies</strong>" (số nhiều). → <strong>are</strong> capable.' }
+];
+
+// ══════════════════════════════════════════════
+// DATA — SENTENCE EXERCISES A1–A2
+// ══════════════════════════════════════════════
+const SENT_A1A2 = [
+  {
+    num:21,
+    instruction:'Sắp xếp các từ sau thành câu đúng:',
+    words:['does','she','every','study','morning','English'],
+    answer:'she does study english every morning',
+    answerDisplay:'She studies English every morning.',
+    explain:'Present Simple với "she" (ngôi 3 số ít) → study + s = studies. Thứ tự: S + V + O + Time.'
+  },
+  {
+    num:22,
+    instruction:'Sắp xếp các từ sau thành câu đúng:',
+    words:['at','the','moment','watching','is','he','TV'],
+    answer:'he is watching tv at the moment',
+    answerDisplay:'He is watching TV at the moment.',
+    explain:'"at the moment" = dấu hiệu Present Continuous → He + is + V-ing.'
+  },
+  {
+    num:23,
+    instruction:'Sắp xếp các từ sau thành câu đúng:',
+    words:['yesterday','Tom','his','didn\'t','homework','do'],
+    answer:"tom didn't do his homework yesterday",
+    answerDisplay:"Tom didn't do his homework yesterday.",
+    explain:'"yesterday" → Past Simple phủ định: didn\'t + V nguyên thể (do).'
+  },
+  {
+    num:24,
+    instruction:'Sắp xếp các từ sau thành câu đúng:',
+    words:['you','see','should','a','doctor','tomorrow'],
+    answer:'you should see a doctor tomorrow',
+    answerDisplay:'You should see a doctor tomorrow.',
+    explain:'Modal verb "should" + V nguyên thể (see). Không có "to" sau should.'
+  },
+  {
+    num:25,
+    instruction:'Sắp xếp các từ sau thành câu đúng:',
+    words:['there','books','on','are','the','many','shelf'],
+    answer:'there are many books on the shelf',
+    answerDisplay:'There are many books on the shelf.',
+    explain:'Cấu trúc "There are + N số nhiều". Giới từ nơi chốn: on the shelf (trên kệ).'
+  }
+];
+
+// ══════════════════════════════════════════════
+// DATA — SENTENCE EXERCISES B1–B2
+// ══════════════════════════════════════════════
+const SENT_B1B2 = [
+  {
+    num:21,
+    instruction:'Viết lại câu dùng Past Perfect Continuous:\n"She worked at the hospital. Then she retired. (for 30 years)"',
+    words:['had','she','been','working','at','the','hospital','for','30','years','before','she','retired'],
+    answer:'she had been working at the hospital for 30 years before she retired',
+    answerDisplay:'She had been working at the hospital for 30 years before she retired.',
+    explain:'Hành động kéo dài (30 years) trước thời điểm quá khứ (retired) → Past Perfect Continuous: had been working.'
+  },
+  {
+    num:22,
+    instruction:'Viết lại câu dùng Conditional Type 3:\n"He didn\'t study hard, so he failed the exam."',
+    words:['if','he','had','studied','hard','he','would','have','passed','the','exam'],
+    answer:'if he had studied hard he would have passed the exam',
+    answerDisplay:'If he had studied hard, he would have passed the exam.',
+    explain:'Giả định quá khứ trái thực → Type 3: If + Past Perfect, would have + V3.'
+  },
+  {
+    num:23,
+    instruction:'Nối 2 câu dùng mệnh đề quan hệ:\n"The book is fascinating. I borrowed it from the library."',
+    words:['the','book','which','I','borrowed','from','the','library','is','fascinating'],
+    answer:'the book which i borrowed from the library is fascinating',
+    answerDisplay:'The book which I borrowed from the library is fascinating.',
+    explain:'Mệnh đề quan hệ thay thế cho vật (book), làm tân ngữ → which.'
+  },
+  {
+    num:24,
+    instruction:'Viết lại câu bị động Past Perfect:\n"They had reviewed the report before submitting it."',
+    words:['the','report','had','been','reviewed','before','it','was','submitted'],
+    answer:'the report had been reviewed before it was submitted',
+    answerDisplay:'The report had been reviewed before it was submitted.',
+    explain:'Past Perfect Passive: had been + V3. Chủ thể không rõ → bỏ "by...".'
+  },
+  {
+    num:25,
+    instruction:'Hoàn thành câu dùng Gerund:\n"She is interested in _____ (learn) new languages."',
+    words:['she','is','interested','in','learning','new','languages'],
+    answer:'she is interested in learning new languages',
+    answerDisplay:'She is interested in learning new languages.',
+    explain:'Sau giới từ "in" → dùng V-ing (Gerund): learn → learning.'
+  }
+];
+
+const SENT_C1C2 = [
+  { num:26, instruction:'Sắp xếp thành câu đúng (Inversion):', words:['under','no','circumstances','should','the','potential','ethical','implications','of','the','experiment','be','disregarded'], answer:'under no circumstances should the potential ethical implications of the experiment be disregarded', answerDisplay:'Under no circumstances should the potential ethical implications of the experiment be disregarded.', explain:'Cấu trúc đảo ngữ: Under no circumstances + should + S + V. Chủ ngữ: the potential ethical implications of the experiment. Động từ bị động: be disregarded.' },
+  { num:27, instruction:'Sắp xếp thành câu đúng (Having been + V3):', words:['having','been','thoroughly','examined','by','independent','statisticians','the','dataset','was','considered','sufficiently','reliable'], answer:'having been thoroughly examined by independent statisticians the dataset was considered sufficiently reliable', answerDisplay:'Having been thoroughly examined by independent statisticians, the dataset was considered sufficiently reliable.', explain:'Perfect passive participial clause: Having been + V3. Chủ thể "the dataset" là thứ được examined. Rút gọn từ: After the dataset had been thoroughly examined...' },
+  { num:28, instruction:'Sắp xếp thành câu đúng (Only after + đảo ngữ):', words:['only','after','the','experimental','findings','had','been','independently','replicated','could','the','scientific','community','accept','the','proposed','explanation'], answer:'only after the experimental findings had been independently replicated could the scientific community accept the proposed explanation', answerDisplay:'Only after the experimental findings had been independently replicated could the scientific community accept the proposed explanation.', explain:'Only after + mệnh đề phụ → đảo ngữ mệnh đề CHÍNH: could the scientific community accept.' },
+  { num:29, instruction:'Sắp xếp thành câu đúng (Mixed Conditional 2→3):', words:['if','the','regulatory','framework','were','more','flexible','companies','would','have','adapted','to','the','technological','disruption','more','rapidly'], answer:'if the regulatory framework were more flexible companies would have adapted to the technological disruption more rapidly', answerDisplay:'If the regulatory framework were more flexible, companies would have adapted to the technological disruption more rapidly.', explain:'Mixed Conditional Type 2→3: Điều kiện hiện tại giả định (if + were) → kết quả quá khứ (would have + V3).' },
+  { num:30, instruction:'Sắp xếp thành câu đúng (Pseudo-cleft):', words:['what','the','study','revealed','most','significantly','was','the','persistent','disparity','between','urban','and','rural','students'], answer:'what the study revealed most significantly was the persistent disparity between urban and rural students', answerDisplay:'What the study revealed most significantly was the persistent disparity between urban and rural students.', explain:'Pseudo-cleft: What + S + V + was + [phần được nhấn mạnh]. "What the study revealed..." làm chủ ngữ → was.' }
+];
+
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+let currentLevel = 'a1a2';
+const state = { a1a2: {}, b1b2: {}, c1c2: {} };
+
+// ══════════════════════════════════════════════
+// PAGE SWITCH
+// ══════════════════════════════════════════════
+function switchPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.page-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ══════════════════════════════════════════════
+// THEORY
+// ══════════════════════════════════════════════
+function renderTheory(filterLevel) {
+  const list = document.getElementById('theory-list');
+  list.innerHTML = '';
+  const chapters = filterLevel === 'all' ? CHAPTERS : CHAPTERS.filter(c => c.level === filterLevel);
+  chapters.forEach(ch => {
+    const div = document.createElement('div');
+    div.className = 'chapter-card';
+    div.id = 'ch-' + ch.num;
+    div.innerHTML = `
+      <div class="chapter-head" onclick="toggleChapter(${ch.num})">
+        <div class="ch-num">${ch.num}</div>
+        <div class="ch-title">${ch.title}</div>
+        <span class="ch-badge">${ch.level === 'a1a2' ? 'A1–A2' : ch.level === 'b1b2' ? 'B1–B2' : 'C1–C2'}</span>
+        <span class="ch-arrow">⌄</span>
+      </div>
+      <div class="chapter-body">${ch.content}</div>`;
+    list.appendChild(div);
+  });
+}
+
+function toggleChapter(num) {
+  const card = document.getElementById('ch-' + num);
+  card.classList.toggle('open');
+}
+
+function filterTheory(level, btn) {
+  document.querySelectorAll('#page-theory .lvl-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTheory(level);
+}
+
+// ══════════════════════════════════════════════
+// PRACTICE RENDER
+// ══════════════════════════════════════════════
+function renderExercises(level) {
+  currentLevel = level;
+  const list = document.getElementById('practice-list');
+  list.innerHTML = '';
+
+  const mcqs = level === 'a1a2' ? MCQ_A1A2 : level === 'b1b2' ? MCQ_B1B2 : MCQ_C1C2;
+  const sents = level === 'a1a2' ? SENT_A1A2 : level === 'b1b2' ? SENT_B1B2 : SENT_C1C2;
+
+  // MCQ section
+  const mcqTitle = document.createElement('div');
+  mcqTitle.className = 'ex-section-title';
+  mcqTitle.textContent = '📝 Câu 1–20: Trắc nghiệm';
+  list.appendChild(mcqTitle);
+
+  mcqs.forEach(q => {
+    const key = level + '_mcq_' + q.num;
+    const saved = state[level][key];
+    const div = document.createElement('div');
+    div.className = 'mcq-card';
+    div.id = 'card-' + key;
+
+    const optsHtml = q.opts.map((opt, i) => {
+      let cls = 'mcq-opt';
+      let dis = '';
+      if (saved !== undefined) {
+        dis = 'disabled';
+        if (i === q.ans) cls += ' correct';
+        else if (i === saved && saved !== q.ans) cls += ' wrong';
+      }
+      return `<button class="${cls}" ${dis} onclick="checkMCQ('${key}',${i},${q.ans})">${String.fromCharCode(65+i)}. ${opt}</button>`;
+    }).join('');
+
+    let fbHtml = '';
+    if (saved !== undefined) {
+      const ok = saved === q.ans;
+      fbHtml = `<div class="mcq-feedback ${ok?'correct-fb':'wrong-fb'} show">
+        <div class="fb-label ${ok?'ok':'no'}">${ok?'✅ Chính xác!':'❌ Sai rồi!'}</div>
+        <div>${q.explain}</div>
+      </div>`;
+    }
+
+    div.innerHTML = `
+      <div class="mcq-num">Câu ${q.num}</div>
+      <div class="mcq-q">${q.text}</div>
+      <div class="mcq-opts" id="opts-${key}">${optsHtml}</div>
+      ${fbHtml}`;
+    list.appendChild(div);
+  });
+
+  // Sentence section
+  const sentTitle = document.createElement('div');
+  sentTitle.className = 'ex-section-title';
+  sentTitle.style.marginTop = '30px';
+  sentTitle.textContent = '✏️ Câu 21–25: Sắp xếp câu';
+  list.appendChild(sentTitle);
+
+  sents.forEach(s => {
+    const key = level + '_sent_' + s.num;
+    const saved = state[level][key];
+    const shuffled = saved ? saved.placed : shuffle([...s.words]);
+    if (!saved) state[level][key] = { placed: [], shuffled, checked: false };
+
+    renderSentCard(list, s, key, level);
+  });
+
+  updateProgress();
+  restoreProgress(level);
+}
+
+function renderSentCard(container, s, key, level) {
+  const existing = document.getElementById('sent-' + key);
+  if (existing) existing.remove();
+
+  const div = document.createElement('div');
+  div.className = 'sent-card';
+  div.id = 'sent-' + key;
+
+  const st = state[level][key] || { placed:[], shuffled: shuffle([...s.words]), checked:false };
+  const placedHtml = st.placed.length
+    ? st.placed.map((w,i) => `<span class="placed-word" onclick="removeWord('${key}',${i},this)">${w}</span>`).join('')
+    : '<span class="zone-hint">Nhấn vào từ bên dưới để đặt vào đây...</span>';
+
+  const bankHtml = st.shuffled.map((w,i) => {
+    const used = st.placed.includes(w) ? 'used' : '';
+    // mark first occurrence
+    const usedCount = st.placed.filter(p => p===w).length;
+    const allCount = st.shuffled.filter(c=>c===w).length;
+    const cls = usedCount > 0 ? 'word-chip used' : 'word-chip';
+    return `<button class="word-chip" onclick="placeWord('${key}',${i},this)">${w}</button>`;
+  }).join('');
+
+  const fbHtml = st.checked
+    ? `<div class="sent-feedback ${st.correct?'ok':'no'} show">
+        <strong>${st.correct?'✅ Đúng!':'❌ Chưa đúng!'}</strong><br>
+        ${st.correct ? '' : `Đáp án: <em>${s.answerDisplay}</em><br>`}
+        ${s.explain}
+      </div>`
+    : `<div class="sent-feedback" id="sfb-${key}"></div>`;
+
+  div.innerHTML = `
+    <div class="sent-num">Câu ${s.num}</div>
+    <div class="sent-q">${s.instruction}</div>
+    <div class="drop-zone" id="dz-${key}">${placedHtml}</div>
+    <div class="word-bank" id="wb-${key}">${bankHtml}</div>
+    <div class="sent-actions">
+      <button class="btn-check" onclick="checkSentence('${key}','${level}')">Kiểm tra</button>
+      <button class="btn-reset" onclick="resetSentence('${key}','${level}')">Làm lại</button>
+    </div>
+    ${fbHtml}`;
+  container.appendChild(div);
+  syncWordBank(key, level);
+}
+
+function shuffle(arr) {
+  for (let i = arr.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]] = [arr[j],arr[i]];
+  }
+  return arr;
+}
+
+// ══════════════════════════════════════════════
+// MCQ CHECK
+// ══════════════════════════════════════════════
+function checkMCQ(key, chosen, correct, cardKey) {
+  const level = key.startsWith('a1a2') ? 'a1a2' : 'b1b2';
+  state[level][key] = chosen;
+  saveProgress();
+
+  const opts = document.querySelectorAll(`#opts-${key} .mcq-opt`);
+  opts.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === correct) btn.classList.add('correct');
+    else if (i === chosen && chosen !== correct) btn.classList.add('wrong');
+  });
+
+  const mcqs = level === 'a1a2' ? MCQ_A1A2 : level === 'b1b2' ? MCQ_B1B2 : MCQ_C1C2;
+  const q = mcqs.find(q => (level+'_mcq_'+q.num) === key);
+  const ok = chosen === correct;
+
+  const fb = document.createElement('div');
+  fb.className = `mcq-feedback ${ok?'correct-fb':'wrong-fb'} show`;
+  fb.innerHTML = `<div class="fb-label ${ok?'ok':'no'}">${ok?'✅ Chính xác!':'❌ Sai rồi!'}</div><div>${q.explain}</div>`;
+  document.getElementById('card-' + key).appendChild(fb);
+
+  updateProgress();
+}
+
+// ══════════════════════════════════════════════
+// SENTENCE CHECK
+// ══════════════════════════════════════════════
+function placeWord(key, idx, el) {
+  if (el.classList.contains('used')) return;
+  const level = key.startsWith('a1a2') ? 'a1a2' : 'b1b2';
+  const st = state[level][key];
+  const word = el.textContent;
+  st.placed.push(word);
+  el.classList.add('used');
+  updateDropZone(key, level);
+  saveProgress();
+}
+
+function removeWord(key, idx, el) {
+  const level = key.startsWith('a1a2') ? 'a1a2' : 'b1b2';
+  const st = state[level][key];
+  st.placed.splice(idx, 1);
+  updateDropZone(key, level);
+  syncWordBank(key, level);
+  saveProgress();
+}
+
+function updateDropZone(key, level) {
+  const dz = document.getElementById('dz-' + key);
+  const st = state[level][key];
+  if (st.placed.length === 0) {
+    dz.innerHTML = '<span class="zone-hint">Nhấn vào từ bên dưới để đặt vào đây...</span>';
+  } else {
+    dz.innerHTML = st.placed.map((w,i) =>
+      `<span class="placed-word" onclick="removeWord('${key}',${i},this)">${w}</span>`
+    ).join('');
+  }
+}
+
+function syncWordBank(key, level) {
+  const wb = document.getElementById('wb-' + key);
+  if (!wb) return;
+  const st = state[level][key];
+  const chips = wb.querySelectorAll('.word-chip');
+  // Reset all
+  chips.forEach(c => c.classList.remove('used'));
+  // Mark used
+  const placedCopy = [...st.placed];
+  chips.forEach(c => {
+    const w = c.textContent;
+    const idx = placedCopy.indexOf(w);
+    if (idx !== -1) {
+      c.classList.add('used');
+      placedCopy.splice(idx, 1);
+    }
+  });
+}
+
+function checkSentence(key, level) {
+  const st = state[level][key];
+  const sents = level === 'a1a2' ? SENT_A1A2 : level === 'b1b2' ? SENT_B1B2 : SENT_C1C2;
+  const s = sents.find(s => (level+'_sent_'+s.num) === key);
+  const given = st.placed.join(' ').toLowerCase().replace(/[.!?]/g,'').trim();
+  const expected = s.answer.toLowerCase().replace(/[.!?]/g,'').trim();
+  const ok = given === expected;
+  st.checked = true;
+  st.correct = ok;
+  saveProgress();
+
+  const fbEl = document.getElementById('sfb-' + key) || document.querySelector(`#sent-${key} .sent-feedback`);
+  if (fbEl) {
+    fbEl.className = `sent-feedback ${ok?'ok':'no'} show`;
+    fbEl.innerHTML = `<strong>${ok?'✅ Đúng!':'❌ Chưa đúng!'}</strong><br>
+      ${ok ? '' : `Đáp án: <em>${s.answerDisplay}</em><br>`}
+      ${s.explain}`;
+  }
+  updateProgress();
+}
+
+function resetSentence(key, level) {
+  const st = state[level][key];
+  st.placed = [];
+  st.checked = false;
+  st.correct = false;
+  st.shuffled = shuffle([...st.shuffled]);
+  saveProgress();
+
+  const sents = level === 'a1a2' ? SENT_A1A2 : level === 'b1b2' ? SENT_B1B2 : SENT_C1C2;
+  const s = sents.find(s => (level+'_sent_'+s.num) === key);
+  updateDropZone(key, level);
+  syncWordBank(key, level);
+
+  const fbEl = document.querySelector(`#sent-${key} .sent-feedback`);
+  if (fbEl) { fbEl.className = 'sent-feedback'; fbEl.innerHTML = ''; }
+  updateProgress();
+}
+
+// ══════════════════════════════════════════════
+// PROGRESS
+// ══════════════════════════════════════════════
+function updateProgress() {
+  const level = currentLevel;
+  let done = 0;
+  const total = 25;
+
+  // MCQ
+  for (let i=1; i<=20; i++) {
+    if (state[level][level+'_mcq_'+i] !== undefined) done++;
+  }
+  // Sent
+  const sentStart = level === 'c1c2' ? 26 : 21;
+  const sentEnd = level === 'c1c2' ? 30 : 25;
+  for (let i=sentStart; i<=sentEnd; i++) {
+    const st = state[level][level+'_sent_'+i];
+    if (st && st.checked) done++;
+  }
+
+  document.getElementById('prog-label').textContent = `${done} / ${total} câu hoàn thành`;
+  const pct = Math.round(done/total*100);
+  document.getElementById('prog-pct').textContent = pct + '%';
+  document.getElementById('prog-fill').style.width = pct + '%';
+}
+
+function filterExercises(level, btn) {
+  document.querySelectorAll('#page-practice .lvl-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderExercises(level);
+}
+
+function resetAll() {
+  const level = currentLevel;
+  // Clear MCQ
+  for (let i=1; i<=20; i++) delete state[level][level+'_mcq_'+i];
+  // Clear sent
+  const sents = level === 'a1a2' ? SENT_A1A2 : level === 'b1b2' ? SENT_B1B2 : SENT_C1C2;
+  sents.forEach(s => {
+    const key = level+'_sent_'+s.num;
+    state[level][key] = { placed:[], shuffled: shuffle([...s.words]), checked:false };
+  });
+  saveProgress();
+  renderExercises(level);
+}
+
+// ══════════════════════════════════════════════
+// PERSISTENCE
+// ══════════════════════════════════════════════
+function saveProgress() {
+  try {
+    localStorage.setItem('grammar_progress', JSON.stringify(state));
+  } catch(e) {}
+}
+
+function restoreProgress(level) {
+  try {
+    const saved = JSON.parse(localStorage.getItem('grammar_progress') || '{}');
+    if (saved.a1a2) Object.assign(state.a1a2, saved.a1a2);
+    if (saved.b1b2) Object.assign(state.b1b2, saved.b1b2);
+    if (saved.c1c2) Object.assign(state.c1c2, saved.c1c2);
+  } catch(e) {}
+  updateProgress();
+}
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+(function init() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('grammar_progress') || '{}');
+    if (saved.a1a2) Object.assign(state.a1a2, saved.a1a2);
+    if (saved.b1b2) Object.assign(state.b1b2, saved.b1b2);
+    if (saved.c1c2) Object.assign(state.c1c2, saved.c1c2);
+  } catch(e) {}
+  renderTheory('all');
+  renderExercises('a1a2');
+})();
+</script>
+</body>
+</html>

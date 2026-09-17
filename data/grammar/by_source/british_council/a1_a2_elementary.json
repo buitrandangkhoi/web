@@ -1,0 +1,94 @@
+{
+  "level": "A1_A2_Elementary",
+  "lessons": [
+    {
+      "id": "bc_a1_01",
+      "title": "Present simple: be and other verbs",
+      "description": "Using 'to be' (am/is/are) and action verbs to talk about routine, states and facts.",
+      "formula": "S + V(s/es) + Object",
+      "key_examples": [
+        "I am a student.",
+        "She works in a hospital.",
+        "They do not live in London."
+      ],
+      "exercises": [
+        {
+          "q": "He ___ (live) in Manchester.",
+          "options": [
+            "live",
+            "lives",
+            "living"
+          ],
+          "a": "lives",
+          "explanation": "Third person singular takes -s."
+        }
+      ]
+    },
+    {
+      "id": "bc_a1_02",
+      "title": "Possessives and Demonstratives",
+      "description": "Possessive adjectives (my, your, his, her, its, our, their) and demonstratives (this, that, these, those).",
+      "formula": "Demonstrative + Noun / Possessive + Noun",
+      "key_examples": [
+        "This is my coat.",
+        "Those shoes are very comfortable."
+      ],
+      "exercises": [
+        {
+          "q": "Look at ___ bird over there in the tree!",
+          "options": [
+            "this",
+            "that",
+            "these"
+          ],
+          "a": "that",
+          "explanation": "That refers to a singular object at a distance."
+        }
+      ]
+    },
+    {
+      "id": "bc_a2_01",
+      "title": "Past simple: regular and irregular verbs",
+      "description": "Forming past simple sentences with -ed and common irregular verbs (went, bought, saw, did).",
+      "formula": "S + V2/ed + Object",
+      "key_examples": [
+        "We watched a movie yesterday.",
+        "He bought a new laptop last week."
+      ],
+      "exercises": [
+        {
+          "q": "Yesterday, they ___ (go) to the museum.",
+          "options": [
+            "goed",
+            "went",
+            "gone"
+          ],
+          "a": "went",
+          "explanation": "Past simple irregular form of 'go' is 'went'."
+        }
+      ]
+    },
+    {
+      "id": "bc_a2_02",
+      "title": "Comparatives and Superlatives",
+      "description": "Comparing people, items and qualities with -er/-est and more/most.",
+      "formula": "Adj-er than / More + Adj than / The most + Adj",
+      "key_examples": [
+        "Tokyo is bigger than Rome.",
+        "The blue whale is the largest animal."
+      ],
+      "exercises": [
+        {
+          "q": "This test is ___ (difficult) than the previous one.",
+          "options": [
+            "more difficult",
+            "difficulter",
+            "most difficult"
+          ],
+          "a": "more difficult",
+          "explanation": "Long adjectives take 'more'."
+        }
+      ]
+    }
+  ]
+}

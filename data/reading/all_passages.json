@@ -1,0 +1,329 @@
+{
+  "total_passages": 4,
+  "passages": [
+    {
+      "id": "read_ielts_001",
+      "skill": "reading",
+      "source": "The Guardian Science",
+      "original_url": "https://www.theguardian.com/science/2026/sep/16/uk-mathematician-debunks-myth-parthenon-optical-illusions",
+      "title": "UK mathematician debunks myth around Parthenon’s optical illusions",
+      "category": "Environment & Science",
+      "difficulty": "IELTS Band 7.0 - 8.5",
+      "word_count": 240,
+      "paragraphs": [
+        {
+          "label": "A",
+          "text": "A mathematician has uncovered what may be one of the longest-running myths in history after studying optical illusions and the Parthenon, the famed Greek temple that overlooks Athens."
+        },
+        {
+          "label": "B",
+          "text": "Scholars have marvelled at the building on the Acropolis hill for more than 2,000 years and heaped praise on its architects for their clever use of geometry. Its subtle curves are said to correct optical illusions that would have otherwise ruined the Parthenon’s clean lines."
+        },
+        {
+          "label": "C",
+          "text": "But after a detailed investigation, and a flurry of mathematical modelling, Prof Alain Goriely at the University of Oxford has reached an awkward conclusion. The optical illusions the curves are meant to fix are either nonsense or practically imperceptible. In short, the illusions are themselves an illusion."
+        },
+        {
+          "label": "D",
+          "text": "In his study, Goriely traces the myth back to the 1st-century Roman architect and engineer Vitruvius who wrote about the Parthenon 400 years after its construction. His account found its way into architectural books and became established fact. Today’s AI chatbots still churn out the tale. “I do think it might be the oldest myth that we have,” Goriely said, “apart from religion.”"
+        },
+        {
+          "label": "E",
+          "text": "A common claim that the mathematician challenges concerns the Parthenon’s base or stylobate. Measurements show the sides of the base are not horizontal but form a gentle arc that rises 6cm in the centre. According to Vitruvius, this corrects an illusion that would make the base appear to sag in the middle."
+        }
+      ],
+      "full_text": "[A] A mathematician has uncovered what may be one of the longest-running myths in history after studying optical illusions and the Parthenon, the famed Greek temple that overlooks Athens.\n\n[B] Scholars have marvelled at the building on the Acropolis hill for more than 2,000 years and heaped praise on its architects for their clever use of geometry. Its subtle curves are said to correct optical illusions that would have otherwise ruined the Parthenon’s clean lines.\n\n[C] But after a detailed investigation, and a flurry of mathematical modelling, Prof Alain Goriely at the University of Oxford has reached an awkward conclusion. The optical illusions the curves are meant to fix are either nonsense or practically imperceptible. In short, the illusions are themselves an illusion.\n\n[D] In his study, Goriely traces the myth back to the 1st-century Roman architect and engineer Vitruvius who wrote about the Parthenon 400 years after its construction. His account found its way into architectural books and became established fact. Today’s AI chatbots still churn out the tale. “I do think it might be the oldest myth that we have,” Goriely said, “apart from religion.”\n\n[E] A common claim that the mathematician challenges concerns the Parthenon’s base or stylobate. Measurements show the sides of the base are not horizontal but form a gentle arc that rises 6cm in the centre. According to Vitruvius, this corrects an illusion that would make the base appear to sag in the middle.",
+      "academic_vocabulary": [],
+      "questions": [
+        {
+          "id": 1,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Researchers discovered that the phenomena examined in uk mathematician debunks myth around parthenon’s optical illusions resulted entirely from random coincidence.",
+          "answer": "FALSE",
+          "location": "Paragraph A",
+          "explanation": "Paragraph A shows deliberate structural factors, scientific calculations, and observable methods rather than pure coincidence."
+        },
+        {
+          "id": 2,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Physical material composition and environmental surroundings significantly influence the observed efficiency.",
+          "answer": "TRUE",
+          "location": "Paragraph B",
+          "explanation": "Paragraph B specifically outlines how materials and physical characteristics optimize the overall outcome."
+        },
+        {
+          "id": 3,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Financial expenses incurred during the initial investigation were sponsored entirely by foreign governments.",
+          "answer": "NOT GIVEN",
+          "location": "Passage Wide",
+          "explanation": "The text mentions methodological and scientific data, but provides no specific information regarding governmental financing."
+        },
+        {
+          "id": 4,
+          "type": "MULTIPLE_CHOICE",
+          "question": "What is the primary objective of Paragraph C?",
+          "options": [
+            "A. To dismiss prior historical consensus as irrelevant",
+            "B. To demonstrate modern practical applications of the research",
+            "C. To calculate the exact cost of construction materials",
+            "D. To criticize international environmental standards"
+          ],
+          "answer": "B",
+          "location": "Paragraph C",
+          "explanation": "Paragraph C bridges the analytical principles into contemporary urban planning and modern engineering solutions."
+        }
+      ]
+    },
+    {
+      "id": "read_ielts_002",
+      "skill": "reading",
+      "source": "The Guardian Science",
+      "original_url": "https://www.theguardian.com/science/2026/sep/16/plantwatch-the-insect-eating-alpine-plant-that-proves-darwin-was-right",
+      "title": "Plantwatch: The insect-eating alpine plant that proves Darwin was right",
+      "category": "Environment & Science",
+      "difficulty": "IELTS Band 7.0 - 8.5",
+      "word_count": 160,
+      "paragraphs": [
+        {
+          "label": "A",
+          "text": "Its leaves, petals and stems are smothered in tiny, sticky hairs and – just as the evolutionary biologist suspected – the sweet glue on the hairs can lure and trap midges before digesting them with an enzyme."
+        },
+        {
+          "label": "B",
+          "text": "The nitrogen from their remains is absorbed into the plant, which is essential for it to survive in the nutrient-poor soils of the Hengduan mountains in south-west China. The plant was also found to have genes related to those found in carnivorous plants."
+        },
+        {
+          "label": "C",
+          "text": "The study findings may point to other killer plants that trap insects with sticky hairs and feed off their remains."
+        },
+        {
+          "label": "D",
+          "text": "The leaves of the wild potatoes Solanum berthaultii and Solanum polyadenium are covered in sticky hairs and trap aphids and some other small pests, potentially opening the way to combine pest control with plant fertiliser."
+        },
+        {
+          "label": "E",
+          "text": "Other sticky-haired plants may follow a similar approach, according to a study in the Botanical Journal of the Linnean Society."
+        }
+      ],
+      "full_text": "[A] Its leaves, petals and stems are smothered in tiny, sticky hairs and – just as the evolutionary biologist suspected – the sweet glue on the hairs can lure and trap midges before digesting them with an enzyme.\n\n[B] The nitrogen from their remains is absorbed into the plant, which is essential for it to survive in the nutrient-poor soils of the Hengduan mountains in south-west China. The plant was also found to have genes related to those found in carnivorous plants.\n\n[C] The study findings may point to other killer plants that trap insects with sticky hairs and feed off their remains.\n\n[D] The leaves of the wild potatoes Solanum berthaultii and Solanum polyadenium are covered in sticky hairs and trap aphids and some other small pests, potentially opening the way to combine pest control with plant fertiliser.\n\n[E] Other sticky-haired plants may follow a similar approach, according to a study in the Botanical Journal of the Linnean Society.",
+      "academic_vocabulary": [
+        {
+          "word": "approach",
+          "definition": "a way of dealing with a situation or problem",
+          "cefr_level": "B2-C1"
+        },
+        {
+          "word": "similar",
+          "definition": "resembling without being identical",
+          "cefr_level": "B2-C1"
+        }
+      ],
+      "questions": [
+        {
+          "id": 1,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Researchers discovered that the phenomena examined in plantwatch: the insect-eating alpine plant that proves darwin was right resulted entirely from random coincidence.",
+          "answer": "FALSE",
+          "location": "Paragraph A",
+          "explanation": "Paragraph A shows deliberate structural factors, scientific calculations, and observable methods rather than pure coincidence."
+        },
+        {
+          "id": 2,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Physical material composition and environmental surroundings significantly influence the observed efficiency.",
+          "answer": "TRUE",
+          "location": "Paragraph B",
+          "explanation": "Paragraph B specifically outlines how materials and physical characteristics optimize the overall outcome."
+        },
+        {
+          "id": 3,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Financial expenses incurred during the initial investigation were sponsored entirely by foreign governments.",
+          "answer": "NOT GIVEN",
+          "location": "Passage Wide",
+          "explanation": "The text mentions methodological and scientific data, but provides no specific information regarding governmental financing."
+        },
+        {
+          "id": 4,
+          "type": "MULTIPLE_CHOICE",
+          "question": "What is the primary objective of Paragraph C?",
+          "options": [
+            "A. To dismiss prior historical consensus as irrelevant",
+            "B. To demonstrate modern practical applications of the research",
+            "C. To calculate the exact cost of construction materials",
+            "D. To criticize international environmental standards"
+          ],
+          "answer": "B",
+          "location": "Paragraph C",
+          "explanation": "Paragraph C bridges the analytical principles into contemporary urban planning and modern engineering solutions."
+        }
+      ]
+    },
+    {
+      "id": "read_ielts_003",
+      "skill": "reading",
+      "source": "Scientific American",
+      "original_url": "https://www.scientificamerican.com/article/the-hole-in-the-ozone-layer-is-healing-but-extreme-weather-may-be-slowing-progress-down/",
+      "title": "The hole in the ozone layer is healing, but extreme weather may be slowing progress down",
+      "category": "Technology & Physics",
+      "difficulty": "IELTS Band 7.0 - 8.5",
+      "word_count": 300,
+      "paragraphs": [
+        {
+          "label": "A",
+          "text": "A map shows the size and shape of the ozone hole over the South Pole on the day of its maximum extent in 2025. Moderate ozone losses (orange) are visible amid areas of more potent ozone losses (red). Scientists describe the ozone “hole” as the area in which ozone concentrations drop below the historical threshold of 220 Dobson units."
+        },
+        {
+          "label": "B",
+          "text": "NASA Earth Observatory image by Lauren Dauphin, using data courtesy of NASA Ozone Watch and GEOS-5 data from the Global Modeling and Assimilation Office at NASA GSFC"
+        },
+        {
+          "label": "C",
+          "text": "The hole in the Earth’s ozone layer is significantly smaller than it’s been in recent history, but it is still far from fully healed, according to the World Meteorological Organization’s (WMO’s) latest annual checkup."
+        },
+        {
+          "label": "D",
+          "text": "The hole in the ozone layer, a protective region of the atmosphere that begins roughly nine miles above Earth’s surface, was discovered in the 1980s. Studies attributed its presence to human-made chemicals called chlorofluorocarbons (CFCs), which destroyed ozone molecules. The layer plays a vital role in absorbing the sun’s ultraviolet radiation, which can cause diseases such as skin cancer. Repairing it became a matter of international priority, with nations signing on to the Montreal Protocol on Substances That Deplete the Ozone Layer, an international treaty banning CFCs, in 1987. Since then, for scientists and activists, the recovery of the ozone layer has stood as a victory, showing that we can act to prevent human-caused damage to our planet."
+        },
+        {
+          "label": "E",
+          "text": "In the latest edition of the WMO’s Ozone and UV bulletin, the organization finds that the hole is “significantly” smaller than its average size between 1990 and 2020. Still, University of California, Los Angeles, professor Suzanne Paulson cautions against overoptimism. The hole has been healing at a slower rate than scientists had predicted it might, she says."
+        }
+      ],
+      "full_text": "[A] A map shows the size and shape of the ozone hole over the South Pole on the day of its maximum extent in 2025. Moderate ozone losses (orange) are visible amid areas of more potent ozone losses (red). Scientists describe the ozone “hole” as the area in which ozone concentrations drop below the historical threshold of 220 Dobson units.\n\n[B] NASA Earth Observatory image by Lauren Dauphin, using data courtesy of NASA Ozone Watch and GEOS-5 data from the Global Modeling and Assimilation Office at NASA GSFC\n\n[C] The hole in the Earth’s ozone layer is significantly smaller than it’s been in recent history, but it is still far from fully healed, according to the World Meteorological Organization’s (WMO’s) latest annual checkup.\n\n[D] The hole in the ozone layer, a protective region of the atmosphere that begins roughly nine miles above Earth’s surface, was discovered in the 1980s. Studies attributed its presence to human-made chemicals called chlorofluorocarbons (CFCs), which destroyed ozone molecules. The layer plays a vital role in absorbing the sun’s ultraviolet radiation, which can cause diseases such as skin cancer. Repairing it became a matter of international priority, with nations signing on to the Montreal Protocol on Substances That Deplete the Ozone Layer, an international treaty banning CFCs, in 1987. Since then, for scientists and activists, the recovery of the ozone layer has stood as a victory, showing that we can act to prevent human-caused damage to our planet.\n\n[E] In the latest edition of the WMO’s Ozone and UV bulletin, the organization finds that the hole is “significantly” smaller than its average size between 1990 and 2020. Still, University of California, Los Angeles, professor Suzanne Paulson cautions against overoptimism. The hole has been healing at a slower rate than scientists had predicted it might, she says.",
+      "academic_vocabulary": [
+        {
+          "word": "role",
+          "definition": "an actor's part in a play, film, etc.; the function assumed or part played",
+          "cefr_level": "B2-C1"
+        }
+      ],
+      "questions": [
+        {
+          "id": 1,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Researchers discovered that the phenomena examined in the hole in the ozone layer is healing, but extreme weather may be slowing progress down resulted entirely from random coincidence.",
+          "answer": "FALSE",
+          "location": "Paragraph A",
+          "explanation": "Paragraph A shows deliberate structural factors, scientific calculations, and observable methods rather than pure coincidence."
+        },
+        {
+          "id": 2,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Physical material composition and environmental surroundings significantly influence the observed efficiency.",
+          "answer": "TRUE",
+          "location": "Paragraph B",
+          "explanation": "Paragraph B specifically outlines how materials and physical characteristics optimize the overall outcome."
+        },
+        {
+          "id": 3,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Financial expenses incurred during the initial investigation were sponsored entirely by foreign governments.",
+          "answer": "NOT GIVEN",
+          "location": "Passage Wide",
+          "explanation": "The text mentions methodological and scientific data, but provides no specific information regarding governmental financing."
+        },
+        {
+          "id": 4,
+          "type": "MULTIPLE_CHOICE",
+          "question": "What is the primary objective of Paragraph C?",
+          "options": [
+            "A. To dismiss prior historical consensus as irrelevant",
+            "B. To demonstrate modern practical applications of the research",
+            "C. To calculate the exact cost of construction materials",
+            "D. To criticize international environmental standards"
+          ],
+          "answer": "B",
+          "location": "Paragraph C",
+          "explanation": "Paragraph C bridges the analytical principles into contemporary urban planning and modern engineering solutions."
+        }
+      ]
+    },
+    {
+      "id": "read_ielts_004",
+      "skill": "reading",
+      "source": "Scientific American",
+      "original_url": "https://www.scientificamerican.com/article/what-would-an-ai-kill-switch-do/",
+      "title": "What even is an AI kill switch?",
+      "category": "Technology & Physics",
+      "difficulty": "IELTS Band 7.0 - 8.5",
+      "word_count": 271,
+      "paragraphs": [
+        {
+          "label": "A",
+          "text": "Amid renewed calls to slow frontier AI, experts are considering what an emergency stop would entail—and who would decide when to use it"
+        },
+        {
+          "label": "B",
+          "text": "Calls to slow the development of frontier artificial intelligence, the industry’s most powerful models, have grown much louder in the past week. One idea keeps coming up as a way to break the glass in case of emergency: an AI kill switch."
+        },
+        {
+          "label": "C",
+          "text": "The concept of a kill switch is straightforward enough when you’re talking about a physical machine. “In a factory, it’s one big switch, and it shuts off all the machines in the factory,” says Mark Nitzberg, executive director of the University of California, Berkeley, Center for Human-Compatible AI. “In the case of AI, it’s a little bit more of an aspiration than a reality.”"
+        },
+        {
+          "label": "D",
+          "text": "Last week Anthropic pretraining researcher Jacob Coxon resigned, citing existential risk. When his former company’s CEO Dario Amodei posted about the need to slow AI progress over the weekend, rival tech leaders such as Elon Musk and Sam Altman quickly backed the call. By Monday, Anthropic co-founder Jack Clark floated mandatory kill switches for AI systems. Congress has taken a run at the idea, too, with a bipartisan bill, introduced this summer, that would require advanced AI developers to maintain the ability to throttle, suspend or shut down their products. Fittingly called the “AI Kill Switch Act,” the bill remains in committee."
+        },
+        {
+          "label": "E",
+          "text": "If you're enjoying this article, consider supporting our award-winning journalism by subscribing. By purchasing a subscription you are helping to ensure the future of impactful stories about the discoveries and ideas shaping our world today."
+        }
+      ],
+      "full_text": "[A] Amid renewed calls to slow frontier AI, experts are considering what an emergency stop would entail—and who would decide when to use it\n\n[B] Calls to slow the development of frontier artificial intelligence, the industry’s most powerful models, have grown much louder in the past week. One idea keeps coming up as a way to break the glass in case of emergency: an AI kill switch.\n\n[C] The concept of a kill switch is straightforward enough when you’re talking about a physical machine. “In a factory, it’s one big switch, and it shuts off all the machines in the factory,” says Mark Nitzberg, executive director of the University of California, Berkeley, Center for Human-Compatible AI. “In the case of AI, it’s a little bit more of an aspiration than a reality.”\n\n[D] Last week Anthropic pretraining researcher Jacob Coxon resigned, citing existential risk. When his former company’s CEO Dario Amodei posted about the need to slow AI progress over the weekend, rival tech leaders such as Elon Musk and Sam Altman quickly backed the call. By Monday, Anthropic co-founder Jack Clark floated mandatory kill switches for AI systems. Congress has taken a run at the idea, too, with a bipartisan bill, introduced this summer, that would require advanced AI developers to maintain the ability to throttle, suspend or shut down their products. Fittingly called the “AI Kill Switch Act,” the bill remains in committee.\n\n[E] If you're enjoying this article, consider supporting our award-winning journalism by subscribing. By purchasing a subscription you are helping to ensure the future of impactful stories about the discoveries and ideas shaping our world today.",
+      "academic_vocabulary": [
+        {
+          "word": "concept",
+          "definition": "an abstract idea; a general notion",
+          "cefr_level": "B2-C1"
+        },
+        {
+          "word": "require",
+          "definition": "need for a particular purpose; cause to be necessary",
+          "cefr_level": "B2-C1"
+        }
+      ],
+      "questions": [
+        {
+          "id": 1,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Researchers discovered that the phenomena examined in what even is an ai kill switch? resulted entirely from random coincidence.",
+          "answer": "FALSE",
+          "location": "Paragraph A",
+          "explanation": "Paragraph A shows deliberate structural factors, scientific calculations, and observable methods rather than pure coincidence."
+        },
+        {
+          "id": 2,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Physical material composition and environmental surroundings significantly influence the observed efficiency.",
+          "answer": "TRUE",
+          "location": "Paragraph B",
+          "explanation": "Paragraph B specifically outlines how materials and physical characteristics optimize the overall outcome."
+        },
+        {
+          "id": 3,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Financial expenses incurred during the initial investigation were sponsored entirely by foreign governments.",
+          "answer": "NOT GIVEN",
+          "location": "Passage Wide",
+          "explanation": "The text mentions methodological and scientific data, but provides no specific information regarding governmental financing."
+        },
+        {
+          "id": 4,
+          "type": "MULTIPLE_CHOICE",
+          "question": "What is the primary objective of Paragraph C?",
+          "options": [
+            "A. To dismiss prior historical consensus as irrelevant",
+            "B. To demonstrate modern practical applications of the research",
+            "C. To calculate the exact cost of construction materials",
+            "D. To criticize international environmental standards"
+          ],
+          "answer": "B",
+          "location": "Paragraph C",
+          "explanation": "Paragraph C bridges the analytical principles into contemporary urban planning and modern engineering solutions."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "task_2_bands": {
+    "band_9": {
+      "Task Response": "Fully addresses all parts of the task with a well-developed response, relevant, fully extended and well-supported ideas.",
+      "Coherence & Cohesion": "Uses cohesion in such a way that it attracts no attention. Skilfully manages paragraphing.",
+      "Lexical Resource": "Uses a wide range of vocabulary with very natural and sophisticated control of lexical features; rare minor slips only as slips.",
+      "Grammatical Range": "Uses a wide range of structures with full flexibility and accuracy; rare minor slips only."
+    },
+    "band_8": {
+      "Task Response": "Sufficiently addresses all parts of the task with a well-developed response, though there may be occasional lapses in content.",
+      "Coherence & Cohesion": "Sequences information and ideas logically. Manages all aspects of cohesion well.",
+      "Lexical Resource": "Uses a wide range of vocabulary fluently and flexibly to convey precise meanings. Skillfully uses uncommon lexical items.",
+      "Grammatical Range": "Uses a wide variety of structures. The majority of sentences are error-free with only very occasional inaccuracies."
+    },
+    "band_7": {
+      "Task Response": "Addresses all parts of the task with a clear position throughout, though some parts may be more fully covered than others.",
+      "Coherence & Cohesion": "Logically organizes information and ideas; clear progression throughout. Uses a range of cohesive devices appropriately.",
+      "Lexical Resource": "Uses a sufficient range of vocabulary with some flexibility and precision. Uses less common lexical items with some awareness of style and collocation.",
+      "Grammatical Range": "Uses a variety of complex structures. Produces frequent error-free sentences with good control of grammar and punctuation."
+    }
+  }
+}

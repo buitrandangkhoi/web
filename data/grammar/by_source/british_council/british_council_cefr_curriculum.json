@@ -1,0 +1,233 @@
+{
+  "framework": "CEFR (Common European Framework of Reference for Languages)",
+  "source": "British Council LearnEnglish Curriculum & Descriptors",
+  "levels": {
+    "A1_A2_Elementary": [
+      {
+        "id": "bc_a1_01",
+        "title": "Present simple: be and other verbs",
+        "description": "Using 'to be' (am/is/are) and action verbs to talk about routine, states and facts.",
+        "formula": "S + V(s/es) + Object",
+        "key_examples": [
+          "I am a student.",
+          "She works in a hospital.",
+          "They do not live in London."
+        ],
+        "exercises": [
+          {
+            "q": "He ___ (live) in Manchester.",
+            "options": [
+              "live",
+              "lives",
+              "living"
+            ],
+            "a": "lives",
+            "explanation": "Third person singular takes -s."
+          }
+        ]
+      },
+      {
+        "id": "bc_a1_02",
+        "title": "Possessives and Demonstratives",
+        "description": "Possessive adjectives (my, your, his, her, its, our, their) and demonstratives (this, that, these, those).",
+        "formula": "Demonstrative + Noun / Possessive + Noun",
+        "key_examples": [
+          "This is my coat.",
+          "Those shoes are very comfortable."
+        ],
+        "exercises": [
+          {
+            "q": "Look at ___ bird over there in the tree!",
+            "options": [
+              "this",
+              "that",
+              "these"
+            ],
+            "a": "that",
+            "explanation": "That refers to a singular object at a distance."
+          }
+        ]
+      },
+      {
+        "id": "bc_a2_01",
+        "title": "Past simple: regular and irregular verbs",
+        "description": "Forming past simple sentences with -ed and common irregular verbs (went, bought, saw, did).",
+        "formula": "S + V2/ed + Object",
+        "key_examples": [
+          "We watched a movie yesterday.",
+          "He bought a new laptop last week."
+        ],
+        "exercises": [
+          {
+            "q": "Yesterday, they ___ (go) to the museum.",
+            "options": [
+              "goed",
+              "went",
+              "gone"
+            ],
+            "a": "went",
+            "explanation": "Past simple irregular form of 'go' is 'went'."
+          }
+        ]
+      },
+      {
+        "id": "bc_a2_02",
+        "title": "Comparatives and Superlatives",
+        "description": "Comparing people, items and qualities with -er/-est and more/most.",
+        "formula": "Adj-er than / More + Adj than / The most + Adj",
+        "key_examples": [
+          "Tokyo is bigger than Rome.",
+          "The blue whale is the largest animal."
+        ],
+        "exercises": [
+          {
+            "q": "This test is ___ (difficult) than the previous one.",
+            "options": [
+              "more difficult",
+              "difficulter",
+              "most difficult"
+            ],
+            "a": "more difficult",
+            "explanation": "Long adjectives take 'more'."
+          }
+        ]
+      }
+    ],
+    "B1_B2_Intermediate": [
+      {
+        "id": "bc_b1_01",
+        "title": "Present perfect with for and since",
+        "description": "Connecting past actions to the present, indicating duration (for) or starting point (since).",
+        "formula": "S + have/has + V3/ed + for/since",
+        "key_examples": [
+          "I have lived here for five years.",
+          "She has known him since 2018."
+        ],
+        "exercises": [
+          {
+            "q": "They have been married ___ 2010.",
+            "options": [
+              "for",
+              "since",
+              "during"
+            ],
+            "a": "since",
+            "explanation": "Since is used with specific starting point in time."
+          }
+        ]
+      },
+      {
+        "id": "bc_b1_02",
+        "title": "Conditionals: First and Second Conditionals",
+        "description": "Real future possibilities vs hypothetical/imaginary situations.",
+        "formula": "1st: If + present, will + V_inf | 2nd: If + past, would + V_inf",
+        "key_examples": [
+          "If it rains, we will stay at home.",
+          "If I won the lottery, I would travel the world."
+        ],
+        "exercises": [
+          {
+            "q": "If I ___ you, I would take that job offer.",
+            "options": [
+              "am",
+              "was",
+              "were"
+            ],
+            "a": "were",
+            "explanation": "In 2nd conditional, 'were' is standard with all subjects."
+          }
+        ]
+      },
+      {
+        "id": "bc_b2_01",
+        "title": "Passive Voice in Academic Contexts",
+        "description": "Shifting focus to the action or receiver; essential for IELTS Academic Task 1 & Task 2.",
+        "formula": "S + be + past participle (+ by Agent)",
+        "key_examples": [
+          "The data was gathered over a five-month period.",
+          "New safety protocols are being implemented."
+        ],
+        "exercises": [
+          {
+            "q": "The report ___ (publish) next Tuesday.",
+            "options": [
+              "will publish",
+              "will be published",
+              "is publish"
+            ],
+            "a": "will be published",
+            "explanation": "Future simple passive: will be + V3."
+          }
+        ]
+      },
+      {
+        "id": "bc_b2_02",
+        "title": "Modal verbs of deduction and speculation",
+        "description": "Must, can't, might, could to express degree of certainty in present and past.",
+        "formula": "Modal + be / Modal + have + past participle",
+        "key_examples": [
+          "She can't be at home; her car isn't outside.",
+          "They must have missed the morning train."
+        ],
+        "exercises": [
+          {
+            "q": "He's not answering his phone. He ___ (must / can't) be sleeping.",
+            "options": [
+              "must",
+              "can't",
+              "shouldn't"
+            ],
+            "a": "must",
+            "explanation": "'Must' indicates a strong logical deduction."
+          }
+        ]
+      }
+    ],
+    "C1_Advanced": [
+      {
+        "id": "bc_c1_01",
+        "title": "Inversion for Emphasis",
+        "description": "Inverting subject and auxiliary verb after negative or restrictive adverbs.",
+        "formula": "Negative adverb (Never/Rarely/Seldom) + Aux + Subject + Verb",
+        "key_examples": [
+          "Rarely have I witnessed such dedication.",
+          "No sooner had we arrived than it started to pour."
+        ],
+        "exercises": [
+          {
+            "q": "Seldom ___ such remarkable talent in an audition.",
+            "options": [
+              "we have seen",
+              "have we seen",
+              "we saw"
+            ],
+            "a": "have we seen",
+            "explanation": "Inversion requires auxiliary before subject after 'seldom'."
+          }
+        ]
+      },
+      {
+        "id": "bc_c1_02",
+        "title": "Mixed Conditionals and Subjunctive Structures",
+        "description": "Combining past condition with present result, or unreal present condition with past result.",
+        "formula": "If + past perfect, would + V_inf (Past cause -> Present effect)",
+        "key_examples": [
+          "If I had taken that plane, I would be in Sydney now.",
+          "I demand that he be present at the hearing."
+        ],
+        "exercises": [
+          {
+            "q": "If she had accepted the promotion last year, she ___ a director now.",
+            "options": [
+              "would be",
+              "would have been",
+              "will be"
+            ],
+            "a": "would be",
+            "explanation": "Past condition leading to present result."
+          }
+        ]
+      }
+    ]
+  }
+}

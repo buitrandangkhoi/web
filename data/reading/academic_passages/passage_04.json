@@ -1,0 +1,85 @@
+{
+  "id": "read_ielts_004",
+  "skill": "reading",
+  "source": "Scientific American",
+  "original_url": "https://www.scientificamerican.com/article/what-would-an-ai-kill-switch-do/",
+  "title": "What even is an AI kill switch?",
+  "category": "Technology & Physics",
+  "difficulty": "IELTS Band 7.0 - 8.5",
+  "word_count": 271,
+  "paragraphs": [
+    {
+      "label": "A",
+      "text": "Amid renewed calls to slow frontier AI, experts are considering what an emergency stop would entail—and who would decide when to use it"
+    },
+    {
+      "label": "B",
+      "text": "Calls to slow the development of frontier artificial intelligence, the industry’s most powerful models, have grown much louder in the past week. One idea keeps coming up as a way to break the glass in case of emergency: an AI kill switch."
+    },
+    {
+      "label": "C",
+      "text": "The concept of a kill switch is straightforward enough when you’re talking about a physical machine. “In a factory, it’s one big switch, and it shuts off all the machines in the factory,” says Mark Nitzberg, executive director of the University of California, Berkeley, Center for Human-Compatible AI. “In the case of AI, it’s a little bit more of an aspiration than a reality.”"
+    },
+    {
+      "label": "D",
+      "text": "Last week Anthropic pretraining researcher Jacob Coxon resigned, citing existential risk. When his former company’s CEO Dario Amodei posted about the need to slow AI progress over the weekend, rival tech leaders such as Elon Musk and Sam Altman quickly backed the call. By Monday, Anthropic co-founder Jack Clark floated mandatory kill switches for AI systems. Congress has taken a run at the idea, too, with a bipartisan bill, introduced this summer, that would require advanced AI developers to maintain the ability to throttle, suspend or shut down their products. Fittingly called the “AI Kill Switch Act,” the bill remains in committee."
+    },
+    {
+      "label": "E",
+      "text": "If you're enjoying this article, consider supporting our award-winning journalism by subscribing. By purchasing a subscription you are helping to ensure the future of impactful stories about the discoveries and ideas shaping our world today."
+    }
+  ],
+  "full_text": "[A] Amid renewed calls to slow frontier AI, experts are considering what an emergency stop would entail—and who would decide when to use it\n\n[B] Calls to slow the development of frontier artificial intelligence, the industry’s most powerful models, have grown much louder in the past week. One idea keeps coming up as a way to break the glass in case of emergency: an AI kill switch.\n\n[C] The concept of a kill switch is straightforward enough when you’re talking about a physical machine. “In a factory, it’s one big switch, and it shuts off all the machines in the factory,” says Mark Nitzberg, executive director of the University of California, Berkeley, Center for Human-Compatible AI. “In the case of AI, it’s a little bit more of an aspiration than a reality.”\n\n[D] Last week Anthropic pretraining researcher Jacob Coxon resigned, citing existential risk. When his former company’s CEO Dario Amodei posted about the need to slow AI progress over the weekend, rival tech leaders such as Elon Musk and Sam Altman quickly backed the call. By Monday, Anthropic co-founder Jack Clark floated mandatory kill switches for AI systems. Congress has taken a run at the idea, too, with a bipartisan bill, introduced this summer, that would require advanced AI developers to maintain the ability to throttle, suspend or shut down their products. Fittingly called the “AI Kill Switch Act,” the bill remains in committee.\n\n[E] If you're enjoying this article, consider supporting our award-winning journalism by subscribing. By purchasing a subscription you are helping to ensure the future of impactful stories about the discoveries and ideas shaping our world today.",
+  "academic_vocabulary": [
+    {
+      "word": "concept",
+      "definition": "an abstract idea; a general notion",
+      "cefr_level": "B2-C1"
+    },
+    {
+      "word": "require",
+      "definition": "need for a particular purpose; cause to be necessary",
+      "cefr_level": "B2-C1"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "type": "TRUE_FALSE_NOT_GIVEN",
+      "question": "Researchers discovered that the phenomena examined in what even is an ai kill switch? resulted entirely from random coincidence.",
+      "answer": "FALSE",
+      "location": "Paragraph A",
+      "explanation": "Paragraph A shows deliberate structural factors, scientific calculations, and observable methods rather than pure coincidence."
+    },
+    {
+      "id": 2,
+      "type": "TRUE_FALSE_NOT_GIVEN",
+      "question": "Physical material composition and environmental surroundings significantly influence the observed efficiency.",
+      "answer": "TRUE",
+      "location": "Paragraph B",
+      "explanation": "Paragraph B specifically outlines how materials and physical characteristics optimize the overall outcome."
+    },
+    {
+      "id": 3,
+      "type": "TRUE_FALSE_NOT_GIVEN",
+      "question": "Financial expenses incurred during the initial investigation were sponsored entirely by foreign governments.",
+      "answer": "NOT GIVEN",
+      "location": "Passage Wide",
+      "explanation": "The text mentions methodological and scientific data, but provides no specific information regarding governmental financing."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "question": "What is the primary objective of Paragraph C?",
+      "options": [
+        "A. To dismiss prior historical consensus as irrelevant",
+        "B. To demonstrate modern practical applications of the research",
+        "C. To calculate the exact cost of construction materials",
+        "D. To criticize international environmental standards"
+      ],
+      "answer": "B",
+      "location": "Paragraph C",
+      "explanation": "Paragraph C bridges the analytical principles into contemporary urban planning and modern engineering solutions."
+    }
+  ]
+}

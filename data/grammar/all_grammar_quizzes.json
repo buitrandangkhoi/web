@@ -1,0 +1,234 @@
+{
+  "total_quizzes": 17,
+  "generated_at": "2026-09-17T04:06:31Z",
+  "quizzes": [
+    {
+      "source": "British Council LearnEnglish",
+      "level": "A1_A2_Elementary",
+      "topic": "Present simple: be and other verbs",
+      "question": "He ___ (live) in Manchester.",
+      "options": [
+        "live",
+        "lives",
+        "living"
+      ],
+      "answer": "lives",
+      "explanation": "Third person singular takes -s."
+    },
+    {
+      "source": "British Council LearnEnglish",
+      "level": "A1_A2_Elementary",
+      "topic": "Possessives and Demonstratives",
+      "question": "Look at ___ bird over there in the tree!",
+      "options": [
+        "this",
+        "that",
+        "these"
+      ],
+      "answer": "that",
+      "explanation": "That refers to a singular object at a distance."
+    },
+    {
+      "source": "British Council LearnEnglish",
+      "level": "A1_A2_Elementary",
+      "topic": "Past simple: regular and irregular verbs",
+      "question": "Yesterday, they ___ (go) to the museum.",
+      "options": [
+        "goed",
+        "went",
+        "gone"
+      ],
+      "answer": "went",
+      "explanation": "Past simple irregular form of 'go' is 'went'."
+    },
+    {
+      "source": "British Council LearnEnglish",
+      "level": "A1_A2_Elementary",
+      "topic": "Comparatives and Superlatives",
+      "question": "This test is ___ (difficult) than the previous one.",
+      "options": [
+        "more difficult",
+        "difficulter",
+        "most difficult"
+      ],
+      "answer": "more difficult",
+      "explanation": "Long adjectives take 'more'."
+    },
+    {
+      "source": "British Council LearnEnglish",
+      "level": "B1_B2_Intermediate",
+      "topic": "Present perfect with for and since",
+      "question": "They have been married ___ 2010.",
+      "options": [
+        "for",
+        "since",
+        "during"
+      ],
+      "answer": "since",
+      "explanation": "Since is used with specific starting point in time."
+    },
+    {
+      "source": "British Council LearnEnglish",
+      "level": "B1_B2_Intermediate",
+      "topic": "Conditionals: First and Second Conditionals",
+      "question": "If I ___ you, I would take that job offer.",
+      "options": [
+        "am",
+        "was",
+        "were"
+      ],
+      "answer": "were",
+      "explanation": "In 2nd conditional, 'were' is standard with all subjects."
+    },
+    {
+      "source": "British Council LearnEnglish",
+      "level": "B1_B2_Intermediate",
+      "topic": "Passive Voice in Academic Contexts",
+      "question": "The report ___ (publish) next Tuesday.",
+      "options": [
+        "will publish",
+        "will be published",
+        "is publish"
+      ],
+      "answer": "will be published",
+      "explanation": "Future simple passive: will be + V3."
+    },
+    {
+      "source": "British Council LearnEnglish",
+      "level": "B1_B2_Intermediate",
+      "topic": "Modal verbs of deduction and speculation",
+      "question": "He's not answering his phone. He ___ (must / can't) be sleeping.",
+      "options": [
+        "must",
+        "can't",
+        "shouldn't"
+      ],
+      "answer": "must",
+      "explanation": "'Must' indicates a strong logical deduction."
+    },
+    {
+      "source": "British Council LearnEnglish",
+      "level": "C1_Advanced",
+      "topic": "Inversion for Emphasis",
+      "question": "Seldom ___ such remarkable talent in an audition.",
+      "options": [
+        "we have seen",
+        "have we seen",
+        "we saw"
+      ],
+      "answer": "have we seen",
+      "explanation": "Inversion requires auxiliary before subject after 'seldom'."
+    },
+    {
+      "source": "British Council LearnEnglish",
+      "level": "C1_Advanced",
+      "topic": "Mixed Conditionals and Subjunctive Structures",
+      "question": "If she had accepted the promotion last year, she ___ a director now.",
+      "options": [
+        "would be",
+        "would have been",
+        "will be"
+      ],
+      "answer": "would be",
+      "explanation": "Past condition leading to present result."
+    },
+    {
+      "source": "EnglishClub",
+      "level": "A1-A2",
+      "topic": "Nouns",
+      "question": "Which of the following is an uncountable noun?",
+      "options": [
+        "Information",
+        "Table",
+        "Apple",
+        "Dog"
+      ],
+      "answer": "Information",
+      "explanation": "'Information' is an uncountable noun in English and cannot be pluralized with -s."
+    },
+    {
+      "source": "EnglishClub",
+      "level": "A1-A2",
+      "topic": "Verbs",
+      "question": "Choose the correct past participle form of 'fly':",
+      "options": [
+        "flew",
+        "flown",
+        "flying",
+        "flyed"
+      ],
+      "answer": "flown",
+      "explanation": "The forms are: fly - flew - flown."
+    },
+    {
+      "source": "EnglishClub",
+      "level": "A1-A2",
+      "topic": "Adverbs",
+      "question": "Identify the adverb in: 'He ran remarkably fast to catch the bus.'",
+      "options": [
+        "ran",
+        "remarkably",
+        "catch",
+        "bus"
+      ],
+      "answer": "remarkably",
+      "explanation": "'Remarkably' is an adverb of degree modifying the adverb 'fast'."
+    },
+    {
+      "source": "Perfect English Grammar",
+      "level": "B1-B2",
+      "topic": "First Conditional",
+      "question": "If you ___ early, we will arrive before the sunset.",
+      "options": [
+        "leave",
+        "left",
+        "will leave",
+        "leaves"
+      ],
+      "answer": "leave",
+      "explanation": "In First Conditional, the 'if' clause uses present simple."
+    },
+    {
+      "source": "Perfect English Grammar",
+      "level": "B1-B2",
+      "topic": "Passive Voice",
+      "question": "The national monument ___ by thousands of tourists every day.",
+      "options": [
+        "is visited",
+        "was visited",
+        "visits",
+        "has visited"
+      ],
+      "answer": "is visited",
+      "explanation": "Present simple passive: is/are + V3."
+    },
+    {
+      "source": "EnglishGrammar.org",
+      "level": "B2-C1",
+      "topic": "Modal Verbs",
+      "question": "You ___ brought an umbrella; the weather forecast says clear skies all afternoon.",
+      "options": [
+        "needn't have",
+        "mustn't have",
+        "couldn't have",
+        "should have"
+      ],
+      "answer": "needn't have",
+      "explanation": "'Needn't have + V3' means an action was performed but was unnecessary."
+    },
+    {
+      "source": "EnglishGrammar.org",
+      "level": "B2-C1",
+      "topic": "Inversion",
+      "question": "Not only ___ the exam, but she also scored top marks.",
+      "options": [
+        "did she pass",
+        "she passed",
+        "has she pass",
+        "passed she"
+      ],
+      "answer": "did she pass",
+      "explanation": "After negative adverb 'not only', inversion is mandatory: did + S + V_inf."
+    }
+  ]
+}

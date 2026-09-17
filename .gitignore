@@ -1,0 +1,47 @@
+# ── Python cache ─────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── File nguồn thô (không phục vụ trên web, kích thước lớn) ─────────────────
+# File IPA text thô 3.1MB — dữ liệu nguồn, đã xử lý vào JSON
+data/pronunciation/us/en_US_ipa.txt
+
+# File PDF nguồn — tài liệu tham khảo, không deploy lên web
+*.pdf
+
+# ── File trùng lặp ở thư mục gốc (bản chính nằm trong data/vocabulary/) ─────
+3000_oxford_words_by_topic.json
+3000_oxford_words_by_topic.csv
+
+# ── Secrets & environment ─────────────────────────────────────────────────────
+.env
+.env.*
+*.env
+secrets.json
+config.local.py
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# ── Editor / IDE ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Node (phòng trường hợp dùng sau) ─────────────────────────────────────────
+node_modules/
+npm-debug.log*
+
+# ── Netlify build cache ───────────────────────────────────────────────────────
+.netlify/

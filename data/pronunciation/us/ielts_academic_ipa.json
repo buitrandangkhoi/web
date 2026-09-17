@@ -1,0 +1,688 @@
+{
+  "dialect": "General American (US)",
+  "total_words": 60,
+  "words": [
+    {
+      "word": "academic",
+      "us_ipa": "/ˌækəˈdɛmɪk/",
+      "all_us_variants": [
+        "/ˌækəˈdɛmɪk/"
+      ],
+      "syllables": 4,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/academic.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "analysis",
+      "us_ipa": "/əˈnæɫəsəs/",
+      "all_us_variants": [
+        "/əˈnæɫəsəs/",
+        "/əˈnæɫɪsɪs/"
+      ],
+      "syllables": 4,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/analysis.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "approach",
+      "us_ipa": "/əˈpɹoʊtʃ/",
+      "all_us_variants": [
+        "/əˈpɹoʊtʃ/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/approach.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "benefit",
+      "us_ipa": "/ˈbɛnəfɪt/",
+      "all_us_variants": [
+        "/ˈbɛnəfɪt/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/benefit.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "concept",
+      "us_ipa": "/ˈkɑnsɛpt/",
+      "all_us_variants": [
+        "/ˈkɑnsɛpt/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/concept.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "context",
+      "us_ipa": "/ˈkɑntɛkst/",
+      "all_us_variants": [
+        "/ˈkɑntɛkst/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/context.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "criteria",
+      "us_ipa": "/kɹaɪˈtɪɹiə/",
+      "all_us_variants": [
+        "/kɹaɪˈtɪɹiə/"
+      ],
+      "syllables": 5,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/criteria.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "crucial",
+      "us_ipa": "/ˈkɹuʃəɫ/",
+      "all_us_variants": [
+        "/ˈkɹuʃəɫ/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/crucial.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "data",
+      "us_ipa": "/ˈdætə/",
+      "all_us_variants": [
+        "/ˈdætə/",
+        "/ˈdeɪtə/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/data.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "derive",
+      "us_ipa": "/dɝˈaɪv/",
+      "all_us_variants": [
+        "/dɝˈaɪv/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/derive.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "economic",
+      "us_ipa": "/ˌɛkəˈnɑmɪk/",
+      "all_us_variants": [
+        "/ˌɛkəˈnɑmɪk/",
+        "/ˌikəˈnɑmɪk/"
+      ],
+      "syllables": 4,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/economic.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "environment",
+      "us_ipa": "/ɪnˈvaɪɹənmənt/",
+      "all_us_variants": [
+        "/ɪnˈvaɪɹənmənt/"
+      ],
+      "syllables": 5,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/environment.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "establish",
+      "us_ipa": "/ɪˈstæbɫɪʃ/",
+      "all_us_variants": [
+        "/ɪˈstæbɫɪʃ/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/establish.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "estimate",
+      "us_ipa": "/ˈɛstəˌmeɪt/",
+      "all_us_variants": [
+        "/ˈɛstəˌmeɪt/",
+        "/ˈɛstəmət/"
+      ],
+      "syllables": 4,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/estimate.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "evidence",
+      "us_ipa": "/ˈɛvədəns/",
+      "all_us_variants": [
+        "/ˈɛvədəns/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/evidence.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "factor",
+      "us_ipa": "/ˈfæktɝ/",
+      "all_us_variants": [
+        "/ˈfæktɝ/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/factor.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "function",
+      "us_ipa": "/ˈfəŋkʃən/",
+      "all_us_variants": [
+        "/ˈfəŋkʃən/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/function.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "identify",
+      "us_ipa": "/aɪˈdɛntəˌfaɪ/",
+      "all_us_variants": [
+        "/aɪˈdɛntəˌfaɪ/"
+      ],
+      "syllables": 6,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/identify.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "indicate",
+      "us_ipa": "/ˈɪndəˌkeɪt/",
+      "all_us_variants": [
+        "/ˈɪndəˌkeɪt/"
+      ],
+      "syllables": 4,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/indicate.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "individual",
+      "us_ipa": "/ˌɪndəˈvɪdʒəwəɫ/",
+      "all_us_variants": [
+        "/ˌɪndəˈvɪdʒəwəɫ/"
+      ],
+      "syllables": 5,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/individual.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "interpret",
+      "us_ipa": "/ˌɪnˈtɝpɹət/",
+      "all_us_variants": [
+        "/ˌɪnˈtɝpɹət/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/interpret.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "involve",
+      "us_ipa": "/ˌɪnˈvɑɫv/",
+      "all_us_variants": [
+        "/ˌɪnˈvɑɫv/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/involve.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "issue",
+      "us_ipa": "/ˈɪʃu/",
+      "all_us_variants": [
+        "/ˈɪʃu/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/issue.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "major",
+      "us_ipa": "/ˈmeɪdʒɝ/",
+      "all_us_variants": [
+        "/ˈmeɪdʒɝ/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/major.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "method",
+      "us_ipa": "/ˈmɛθəd/",
+      "all_us_variants": [
+        "/ˈmɛθəd/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/method.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "occur",
+      "us_ipa": "/əˈkɝ/",
+      "all_us_variants": [
+        "/əˈkɝ/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/occur.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "period",
+      "us_ipa": "/ˈpɪɹiəd/",
+      "all_us_variants": [
+        "/ˈpɪɹiəd/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/period.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "policy",
+      "us_ipa": "/ˈpɑɫəsi/",
+      "all_us_variants": [
+        "/ˈpɑɫəsi/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/policy.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "principle",
+      "us_ipa": "/ˈpɹɪnsəpəɫ/",
+      "all_us_variants": [
+        "/ˈpɹɪnsəpəɫ/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/principle.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "procedure",
+      "us_ipa": "/pɹəˈsidʒɝ/",
+      "all_us_variants": [
+        "/pɹəˈsidʒɝ/",
+        "/pɹoʊˈsidʒɝ/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/procedure.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "process",
+      "us_ipa": "/ˈpɹɑˌsɛs/",
+      "all_us_variants": [
+        "/ˈpɹɑˌsɛs/",
+        "/ˈpɹɔˌsɛs/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/process.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "require",
+      "us_ipa": "/ˌɹiˈkwaɪɝ/",
+      "all_us_variants": [
+        "/ˌɹiˈkwaɪɝ/",
+        "/ɹiˈkwaɪɹ/",
+        "/ɹɪˈkwaɪɝ/"
+      ],
+      "syllables": 4,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/require.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "research",
+      "us_ipa": "/ˈɹisɝtʃ/",
+      "all_us_variants": [
+        "/ˈɹisɝtʃ/",
+        "/ɹiˈsɝtʃ/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/research.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "respond",
+      "us_ipa": "/ɹiˈspɑnd/",
+      "all_us_variants": [
+        "/ɹiˈspɑnd/",
+        "/ɹɪˈspɑnd/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/respond.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "role",
+      "us_ipa": "/ˈɹoʊɫ/",
+      "all_us_variants": [
+        "/ˈɹoʊɫ/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/role.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "section",
+      "us_ipa": "/ˈsɛkʃən/",
+      "all_us_variants": [
+        "/ˈsɛkʃən/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/section.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "significant",
+      "us_ipa": "/səɡˈnɪfɪkənt/",
+      "all_us_variants": [
+        "/səɡˈnɪfɪkənt/",
+        "/sɪɡˈnɪfɪkənt/"
+      ],
+      "syllables": 4,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/significant.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "similar",
+      "us_ipa": "/ˈsɪməɫɝ/",
+      "all_us_variants": [
+        "/ˈsɪməɫɝ/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/similar.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "source",
+      "us_ipa": "/ˈsɔɹs/",
+      "all_us_variants": [
+        "/ˈsɔɹs/"
+      ],
+      "syllables": 1,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/source.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "specific",
+      "us_ipa": "/spəˈsɪfɪk/",
+      "all_us_variants": [
+        "/spəˈsɪfɪk/",
+        "/spɪˈsɪfɪk/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/specific.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "structure",
+      "us_ipa": "/ˈstɹəktʃɝ/",
+      "all_us_variants": [
+        "/ˈstɹəktʃɝ/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/structure.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "theory",
+      "us_ipa": "/ˈθiɝi/",
+      "all_us_variants": [
+        "/ˈθiɝi/",
+        "/ˈθɪɹi/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/theory.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "vary",
+      "us_ipa": "/ˈvɛɹi/",
+      "all_us_variants": [
+        "/ˈvɛɹi/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/vary.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "schedule",
+      "us_ipa": "/ˈskɛdʒuɫ/",
+      "all_us_variants": [
+        "/ˈskɛdʒuɫ/",
+        "/ˈskɛdʒʊɫ/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/schedule.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "water",
+      "us_ipa": "/ˈwɔtɝ/",
+      "all_us_variants": [
+        "/ˈwɔtɝ/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/water.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "opportunity",
+      "us_ipa": "/ˌɑpɝˈtunəti/",
+      "all_us_variants": [
+        "/ˌɑpɝˈtunəti/"
+      ],
+      "syllables": 5,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/opportunity.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "pronunciation",
+      "us_ipa": "/pɹəˌnənsiˈeɪʃən/",
+      "all_us_variants": [
+        "/pɹəˌnənsiˈeɪʃən/",
+        "/pɹoʊˌnənsiˈeɪʃən/"
+      ],
+      "syllables": 6,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/pronunciation.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "university",
+      "us_ipa": "/ˌjunəˈvɝsəti/",
+      "all_us_variants": [
+        "/ˌjunəˈvɝsəti/"
+      ],
+      "syllables": 5,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/university.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "technology",
+      "us_ipa": "/tɛkˈnɑɫədʒi/",
+      "all_us_variants": [
+        "/tɛkˈnɑɫədʒi/"
+      ],
+      "syllables": 4,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/technology.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "communication",
+      "us_ipa": "/kəmˌjunəˈkeɪʃən/",
+      "all_us_variants": [
+        "/kəmˌjunəˈkeɪʃən/"
+      ],
+      "syllables": 6,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/communication.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "development",
+      "us_ipa": "/dɪˈvɛɫəpmənt/",
+      "all_us_variants": [
+        "/dɪˈvɛɫəpmənt/"
+      ],
+      "syllables": 4,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/development.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "international",
+      "us_ipa": "/ˌɪnɝˈnæʃənəɫ/",
+      "all_us_variants": [
+        "/ˌɪnɝˈnæʃənəɫ/",
+        "/ˌɪntɝˈnæʃənəɫ/"
+      ],
+      "syllables": 5,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/international.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "government",
+      "us_ipa": "/ˈɡəvɝmənt/",
+      "all_us_variants": [
+        "/ˈɡəvɝmənt/",
+        "/ˈɡəvɝnmənt/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/government.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "education",
+      "us_ipa": "/ˌɛdʒəˈkeɪʃən/",
+      "all_us_variants": [
+        "/ˌɛdʒəˈkeɪʃən/",
+        "/ˌɛdʒjuˈkeɪʃən/"
+      ],
+      "syllables": 5,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/education.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "experience",
+      "us_ipa": "/ɪkˈspɪɹiəns/",
+      "all_us_variants": [
+        "/ɪkˈspɪɹiəns/"
+      ],
+      "syllables": 4,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/experience.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "community",
+      "us_ipa": "/kəmˈjunəti/",
+      "all_us_variants": [
+        "/kəmˈjunəti/",
+        "/kəmˈjunɪti/"
+      ],
+      "syllables": 4,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/community.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "information",
+      "us_ipa": "/ˌɪnfɝˈmeɪʃən/",
+      "all_us_variants": [
+        "/ˌɪnfɝˈmeɪʃən/",
+        "/ɪnˈfɔɹˈmeɪʃən/"
+      ],
+      "syllables": 5,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/information.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "important",
+      "us_ipa": "/ˌɪmˈpɔɹtənt/",
+      "all_us_variants": [
+        "/ˌɪmˈpɔɹtənt/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/important.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "question",
+      "us_ipa": "/ˈkwɛstʃən/",
+      "all_us_variants": [
+        "/ˈkwɛstʃən/",
+        "/ˈkwɛʃən/"
+      ],
+      "syllables": 2,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/question.mp3",
+      "category": "Academic / IELTS Core"
+    },
+    {
+      "word": "different",
+      "us_ipa": "/ˈdɪfɝənt/",
+      "all_us_variants": [
+        "/ˈdɪfɝənt/",
+        "/ˈdɪfɹənt/"
+      ],
+      "syllables": 3,
+      "has_primary_stress": true,
+      "audio_file": "pronunciation/us/audio/different.mp3",
+      "category": "Academic / IELTS Core"
+    }
+  ]
+}

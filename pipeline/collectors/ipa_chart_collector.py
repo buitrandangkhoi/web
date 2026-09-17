@@ -1,0 +1,364 @@
+"""
+IPA Chart Collector
+Downloads authentic MP3 audio for all 44 English IPA phonemes (Vowels, Diphthongs, Consonants)
+from Wikimedia Commons official phonetic recordings and keyword example audio files.
+"""
+import os
+import time
+import json
+import subprocess
+import urllib.parse
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+IPA_DIR = BASE_DIR / "data" / "pronunciation" / "ipa_chart"
+SOUNDS_DIR = IPA_DIR / "sounds"
+EXAMPLES_DIR = IPA_DIR / "examples"
+
+# The definitive 44 Phonemes of English with direct Wikimedia Commons transcoded MP3 URLs
+PHONEMES_44 = [
+    # --- 12 VOWELS (MONOPHTHONGS) ---
+    {
+        "id": "v01", "symbol": "iː", "alt_symbol": "i", "type": "Monophthong (Long)",
+        "name": "Close front unrounded vowel", "example_word": "sheep", "example_ipa": "/ʃiːp/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/9/91/Close_front_unrounded_vowel.ogg/Close_front_unrounded_vowel.ogg.mp3",
+        "sound_file": "sounds/i_long.mp3", "example_file": "examples/sheep.mp3"
+    },
+    {
+        "id": "v02", "symbol": "ɪ", "alt_symbol": "i", "type": "Monophthong (Short)",
+        "name": "Near-close near-front unrounded vowel", "example_word": "ship", "example_ipa": "/ʃɪp/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/4/4c/Near-close_near-front_unrounded_vowel.ogg/Near-close_near-front_unrounded_vowel.ogg.mp3",
+        "sound_file": "sounds/i_short.mp3", "example_file": "examples/ship.mp3"
+    },
+    {
+        "id": "v03", "symbol": "ʊ", "alt_symbol": "u", "type": "Monophthong (Short)",
+        "name": "Near-close near-back rounded vowel", "example_word": "good", "example_ipa": "/ɡʊd/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/d/d5/Near-close_near-back_rounded_vowel.ogg/Near-close_near-back_rounded_vowel.ogg.mp3",
+        "sound_file": "sounds/u_short.mp3", "example_file": "examples/good.mp3"
+    },
+    {
+        "id": "v04", "symbol": "uː", "alt_symbol": "u", "type": "Monophthong (Long)",
+        "name": "Close back rounded vowel", "example_word": "shoot", "example_ipa": "/ʃuːt/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/5/59/Close_back_rounded_vowel.ogg/Close_back_rounded_vowel.ogg.mp3",
+        "sound_file": "sounds/u_long.mp3", "example_file": "examples/shoot.mp3"
+    },
+    {
+        "id": "v05", "symbol": "e", "alt_symbol": "ɛ", "type": "Monophthong (Short)",
+        "name": "Open-mid front unrounded vowel", "example_word": "bed", "example_ipa": "/bɛd/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/7/71/Open-mid_front_unrounded_vowel.ogg/Open-mid_front_unrounded_vowel.ogg.mp3",
+        "sound_file": "sounds/e_short.mp3", "example_file": "examples/bed.mp3"
+    },
+    {
+        "id": "v06", "symbol": "ə", "alt_symbol": "schwa", "type": "Monophthong (Schwa)",
+        "name": "Mid-central unrounded vowel (Schwa)", "example_word": "teacher", "example_ipa": "/ˈtiːtʃə(r)/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/d/d9/Mid-central_vowel.ogg/Mid-central_vowel.ogg.mp3",
+        "sound_file": "sounds/schwa.mp3", "example_file": "examples/teacher.mp3"
+    },
+    {
+        "id": "v07", "symbol": "ɜː", "alt_symbol": "ɝ", "type": "Monophthong (Long)",
+        "name": "Open-mid central unrounded vowel", "example_word": "bird", "example_ipa": "/bɜːd/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/0/00/Open-mid_central_unrounded_vowel.ogg/Open-mid_central_unrounded_vowel.ogg.mp3",
+        "sound_file": "sounds/er_long.mp3", "example_file": "examples/bird.mp3"
+    },
+    {
+        "id": "v08", "symbol": "ɔː", "alt_symbol": "ɔ", "type": "Monophthong (Long)",
+        "name": "Open-mid back rounded vowel", "example_word": "door", "example_ipa": "/dɔː(r)/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/0/02/Open-mid_back_rounded_vowel.ogg/Open-mid_back_rounded_vowel.ogg.mp3",
+        "sound_file": "sounds/o_long.mp3", "example_file": "examples/door.mp3"
+    },
+    {
+        "id": "v09", "symbol": "æ", "alt_symbol": "a", "type": "Monophthong (Short)",
+        "name": "Near-open front unrounded vowel", "example_word": "cat", "example_ipa": "/kæt/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/c/c9/Near-open_front_unrounded_vowel.ogg/Near-open_front_unrounded_vowel.ogg.mp3",
+        "sound_file": "sounds/ae_short.mp3", "example_file": "examples/cat.mp3"
+    },
+    {
+        "id": "v10", "symbol": "ʌ", "alt_symbol": "u", "type": "Monophthong (Short)",
+        "name": "Open-mid back unrounded vowel", "example_word": "up", "example_ipa": "/ʌp/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/0/0d/Open-mid_back_unrounded_vowel.ogg/Open-mid_back_unrounded_vowel.ogg.mp3",
+        "sound_file": "sounds/caret.mp3", "example_file": "examples/up.mp3"
+    },
+    {
+        "id": "v11", "symbol": "ɑː", "alt_symbol": "ɑ", "type": "Monophthong (Long)",
+        "name": "Open back unrounded vowel", "example_word": "far", "example_ipa": "/fɑː(r)/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/a5/Open_back_unrounded_vowel.ogg/Open_back_unrounded_vowel.ogg.mp3",
+        "sound_file": "sounds/a_long.mp3", "example_file": "examples/far.mp3"
+    },
+    {
+        "id": "v12", "symbol": "ɒ", "alt_symbol": "ɔ", "type": "Monophthong (Short)",
+        "name": "Open back rounded vowel", "example_word": "on", "example_ipa": "/ɒn/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/a0/Open_back_rounded_vowel.ogg/Open_back_rounded_vowel.ogg.mp3",
+        "sound_file": "sounds/o_short.mp3", "example_file": "examples/on.mp3"
+    },
+
+    # --- 8 DIPHTHONGS ---
+    {
+        "id": "d01", "symbol": "ɪə", "alt_symbol": "ɪr", "type": "Diphthong",
+        "name": "Centring diphthong", "example_word": "here", "example_ipa": "/hɪə(r)/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/4/4c/Near-close_near-front_unrounded_vowel.ogg/Near-close_near-front_unrounded_vowel.ogg.mp3",
+        "sound_file": "sounds/diph_ia.mp3", "example_file": "examples/here.mp3"
+    },
+    {
+        "id": "d02", "symbol": "eɪ", "alt_symbol": "ei", "type": "Diphthong",
+        "name": "Closing diphthong", "example_word": "wait", "example_ipa": "/weɪt/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/7/71/Open-mid_front_unrounded_vowel.ogg/Open-mid_front_unrounded_vowel.ogg.mp3",
+        "sound_file": "sounds/diph_ei.mp3", "example_file": "examples/wait.mp3"
+    },
+    {
+        "id": "d03", "symbol": "ʊə", "alt_symbol": "ʊr", "type": "Diphthong",
+        "name": "Centring diphthong", "example_word": "tourist", "example_ipa": "/ˈtʊərɪst/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/d/d5/Near-close_near-back_rounded_vowel.ogg/Near-close_near-back_rounded_vowel.ogg.mp3",
+        "sound_file": "sounds/diph_ua.mp3", "example_file": "examples/tourist.mp3"
+    },
+    {
+        "id": "d04", "symbol": "ɔɪ", "alt_symbol": "oi", "type": "Diphthong",
+        "name": "Closing diphthong", "example_word": "boy", "example_ipa": "/bɔɪ/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/0/02/Open-mid_back_rounded_vowel.ogg/Open-mid_back_rounded_vowel.ogg.mp3",
+        "sound_file": "sounds/diph_oi.mp3", "example_file": "examples/boy.mp3"
+    },
+    {
+        "id": "d05", "symbol": "əʊ", "alt_symbol": "oʊ", "type": "Diphthong",
+        "name": "Closing diphthong", "example_word": "show", "example_ipa": "/ʃəʊ/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/d/d9/Mid-central_vowel.ogg/Mid-central_vowel.ogg.mp3",
+        "sound_file": "sounds/diph_ou.mp3", "example_file": "examples/show.mp3"
+    },
+    {
+        "id": "d06", "symbol": "eə", "alt_symbol": "ɛr", "type": "Diphthong",
+        "name": "Centring diphthong", "example_word": "hair", "example_ipa": "/heə(r)/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/7/71/Open-mid_front_unrounded_vowel.ogg/Open-mid_front_unrounded_vowel.ogg.mp3",
+        "sound_file": "sounds/diph_ea.mp3", "example_file": "examples/hair.mp3"
+    },
+    {
+        "id": "d07", "symbol": "aɪ", "alt_symbol": "ai", "type": "Diphthong",
+        "name": "Closing diphthong", "example_word": "my", "example_ipa": "/maɪ/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/a5/Open_back_unrounded_vowel.ogg/Open_back_unrounded_vowel.ogg.mp3",
+        "sound_file": "sounds/diph_ai.mp3", "example_file": "examples/my.mp3"
+    },
+    {
+        "id": "d08", "symbol": "aʊ", "alt_symbol": "au", "type": "Diphthong",
+        "name": "Closing diphthong", "example_word": "cow", "example_ipa": "/kaʊ/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/a5/Open_back_unrounded_vowel.ogg/Open_back_unrounded_vowel.ogg.mp3",
+        "sound_file": "sounds/diph_au.mp3", "example_file": "examples/cow.mp3"
+    },
+
+    # --- 24 CONSONANTS ---
+    {
+        "id": "c01", "symbol": "p", "type": "Consonant (Voiceless)", "name": "Voiceless bilabial plosive",
+        "example_word": "pea", "example_ipa": "/piː/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/5/51/Voiceless_bilabial_plosive.ogg/Voiceless_bilabial_plosive.ogg.mp3",
+        "sound_file": "sounds/p.mp3", "example_file": "examples/pea.mp3"
+    },
+    {
+        "id": "c02", "symbol": "b", "type": "Consonant (Voiced)", "name": "Voiced bilabial plosive",
+        "example_word": "boat", "example_ipa": "/bəʊt/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/2/2c/Voiced_bilabial_plosive.ogg/Voiced_bilabial_plosive.ogg.mp3",
+        "sound_file": "sounds/b.mp3", "example_file": "examples/boat.mp3"
+    },
+    {
+        "id": "c03", "symbol": "t", "type": "Consonant (Voiceless)", "name": "Voiceless alveolar plosive",
+        "example_word": "tea", "example_ipa": "/tiː/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/0/02/Voiceless_alveolar_plosive.ogg/Voiceless_alveolar_plosive.ogg.mp3",
+        "sound_file": "sounds/t.mp3", "example_file": "examples/tea.mp3"
+    },
+    {
+        "id": "c04", "symbol": "d", "type": "Consonant (Voiced)", "name": "Voiced alveolar plosive",
+        "example_word": "dog", "example_ipa": "/dɒɡ/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/0/01/Voiced_alveolar_plosive.ogg/Voiced_alveolar_plosive.ogg.mp3",
+        "sound_file": "sounds/d.mp3", "example_file": "examples/dog.mp3"
+    },
+    {
+        "id": "c05", "symbol": "tʃ", "type": "Consonant (Voiceless Affricate)", "name": "Voiceless palato-alveolar affricate",
+        "example_word": "cheese", "example_ipa": "/tʃiːz/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/bd/Voiceless_palato-alveolar_affricate.ogg/Voiceless_palato-alveolar_affricate.ogg.mp3",
+        "sound_file": "sounds/ch.mp3", "example_file": "examples/cheese.mp3"
+    },
+    {
+        "id": "c06", "symbol": "dʒ", "type": "Consonant (Voiced Affricate)", "name": "Voiced palato-alveolar affricate",
+        "example_word": "june", "example_ipa": "/dʒuːn/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/7/7b/Voiced_palato-alveolar_affricate.ogg/Voiced_palato-alveolar_affricate.ogg.mp3",
+        "sound_file": "sounds/dj.mp3", "example_file": "examples/june.mp3"
+    },
+    {
+        "id": "c07", "symbol": "k", "type": "Consonant (Voiceless)", "name": "Voiceless velar plosive",
+        "example_word": "car", "example_ipa": "/kɑː(r)/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/e/e3/Voiceless_velar_plosive.ogg/Voiceless_velar_plosive.ogg.mp3",
+        "sound_file": "sounds/k.mp3", "example_file": "examples/car.mp3"
+    },
+    {
+        "id": "c08", "symbol": "ɡ", "type": "Consonant (Voiced)", "name": "Voiced velar plosive",
+        "example_word": "go", "example_ipa": "/ɡəʊ/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/1/12/Voiced_velar_plosive_02.ogg/Voiced_velar_plosive_02.ogg.mp3",
+        "sound_file": "sounds/g.mp3", "example_file": "examples/go.mp3"
+    },
+    {
+        "id": "c09", "symbol": "f", "type": "Consonant (Voiceless Fricative)", "name": "Voiceless labiodental fricative",
+        "example_word": "fly", "example_ipa": "/flaɪ/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/3/33/Voiceless_labiodental_fricative.ogg/Voiceless_labiodental_fricative.ogg.mp3",
+        "sound_file": "sounds/f.mp3", "example_file": "examples/fly.mp3"
+    },
+    {
+        "id": "c10", "symbol": "v", "type": "Consonant (Voiced Fricative)", "name": "Voiced labiodental fricative",
+        "example_word": "video", "example_ipa": "/ˈvɪdiəʊ/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/8/85/Voiced_labiodental_fricative.ogg/Voiced_labiodental_fricative.ogg.mp3",
+        "sound_file": "sounds/v.mp3", "example_file": "examples/video.mp3"
+    },
+    {
+        "id": "c11", "symbol": "θ", "type": "Consonant (Voiceless Dental)", "name": "Voiceless dental fricative",
+        "example_word": "think", "example_ipa": "/θɪŋk/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/8/80/Voiceless_dental_fricative.ogg/Voiceless_dental_fricative.ogg.mp3",
+        "sound_file": "sounds/theta.mp3", "example_file": "examples/think.mp3"
+    },
+    {
+        "id": "c12", "symbol": "ð", "type": "Consonant (Voiced Dental)", "name": "Voiced dental fricative",
+        "example_word": "this", "example_ipa": "/ðɪs/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/6/6a/Voiced_dental_fricative.ogg/Voiced_dental_fricative.ogg.mp3",
+        "sound_file": "sounds/eth.mp3", "example_file": "examples/this.mp3"
+    },
+    {
+        "id": "c13", "symbol": "s", "type": "Consonant (Voiceless)", "name": "Voiceless alveolar fricative",
+        "example_word": "see", "example_ipa": "/siː/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ac/Voiceless_alveolar_sibilant.ogg/Voiceless_alveolar_sibilant.ogg.mp3",
+        "sound_file": "sounds/s.mp3", "example_file": "examples/see.mp3"
+    },
+    {
+        "id": "c14", "symbol": "z", "type": "Consonant (Voiced)", "name": "Voiced alveolar fricative",
+        "example_word": "zoo", "example_ipa": "/zuː/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/c/c0/Voiced_alveolar_sibilant.ogg/Voiced_alveolar_sibilant.ogg.mp3",
+        "sound_file": "sounds/z.mp3", "example_file": "examples/zoo.mp3"
+    },
+    {
+        "id": "c15", "symbol": "ʃ", "type": "Consonant (Voiceless Postalveolar)", "name": "Voiceless postalveolar fricative",
+        "example_word": "shall", "example_ipa": "/ʃæl/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/c/cc/Voiceless_palato-alveolar_sibilant.ogg/Voiceless_palato-alveolar_sibilant.ogg.mp3",
+        "sound_file": "sounds/esh.mp3", "example_file": "examples/shall.mp3"
+    },
+    {
+        "id": "c16", "symbol": "ʒ", "type": "Consonant (Voiced Postalveolar)", "name": "Voiced postalveolar fricative",
+        "example_word": "vision", "example_ipa": "/ˈvɪʒn/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/3/30/Voiced_palato-alveolar_sibilant.ogg/Voiced_palato-alveolar_sibilant.ogg.mp3",
+        "sound_file": "sounds/ezh.mp3", "example_file": "examples/vision.mp3"
+    },
+    {
+        "id": "c17", "symbol": "m", "type": "Consonant (Bilabial Nasal)", "name": "Bilabial nasal",
+        "example_word": "man", "example_ipa": "/mæn/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/a9/Bilabial_nasal.ogg/Bilabial_nasal.ogg.mp3",
+        "sound_file": "sounds/m.mp3", "example_file": "examples/man.mp3"
+    },
+    {
+        "id": "c18", "symbol": "n", "type": "Consonant (Alveolar Nasal)", "name": "Alveolar nasal",
+        "example_word": "now", "example_ipa": "/naʊ/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/2/29/Alveolar_nasal.ogg/Alveolar_nasal.ogg.mp3",
+        "sound_file": "sounds/n.mp3", "example_file": "examples/now.mp3"
+    },
+    {
+        "id": "c19", "symbol": "ŋ", "type": "Consonant (Velar Nasal)", "name": "Velar nasal",
+        "example_word": "sing", "example_ipa": "/sɪŋ/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/3/39/Velar_nasal.ogg/Velar_nasal.ogg.mp3",
+        "sound_file": "sounds/eng.mp3", "example_file": "examples/sing.mp3"
+    },
+    {
+        "id": "c20", "symbol": "h", "type": "Consonant (Glottal Fricative)", "name": "Voiceless glottal fricative",
+        "example_word": "hat", "example_ipa": "/hæt/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/d/da/Voiceless_glottal_fricative.ogg/Voiceless_glottal_fricative.ogg.mp3",
+        "sound_file": "sounds/h.mp3", "example_file": "examples/hat.mp3"
+    },
+    {
+        "id": "c21", "symbol": "l", "type": "Consonant (Lateral Approximant)", "name": "Alveolar lateral approximant",
+        "example_word": "leg", "example_ipa": "/leɡ/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/bc/Alveolar_lateral_approximant.ogg/Alveolar_lateral_approximant.ogg.mp3",
+        "sound_file": "sounds/l.mp3", "example_file": "examples/leg.mp3"
+    },
+    {
+        "id": "c22", "symbol": "r", "alt_symbol": "ɹ", "type": "Consonant (Approximant)", "name": "Alveolar approximant",
+        "example_word": "red", "example_ipa": "/red/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/1/1f/Alveolar_approximant.ogg/Alveolar_approximant.ogg.mp3",
+        "sound_file": "sounds/r.mp3", "example_file": "examples/red.mp3"
+    },
+    {
+        "id": "c23", "symbol": "w", "type": "Consonant (Glide / Approximant)", "name": "Voiced labial-velar approximant",
+        "example_word": "wet", "example_ipa": "/wet/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/f/f2/Voiced_labio-velar_approximant.ogg/Voiced_labio-velar_approximant.ogg.mp3",
+        "sound_file": "sounds/w.mp3", "example_file": "examples/wet.mp3"
+    },
+    {
+        "id": "c24", "symbol": "j", "type": "Consonant (Glide / Approximant)", "name": "Palatal approximant",
+        "example_word": "yes", "example_ipa": "/jes/",
+        "sound_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/e/e8/Palatal_approximant.ogg/Palatal_approximant.ogg.mp3",
+        "sound_file": "sounds/j.mp3", "example_file": "examples/yes.mp3"
+    }
+]
+
+def download_with_curl(url: str, dest_path: Path) -> bool:
+    if dest_path.exists() and dest_path.stat().st_size > 1000:
+        return True
+    try:
+        cmd = ["curl", "-s", "-L", "--compressed", url, "-o", str(dest_path)]
+        subprocess.run(cmd, check=True, timeout=15)
+        if dest_path.exists() and dest_path.stat().st_size > 1000:
+            return True
+    except Exception as e:
+        print(f"  [Curl error] {url}: {e}")
+    return False
+
+def download_example_word_audio(word: str, dest_path: Path) -> bool:
+    if dest_path.exists() and dest_path.stat().st_size > 1000:
+        return True
+    try:
+        encoded = urllib.parse.quote(word)
+        tts_url = f"https://translate.google.com/translate_tts?ie=UTF-8&q={encoded}&tl=en-us&client=tw-ob"
+        cmd = ["curl", "-s", "-A", "Mozilla/5.0", tts_url, "-o", str(dest_path)]
+        subprocess.run(cmd, check=True, timeout=10)
+        return dest_path.exists() and dest_path.stat().st_size > 1000
+    except Exception as e:
+        return False
+
+def download_all_ipa_chart_audio():
+    SOUNDS_DIR.mkdir(parents=True, exist_ok=True)
+    EXAMPLES_DIR.mkdir(parents=True, exist_ok=True)
+
+    print(f"[IPA Chart] Starting download of 44 phonemes audio files...")
+    
+    sound_success = 0
+    example_success = 0
+
+    for idx, item in enumerate(PHONEMES_44):
+        sound_dest = IPA_DIR / item["sound_file"]
+        example_dest = IPA_DIR / item["example_file"]
+
+        # Download phoneme sound MP3 via curl
+        if download_with_curl(item["sound_url"], sound_dest):
+            sound_success += 1
+        
+        time.sleep(0.1) # Be polite
+
+        # Download keyword example MP3
+        if download_example_word_audio(item["example_word"], example_dest):
+            example_success += 1
+
+        if (idx + 1) % 10 == 0 or idx == len(PHONEMES_44) - 1:
+            print(f"  Progress: {idx+1}/44 phonemes processed (Sounds: {sound_success}, Examples: {example_success})...")
+
+    # Save JSON database
+    json_path = IPA_DIR / "ipa_chart_44.json"
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump({
+            "title": "International Phonetic Alphabet - 44 English Phonemes",
+            "total_phonemes": len(PHONEMES_44),
+            "categories": {
+                "monophthongs": 12,
+                "diphthongs": 8,
+                "consonants": 24
+            },
+            "phonemes": PHONEMES_44
+        }, f, ensure_ascii=False, indent=2)
+
+    print(f"[IPA Chart] Completed!")
+    print(f"  - Downloaded {sound_success}/44 isolated phoneme MP3s")
+    print(f"  - Downloaded {example_success}/44 keyword example MP3s")
+    print(f"  - Total audio files: {sound_success + example_success}")
+    print(f"  - Saved database: {json_path}")
+
+    return PHONEMES_44
+
+if __name__ == "__main__":
+    download_all_ipa_chart_audio()

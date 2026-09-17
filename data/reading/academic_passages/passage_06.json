@@ -1,0 +1,40 @@
+{
+  "id": "read_ielts_006",
+  "skill": "reading",
+  "source": "The Guardian Science",
+  "original_url": "https://www.theguardian.com/science/2026/sep/15/us-confirms-first-time-it-has-deployed-weapons-space",
+  "title": "US confirms for first time it has deployed weapons in space",
+  "category": "Environment & Health",
+  "difficulty": "IELTS Band 6.5 - 8.0",
+  "word_count": 87,
+  "paragraphs": [
+    {
+      "label": "A",
+      "text": "Analysts warn of an acceleration in high-risk arms race with Russia and China in Earth’s orbit The US has deployed weapons in space, the US military has confirmed, in an extraordinary public announcement that analysts warn will accelerate a high-risk arms race with Russia and China in Earth’s orbit The US secretary of the air force, Troy Meink, said Washington had active “on-orbit” weapons, meaning they had been deployed and were circling the globe."
+    },
+    {
+      "label": "B",
+      "text": "US confirms for first time it has deployed weapons in space."
+    }
+  ],
+  "full_text": "[A] Analysts warn of an acceleration in high-risk arms race with Russia and China in Earth’s orbit The US has deployed weapons in space, the US military has confirmed, in an extraordinary public announcement that analysts warn will accelerate a high-risk arms race with Russia and China in Earth’s orbit The US secretary of the air force, Troy Meink, said Washington had active “on-orbit” weapons, meaning they had been deployed and were circling the globe.\n\n[B] US confirms for first time it has deployed weapons in space.",
+  "academic_vocabulary": [],
+  "questions": [
+    {
+      "id": 1,
+      "type": "TRUE_FALSE_NOT_GIVEN",
+      "question": "According to Paragraph A, researchers focused primarily on us confirms for first time it has deployed weapons in space during recent investigations.",
+      "answer": "TRUE",
+      "location": "Paragraph A",
+      "explanation": "Paragraph A introduces the core subject and context directly."
+    },
+    {
+      "id": 2,
+      "type": "TRUE_FALSE_NOT_GIVEN",
+      "question": "There is unanimous agreement among international authorities regarding the exact outcomes described.",
+      "answer": "FALSE",
+      "location": "Paragraph B",
+      "explanation": "The passage indicates multiple differing factors and variations rather than unanimous consensus."
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "read_ielts_003",
+  "skill": "reading",
+  "source": "Scientific American",
+  "original_url": "https://www.scientificamerican.com/article/the-hole-in-the-ozone-layer-is-healing-but-extreme-weather-may-be-slowing-progress-down/",
+  "title": "The hole in the ozone layer is healing, but extreme weather may be slowing progress down",
+  "category": "Technology & Physics",
+  "difficulty": "IELTS Band 7.0 - 8.5",
+  "word_count": 300,
+  "paragraphs": [
+    {
+      "label": "A",
+      "text": "A map shows the size and shape of the ozone hole over the South Pole on the day of its maximum extent in 2025. Moderate ozone losses (orange) are visible amid areas of more potent ozone losses (red). Scientists describe the ozone “hole” as the area in which ozone concentrations drop below the historical threshold of 220 Dobson units."
+    },
+    {
+      "label": "B",
+      "text": "NASA Earth Observatory image by Lauren Dauphin, using data courtesy of NASA Ozone Watch and GEOS-5 data from the Global Modeling and Assimilation Office at NASA GSFC"
+    },
+    {
+      "label": "C",
+      "text": "The hole in the Earth’s ozone layer is significantly smaller than it’s been in recent history, but it is still far from fully healed, according to the World Meteorological Organization’s (WMO’s) latest annual checkup."
+    },
+    {
+      "label": "D",
+      "text": "The hole in the ozone layer, a protective region of the atmosphere that begins roughly nine miles above Earth’s surface, was discovered in the 1980s. Studies attributed its presence to human-made chemicals called chlorofluorocarbons (CFCs), which destroyed ozone molecules. The layer plays a vital role in absorbing the sun’s ultraviolet radiation, which can cause diseases such as skin cancer. Repairing it became a matter of international priority, with nations signing on to the Montreal Protocol on Substances That Deplete the Ozone Layer, an international treaty banning CFCs, in 1987. Since then, for scientists and activists, the recovery of the ozone layer has stood as a victory, showing that we can act to prevent human-caused damage to our planet."
+    },
+    {
+      "label": "E",
+      "text": "In the latest edition of the WMO’s Ozone and UV bulletin, the organization finds that the hole is “significantly” smaller than its average size between 1990 and 2020. Still, University of California, Los Angeles, professor Suzanne Paulson cautions against overoptimism. The hole has been healing at a slower rate than scientists had predicted it might, she says."
+    }
+  ],
+  "full_text": "[A] A map shows the size and shape of the ozone hole over the South Pole on the day of its maximum extent in 2025. Moderate ozone losses (orange) are visible amid areas of more potent ozone losses (red). Scientists describe the ozone “hole” as the area in which ozone concentrations drop below the historical threshold of 220 Dobson units.\n\n[B] NASA Earth Observatory image by Lauren Dauphin, using data courtesy of NASA Ozone Watch and GEOS-5 data from the Global Modeling and Assimilation Office at NASA GSFC\n\n[C] The hole in the Earth’s ozone layer is significantly smaller than it’s been in recent history, but it is still far from fully healed, according to the World Meteorological Organization’s (WMO’s) latest annual checkup.\n\n[D] The hole in the ozone layer, a protective region of the atmosphere that begins roughly nine miles above Earth’s surface, was discovered in the 1980s. Studies attributed its presence to human-made chemicals called chlorofluorocarbons (CFCs), which destroyed ozone molecules. The layer plays a vital role in absorbing the sun’s ultraviolet radiation, which can cause diseases such as skin cancer. Repairing it became a matter of international priority, with nations signing on to the Montreal Protocol on Substances That Deplete the Ozone Layer, an international treaty banning CFCs, in 1987. Since then, for scientists and activists, the recovery of the ozone layer has stood as a victory, showing that we can act to prevent human-caused damage to our planet.\n\n[E] In the latest edition of the WMO’s Ozone and UV bulletin, the organization finds that the hole is “significantly” smaller than its average size between 1990 and 2020. Still, University of California, Los Angeles, professor Suzanne Paulson cautions against overoptimism. The hole has been healing at a slower rate than scientists had predicted it might, she says.",
+  "academic_vocabulary": [
+    {
+      "word": "role",
+      "definition": "an actor's part in a play, film, etc.; the function assumed or part played",
+      "cefr_level": "B2-C1"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "type": "TRUE_FALSE_NOT_GIVEN",
+      "question": "Researchers discovered that the phenomena examined in the hole in the ozone layer is healing, but extreme weather may be slowing progress down resulted entirely from random coincidence.",
+      "answer": "FALSE",
+      "location": "Paragraph A",
+      "explanation": "Paragraph A shows deliberate structural factors, scientific calculations, and observable methods rather than pure coincidence."
+    },
+    {
+      "id": 2,
+      "type": "TRUE_FALSE_NOT_GIVEN",
+      "question": "Physical material composition and environmental surroundings significantly influence the observed efficiency.",
+      "answer": "TRUE",
+      "location": "Paragraph B",
+      "explanation": "Paragraph B specifically outlines how materials and physical characteristics optimize the overall outcome."
+    },
+    {
+      "id": 3,
+      "type": "TRUE_FALSE_NOT_GIVEN",
+      "question": "Financial expenses incurred during the initial investigation were sponsored entirely by foreign governments.",
+      "answer": "NOT GIVEN",
+      "location": "Passage Wide",
+      "explanation": "The text mentions methodological and scientific data, but provides no specific information regarding governmental financing."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "question": "What is the primary objective of Paragraph C?",
+      "options": [
+        "A. To dismiss prior historical consensus as irrelevant",
+        "B. To demonstrate modern practical applications of the research",
+        "C. To calculate the exact cost of construction materials",
+        "D. To criticize international environmental standards"
+      ],
+      "answer": "B",
+      "location": "Paragraph C",
+      "explanation": "Paragraph C bridges the analytical principles into contemporary urban planning and modern engineering solutions."
+    }
+  ]
+}

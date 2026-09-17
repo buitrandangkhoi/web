@@ -1,0 +1,23 @@
+{
+  "id": "ec_verbs",
+  "title": "Verbs",
+  "category": "parts_of_speech",
+  "part_of_speech": "verbs",
+  "source": "EnglishClub",
+  "source_url": "https://www.englishclub.com/grammar/verbs.php",
+  "explanation": [
+    "In this section we look at the grammar of verbs—their structure and form—and how we use them in spoken and written English.",
+    "What is a Verb?With What is a Verb? Quiz",
+    "Verb Classification1. helping verbs 2. main verbsWith Verb Classification Quiz",
+    "Verb FormsSome languages have 30+ forms of a verb! English has 8 at most :)With Verb Forms Quiz",
+    "TenseSpeak naturally with tense.",
+    "What is Tense?With What is Tense? Quiz",
+    "English Tense SystemWith English Tense System Quiz",
+    "Present Simple CEFR A1We work, We do workWith Present Simple Quiz",
+    "Present Continuous CEFR A1/A2We are workingWith Present Continuous Quiz",
+    "Present Perfect Simple CEFR B1We have workedWith Present Perfect Simple Quiz",
+    "Present Perfect Continuous CEFR B2We have been workingWith Present Perfect Continuous Quiz",
+    "Past Simple CEFR A2We worked, We did workWith Past Simple Quiz"
+  ],
+  "sample_examples": []
+}

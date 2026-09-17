@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IPA Workspace</title>
+<style>
+:root {
+  --bg: #f5ead8;
+  --card-bg: #fffbf4;
+  --olive: #7a8a5e;
+  --olive-dark: #5c6847;
+  --olive-light: #a4b87a;
+  --accent: #c4793a;
+  --accent-light: #f0c89a;
+  --text: #2d2d1e;
+  --text-muted: #7a7060;
+  --border: #e0d4bc;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --radius: 14px;
+  --vowel-bg: #e8f0d8;
+  --vowel-border: #7a8a5e;
+  --diph-bg: #fef3e2;
+  --diph-border: #c4793a;
+  --cons-bg: #e8edf8;
+  --cons-border: #4a6a9a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.header {
+  background: var(--olive);
+  color: #fff;
+  padding: 18px 24px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.header-top h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+.header-top .ipa-badge {
+  background: rgba(255,255,255,0.2);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 13px;
+  font-family: Georgia, serif;
+}
+.tabs {
+  display: flex;
+  gap: 4px;
+}
+.tab {
+  padding: 9px 18px;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  border: none;
+  background: transparent;
+  transition: all 0.15s;
+}
+.tab.active {
+  background: var(--bg);
+  color: var(--olive-dark);
+  font-weight: 600;
+}
+.tab:hover:not(.active) { color: #fff; background: rgba(255,255,255,0.1); }
+
+/* ── Main ── */
+main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px; }
+
+/* ── Panels ── */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ── Stats bar ── */
+.stats-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.stat-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 30px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.stat-chip .dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+.dot-vowel { background: var(--olive); }
+.dot-diph { background: var(--accent); }
+.dot-cons { background: #4a6a9a; }
+
+/* ── Section header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 28px 0 16px;
+}
+.section-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.section-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2px 10px;
+}
+
+/* ── Phoneme Grid ── */
+.phoneme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+/* ── Phoneme Card ── */
+.phoneme-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+  cursor: default;
+}
+.phoneme-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+.phoneme-card.vowel { border-color: var(--vowel-border); }
+.phoneme-card.diphthong { border-color: var(--diph-border); }
+.phoneme-card.consonant { border-color: #4a6a9a; }
+
+.card-top {
+  padding: 16px 14px 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.symbol-area { display: flex; flex-direction: column; gap: 4px; }
+.ipa-symbol {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 42px;
+  line-height: 1;
+  color: var(--text);
+}
+.phoneme-card.vowel .ipa-symbol { color: var(--olive-dark); }
+.phoneme-card.diphthong .ipa-symbol { color: var(--accent); }
+.phoneme-card.consonant .ipa-symbol { color: #4a6a9a; }
+
+.type-tag {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.vowel .type-tag { background: var(--vowel-bg); color: var(--olive-dark); }
+.diphthong .type-tag { background: var(--diph-bg); color: var(--accent); }
+.consonant .type-tag { background: #e8edf8; color: #4a6a9a; }
+
+/* Play sound button (big) */
+.btn-play-sound {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.1s;
+  flex-shrink: 0;
+}
+.btn-play-sound:active { transform: scale(0.9); }
+.vowel .btn-play-sound { background: var(--olive); }
+.diphthong .btn-play-sound { background: var(--accent); }
+.consonant .btn-play-sound { background: #4a6a9a; }
+.btn-play-sound svg { width: 18px; height: 18px; fill: #fff; }
+.btn-play-sound.playing { opacity: 0.6; }
+
+/* Card bottom: name + example word */
+.card-bottom {
+  padding: 10px 14px 14px;
+  border-top: 1px solid var(--border);
+}
+.phoneme-name {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  line-height: 1.3;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.example-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.example-text { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+.example-word {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.example-ipa {
+  font-family: Georgia, serif;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.btn-play-example {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid;
+  background: transparent;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.12s;
+  flex-shrink: 0;
+}
+.vowel .btn-play-example { border-color: var(--olive); color: var(--olive); }
+.vowel .btn-play-example:hover { background: var(--olive); color: #fff; }
+.diphthong .btn-play-example { border-color: var(--accent); color: var(--accent); }
+.diphthong .btn-play-example:hover { background: var(--accent); color: #fff; }
+.consonant .btn-play-example { border-color: #4a6a9a; color: #4a6a9a; }
+.consonant .btn-play-example:hover { background: #4a6a9a; color: #fff; }
+.btn-play-example svg { width: 14px; height: 14px; fill: currentColor; }
+.btn-play-example.playing { opacity: 0.5; }
+
+/* More examples */
+.more-examples {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.more-example-chip {
+  font-size: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 9px;
+  color: var(--text-muted);
+  transition: background 0.12s;
+}
+
+/* ── Practice Panel ── */
+.practice-container { max-width: 640px; margin: 0 auto; }
+.practice-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 40px 32px;
+  border: 2px solid var(--border);
+  text-align: center;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+.practice-hint { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+.practice-symbol {
+  font-family: Georgia, serif;
+  font-size: 100px;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.practice-name { font-size: 16px; color: var(--text-muted); font-style: italic; margin-bottom: 28px; }
+.practice-controls { display: flex; gap: 16px; justify-content: center; align-items: center; }
+.btn-practice {
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.12s, transform 0.1s;
+}
+.btn-practice:active { transform: scale(0.97); }
+.btn-practice-sound { background: var(--olive); color: #fff; }
+.btn-practice-example { background: var(--accent); color: #fff; }
+.btn-practice:hover { opacity: 0.88; }
+.practice-example {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.practice-ex-ipa { font-family: Georgia, serif; font-size: 16px; color: var(--text-muted); margin-bottom: 20px; }
+.practice-nav {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 16px;
+}
+.btn-nav {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--card-bg);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text);
+}
+.btn-nav:hover { background: var(--olive); color: #fff; border-color: var(--olive); }
+.practice-counter {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+.btn-reveal {
+  padding: 10px 22px;
+  border-radius: 10px;
+  background: var(--accent-light);
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-reveal:hover { background: var(--accent); color: #fff; }
+
+/* ── Reference Panel ── */
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.ref-table th {
+  background: var(--olive);
+  color: #fff;
+  padding: 11px 14px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+.ref-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  vertical-align: middle;
+}
+.ref-table tr:last-child td { border-bottom: none; }
+.ref-table tr:hover td { background: #f9f5ee; }
+.ref-symbol {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+.ref-btn {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: opacity 0.12s;
+}
+.ref-btn:hover { opacity: 0.8; }
+.ref-btn-sound { background: var(--olive); }
+.ref-btn-ex { background: var(--accent); }
+.ref-btn svg { width: 12px; height: 12px; fill: #fff; }
+
+/* ── Search ── */
+.search-bar {
+  position: relative;
+  margin-bottom: 20px;
+}
+.search-bar input {
+  width: 100%;
+  padding: 11px 16px 11px 40px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--card-bg);
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+}
+.search-bar input:focus { border-color: var(--olive); }
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+/* Audio wave animation */
+@keyframes pulse {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.6); }
+}
+.audio-wave {
+  display: none;
+  gap: 2px;
+  align-items: center;
+  height: 14px;
+}
+.audio-wave span {
+  display: block;
+  width: 3px;
+  background: currentColor;
+  border-radius: 2px;
+  animation: pulse 0.7s ease-in-out infinite;
+}
+.audio-wave span:nth-child(2) { animation-delay: 0.1s; }
+.audio-wave span:nth-child(3) { animation-delay: 0.2s; }
+.is-playing .audio-wave { display: flex; }
+.is-playing .play-icon { display: none; }
+
+@media (max-width: 600px) {
+  .phoneme-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .ipa-symbol { font-size: 34px; }
+  main { padding: 16px 14px 50px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-top">
+    <h1>IPA Workspace</h1>
+    <span class="ipa-badge">44 Phonemes</span>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('chart', this)">IPA Chart</button>
+    <button class="tab" onclick="switchTab('practice', this)">Practice</button>
+    <button class="tab" onclick="switchTab('reference', this)">Reference Table</button>
+  </div>
+</header>
+
+<main>
+
+<!-- ══ CHART PANEL ══ -->
+<div id="panel-chart" class="panel active">
+  <div class="stats-bar">
+    <div class="stat-chip"><span class="dot dot-vowel"></span>12 Monophthongs</div>
+    <div class="stat-chip"><span class="dot dot-diph"></span>8 Diphthongs</div>
+    <div class="stat-chip"><span class="dot dot-cons"></span>24 Consonants</div>
+  </div>
+
+  <!-- Vowels -->
+  <div class="section-header">
+    <h2>🔵 Vowels (Monophthongs)</h2>
+    <div class="section-line"></div>
+    <span class="section-count">12</span>
+  </div>
+  <div class="phoneme-grid" id="grid-vowels"></div>
+
+  <!-- Diphthongs -->
+  <div class="section-header">
+    <h2>🟠 Diphthongs</h2>
+    <div class="section-line"></div>
+    <span class="section-count">8</span>
+  </div>
+  <div class="phoneme-grid" id="grid-diphthongs"></div>
+
+  <!-- Consonants -->
+  <div class="section-header">
+    <h2>🟣 Consonants</h2>
+    <div class="section-line"></div>
+    <span class="section-count">24</span>
+  </div>
+  <div class="phoneme-grid" id="grid-consonants"></div>
+</div>
+
+<!-- ══ PRACTICE PANEL ══ -->
+<div id="panel-practice" class="panel">
+  <div class="practice-container">
+    <div class="practice-card" id="practice-card">
+      <p class="practice-hint">Listen to the phoneme, then hear an example word</p>
+      <div class="practice-symbol" id="prac-symbol">iː</div>
+      <div class="practice-name" id="prac-name">Close front unrounded vowel</div>
+      <div class="practice-example" id="prac-word">sheep</div>
+      <div class="practice-ex-ipa" id="prac-ipa">/ʃiːp/</div>
+      <div class="practice-controls">
+        <button class="btn-practice btn-practice-sound" onclick="playPracticeSound()">🔊 Play Sound</button>
+        <button class="btn-practice btn-practice-example" onclick="playPracticeExample()">📢 Play Word</button>
+      </div>
+    </div>
+    <div class="practice-nav">
+      <button class="btn-nav" onclick="prevPhoneme()">← Previous</button>
+      <button class="btn-nav" onclick="randomPhoneme()">🔀 Random</button>
+      <button class="btn-nav" onclick="nextPhoneme()">Next →</button>
+    </div>
+    <div class="practice-counter" id="prac-counter">1 / 44</div>
+  </div>
+</div>
+
+<!-- ══ REFERENCE PANEL ══ -->
+<div id="panel-reference" class="panel">
+  <div class="search-bar">
+    <span class="search-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </span>
+    <input type="text" id="ref-search" placeholder="Search by symbol, word, or name…" oninput="filterTable(this.value)">
+  </div>
+  <table class="ref-table" id="ref-table">
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Example</th>
+        <th>IPA</th>
+        <th>Sound</th>
+        <th>Word</th>
+      </tr>
+    </thead>
+    <tbody id="ref-tbody"></tbody>
+  </table>
+</div>
+
+</main>
+
+<script>
+// ── Data ──────────────────────────────────────────────────────────────────
+const AUDIO_BASE = 'data/pronunciation/ipa_chart/';
+
+const EXTRA_EXAMPLES = {
+  'v01': ['see','tree','meet','feel','key'],
+  'v02': ['sit','bit','fish','big','give'],
+  'v03': ['book','put','full','look','could'],
+  'v04': ['moon','blue','true','food','move'],
+  'v05': ['red','head','said','dead','men'],
+  'v06': ['about','sofa','again','open','circus'],
+  'v07': ['word','turn','learn','burn','her'],
+  'v08': ['law','more','four','floor','walk'],
+  'v09': ['hat','bad','hand','sand','man'],
+  'v10': ['cup','sun','run','fun','love'],
+  'v11': ['car','star','bar','hard','past'],
+  'v12': ['hot','top','rock','clock','want'],
+  'd01': ['ear','near','clear','year','beer'],
+  'd02': ['day','cake','rain','name','say'],
+  'd03': ['pure','cure','tour','sure','poor'],
+  'd04': ['coin','oil','join','noise','voice'],
+  'd05': ['go','home','road','stone','know'],
+  'd06': ['care','wear','there','bare','pair'],
+  'd07': ['time','night','fly','sky','kite'],
+  'd08': ['now','house','found','shout','loud'],
+  'c01': ['put','pick','play','spend','cup'],
+  'c02': ['big','ball','book','best','cab'],
+  'c03': ['top','take','time','stop','cat'],
+  'c04': ['day','do','drink','bad','bed'],
+  'c05': ['chair','church','teach','rich','watch'],
+  'c06': ['job','jump','judge','age','bridge'],
+  'c07': ['keep','come','back','school','risk'],
+  'c08': ['give','big','dog','get','bag'],
+  'c09': ['food','feel','off','life','safe'],
+  'c10': ['very','voice','love','five','drive'],
+  'c11': ['three','thank','math','health','bath'],
+  'c12': ['the','that','then','other','with'],
+  'c13': ['sit','say','yes','class','miss'],
+  'c14': ['zero','zone','nose','birds','days'],
+  'c15': ['show','shine','push','fish','wash'],
+  'c16': ['measure','treasure','pleasure','usual','beige'],
+  'c17': ['make','come','warm','dream','swim'],
+  'c18': ['name','ten','rain','down','end'],
+  'c19': ['king','ring','young','bank','long'],
+  'c20': ['have','hello','here','help','ahead'],
+  'c21': ['love','tell','fall','help','milk'],
+  'c22': ['run','rain','read','very','around'],
+  'c23': ['win','well','word','swim','away'],
+  'c24': ['you','year','yellow','use','beyond']
+};
+
+let phonemes = [];
+let practiceIdx = 0;
+let currentAudio = null;
+
+// ── Fetch data ────────────────────────────────────────────────────────────
+async function loadData() {
+  try {
+    const res = await fetch('data/pronunciation/ipa_chart/ipa_chart_44.json');
+    const data = await res.json();
+    phonemes = data.phonemes;
+  } catch(e) {
+    // Fallback inline data if fetch fails (e.g. file:// protocol)
+    phonemes = PHONEMES_FALLBACK;
+  }
+  renderAll();
+}
+
+// ── Audio ─────────────────────────────────────────────────────────────────
+function playAudio(path, btn) {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
+    document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
+  }
+  const audio = new Audio(AUDIO_BASE + path);
+  currentAudio = audio;
+  if (btn) btn.classList.add('playing');
+  audio.play().catch(() => {});
+  audio.onended = () => {
+    if (btn) btn.classList.remove('playing');
+    currentAudio = null;
+  };
+  audio.onerror = () => {
+    if (btn) btn.classList.remove('playing');
+    currentAudio = null;
+  };
+}
+
+// ── Render ────────────────────────────────────────────────────────────────
+const PLAY_ICON = `<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+
+function categoryClass(type) {
+  if (type.includes('Diphthong')) return 'diphthong';
+  if (type.includes('Consonant')) return 'consonant';
+  return 'vowel';
+}
+
+function renderCard(ph) {
+  const cls = categoryClass(ph.type);
+  const extras = (EXTRA_EXAMPLES[ph.id] || []).slice(0, 5);
+  const extraChips = extras.map(w =>
+    `<span class="more-example-chip">${w}</span>`
+  ).join('');
+
+  return `
+  <div class="phoneme-card ${cls}">
+    <div class="card-top">
+      <div class="symbol-area">
+        <span class="ipa-symbol">${ph.symbol}</span>
+        <span class="type-tag">${ph.type.replace('Monophthong','Mono').replace('Consonant ','')}</span>
+      </div>
+      <button class="btn-play-sound"
+        onclick="playAudio('${ph.sound_file}', this)"
+        title="Play phoneme sound">
+        ${PLAY_ICON}
+      </button>
+    </div>
+    <div class="card-bottom">
+      <div class="phoneme-name">${ph.name}</div>
+      <div class="example-row">
+        <div class="example-text">
+          <span class="example-word">${ph.example_word}</span>
+          <span class="example-ipa">${ph.example_ipa}</span>
+        </div>
+        <button class="btn-play-example"
+          onclick="playAudio('${ph.example_file}', this)"
+          title="Play example word">
+          ${PLAY_ICON}
+        </button>
+      </div>
+      ${extraChips ? `<div class="more-examples">${extraChips}</div>` : ''}
+    </div>
+  </div>`;
+}
+
+function renderAll() {
+  const vowels     = phonemes.filter(p => !p.type.includes('Diphthong') && !p.type.includes('Consonant'));
+  const diphthongs = phonemes.filter(p => p.type.includes('Diphthong'));
+  const consonants = phonemes.filter(p => p.type.includes('Consonant'));
+
+  document.getElementById('grid-vowels').innerHTML     = vowels.map(renderCard).join('');
+  document.getElementById('grid-diphthongs').innerHTML = diphthongs.map(renderCard).join('');
+  document.getElementById('grid-consonants').innerHTML = consonants.map(renderCard).join('');
+
+  renderTable();
+  updatePractice();
+}
+
+// ── Reference Table ───────────────────────────────────────────────────────
+function renderTable(filter = '') {
+  const q = filter.toLowerCase();
+  const rows = phonemes.filter(ph =>
+    !q ||
+    ph.symbol.includes(q) ||
+    ph.example_word.toLowerCase().includes(q) ||
+    ph.name.toLowerCase().includes(q) ||
+    ph.type.toLowerCase().includes(q)
+  ).map(ph => {
+    const cls = categoryClass(ph.type);
+    return `<tr>
+      <td><span class="ref-symbol" style="color:${cls==='vowel'?'var(--olive-dark)':cls==='diphthong'?'var(--accent)':'#4a6a9a'}">${ph.symbol}</span></td>
+      <td style="font-size:12px;color:var(--text-muted)">${ph.type.split('(')[0].trim()}</td>
+      <td style="font-size:13px">${ph.name}</td>
+      <td><strong>${ph.example_word}</strong></td>
+      <td style="font-family:Georgia,serif;font-size:13px;color:var(--text-muted)">${ph.example_ipa}</td>
+      <td><button class="ref-btn ref-btn-sound" onclick="playAudio('${ph.sound_file}',this)" title="Play sound">${PLAY_ICON}</button></td>
+      <td><button class="ref-btn ref-btn-ex" onclick="playAudio('${ph.example_file}',this)" title="Play word">${PLAY_ICON}</button></td>
+    </tr>`;
+  }).join('');
+  document.getElementById('ref-tbody').innerHTML = rows || '<tr><td colspan="7" style="text-align:center;color:var(--text-muted);padding:24px">No results</td></tr>';
+}
+
+function filterTable(val) { renderTable(val); }
+
+// ── Practice ──────────────────────────────────────────────────────────────
+function updatePractice() {
+  if (!phonemes.length) return;
+  const ph = phonemes[practiceIdx];
+  document.getElementById('prac-symbol').textContent = ph.symbol;
+  document.getElementById('prac-name').textContent   = ph.name;
+  document.getElementById('prac-word').textContent   = ph.example_word;
+  document.getElementById('prac-ipa').textContent    = ph.example_ipa;
+  document.getElementById('prac-counter').textContent = `${practiceIdx + 1} / ${phonemes.length}`;
+  // Color the symbol
+  const cls = categoryClass(ph.type);
+  const color = cls === 'vowel' ? 'var(--olive-dark)' : cls === 'diphthong' ? 'var(--accent)' : '#4a6a9a';
+  document.getElementById('prac-symbol').style.color = color;
+}
+function playPracticeSound() {
+  if (!phonemes.length) return;
+  playAudio(phonemes[practiceIdx].sound_file, null);
+}
+function playPracticeExample() {
+  if (!phonemes.length) return;
+  playAudio(phonemes[practiceIdx].example_file, null);
+}
+function nextPhoneme()   { practiceIdx = (practiceIdx + 1) % phonemes.length; updatePractice(); }
+function prevPhoneme()   { practiceIdx = (practiceIdx - 1 + phonemes.length) % phonemes.length; updatePractice(); }
+function randomPhoneme() { practiceIdx = Math.floor(Math.random() * phonemes.length); updatePractice(); }
+
+// ── Tab switching ─────────────────────────────────────────────────────────
+function switchTab(tab, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── Fallback data (in case JSON fetch fails on file:// protocol) ──────────
+const PHONEMES_FALLBACK = [
+  {id:'v01',symbol:'iː',type:'Monophthong (Long)',name:'Close front unrounded vowel',example_word:'sheep',example_ipa:'/ʃiːp/',sound_file:'sounds/i_long.mp3',example_file:'examples/sheep.mp3'},
+  {id:'v02',symbol:'ɪ',type:'Monophthong (Short)',name:'Near-close near-front unrounded vowel',example_word:'ship',example_ipa:'/ʃɪp/',sound_file:'sounds/i_short.mp3',example_file:'examples/ship.mp3'},
+  {id:'v03',symbol:'ʊ',type:'Monophthong (Short)',name:'Near-close near-back rounded vowel',example_word:'good',example_ipa:'/ɡʊd/',sound_file:'sounds/u_short.mp3',example_file:'examples/good.mp3'},
+  {id:'v04',symbol:'uː',type:'Monophthong (Long)',name:'Close back rounded vowel',example_word:'shoot',example_ipa:'/ʃuːt/',sound_file:'sounds/u_long.mp3',example_file:'examples/shoot.mp3'},
+  {id:'v05',symbol:'e',type:'Monophthong (Short)',name:'Open-mid front unrounded vowel',example_word:'bed',example_ipa:'/bɛd/',sound_file:'sounds/e_short.mp3',example_file:'examples/bed.mp3'},
+  {id:'v06',symbol:'ə',type:'Monophthong (Schwa)',name:'Mid-central unrounded vowel (Schwa)',example_word:'teacher',example_ipa:'/ˈtiːtʃə(r)/',sound_file:'sounds/schwa.mp3',example_file:'examples/teacher.mp3'},
+  {id:'v07',symbol:'ɜː',type:'Monophthong (Long)',name:'Open-mid central unrounded vowel',example_word:'bird',example_ipa:'/bɜːd/',sound_file:'sounds/er_long.mp3',example_file:'examples/bird.mp3'},
+  {id:'v08',symbol:'ɔː',type:'Monophthong (Long)',name:'Open-mid back rounded vowel',example_word:'door',example_ipa:'/dɔː(r)/',sound_file:'sounds/o_long.mp3',example_file:'examples/door.mp3'},
+  {id:'v09',symbol:'æ',type:'Monophthong (Short)',name:'Near-open front unrounded vowel',example_word:'cat',example_ipa:'/kæt/',sound_file:'sounds/ae_short.mp3',example_file:'examples/cat.mp3'},
+  {id:'v10',symbol:'ʌ',type:'Monophthong (Short)',name:'Open-mid back unrounded vowel',example_word:'up',example_ipa:'/ʌp/',sound_file:'sounds/caret.mp3',example_file:'examples/up.mp3'},
+  {id:'v11',symbol:'ɑː',type:'Monophthong (Long)',name:'Open back unrounded vowel',example_word:'far',example_ipa:'/fɑː(r)/',sound_file:'sounds/a_long.mp3',example_file:'examples/far.mp3'},
+  {id:'v12',symbol:'ɒ',type:'Monophthong (Short)',name:'Open back rounded vowel',example_word:'on',example_ipa:'/ɒn/',sound_file:'sounds/o_short.mp3',example_file:'examples/on.mp3'},
+  {id:'d01',symbol:'ɪə',type:'Diphthong',name:'Centring diphthong',example_word:'here',example_ipa:'/hɪə(r)/',sound_file:'sounds/diph_ia.mp3',example_file:'examples/here.mp3'},
+  {id:'d02',symbol:'eɪ',type:'Diphthong',name:'Closing diphthong',example_word:'wait',example_ipa:'/weɪt/',sound_file:'sounds/diph_ei.mp3',example_file:'examples/wait.mp3'},
+  {id:'d03',symbol:'ʊə',type:'Diphthong',name:'Centring diphthong',example_word:'tourist',example_ipa:'/ˈtʊərɪst/',sound_file:'sounds/diph_ua.mp3',example_file:'examples/tourist.mp3'},
+  {id:'d04',symbol:'ɔɪ',type:'Diphthong',name:'Closing diphthong',example_word:'boy',example_ipa:'/bɔɪ/',sound_file:'sounds/diph_oi.mp3',example_file:'examples/boy.mp3'},
+  {id:'d05',symbol:'əʊ',type:'Diphthong',name:'Closing diphthong',example_word:'show',example_ipa:'/ʃəʊ/',sound_file:'sounds/diph_ou.mp3',example_file:'examples/show.mp3'},
+  {id:'d06',symbol:'eə',type:'Diphthong',name:'Centring diphthong',example_word:'hair',example_ipa:'/heə(r)/',sound_file:'sounds/diph_ea.mp3',example_file:'examples/hair.mp3'},
+  {id:'d07',symbol:'aɪ',type:'Diphthong',name:'Closing diphthong',example_word:'my',example_ipa:'/maɪ/',sound_file:'sounds/diph_ai.mp3',example_file:'examples/my.mp3'},
+  {id:'d08',symbol:'aʊ',type:'Diphthong',name:'Closing diphthong',example_word:'cow',example_ipa:'/kaʊ/',sound_file:'sounds/diph_au.mp3',example_file:'examples/cow.mp3'},
+  {id:'c01',symbol:'p',type:'Consonant (Voiceless)',name:'Voiceless bilabial plosive',example_word:'pea',example_ipa:'/piː/',sound_file:'sounds/p.mp3',example_file:'examples/pea.mp3'},
+  {id:'c02',symbol:'b',type:'Consonant (Voiced)',name:'Voiced bilabial plosive',example_word:'boat',example_ipa:'/bəʊt/',sound_file:'sounds/b.mp3',example_file:'examples/boat.mp3'},
+  {id:'c03',symbol:'t',type:'Consonant (Voiceless)',name:'Voiceless alveolar plosive',example_word:'tea',example_ipa:'/tiː/',sound_file:'sounds/t.mp3',example_file:'examples/tea.mp3'},
+  {id:'c04',symbol:'d',type:'Consonant (Voiced)',name:'Voiced alveolar plosive',example_word:'dog',example_ipa:'/dɒɡ/',sound_file:'sounds/d.mp3',example_file:'examples/dog.mp3'},
+  {id:'c05',symbol:'tʃ',type:'Consonant (Voiceless Affricate)',name:'Voiceless palato-alveolar affricate',example_word:'cheese',example_ipa:'/tʃiːz/',sound_file:'sounds/ch.mp3',example_file:'examples/cheese.mp3'},
+  {id:'c06',symbol:'dʒ',type:'Consonant (Voiced Affricate)',name:'Voiced palato-alveolar affricate',example_word:'june',example_ipa:'/dʒuːn/',sound_file:'sounds/dj.mp3',example_file:'examples/june.mp3'},
+  {id:'c07',symbol:'k',type:'Consonant (Voiceless)',name:'Voiceless velar plosive',example_word:'car',example_ipa:'/kɑː(r)/',sound_file:'sounds/k.mp3',example_file:'examples/car.mp3'},
+  {id:'c08',symbol:'ɡ',type:'Consonant (Voiced)',name:'Voiced velar plosive',example_word:'go',example_ipa:'/ɡəʊ/',sound_file:'sounds/g.mp3',example_file:'examples/go.mp3'},
+  {id:'c09',symbol:'f',type:'Consonant (Voiceless Fricative)',name:'Voiceless labiodental fricative',example_word:'fly',example_ipa:'/flaɪ/',sound_file:'sounds/f.mp3',example_file:'examples/fly.mp3'},
+  {id:'c10',symbol:'v',type:'Consonant (Voiced Fricative)',name:'Voiced labiodental fricative',example_word:'video',example_ipa:'/ˈvɪdiəʊ/',sound_file:'sounds/v.mp3',example_file:'examples/video.mp3'},
+  {id:'c11',symbol:'θ',type:'Consonant (Voiceless Dental)',name:'Voiceless dental fricative',example_word:'think',example_ipa:'/θɪŋk/',sound_file:'sounds/theta.mp3',example_file:'examples/think.mp3'},
+  {id:'c12',symbol:'ð',type:'Consonant (Voiced Dental)',name:'Voiced dental fricative',example_word:'this',example_ipa:'/ðɪs/',sound_file:'sounds/eth.mp3',example_file:'examples/this.mp3'},
+  {id:'c13',symbol:'s',type:'Consonant (Voiceless)',name:'Voiceless alveolar fricative',example_word:'see',example_ipa:'/siː/',sound_file:'sounds/s.mp3',example_file:'examples/see.mp3'},
+  {id:'c14',symbol:'z',type:'Consonant (Voiced)',name:'Voiced alveolar fricative',example_word:'zoo',example_ipa:'/zuː/',sound_file:'sounds/z.mp3',example_file:'examples/zoo.mp3'},
+  {id:'c15',symbol:'ʃ',type:'Consonant (Voiceless Postalveolar)',name:'Voiceless postalveolar fricative',example_word:'shall',example_ipa:'/ʃæl/',sound_file:'sounds/esh.mp3',example_file:'examples/shall.mp3'},
+  {id:'c16',symbol:'ʒ',type:'Consonant (Voiced Postalveolar)',name:'Voiced postalveolar fricative',example_word:'vision',example_ipa:'/ˈvɪʒn/',sound_file:'sounds/ezh.mp3',example_file:'examples/vision.mp3'},
+  {id:'c17',symbol:'m',type:'Consonant (Bilabial Nasal)',name:'Bilabial nasal',example_word:'man',example_ipa:'/mæn/',sound_file:'sounds/m.mp3',example_file:'examples/man.mp3'},
+  {id:'c18',symbol:'n',type:'Consonant (Alveolar Nasal)',name:'Alveolar nasal',example_word:'now',example_ipa:'/naʊ/',sound_file:'sounds/n.mp3',example_file:'examples/now.mp3'},
+  {id:'c19',symbol:'ŋ',type:'Consonant (Velar Nasal)',name:'Velar nasal',example_word:'sing',example_ipa:'/sɪŋ/',sound_file:'sounds/eng.mp3',example_file:'examples/sing.mp3'},
+  {id:'c20',symbol:'h',type:'Consonant (Glottal Fricative)',name:'Voiceless glottal fricative',example_word:'hat',example_ipa:'/hæt/',sound_file:'sounds/h.mp3',example_file:'examples/hat.mp3'},
+  {id:'c21',symbol:'l',type:'Consonant (Lateral Approximant)',name:'Alveolar lateral approximant',example_word:'leg',example_ipa:'/leɡ/',sound_file:'sounds/l.mp3',example_file:'examples/leg.mp3'},
+  {id:'c22',symbol:'r',type:'Consonant (Approximant)',name:'Alveolar approximant',example_word:'red',example_ipa:'/red/',sound_file:'sounds/r.mp3',example_file:'examples/red.mp3'},
+  {id:'c23',symbol:'w',type:'Consonant (Glide / Approximant)',name:'Voiced labial-velar approximant',example_word:'wet',example_ipa:'/wet/',sound_file:'sounds/w.mp3',example_file:'examples/wet.mp3'},
+  {id:'c24',symbol:'j',type:'Consonant (Glide / Approximant)',name:'Palatal approximant',example_word:'yes',example_ipa:'/jes/',sound_file:'sounds/j.mp3',example_file:'examples/yes.mp3'}
+];
+
+// ── Init ──────────────────────────────────────────────────────────────────
+loadData();
+</script>
+</body>
+</html>

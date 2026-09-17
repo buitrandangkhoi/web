@@ -1,0 +1,85 @@
+{
+  "id": "read_ielts_002",
+  "skill": "reading",
+  "source": "The Guardian Science",
+  "original_url": "https://www.theguardian.com/science/2026/sep/16/plantwatch-the-insect-eating-alpine-plant-that-proves-darwin-was-right",
+  "title": "Plantwatch: The insect-eating alpine plant that proves Darwin was right",
+  "category": "Environment & Science",
+  "difficulty": "IELTS Band 7.0 - 8.5",
+  "word_count": 160,
+  "paragraphs": [
+    {
+      "label": "A",
+      "text": "Its leaves, petals and stems are smothered in tiny, sticky hairs and – just as the evolutionary biologist suspected – the sweet glue on the hairs can lure and trap midges before digesting them with an enzyme."
+    },
+    {
+      "label": "B",
+      "text": "The nitrogen from their remains is absorbed into the plant, which is essential for it to survive in the nutrient-poor soils of the Hengduan mountains in south-west China. The plant was also found to have genes related to those found in carnivorous plants."
+    },
+    {
+      "label": "C",
+      "text": "The study findings may point to other killer plants that trap insects with sticky hairs and feed off their remains."
+    },
+    {
+      "label": "D",
+      "text": "The leaves of the wild potatoes Solanum berthaultii and Solanum polyadenium are covered in sticky hairs and trap aphids and some other small pests, potentially opening the way to combine pest control with plant fertiliser."
+    },
+    {
+      "label": "E",
+      "text": "Other sticky-haired plants may follow a similar approach, according to a study in the Botanical Journal of the Linnean Society."
+    }
+  ],
+  "full_text": "[A] Its leaves, petals and stems are smothered in tiny, sticky hairs and – just as the evolutionary biologist suspected – the sweet glue on the hairs can lure and trap midges before digesting them with an enzyme.\n\n[B] The nitrogen from their remains is absorbed into the plant, which is essential for it to survive in the nutrient-poor soils of the Hengduan mountains in south-west China. The plant was also found to have genes related to those found in carnivorous plants.\n\n[C] The study findings may point to other killer plants that trap insects with sticky hairs and feed off their remains.\n\n[D] The leaves of the wild potatoes Solanum berthaultii and Solanum polyadenium are covered in sticky hairs and trap aphids and some other small pests, potentially opening the way to combine pest control with plant fertiliser.\n\n[E] Other sticky-haired plants may follow a similar approach, according to a study in the Botanical Journal of the Linnean Society.",
+  "academic_vocabulary": [
+    {
+      "word": "approach",
+      "definition": "a way of dealing with a situation or problem",
+      "cefr_level": "B2-C1"
+    },
+    {
+      "word": "similar",
+      "definition": "resembling without being identical",
+      "cefr_level": "B2-C1"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "type": "TRUE_FALSE_NOT_GIVEN",
+      "question": "Researchers discovered that the phenomena examined in plantwatch: the insect-eating alpine plant that proves darwin was right resulted entirely from random coincidence.",
+      "answer": "FALSE",
+      "location": "Paragraph A",
+      "explanation": "Paragraph A shows deliberate structural factors, scientific calculations, and observable methods rather than pure coincidence."
+    },
+    {
+      "id": 2,
+      "type": "TRUE_FALSE_NOT_GIVEN",
+      "question": "Physical material composition and environmental surroundings significantly influence the observed efficiency.",
+      "answer": "TRUE",
+      "location": "Paragraph B",
+      "explanation": "Paragraph B specifically outlines how materials and physical characteristics optimize the overall outcome."
+    },
+    {
+      "id": 3,
+      "type": "TRUE_FALSE_NOT_GIVEN",
+      "question": "Financial expenses incurred during the initial investigation were sponsored entirely by foreign governments.",
+      "answer": "NOT GIVEN",
+      "location": "Passage Wide",
+      "explanation": "The text mentions methodological and scientific data, but provides no specific information regarding governmental financing."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "question": "What is the primary objective of Paragraph C?",
+      "options": [
+        "A. To dismiss prior historical consensus as irrelevant",
+        "B. To demonstrate modern practical applications of the research",
+        "C. To calculate the exact cost of construction materials",
+        "D. To criticize international environmental standards"
+      ],
+      "answer": "B",
+      "location": "Paragraph C",
+      "explanation": "Paragraph C bridges the analytical principles into contemporary urban planning and modern engineering solutions."
+    }
+  ]
+}

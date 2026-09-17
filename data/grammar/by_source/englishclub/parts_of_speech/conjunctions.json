@@ -1,0 +1,30 @@
+{
+  "id": "ec_conjunctions",
+  "title": "Conjunctions",
+  "category": "parts_of_speech",
+  "part_of_speech": "conjunctions",
+  "source": "EnglishClub",
+  "source_url": "https://www.englishclub.com/grammar/conjunctions.php",
+  "explanation": [
+    "We use conjunctions to join other words and phrases together. Conjunctions have an important job: without them, we could only make very simple sentences.",
+    "A conjunction is a word like and, but, although, because.",
+    "What Is a Conjunction? With What is a Conjunction? Quiz",
+    "We can consider conjunctions from three aspects.",
+    "Conjunctions have two basic functions or \"jobs\":",
+    "Here are some example conjunctions:",
+    "Conjunctions have three basic formats:",
+    "Coordinating conjunctions always come between the words or clauses that they join.",
+    "Subordinating conjunctions usually come at the beginning of the subordinate clause.",
+    "A coordinating conjunction joins parts of a sentence (for example words or independent clauses) that are grammatically equal or similar. A coordinating conjunction shows that the elements it joins are similar in importance and structure:",
+    "There are seven coordinating conjunctions, and they are all short words of only two or three letters:",
+    "and, but, or, nor, for, yet, so"
+  ],
+  "sample_examples": [
+    "We use coordinating conjunctions to join two parts of a sentence that are grammatically equal. The two parts may be single words or clauses, for example: - Jack and Jill went up the hill. - The water was warm, but I didn't go swimming.",
+    "We use subordinating conjunctions to join a subordinate dependent clause to a main clause, for example: - I went swimming although it was cold.",
+    "single word for example: and, but, because, although",
+    "compound (often ending with as or that) for example: provided that, as long as, in order that",
+    "correlative (surrounding an adverb or adjective) for example: so...that",
+    "Look at this example:"
+  ]
+}

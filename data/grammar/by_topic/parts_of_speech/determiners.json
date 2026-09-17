@@ -1,0 +1,23 @@
+{
+  "id": "ec_determiners",
+  "title": "Determiners",
+  "category": "parts_of_speech",
+  "part_of_speech": "determiners",
+  "source": "EnglishClub",
+  "source_url": "https://www.englishclub.com/grammar/determiners.php",
+  "explanation": [
+    "These pages explain the grammar and usage of determiners, with example sentences.",
+    "What is a Determiner?With What is a Determiner? Quiz",
+    "These are the main determiners. There can be only ONE main determiner in a noun phrase (for more about this, see order of determiners):",
+    "Articlesa/an, the",
+    "Demonstrative Determinersthis/that, these/those",
+    "Possessive Determinersmy, your, his, her, its, our, their",
+    "Pre-determiners come before main determiners and post-determiners come after main determiners. (For how many and where, see order of determiners.)",
+    "Quantifiersall, every, most, many, much, some, few, little, any, no...",
+    "Numberscardinal and ordinal numbersdouble/twice/three times...",
+    "Interrogative Determinerswhose, what, which",
+    "ZERO ArticleWhen we don't need a determiner",
+    "Order of DeterminersDeterminers go at the front of a noun phrase, but which determiners go in what order?"
+  ],
+  "sample_examples": []
+}

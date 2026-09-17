@@ -1,0 +1,61 @@
+{
+  "test_name": "Cambridge IELTS 18 Academic - Reading Practice Test 1",
+  "source": "Cambridge English / Study4 Equivalent",
+  "passages": [
+    {
+      "passage_number": 1,
+      "title": "Urban Farming in the 21st Century",
+      "paragraphs": [
+        "[A] Vertical farming in climate-controlled skyscrapers represents a revolutionary paradigm shift in global agriculture. With the planet's human populace anticipated to swell beyond nine billion by mid-century, conventional rural farming confronts severe ecological bottlenecks.",
+        "[B] High-density vertical agricultural systems cultivate edible plants within modular stacked hydroponic or aeroponic tiers. By illuminating crops with calibrated LED spectral frequencies and administering nutrient-dense mists directly to root structures, indoor farms eliminate the necessity for pesticide applications and natural soil.",
+        "[C] Furthermore, this technique slashes agricultural water usage by upwards of ninety percent compared to traditional open-field farming. Closed-loop transpiration recovery systems capture moisture emitted through plant leaves and re-circulate it into the irrigation supply.",
+        "[D] Nonetheless, critics point to the massive electrical energy required to sustain artificial climate control and 24-hour luminescent arrays. Until metropolitan grids transition entirely to low-cost renewable power, the operational carbon footprint of vertical farms remains an engineering conundrum."
+      ],
+      "vocabulary_highlights": [
+        {
+          "word": "paradigm shift",
+          "ipa": "/ˈpær.ə.daɪm ʃɪft/",
+          "vietnamese": "bước chuyển đổi căn bản"
+        },
+        {
+          "word": "hydroponic",
+          "ipa": "/ˌhaɪ.drəˈpɒn.ɪk/",
+          "vietnamese": "thủy canh (trồng cây trong nước giàu dinh dưỡng)"
+        },
+        {
+          "word": "closed-loop",
+          "ipa": "/ˌkləʊzd ˈluːp/",
+          "vietnamese": "chu trình khép kín"
+        },
+        {
+          "word": "carbon footprint",
+          "ipa": "/ˌkɑː.bən ˈfʊt.prɪnt/",
+          "vietnamese": "dấu chân carbon (lượng phát thải)"
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Traditional farming will easily sustain the nutritional needs of nine billion people without ecological consequences.",
+          "answer": "FALSE",
+          "explanation": "Paragraph A states conventional rural farming confronts severe ecological bottlenecks."
+        },
+        {
+          "number": 2,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "Vertical farms require large quantities of synthetic chemical pesticides.",
+          "answer": "FALSE",
+          "explanation": "Paragraph B states indoor farms eliminate the necessity for pesticide applications."
+        },
+        {
+          "number": 3,
+          "type": "TRUE_FALSE_NOT_GIVEN",
+          "question": "The capital expenditure for constructing vertical farms was funded by municipal taxation.",
+          "answer": "NOT GIVEN",
+          "explanation": "The text mentions water reduction and energy challenges, but contains no mention of municipal tax funding."
+        }
+      ]
+    }
+  ]
+}

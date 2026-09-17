@@ -1,0 +1,58 @@
+{
+  "total_prompts": 2,
+  "prompts": [
+    {
+      "id": "wri_t2_01",
+      "essay_type": "Opinion (Agree / Disagree)",
+      "category": "Technology & Artificial Intelligence",
+      "prompt": "Some people believe that artificial intelligence will create more opportunities than it eliminates, while others argue it poses an existential threat to employment. To what extent do you agree or disagree?",
+      "band_score": 9.0,
+      "essay_breakdown": {
+        "introduction": "The rapid proliferation of artificial intelligence (AI) has sparked intense discourse regarding its net impact on human labor. While critics contend that automation will precipitate unprecedented joblessness, I firmly agree that AI will fundamentally act as a catalyst for economic diversification and novel vocational opportunities, provided society undertakes proactive workforce restructuring.",
+        "body_1_counter_rebuttal": "Opponents often highlight that algorithmic systems and machine learning models are systematically displacing repetitive cognitive and physical occupations. Routine administrative positions, assembly line roles, and basic data analysis are increasingly performed with superior efficiency by automated software. Nonetheless, historical precedents demonstrate that technological revolutions—from the Industrial Revolution to the advent of personal computing—inevitably render certain archaic jobs obsolete while catalyzing far more sophisticated industries.",
+        "body_2_argument": "More significantly, the integration of AI augments human productivity rather than entirely supplanting it. First, the emergence of AI architecture necessitates burgeoning sectors in machine learning engineering, prompt design, ethical compliance, and cybersecurity. Second, by automating mundane burdens, AI liberates professionals in medical diagnostics, scientific research, and pedagogical design to concentrate on empathetic, creative, and high-order strategic problem-solving. This symbiotic interaction inevitably stimulates higher value-added economic sectors.",
+        "conclusion": "In conclusion, although the transitionary disruption caused by algorithmic automation poses legitimate short-term friction, I maintain that AI represents an indispensable driver of future job creation and human advancement. Strategic investment in vocational retraining will ensure that the technology enriches human employment rather than diminishing it."
+      },
+      "cohesive_devices": [
+        "While critics contend that",
+        "Nonetheless",
+        "Historical precedents demonstrate",
+        "More significantly",
+        "In conclusion"
+      ],
+      "lexical_highlights": [
+        "proliferation",
+        "catalyst for economic diversification",
+        "precedented joblessness",
+        "symbiotic interaction",
+        "vocational retraining"
+      ]
+    },
+    {
+      "id": "wri_t2_02",
+      "essay_type": "Discussion (Discuss both views and give your opinion)",
+      "category": "Education & Economy",
+      "prompt": "Some educators argue that higher education should focus entirely on preparing students for specific commercial careers. Others believe that university should aim to provide a broad intellectual foundation. Discuss both views and give your own opinion.",
+      "band_score": 8.5,
+      "essay_breakdown": {
+        "introduction": "Whether tertiary academic institutions should function primarily as vocational training academies or as centers of holistic intellectual cultivation remains a contentious pedagogical dispute. While commercial career preparation undoubtedly optimizes immediate graduate employability, I advocate for an educational ethos that combines rigorous vocational aptitude with comprehensive critical thinking.",
+        "body_1": "On the one hand, advocates of vocation-oriented curriculums argue that tertiary education represents a substantial financial investment. In an increasingly competitive globalized economy, graduates possessing targeted practical competencies—such as software engineering, accounting, or clinical healthcare—seamlessly transition into the workforce, mitigating graduate underemployment. This targeted output directly fuels national economic productivity.",
+        "body_2": "On the other hand, proponents of a broad intellectual curriculum emphasize that technical proficiencies quickly turn obsolete in modern dynamic markets. A foundational education in humanities, logic, philosophy, and interdisciplinary sciences fosters cognitive agility, ethical deliberation, and adaptable problem-solving faculties. Graduates endowed with versatile analytical acumen can effortlessly pivot across evolving industries throughout multi-decade careers.",
+        "conclusion": "To synthesize both perspectives, I believe the dichotomous view of higher education is fundamentally flawed. Modern universities should construct integrated curricula where rigorous discipline-specific skills are underpinned by robust liberal arts reasoning, thereby producing both employable and visionary professionals."
+      },
+      "cohesive_devices": [
+        "On the one hand",
+        "On the other hand",
+        "To synthesize both perspectives",
+        "Thereby producing"
+      ],
+      "lexical_highlights": [
+        "holistic intellectual cultivation",
+        "pedagogical dispute",
+        "cognitive agility",
+        "dichotomous view",
+        "mitigating graduate underemployment"
+      ]
+    }
+  ]
+}

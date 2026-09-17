@@ -1,0 +1,77 @@
+{
+  "total_sentences": 9,
+  "sentences": [
+    {
+      "id": "dict_1_1",
+      "episode_title": "Can apps teach you a language?",
+      "level": "Medium",
+      "text": "Have you ever used Duolingo, Babbel, Busuu or perhaps another language-learning app",
+      "word_count": 12,
+      "hint": "Have ... app"
+    },
+    {
+      "id": "dict_1_2",
+      "episode_title": "Can apps teach you a language?",
+      "level": "Challenging",
+      "text": "Some people love the convenience of these apps – you can learn on the go, like during your commute to work, rather than committing to a certain time each week, like learning in a class",
+      "word_count": 35,
+      "hint": "Some ... class"
+    },
+    {
+      "id": "dict_1_3",
+      "episode_title": "Can apps teach you a language?",
+      "level": "Medium",
+      "text": "But are they teaching the languages effectively",
+      "word_count": 7,
+      "hint": "But ... effectively"
+    },
+    {
+      "id": "dict_2_1",
+      "episode_title": "Climate change and extreme weather",
+      "level": "Challenging",
+      "text": "Every year we see damage, death and destruction caused by hurricanes, cyclones and typhoons - tropical storms",
+      "word_count": 17,
+      "hint": "Every ... storms"
+    },
+    {
+      "id": "dict_2_2",
+      "episode_title": "Climate change and extreme weather",
+      "level": "Medium",
+      "text": "Is climate change making this impact worse",
+      "word_count": 7,
+      "hint": "Is ... worse"
+    },
+    {
+      "id": "dict_2_3",
+      "episode_title": "Climate change and extreme weather",
+      "level": "Medium",
+      "text": "Climate change may be making this destruction worse",
+      "word_count": 8,
+      "hint": "Climate ... worse"
+    },
+    {
+      "id": "dict_3_1",
+      "episode_title": "How do we describe smells?",
+      "level": "Medium",
+      "text": "What is the worst smell in the world",
+      "word_count": 8,
+      "hint": "What ... world"
+    },
+    {
+      "id": "dict_3_2",
+      "episode_title": "How do we describe smells?",
+      "level": "Medium",
+      "text": "And what is the best smell",
+      "word_count": 6,
+      "hint": "And ... smell"
+    },
+    {
+      "id": "dict_3_3",
+      "episode_title": "How do we describe smells?",
+      "level": "Medium",
+      "text": "Are there any smells that you like, but that your friends or family hate",
+      "word_count": 14,
+      "hint": "Are ... hate"
+    }
+  ]
+}

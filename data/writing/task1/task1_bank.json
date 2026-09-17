@@ -1,0 +1,104 @@
+{
+  "total_prompts": 3,
+  "prompts": [
+    {
+      "id": "wri_t1_01",
+      "chart_type": "Line Graph",
+      "topic": "Renewable Energy Consumption",
+      "prompt": "The graph below shows the proportion of energy generated from renewable sources in four European countries between 2000 and 2020.",
+      "time_period": "2000 - 2020",
+      "overview_focus": "Overall upward trend across all nations, with Germany maintaining the dominant position throughout the period.",
+      "band_score": 9.0,
+      "model_answer": {
+        "introduction": "The line graph illustrates the percentage of total energy produced from renewable resources in four European nations (Germany, France, Sweden, and Spain) over a twenty-year period from 2000 to 2020.",
+        "overview": "Overall, it is evident that all four countries experienced an upward trajectory in their utilization of green energy. Germany consistently generated the highest share of renewable power, whereas France recorded the lowest figures despite notable progress.",
+        "body_1": "In 2000, Germany began at approximately 25%, rising steadily to reach roughly 38% by 2010, before surging to a peak of nearly 52% at the close of the timeline. Sweden followed a comparable pattern, climbing from 18% in the initial year to finish at approximately 36% in 2020.",
+        "body_2": "Conversely, Spain and France started from significantly lower baselines of 10% and 6% respectively. While Spain witnessed substantial fluctuations before settling around 24%, France demonstrated gradual but consistent growth, ultimately doubling its initial contribution to conclude at 12% in 2020."
+      },
+      "academic_collocations": [
+        {
+          "phrase": "experienced an upward trajectory",
+          "meaning": "went through a continuous rise"
+        },
+        {
+          "phrase": "consistently generated the highest share",
+          "meaning": "held the top proportion throughout"
+        },
+        {
+          "phrase": "surging to a peak of",
+          "meaning": "rising rapidly to the highest point"
+        },
+        {
+          "phrase": "started from significantly lower baselines",
+          "meaning": "began at much lower initial figures"
+        }
+      ]
+    },
+    {
+      "id": "wri_t1_02",
+      "chart_type": "Bar Chart",
+      "topic": "Global Smartphone Shipments by OS",
+      "prompt": "The chart shows the market share of mobile operating systems in five global regions in 2024.",
+      "time_period": "2024 (Static Comparison)",
+      "overview_focus": "Android dominated developing markets while iOS maintained a lead in North America and Oceania.",
+      "band_score": 9.0,
+      "model_answer": {
+        "introduction": "The bar chart compares the regional distribution of mobile operating system market shares across five distinct geographical zones in the year 2024.",
+        "overview": "Overall, the market was heavily polarized between Android and iOS, with alternative platforms occupying negligible shares. Android commanded substantial dominance across Asia, Africa, and South America, while iOS achieved superiority in North America.",
+        "body_1": "In Asia and South America, Android accounted for the lion's share of the market, registering approximately 78% and 82% respectively. By comparison, iOS captured merely 20% in Asia and 16% in South America. In Africa, the disparity was even more pronounced, with Android surpassing 85%.",
+        "body_2": "In stark contrast, North America presented a reversed scenario, where iOS led the market with roughly 58%, outperforming Android's 41%. The Oceania market was evenly split, with both major operating systems hovering around 48-50%."
+      },
+      "academic_collocations": [
+        {
+          "phrase": "heavily polarized between",
+          "meaning": "divided sharply into two main groups"
+        },
+        {
+          "phrase": "occupying negligible shares",
+          "meaning": "taking up very tiny, almost unnoticeable percentages"
+        },
+        {
+          "phrase": "accounted for the lion's share",
+          "meaning": "represented the majority/largest portion"
+        },
+        {
+          "phrase": "in stark contrast",
+          "meaning": "in sharp opposition or difference"
+        }
+      ]
+    },
+    {
+      "id": "wri_t1_03",
+      "chart_type": "Process Diagram",
+      "topic": "Water Purification and Desalination",
+      "prompt": "The diagram illustrates the sequential stages of sea water desalination to produce drinking water.",
+      "time_period": "Natural / Industrial Process",
+      "overview_focus": "A cyclical five-stage process transforming saline ocean water into potable domestic water through reverse osmosis.",
+      "band_score": 9.0,
+      "model_answer": {
+        "introduction": "The flow diagram delineates the multi-stage industrial process through which seawater is desalinated and purified to produce potable drinking water for municipal consumption.",
+        "overview": "Overall, the desalination procedure comprises five principal consecutive stages, commencing with seawater intake and filtration, proceeding through high-pressure reverse osmosis, and culminating in post-treatment remineralization and municipal distribution.",
+        "body_1": "Initially, raw seawater is drawn from the ocean via deep intake pipelines equipped with coarse mesh screens to exclude marine life and large debris. Next, the water enters a pre-filtration settling chamber where suspended solids are removed, before undergoing chemical pre-treatment to neutralize organic contaminants.",
+        "body_2": "In the critical phase, the pre-treated brine is pumped under immense hydraulic pressure through semi-permeable membranes. This process separates concentrated salt effluent, which is funneled back to sea, from purified fresh permeate. Finally, the desalinated water is chlorinated, enriched with minerals for taste, and transferred into the public supply reservoir."
+      },
+      "academic_collocations": [
+        {
+          "phrase": "delineates the multi-stage process",
+          "meaning": "clearly outlines the steps"
+        },
+        {
+          "phrase": "commencing with ... and culminating in",
+          "meaning": "starting with ... and ending with"
+        },
+        {
+          "phrase": "semi-permeable membranes",
+          "meaning": "selective filtering barriers"
+        },
+        {
+          "phrase": "potable drinking water",
+          "meaning": "water safe for human consumption"
+        }
+      ]
+    }
+  ]
+}

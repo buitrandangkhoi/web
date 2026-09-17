@@ -1,0 +1,40 @@
+{
+  "id": "read_ielts_005",
+  "skill": "reading",
+  "source": "The Guardian Science",
+  "original_url": "https://www.theguardian.com/science/2026/sep/16/plantwatch-the-insect-eating-alpine-plant-that-proves-darwin-was-right",
+  "title": "Plantwatch: The insect-eating alpine plant that proves Darwin was right",
+  "category": "Environment & Health",
+  "difficulty": "IELTS Band 6.5 - 8.0",
+  "word_count": 83,
+  "paragraphs": [
+    {
+      "label": "A",
+      "text": "Study shows Saxifraga candelabrum traps and digests midges – just as the evolutionary biologist predicted back in 1875 In 1875, Charles Darwin predicted that Saxifraga candelabrum , a small alpine plant, could eat insects Its leaves, petals and stems are smothered in tiny, sticky hairs and – just as the evolutionary biologist suspected – the sweet glue on the hairs can lure and trap midges before digesting them with an enzyme."
+    },
+    {
+      "label": "B",
+      "text": "Plantwatch: The insect-eating alpine plant that proves Darwin was right."
+    }
+  ],
+  "full_text": "[A] Study shows Saxifraga candelabrum traps and digests midges – just as the evolutionary biologist predicted back in 1875 In 1875, Charles Darwin predicted that Saxifraga candelabrum , a small alpine plant, could eat insects Its leaves, petals and stems are smothered in tiny, sticky hairs and – just as the evolutionary biologist suspected – the sweet glue on the hairs can lure and trap midges before digesting them with an enzyme.\n\n[B] Plantwatch: The insect-eating alpine plant that proves Darwin was right.",
+  "academic_vocabulary": [],
+  "questions": [
+    {
+      "id": 1,
+      "type": "TRUE_FALSE_NOT_GIVEN",
+      "question": "According to Paragraph A, researchers focused primarily on plantwatch: the insect-eating alpine plant that proves darwin was right during recent investigations.",
+      "answer": "TRUE",
+      "location": "Paragraph A",
+      "explanation": "Paragraph A introduces the core subject and context directly."
+    },
+    {
+      "id": 2,
+      "type": "TRUE_FALSE_NOT_GIVEN",
+      "question": "There is unanimous agreement among international authorities regarding the exact outcomes described.",
+      "answer": "FALSE",
+      "location": "Paragraph B",
+      "explanation": "The passage indicates multiple differing factors and variations rather than unanimous consensus."
+    }
+  ]
+}
