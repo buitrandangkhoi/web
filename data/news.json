@@ -1,0 +1,140 @@
+{
+  "updated": "2026-09-17T00:00:00Z",
+  "articles": [
+    {
+      "title": "Fed Holds Rates Steady, Signals Possible Cut in Q4 2026 as Inflation Cools",
+      "desc": "The Federal Reserve kept its benchmark rate at 5.25–5.50% on Wednesday, while Fed Chair Powell hinted that a reduction could come before year-end if inflation continues its downward trajectory toward the 2% target.",
+      "url": "https://example.com/fed-rates",
+      "source": "Finnhub",
+      "cat": "finance",
+      "time": "2026-09-17T01:30:00Z",
+      "sentiment": "pos"
+    },
+    {
+      "title": "S&P 500 Climbs 0.8% After CPI Data Shows Inflation Hitting 28-Month Low",
+      "desc": "US equities rallied broadly on Tuesday after the Bureau of Labor Statistics reported consumer prices rose just 2.8% year-over-year in August, the third consecutive monthly decline and the softest reading since early 2024.",
+      "url": "https://example.com/sp500",
+      "source": "Marketaux",
+      "cat": "stock",
+      "time": "2026-09-17T02:00:00Z",
+      "sentiment": "pos"
+    },
+    {
+      "title": "NVIDIA Unveils Blackwell Ultra GPU, Projects $40B Revenue Quarter Driven by AI Demand",
+      "desc": "NVIDIA announced its next-generation Blackwell Ultra architecture at its annual GTC conference, promising a 2.5× performance leap over the current H100 for large language model training. The company raised Q3 guidance to $40–42B.",
+      "url": "https://example.com/nvidia",
+      "source": "NewsData.io",
+      "cat": "tech",
+      "time": "2026-09-17T03:00:00Z",
+      "sentiment": "pos"
+    },
+    {
+      "title": "Samsung Expands Vietnam Plant by $2.5B, Adding 5,000 Jobs to Support AI Chip Output",
+      "desc": "Samsung Electronics confirmed plans to invest an additional $2.5 billion at its Thai Nguyen complex, shifting production focus toward advanced AI components for foldable devices and server applications.",
+      "url": "https://example.com/samsung",
+      "source": "CurrentsAPI",
+      "cat": "biz",
+      "time": "2026-09-17T04:00:00Z",
+      "sentiment": "pos"
+    },
+    {
+      "title": "Apple Intelligence Launches Across Asia with Vietnamese Language Support",
+      "desc": "Apple's on-device AI suite, Apple Intelligence, went live in 30 Asian markets including Vietnam on Monday, adding support for Vietnamese Siri queries and Writing Tools on iPhone 16 and later models running iOS 18.3.",
+      "url": "https://example.com/apple",
+      "source": "GNews",
+      "cat": "tech",
+      "time": "2026-09-17T04:30:00Z",
+      "sentiment": "pos"
+    },
+    {
+      "title": "Vietnam's Central Bank Injects $320M Liquidity to Steady Dong Amid Dollar Weakness",
+      "desc": "The State Bank of Vietnam conducted open-market operations on Tuesday, injecting VND 8 trillion to maintain the USD/VND rate near 25,400 as a softer US dollar and easing Treasury yields reduced external pressure on the currency.",
+      "url": "https://example.com/sbv",
+      "source": "Finnhub",
+      "cat": "finance",
+      "time": "2026-09-17T05:00:00Z",
+      "sentiment": "neu"
+    },
+    {
+      "title": "Anthropic Launches Claude 4 Opus, Tops GPT-5 on Coding and Reasoning Benchmarks",
+      "desc": "AI safety company Anthropic released Claude 4 Opus, its most capable model to date, achieving state-of-the-art results on SWE-bench (72.4%) and HumanEval (96.1%), outpacing OpenAI's GPT-5 on programming tasks.",
+      "url": "https://example.com/claude4",
+      "source": "NewsData.io",
+      "cat": "tech",
+      "time": "2026-09-17T05:30:00Z",
+      "sentiment": "pos"
+    },
+    {
+      "title": "Real Estate Stocks Surge as Vietnam Moves to Clear Regulatory Backlog",
+      "desc": "Shares of Novaland, Vinhomes, and DIG rose between 3–6% on heavy volume after a draft decree expected to resolve project-approval delays was circulated for public comment, the most significant regulatory move in two years.",
+      "url": "https://example.com/realestate",
+      "source": "Marketaux",
+      "cat": "stock",
+      "time": "2026-09-17T06:00:00Z",
+      "sentiment": "pos"
+    },
+    {
+      "title": "Goldman Sachs Raises Vietnam 2026 GDP Forecast to 7.2%, Fastest in ASEAN",
+      "desc": "In a research note released Thursday, Goldman Sachs upgraded its Vietnam growth outlook from 6.8% to 7.2%, citing robust manufacturing exports, rising FDI inflows, and stabilising global demand for electronics.",
+      "url": "https://example.com/goldman",
+      "source": "Finnhub",
+      "cat": "finance",
+      "time": "2026-09-17T06:30:00Z",
+      "sentiment": "pos"
+    },
+    {
+      "title": "Google DeepMind Releases AlphaFold 4 With 99.1% Protein Structure Accuracy",
+      "desc": "DeepMind unveiled AlphaFold 4, predicting protein structures with unprecedented 99.1% accuracy across 200 million tested sequences. The model also introduces RNA and small-molecule binding predictions, opening new doors in drug discovery.",
+      "url": "https://example.com/alphafold",
+      "source": "NewsData.io",
+      "cat": "tech",
+      "time": "2026-09-17T07:00:00Z",
+      "sentiment": "pos"
+    },
+    {
+      "title": "Viettel Activates 5G in 15 Provinces, Covering 60% of Urban Population",
+      "desc": "Vietnam's largest telecoms operator Viettel officially launched commercial 5G services in 15 cities and provinces on Wednesday, reaching 60% of the country's urban population and setting the stage for full national rollout by mid-2027.",
+      "url": "https://example.com/viettel",
+      "source": "CurrentsAPI",
+      "cat": "biz",
+      "time": "2026-09-17T07:30:00Z",
+      "sentiment": "pos"
+    },
+    {
+      "title": "Foreign Investors Net-Buy $48M on HOSE, Focus on VHM, MSN and VIC Shares",
+      "desc": "Overseas funds were net buyers of VND 1.2 trillion ($48M) on the Ho Chi Minh Stock Exchange on Wednesday, with the three largest positions in Vinhomes, Masan Group and Vingroup, reversing six consecutive sessions of net selling.",
+      "url": "https://example.com/fii",
+      "source": "Marketaux",
+      "cat": "stock",
+      "time": "2026-09-17T08:00:00Z",
+      "sentiment": "pos"
+    },
+    {
+      "title": "Vingroup Signs MOU with South Korean Consortium for Semiconductor Joint Venture",
+      "desc": "Vingroup announced a memorandum of understanding with a consortium of South Korean chip firms to establish a semiconductor design and packaging facility in Hanoi's Hoa Lac Hi-Tech Park, with initial investment of $500M.",
+      "url": "https://example.com/vingroup",
+      "source": "CurrentsAPI",
+      "cat": "biz",
+      "time": "2026-09-17T08:30:00Z",
+      "sentiment": "pos"
+    },
+    {
+      "title": "Bitcoin Reclaims $68,000 as Risk Appetite Returns Following Fed Pivot Signals",
+      "desc": "Bitcoin rose 4.1% to $68,200 on Tuesday, its highest level in three months, as investors interpreted Powell's cautious tone on rate policy as a green light to return to risk assets. Ethereum gained 5.3% to $2,840.",
+      "url": "https://example.com/bitcoin",
+      "source": "Finnhub",
+      "cat": "finance",
+      "time": "2026-09-17T09:00:00Z",
+      "sentiment": "pos"
+    },
+    {
+      "title": "Microsoft Azure Revenue Jumps 35% on Enterprise AI Adoption, Beats Estimates",
+      "desc": "Microsoft reported Azure cloud revenue growth of 35% year-over-year for the fiscal first quarter, driven by enterprise adoption of Copilot and OpenAI-powered services, beating the analyst consensus of 31% growth.",
+      "url": "https://example.com/microsoft",
+      "source": "GNews",
+      "cat": "tech",
+      "time": "2026-09-17T09:30:00Z",
+      "sentiment": "pos"
+    }
+  ]
+}

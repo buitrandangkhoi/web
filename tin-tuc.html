@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tin Tức</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* ── Tokens ─────────────────────────────────────────────────────── */
+:root {
+  --bg:        #eef0f4;
+  --surface:   #ffffff;
+  --surface2:  #f5f6f9;
+  --border:    #dde1ea;
+  --text-h:    #111c30;
+  --text-b:    #374151;
+  --text-meta: #6b7898;
+  --accent:    #1d5fa8;
+  --accent-hi: #1d5fa81a;
+  --red:       #d63b2f;
+  --green:     #1a7f5a;
+  --tag-finance: #1d5fa8;
+  --tag-stock:   #0e7490;
+  --tag-tech:    #6d28d9;
+  --tag-biz:     #b45309;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #0d1117;
+    --surface:   #161b25;
+    --surface2:  #1e2535;
+    --border:    #2a3245;
+    --text-h:    #e8edf6;
+    --text-b:    #a8b4cc;
+    --text-meta: #5e6e8e;
+    --accent:    #4d8dd4;
+    --accent-hi: #4d8dd41a;
+    --red:       #e25e50;
+    --green:     #2da870;
+    --tag-finance: #4d8dd4;
+    --tag-stock:   #22b8cc;
+    --tag-tech:    #a78bfa;
+    --tag-biz:     #fbbf24;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:        #0d1117;
+  --surface:   #161b25;
+  --surface2:  #1e2535;
+  --border:    #2a3245;
+  --text-h:    #e8edf6;
+  --text-b:    #a8b4cc;
+  --text-meta: #5e6e8e;
+  --accent:    #4d8dd4;
+  --accent-hi: #4d8dd41a;
+  --red:       #e25e50;
+  --green:     #2da870;
+  --tag-finance: #4d8dd4;
+  --tag-stock:   #22b8cc;
+  --tag-tech:    #a78bfa;
+  --tag-biz:     #fbbf24;
+}
+
+/* ── Reset & base ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 15px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-b);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Site header ─────────────────────────────────────────────────── */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px max(16px, calc((100% - 1120px)/2));
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 100;
+}
+.nav-back {
+  font-size: 0.82rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.nav-back::before { content: '←'; }
+.page-heading {
+  font-family: 'Merriweather', Georgia, serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--text-h);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+.header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.update-badge {
+  font-size: 0.72rem;
+  color: var(--text-meta);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+.update-badge b { color: var(--green); }
+.theme-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: var(--text-b);
+}
+.theme-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ── Category bar ────────────────────────────────────────────────── */
+.cat-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding-inline: max(16px, calc((100% - 1120px)/2));
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cat-bar::-webkit-scrollbar { display: none; }
+.cat-pills {
+  display: flex;
+  gap: 0;
+  min-width: max-content;
+}
+.cat-pill {
+  padding: 10px 16px;
+  font-size: 0.83rem;
+  font-weight: 500;
+  color: var(--text-meta);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color .15s, border-color .15s;
+}
+.cat-pill:hover { color: var(--text-h); }
+.cat-pill.active { color: var(--accent); border-bottom-color: var(--accent); }
+.cat-pill:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+/* ── Main wrapper ────────────────────────────────────────────────── */
+.main {
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-left:  max(16px, calc((100vw - 1120px)/2));
+  padding-right: max(16px, calc((100vw - 1120px)/2));
+  padding-block: 28px;
+}
+
+/* ── Section heading ─────────────────────────────────────────────── */
+.sec-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.sec-title {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+  padding-left: 11px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ── Featured block ──────────────────────────────────────────────── */
+.featured {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+@media (max-width: 680px) { .featured { grid-template-columns: 1fr; } }
+
+.feat-main {
+  background: var(--surface);
+  padding: 26px 26px 22px;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+.feat-main:hover .feat-h { color: var(--accent); }
+.feat-side {
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.feat-sub {
+  background: var(--surface2);
+  padding: 18px 20px;
+  flex: 1;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+.feat-sub:hover .sub-h { color: var(--accent); }
+
+/* ── Shared article parts ────────────────────────────────────────── */
+.meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.tag-finance  { background: var(--tag-finance); }
+.tag-stock    { background: var(--tag-stock); }
+.tag-tech     { background: var(--tag-tech); }
+.tag-biz      { background: var(--tag-biz); }
+.tag-biz.text-dark { color: #000; }
+
+.sentiment {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 20px;
+}
+.sentiment.pos { background: #dcfce7; color: #166534; }
+.sentiment.neg { background: #fee2e2; color: #991b1b; }
+.sentiment.neu { background: var(--surface2); color: var(--text-meta); border: 1px solid var(--border); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sentiment.pos { background: #14532d55; color: #4ade80; }
+  :root:not([data-theme="light"]) .sentiment.neg { background: #7f1d1d55; color: #f87171; }
+}
+:root[data-theme="dark"] .sentiment.pos { background: #14532d55; color: #4ade80; }
+:root[data-theme="dark"] .sentiment.neg { background: #7f1d1d55; color: #f87171; }
+
+.article-meta { font-size: 0.72rem; color: var(--text-meta); }
+
+.feat-h {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-h);
+  margin: 0 0 10px;
+  text-wrap: balance;
+  transition: color .15s;
+}
+.feat-desc {
+  font-size: 0.875rem;
+  color: var(--text-b);
+  line-height: 1.65;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.sub-h {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-h);
+  line-height: 1.4;
+  margin: 0 0 6px;
+  text-wrap: balance;
+  transition: color .15s;
+}
+
+/* ── News grid ───────────────────────────────────────────────────── */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+@media (max-width: 800px) { .news-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .news-grid { grid-template-columns: 1fr; } }
+
+.news-card {
+  background: var(--surface);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .15s;
+}
+.news-card:hover { background: var(--accent-hi); }
+.news-card:hover .card-h { color: var(--accent); }
+.card-h {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text-h);
+  margin: 0;
+  text-wrap: balance;
+  transition: color .15s;
+  flex: 1;
+}
+.card-desc {
+  font-size: 0.8rem;
+  color: var(--text-b);
+  line-height: 1.6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+.card-source { font-size: 0.7rem; color: var(--text-meta); font-weight: 500; }
+.card-dot { width: 3px; height: 3px; background: var(--border); border-radius: 50%; flex-shrink: 0; }
+.card-time  { font-size: 0.7rem; color: var(--text-meta); }
+
+/* ── Trending list ───────────────────────────────────────────────── */
+.news-list {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.news-row {
+  background: var(--surface);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .15s;
+}
+.news-row:last-child { border-bottom: none; }
+.news-row:hover { background: var(--surface2); }
+.news-row:hover .row-h { color: var(--accent); }
+.row-num {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--border);
+  font-family: 'Merriweather', serif;
+  line-height: 1.1;
+  min-width: 26px;
+  padding-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+.row-body { flex: 1; min-width: 0; }
+.row-h {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0 0 5px;
+  line-height: 1.4;
+  text-wrap: balance;
+  transition: color .15s;
+}
+.row-meta {
+  font-size: 0.7rem;
+  color: var(--text-meta);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ── Empty & loading states ──────────────────────────────────────── */
+.state-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-align: center;
+  padding: 56px 16px;
+  color: var(--text-meta);
+  font-size: 0.875rem;
+  margin-bottom: 28px;
+}
+.state-box .spinner {
+  display: inline-block;
+  width: 28px; height: 28px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  margin-bottom: 12px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+
+/* ── Load-more button ────────────────────────────────────────────── */
+.load-more-wrap { text-align: center; margin-bottom: 32px; }
+.load-more-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 24px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+  cursor: pointer;
+  transition: background .15s;
+}
+.load-more-btn:hover { background: var(--accent-hi); }
+.load-more-btn[hidden] { display: none; }
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="site-header">
+  <a class="nav-back" href="index.html">Trang chủ</a>
+  <h1 class="page-heading">Tin Tức</h1>
+  <div class="header-right">
+    <span class="update-badge" id="update-label">Đang tải...</span>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">🌙</button>
+  </div>
+</header>
+
+<!-- ── Category bar ── -->
+<nav class="cat-bar" aria-label="Chủ đề">
+  <div class="cat-pills">
+    <button class="cat-pill active" onclick="setFilter('all',this)">Tất cả</button>
+    <button class="cat-pill" onclick="setFilter('finance',this)">💰 Tài chính</button>
+    <button class="cat-pill" onclick="setFilter('stock',this)">📈 Chứng khoán</button>
+    <button class="cat-pill" onclick="setFilter('tech',this)">💻 Công nghệ</button>
+    <button class="cat-pill" onclick="setFilter('biz',this)">🏢 Doanh nghiệp</button>
+  </div>
+</nav>
+
+<!-- ── Main ── -->
+<main class="main" id="main">
+  <div class="state-box" id="loading-box">
+    <div class="spinner"></div><br>Đang tải tin tức mới nhất…
+  </div>
+</main>
+
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// Config
+// ─────────────────────────────────────────────────────────────────────────────
+const DATA_URL   = 'data/news.json';
+const PAGE_SIZE  = 9;   // số bài mỗi lần "Xem thêm"
+
+// ─────────────────────────────────────────────────────────────────────────────
+// State
+// ─────────────────────────────────────────────────────────────────────────────
+let allArticles  = [];
+let filtered     = [];
+let currentCat   = 'all';
+let shown        = 0;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Theme
+// ─────────────────────────────────────────────────────────────────────────────
+function toggleTheme() {
+  const cur  = document.documentElement.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  document.getElementById('theme-btn').textContent = next === 'dark' ? '☀️' : '🌙';
+  try { localStorage.setItem('news_theme', next); } catch(e) {}
+}
+(function applyTheme() {
+  try {
+    const saved = localStorage.getItem('news_theme');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+      if (saved === 'dark') document.getElementById('theme-btn').textContent = '☀️';
+    }
+  } catch(e) {}
+})();
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Helpers
+// ─────────────────────────────────────────────────────────────────────────────
+const TAG_LABELS = { finance: 'Finance', stock: 'Markets', tech: 'Technology', biz: 'Business' };
+
+function tagHTML(cat, small) {
+  const sz  = small ? 'font-size:.65rem;padding:1px 6px' : '';
+  const lbl = TAG_LABELS[cat] || cat;
+  return `<span class="tag tag-${cat}" style="${sz}">${lbl}</span>`;
+}
+
+function sentHTML(s) {
+  if (!s) return '';
+  const map = { pos: ['pos','▲ Positive'], neg: ['neg','▼ Negative'], neu: ['neu','● Neutral'] };
+  const [cls, lbl] = map[s] || ['neu','● Neutral'];
+  return `<span class="sentiment ${cls}">${lbl}</span>`;
+}
+
+function relTime(iso) {
+  if (!iso) return '';
+  const diff = (Date.now() - new Date(iso)) / 1000;
+  if (diff < 3600)  return `${Math.max(1, Math.floor(diff/60))} min ago`;
+  if (diff < 86400) return `${Math.floor(diff/3600)} hr ago`;
+  return `${Math.floor(diff/86400)}d ago`;
+}
+
+function esc(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Render helpers
+// ─────────────────────────────────────────────────────────────────────────────
+function renderFeatured(articles) {
+  const main = articles[0];
+  const subs = articles.slice(1, 4);
+  return `
+    <div class="sec-head"><h2 class="sec-title">Featured Today</h2></div>
+    <div class="featured">
+      <a class="feat-main" href="${esc(main.url)}" target="_blank" rel="noopener">
+        <div class="meta-row">
+          ${tagHTML(main.cat)}
+          ${sentHTML(main.sentiment)}
+          <span class="article-meta">${esc(main.source)} · ${relTime(main.time)}</span>
+        </div>
+        <h2 class="feat-h">${esc(main.title)}</h2>
+        <p class="feat-desc">${esc(main.desc)}</p>
+      </a>
+      <div class="feat-side">
+        ${subs.map(a => `
+          <a class="feat-sub" href="${esc(a.url)}" target="_blank" rel="noopener">
+            <div class="meta-row">
+              ${tagHTML(a.cat)}
+              ${sentHTML(a.sentiment)}
+            </div>
+            <h3 class="sub-h">${esc(a.title)}</h3>
+            <div class="article-meta">${esc(a.source)} · ${relTime(a.time)}</div>
+          </a>`).join('')}
+      </div>
+    </div>`;
+}
+
+function renderCard(a) {
+  return `
+    <a class="news-card" href="${esc(a.url)}" target="_blank" rel="noopener">
+      <div class="meta-row">
+        ${tagHTML(a.cat)}
+        ${sentHTML(a.sentiment)}
+      </div>
+      <h3 class="card-h">${esc(a.title)}</h3>
+      <p class="card-desc">${esc(a.desc)}</p>
+      <div class="card-footer">
+        <span class="card-source">${esc(a.source)}</span>
+        <span class="card-dot"></span>
+        <span class="card-time">${relTime(a.time)}</span>
+      </div>
+    </a>`;
+}
+
+function renderGrid(articles) {
+  if (!articles.length) return '';
+  return `
+    <div class="sec-head"><h2 class="sec-title">Latest News</h2></div>
+    <div class="news-grid" id="news-grid">
+      ${articles.map(renderCard).join('')}
+    </div>`;
+}
+
+function renderTrending(articles) {
+  if (!articles.length) return '';
+  return `
+    <div class="sec-head"><h2 class="sec-title">Trending</h2></div>
+    <div class="news-list" id="trending">
+      ${articles.map((a, i) => `
+        <a class="news-row" href="${esc(a.url)}" target="_blank" rel="noopener">
+          <div class="row-num">${String(i+1).padStart(2,'0')}</div>
+          <div class="row-body">
+            <p class="row-h">${esc(a.title)}</p>
+            <div class="row-meta">
+              ${tagHTML(a.cat, true)}
+              ${esc(a.source)} · ${relTime(a.time)}
+            </div>
+          </div>
+        </a>`).join('')}
+    </div>`;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Main render
+// ─────────────────────────────────────────────────────────────────────────────
+function render() {
+  const main = document.getElementById('main');
+  if (!filtered.length) {
+    main.innerHTML = '<div class="state-box">No articles found in this category.</div>';
+    return;
+  }
+
+  const featured   = filtered.slice(0, 4);
+  const gridEnd    = Math.min(4 + PAGE_SIZE, filtered.length);
+  const gridItems  = filtered.slice(4, shown);
+  const trendItems = filtered.slice(0, 5);
+  const hasMore    = shown < filtered.length;
+
+  main.innerHTML = `
+    ${renderFeatured(featured)}
+    ${renderGrid(filtered.slice(4, shown))}
+    <div class="load-more-wrap">
+      <button class="load-more-btn" id="load-more-btn" ${!hasMore ? 'hidden' : ''}
+        onclick="loadMore()">
+        Xem thêm tin tức
+      </button>
+    </div>
+    ${renderTrending(trendItems)}`;
+}
+
+function loadMore() {
+  shown = Math.min(shown + PAGE_SIZE, filtered.length);
+  render();
+  // scroll to the newly added cards
+  document.getElementById('news-grid')?.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Filter
+// ─────────────────────────────────────────────────────────────────────────────
+function setFilter(cat, btn) {
+  document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentCat = cat;
+  filtered   = cat === 'all' ? allArticles : allArticles.filter(a => a.cat === cat);
+  shown      = Math.min(4 + PAGE_SIZE, filtered.length);
+  render();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Load data
+// ─────────────────────────────────────────────────────────────────────────────
+async function init() {
+  try {
+    const res  = await fetch(DATA_URL + '?v=' + Date.now());
+    if (!res.ok) throw new Error(res.statusText);
+    const data = await res.json();
+    allArticles = (data.articles || []).filter(a => a.title && a.url);
+    filtered    = allArticles;
+    shown       = Math.min(4 + PAGE_SIZE, filtered.length);
+
+    // Update timestamp badge
+    const d = new Date(data.updated);
+    const label = isNaN(d)
+      ? 'Updated'
+      : d.toLocaleString('vi-VN', { hour:'2-digit', minute:'2-digit', day:'2-digit', month:'2-digit' });
+    document.getElementById('update-label').innerHTML = `Cập nhật: <b>${label}</b>`;
+
+    render();
+  } catch(err) {
+    document.getElementById('main').innerHTML = `
+      <div class="state-box">
+        <p>⚠️ Không thể tải tin tức.<br>
+           <small style="color:var(--text-meta)">${err.message}</small></p>
+      </div>`;
+  }
+}
+
+init();
+</script>
+</body>
+</html>
