@@ -202,7 +202,6 @@ body {
   background: var(--surface);
   padding: 26px 26px 22px;
   cursor: pointer;
-  text-decoration: none;
   display: block;
 }
 .feat-main:hover .feat-h { color: var(--accent); }
@@ -217,7 +216,6 @@ body {
   padding: 18px 20px;
   flex: 1;
   cursor: pointer;
-  text-decoration: none;
   display: block;
 }
 .feat-sub:hover .sub-h { color: var(--accent); }
@@ -244,8 +242,7 @@ body {
 .tag-finance  { background: var(--tag-finance); }
 .tag-stock    { background: var(--tag-stock); }
 .tag-tech     { background: var(--tag-tech); }
-.tag-biz      { background: var(--tag-biz); }
-.tag-biz.text-dark { color: #000; }
+.tag-biz      { background: var(--tag-biz); color: #fff; }
 
 .sentiment {
   display: inline-flex;
@@ -319,7 +316,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  text-decoration: none;
   cursor: pointer;
   transition: background .15s;
 }
@@ -371,7 +367,6 @@ body {
   gap: 14px;
   padding: 14px 18px;
   border-bottom: 1px solid var(--border);
-  text-decoration: none;
   cursor: pointer;
   transition: background .15s;
 }
@@ -446,12 +441,178 @@ body {
 }
 .load-more-btn:hover { background: var(--accent-hi); }
 .load-more-btn[hidden] { display: none; }
+
+/* ════════════════════════════════════════════════════════════════════
+   READER VIEW
+   ════════════════════════════════════════════════════════════════════ */
+.reader-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateX(100%);
+  transition: transform .28s cubic-bezier(.4,0,.2,1);
+}
+.reader-overlay.open { transform: translateX(0); }
+
+/* reader header bar */
+.reader-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 24px;
+  flex-shrink: 0;
+  padding-top: max(13px, calc(13px + env(safe-area-inset-top, 0px)));
+}
+.reader-back {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.reader-back:hover { background: var(--accent-hi); }
+.reader-back::before { content: '←'; }
+.reader-title-bar {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-meta);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+.reader-src-link {
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-decoration: none;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.reader-src-link:hover { background: var(--accent-hi); }
+
+/* reader scrollable body */
+.reader-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px 24px 60px;
+  scroll-behavior: smooth;
+}
+.reader-inner {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+/* article header */
+.reader-cat-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.reader-heading {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: clamp(1.4rem, 4vw, 2.1rem);
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--text-h);
+  margin: 0 0 18px;
+  text-wrap: balance;
+}
+.reader-meta {
+  font-size: 0.78rem;
+  color: var(--text-meta);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.reader-meta strong { color: var(--text-b); }
+.reader-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin-bottom: 28px;
+}
+.reader-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 28px;
+  display: block;
+}
+
+/* article body text */
+.reader-content {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text-b);
+}
+.reader-content p {
+  margin: 0 0 1.4em;
+}
+
+/* fallback summary box */
+.reader-summary {
+  background: var(--surface2);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 20px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-b);
+  margin-bottom: 28px;
+  font-style: italic;
+}
+.reader-no-content {
+  font-size: 0.82rem;
+  color: var(--text-meta);
+  margin-top: 8px;
+}
+
+/* original link button */
+.reader-orig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity .15s;
+}
+.reader-orig-btn:hover { opacity: .85; }
 </style>
 </head>
 <body>
 
-<!-- ── Header ── -->
-<header class="site-header">
+<!-- ── List view ── -->
+<header class="site-header" id="list-header">
   <a class="nav-back" href="index.html">Trang chủ</a>
   <h1 class="page-heading">Tin Tức</h1>
   <div class="header-right">
@@ -460,8 +621,7 @@ body {
   </div>
 </header>
 
-<!-- ── Category bar ── -->
-<nav class="cat-bar" aria-label="Chủ đề">
+<nav class="cat-bar" id="cat-bar" aria-label="Chủ đề">
   <div class="cat-pills">
     <button class="cat-pill active" onclick="setFilter('all',this)">Tất cả</button>
     <button class="cat-pill" onclick="setFilter('finance',this)">💰 Tài chính</button>
@@ -471,27 +631,42 @@ body {
   </div>
 </nav>
 
-<!-- ── Main ── -->
 <main class="main" id="main">
   <div class="state-box" id="loading-box">
     <div class="spinner"></div><br>Đang tải tin tức mới nhất…
   </div>
 </main>
 
+<!-- ════════════════════════════════════════════════════════════════════
+     READER OVERLAY
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="reader-overlay" id="reader" role="dialog" aria-modal="true" aria-label="Article reader" hidden>
+  <div class="reader-header">
+    <button class="reader-back" onclick="closeReader()">Quay lại</button>
+    <span class="reader-title-bar" id="reader-title-bar">—</span>
+    <a class="reader-src-link" id="reader-src-link" href="#" target="_blank" rel="noopener">
+      Trang gốc ↗
+    </a>
+  </div>
+  <div class="reader-body" id="reader-body">
+    <div class="reader-inner" id="reader-inner"></div>
+  </div>
+</div>
+
 <script>
 // ─────────────────────────────────────────────────────────────────────────────
 // Config
 // ─────────────────────────────────────────────────────────────────────────────
-const DATA_URL   = 'data/news.json';
-const PAGE_SIZE  = 9;   // số bài mỗi lần "Xem thêm"
+const DATA_URL  = 'data/news.json';
+const PAGE_SIZE = 9;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // State
 // ─────────────────────────────────────────────────────────────────────────────
-let allArticles  = [];
-let filtered     = [];
-let currentCat   = 'all';
-let shown        = 0;
+let allArticles = [];
+let filtered    = [];
+let currentCat  = 'all';
+let shown       = 0;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Theme
@@ -520,8 +695,7 @@ const TAG_LABELS = { finance: 'Finance', stock: 'Markets', tech: 'Technology', b
 
 function tagHTML(cat, small) {
   const sz  = small ? 'font-size:.65rem;padding:1px 6px' : '';
-  const lbl = TAG_LABELS[cat] || cat;
-  return `<span class="tag tag-${cat}" style="${sz}">${lbl}</span>`;
+  return `<span class="tag tag-${cat}" style="${sz}">${TAG_LABELS[cat] || cat}</span>`;
 }
 
 function sentHTML(s) {
@@ -544,6 +718,93 @@ function esc(s) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Reader view
+// ─────────────────────────────────────────────────────────────────────────────
+function openReader(article) {
+  const overlay = document.getElementById('reader');
+  const inner   = document.getElementById('reader-inner');
+  const titleBar = document.getElementById('reader-title-bar');
+  const srcLink  = document.getElementById('reader-src-link');
+
+  titleBar.textContent = article.source || '';
+  srcLink.href = article.url || '#';
+
+  // Build article image (if available)
+  const imgHTML = article.image
+    ? `<img class="reader-image" src="${esc(article.image)}" alt="" loading="lazy" onerror="this.remove()">`
+    : '';
+
+  // Build content section
+  let bodyHTML = '';
+  if (article.content && article.content.trim().length > 100) {
+    // Split crawled text into paragraphs
+    const paras = article.content
+      .trim()
+      .split(/\n{2,}|\n(?=[A-Z"])/)
+      .map(p => p.trim())
+      .filter(p => p.length > 30);
+    bodyHTML = `
+      <div class="reader-content">
+        ${paras.map(p => `<p>${esc(p)}</p>`).join('')}
+      </div>`;
+  } else {
+    // Fallback: show API summary + link to original
+    bodyHTML = `
+      <div class="reader-summary">${esc(article.desc || 'No description available.')}</div>
+      <p class="reader-no-content">Full article content could not be retrieved automatically.</p>
+      <a class="reader-orig-btn" href="${esc(article.url)}" target="_blank" rel="noopener">
+        Read full article on ${esc(article.source)} ↗
+      </a>`;
+  }
+
+  inner.innerHTML = `
+    <div class="reader-cat-row">
+      ${tagHTML(article.cat)}
+      ${sentHTML(article.sentiment)}
+    </div>
+    <h1 class="reader-heading">${esc(article.title)}</h1>
+    <div class="reader-meta">
+      <strong>${esc(article.source)}</strong>
+      <span>${relTime(article.time)}</span>
+    </div>
+    <hr class="reader-divider">
+    ${imgHTML}
+    ${bodyHTML}`;
+
+  // Scroll reader to top
+  document.getElementById('reader-body').scrollTop = 0;
+
+  // Show overlay with animation
+  overlay.hidden = false;
+  requestAnimationFrame(() => overlay.classList.add('open'));
+
+  // Update browser URL/history so back button works
+  history.pushState({ reader: true, url: article.url }, '', '');
+
+  // Trap focus in overlay
+  overlay.focus();
+}
+
+function closeReader() {
+  const overlay = document.getElementById('reader');
+  overlay.classList.remove('open');
+  overlay.addEventListener('transitionend', () => {
+    overlay.hidden = true;
+  }, { once: true });
+}
+
+// Handle browser back button closing reader
+window.addEventListener('popstate', (e) => {
+  const overlay = document.getElementById('reader');
+  if (!overlay.hidden) closeReader();
+});
+
+// Keyboard escape to close
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !document.getElementById('reader').hidden) closeReader();
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Render helpers
 // ─────────────────────────────────────────────────────────────────────────────
 function renderFeatured(articles) {
@@ -552,7 +813,7 @@ function renderFeatured(articles) {
   return `
     <div class="sec-head"><h2 class="sec-title">Featured Today</h2></div>
     <div class="featured">
-      <a class="feat-main" href="${esc(main.url)}" target="_blank" rel="noopener">
+      <div class="feat-main" onclick="openReader(ARTICLES[${allArticles.indexOf(main)}])">
         <div class="meta-row">
           ${tagHTML(main.cat)}
           ${sentHTML(main.sentiment)}
@@ -560,24 +821,25 @@ function renderFeatured(articles) {
         </div>
         <h2 class="feat-h">${esc(main.title)}</h2>
         <p class="feat-desc">${esc(main.desc)}</p>
-      </a>
+      </div>
       <div class="feat-side">
         ${subs.map(a => `
-          <a class="feat-sub" href="${esc(a.url)}" target="_blank" rel="noopener">
+          <div class="feat-sub" onclick="openReader(ARTICLES[${allArticles.indexOf(a)}])">
             <div class="meta-row">
               ${tagHTML(a.cat)}
               ${sentHTML(a.sentiment)}
             </div>
             <h3 class="sub-h">${esc(a.title)}</h3>
             <div class="article-meta">${esc(a.source)} · ${relTime(a.time)}</div>
-          </a>`).join('')}
+          </div>`).join('')}
       </div>
     </div>`;
 }
 
 function renderCard(a) {
+  const idx = allArticles.indexOf(a);
   return `
-    <a class="news-card" href="${esc(a.url)}" target="_blank" rel="noopener">
+    <div class="news-card" onclick="openReader(ARTICLES[${idx}])">
       <div class="meta-row">
         ${tagHTML(a.cat)}
         ${sentHTML(a.sentiment)}
@@ -589,7 +851,7 @@ function renderCard(a) {
         <span class="card-dot"></span>
         <span class="card-time">${relTime(a.time)}</span>
       </div>
-    </a>`;
+    </div>`;
 }
 
 function renderGrid(articles) {
@@ -606,24 +868,31 @@ function renderTrending(articles) {
   return `
     <div class="sec-head"><h2 class="sec-title">Trending</h2></div>
     <div class="news-list" id="trending">
-      ${articles.map((a, i) => `
-        <a class="news-row" href="${esc(a.url)}" target="_blank" rel="noopener">
-          <div class="row-num">${String(i+1).padStart(2,'0')}</div>
-          <div class="row-body">
-            <p class="row-h">${esc(a.title)}</p>
-            <div class="row-meta">
-              ${tagHTML(a.cat, true)}
-              ${esc(a.source)} · ${relTime(a.time)}
+      ${articles.map((a, i) => {
+        const idx = allArticles.indexOf(a);
+        return `
+          <div class="news-row" onclick="openReader(ARTICLES[${idx}])">
+            <div class="row-num">${String(i+1).padStart(2,'0')}</div>
+            <div class="row-body">
+              <p class="row-h">${esc(a.title)}</p>
+              <div class="row-meta">
+                ${tagHTML(a.cat, true)}
+                ${esc(a.source)} · ${relTime(a.time)}
+              </div>
             </div>
-          </div>
-        </a>`).join('')}
+          </div>`;
+      }).join('')}
     </div>`;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Main render
 // ─────────────────────────────────────────────────────────────────────────────
+// ARTICLES is a global alias so inline onclick handlers can reach it
+let ARTICLES = [];
+
 function render() {
+  ARTICLES = allArticles; // keep alias in sync
   const main = document.getElementById('main');
   if (!filtered.length) {
     main.innerHTML = '<div class="state-box">No articles found in this category.</div>';
@@ -631,14 +900,13 @@ function render() {
   }
 
   const featured   = filtered.slice(0, 4);
-  const gridEnd    = Math.min(4 + PAGE_SIZE, filtered.length);
   const gridItems  = filtered.slice(4, shown);
   const trendItems = filtered.slice(0, 5);
   const hasMore    = shown < filtered.length;
 
   main.innerHTML = `
     ${renderFeatured(featured)}
-    ${renderGrid(filtered.slice(4, shown))}
+    ${renderGrid(gridItems)}
     <div class="load-more-wrap">
       <button class="load-more-btn" id="load-more-btn" ${!hasMore ? 'hidden' : ''}
         onclick="loadMore()">
@@ -651,7 +919,6 @@ function render() {
 function loadMore() {
   shown = Math.min(shown + PAGE_SIZE, filtered.length);
   render();
-  // scroll to the newly added cards
   document.getElementById('news-grid')?.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
@@ -676,10 +943,10 @@ async function init() {
     if (!res.ok) throw new Error(res.statusText);
     const data = await res.json();
     allArticles = (data.articles || []).filter(a => a.title && a.url);
+    ARTICLES    = allArticles;
     filtered    = allArticles;
     shown       = Math.min(4 + PAGE_SIZE, filtered.length);
 
-    // Update timestamp badge
     const d = new Date(data.updated);
     const label = isNaN(d)
       ? 'Updated'
