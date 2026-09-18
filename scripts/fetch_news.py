@@ -6,11 +6,19 @@ Chạy bởi GitHub Actions mỗi ngày lúc 07:00 giờ Việt Nam (00:00 UTC)
 """
 
 import os
+import re
 import json
 import requests
 import trafilatura
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
+def strip_html(text):
+    """Xóa tất cả HTML tags, decode entities cơ bản."""
+    text = re.sub(r'<[^>]+>', ' ', text or '')
+    text = text.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>') \
+               .replace('&nbsp;', ' ').replace('&#39;', "'").replace('&quot;', '"')
+    return re.sub(r'\s+', ' ', text).strip()
 
 # ── API keys từ GitHub Secrets ──────────────────────────────────────────────
 API_KEYS = {
@@ -69,7 +77,7 @@ for category in ["general", "forex", "merger"]:
         for a in data[:10]:
             add({
                 "title":     a.get("headline", "").strip(),
-                "desc":      a.get("summary", "").strip()[:300],
+                "desc":      strip_html(a.get("summary", ""))[:300],
                 "url":       a.get("url", ""),
                 "image":     a.get("image", ""),
                 "source":    a.get("source", "Finnhub"),
@@ -98,7 +106,7 @@ for cat_api, cat_ui in [("technology", "tech"), ("business", "biz"), ("science",
     for a in (data.get("results") or []):
         add({
             "title":     a.get("title", "").strip(),
-            "desc":      (a.get("description") or "").strip()[:300],
+            "desc":      strip_html(a.get("description") or "")[:300],
             "url":       a.get("link", ""),
             "image":     (a.get("image_url") or ""),
             "source":    a.get("source_id", "NewsData.io"),
@@ -125,7 +133,7 @@ for topic, cat_ui in [("business", "biz"), ("technology", "tech"), ("finance", "
     for a in (data.get("articles") or []):
         add({
             "title":     a.get("title", "").strip(),
-            "desc":      a.get("description", "").strip()[:300],
+            "desc":      strip_html(a.get("description", ""))[:300],
             "url":       a.get("url", ""),
             "image":     a.get("image", ""),
             "source":    (a.get("source") or {}).get("name", "GNews"),

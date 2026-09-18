@@ -717,6 +717,13 @@ function esc(s) {
   return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+// Strip HTML tags từ text (phòng trường hợp API trả về HTML trong desc)
+function stripHtml(s) {
+  const d = document.createElement('div');
+  d.innerHTML = s || '';
+  return d.textContent || d.innerText || '';
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Reader view
 // ─────────────────────────────────────────────────────────────────────────────
@@ -750,7 +757,7 @@ function openReader(article) {
   } else {
     // Fallback: show API summary + link to original
     bodyHTML = `
-      <div class="reader-summary">${esc(article.desc || 'No description available.')}</div>
+      <div class="reader-summary">${esc(stripHtml(article.desc || 'No description available.'))}</div>
       <p class="reader-no-content">Full article content could not be retrieved automatically.</p>
       <a class="reader-orig-btn" href="${esc(article.url)}" target="_blank" rel="noopener">
         Read full article on ${esc(article.source)} ↗
@@ -820,7 +827,7 @@ function renderFeatured(articles) {
           <span class="article-meta">${esc(main.source)} · ${relTime(main.time)}</span>
         </div>
         <h2 class="feat-h">${esc(main.title)}</h2>
-        <p class="feat-desc">${esc(main.desc)}</p>
+        <p class="feat-desc">${esc(stripHtml(main.desc))}</p>
       </div>
       <div class="feat-side">
         ${subs.map(a => `
@@ -845,7 +852,7 @@ function renderCard(a) {
         ${sentHTML(a.sentiment)}
       </div>
       <h3 class="card-h">${esc(a.title)}</h3>
-      <p class="card-desc">${esc(a.desc)}</p>
+      <p class="card-desc">${esc(stripHtml(a.desc))}</p>
       <div class="card-footer">
         <span class="card-source">${esc(a.source)}</span>
         <span class="card-dot"></span>
