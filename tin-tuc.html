@@ -591,6 +591,13 @@ body {
   margin-top: 8px;
 }
 
+/* original link row */
+.reader-orig-row {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
 /* original link button */
 .reader-orig-btn {
   display: inline-flex;
@@ -742,25 +749,51 @@ function openReader(article) {
     : '';
 
   // Build content section
+  const rawContent = (article.content || '').trim();
+  const rawDesc    = stripHtml(article.desc || '');
   let bodyHTML = '';
-  if (article.content && article.content.trim().length > 100) {
-    // Split crawled text into paragraphs
-    const paras = article.content
-      .trim()
-      .split(/\n{2,}|\n(?=[A-Z"])/)
+
+  if (rawContent.length > 80) {
+    // Có content từ API — chia thành đoạn văn
+    const paras = rawContent
+      .split(/\n{2,}|(?<=[.!?])\s{2,}(?=[A-Z])/)
       .map(p => p.trim())
-      .filter(p => p.length > 30);
+      .filter(p => p.length > 20);
+
+    // Nếu chỉ có 1 đoạn dài, cắt thành nhiều đoạn ~120 từ
+    let finalParas = paras;
+    if (paras.length === 1 && paras[0].split(' ').length > 60) {
+      const words = paras[0].split(' ');
+      finalParas = [];
+      for (let i = 0; i < words.length; i += 100) {
+        finalParas.push(words.slice(i, i + 100).join(' '));
+      }
+    }
+
     bodyHTML = `
       <div class="reader-content">
-        ${paras.map(p => `<p>${esc(p)}</p>`).join('')}
+        ${finalParas.map(p => `<p>${esc(p)}</p>`).join('')}
+      </div>
+      <div class="reader-orig-row">
+        <a class="reader-orig-btn" href="${esc(article.url)}" target="_blank" rel="noopener">
+          Read full article on ${esc(article.source)} ↗
+        </a>
       </div>`;
-  } else {
-    // Fallback: show API summary + link to original
+  } else if (rawDesc.length > 20) {
+    // Chỉ có desc — hiển thị + link bài gốc
     bodyHTML = `
-      <div class="reader-summary">${esc(stripHtml(article.desc || 'No description available.'))}</div>
-      <p class="reader-no-content">Full article content could not be retrieved automatically.</p>
+      <div class="reader-summary">${esc(rawDesc)}</div>
+      <p class="reader-no-content">
+        This article's full content is available on the original site.
+      </p>
       <a class="reader-orig-btn" href="${esc(article.url)}" target="_blank" rel="noopener">
         Read full article on ${esc(article.source)} ↗
+      </a>`;
+  } else {
+    bodyHTML = `
+      <p class="reader-no-content">No content available.</p>
+      <a class="reader-orig-btn" href="${esc(article.url)}" target="_blank" rel="noopener">
+        Read on ${esc(article.source)} ↗
       </a>`;
   }
 

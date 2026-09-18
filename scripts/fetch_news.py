@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 fetch_news.py — Crawl tin tức từ 3 API: Finnhub, GNews, NewsData.io
-               + Extract nội dung bài báo bằng trafilatura
+               Lưu cả desc (tóm tắt) và content (nội dung đầy đủ từ API)
 Chạy bởi GitHub Actions mỗi ngày lúc 07:00 giờ Việt Nam (00:00 UTC)
 """
 
@@ -9,16 +9,35 @@ import os
 import re
 import json
 import requests
-import trafilatura
 from datetime import datetime, timezone
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
-def strip_html(text):
-    """Xóa tất cả HTML tags, decode entities cơ bản."""
-    text = re.sub(r'<[^>]+>', ' ', text or '')
-    text = text.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>') \
-               .replace('&nbsp;', ' ').replace('&#39;', "'").replace('&quot;', '"')
+
+def strip_html(text: str) -> str:
+    """Xóa HTML tags, giữ khoảng trắng hợp lý giữa các phần tử."""
+    if not text:
+        return ""
+    # Thêm space trước khi xóa block tags để các từ không dính nhau
+    text = re.sub(r'</(p|li|div|h\d|br)[^>]*>', ' ', text, flags=re.IGNORECASE)
+    text = re.sub(r'<br\s*/?>', ' ', text, flags=re.IGNORECASE)
+    # Xóa mọi tag còn lại
+    text = re.sub(r'<[^>]+>', '', text)
+    # Decode HTML entities phổ biến
+    text = (text
+            .replace('&amp;', '&')
+            .replace('&lt;', '<')
+            .replace('&gt;', '>')
+            .replace('&nbsp;', ' ')
+            .replace('&#39;', "'")
+            .replace('&quot;', '"')
+            .replace('&ldquo;', '"')
+            .replace('&rdquo;', '"')
+            .replace('&lsquo;', "'")
+            .replace('&rsquo;', "'")
+            .replace('&mdash;', '—')
+            .replace('&ndash;', '–'))
+    # Chuẩn hóa whitespace
     return re.sub(r'\s+', ' ', text).strip()
+
 
 # ── API keys từ GitHub Secrets ──────────────────────────────────────────────
 API_KEYS = {
@@ -48,24 +67,8 @@ def safe_get(url, params=None, headers=None, label=""):
         return {}
 
 
-def extract_content(url: str) -> str:
-    """Lấy nội dung bài báo bằng trafilatura. Trả về "" nếu thất bại."""
-    try:
-        downloaded = trafilatura.fetch_url(url)
-        if not downloaded:
-            return ""
-        text = trafilatura.extract(
-            downloaded,
-            include_comments=False,
-            include_tables=False,
-            no_fallback=False,
-        )
-        return (text or "").strip()
-    except Exception:
-        return ""
-
-
 # ── 1. Finnhub — Tài chính & thị trường ─────────────────────────────────────
+# Finnhub trả về summary khá đầy đủ (200-800 từ), dùng làm content
 print("📡 Fetching Finnhub...")
 for category in ["general", "forex", "merger"]:
     data = safe_get(
@@ -75,22 +78,24 @@ for category in ["general", "forex", "merger"]:
     )
     if isinstance(data, list):
         for a in data[:10]:
+            full_text = strip_html(a.get("summary", ""))
             add({
-                "title":     a.get("headline", "").strip(),
-                "desc":      strip_html(a.get("summary", ""))[:300],
-                "url":       a.get("url", ""),
-                "image":     a.get("image", ""),
-                "source":    a.get("source", "Finnhub"),
-                "cat":       "finance",
-                "time":      datetime.fromtimestamp(
-                                 a.get("datetime", 0), tz=timezone.utc
-                             ).isoformat(),
+                "title":   a.get("headline", "").strip(),
+                "desc":    full_text[:300],
+                "content": full_text,          # dùng summary làm content đầy đủ
+                "url":     a.get("url", ""),
+                "image":   a.get("image", ""),
+                "source":  a.get("source", "Finnhub"),
+                "cat":     "finance",
+                "time":    datetime.fromtimestamp(
+                               a.get("datetime", 0), tz=timezone.utc
+                           ).isoformat(),
                 "sentiment": None,
-                "content":   "",
             })
 
 
 # ── 2. NewsData.io — Công nghệ & Doanh nghiệp ───────────────────────────────
+# NewsData trả về cả description lẫn content (thường 300-800 ký tự)
 print("📡 Fetching NewsData.io...")
 for cat_api, cat_ui in [("technology", "tech"), ("business", "biz"), ("science", "tech")]:
     data = safe_get(
@@ -104,20 +109,25 @@ for cat_api, cat_ui in [("technology", "tech"), ("business", "biz"), ("science",
         label=f"NewsData/{cat_api}",
     )
     for a in (data.get("results") or []):
+        desc_text    = strip_html(a.get("description") or "")
+        content_text = strip_html(a.get("content") or a.get("full_description") or "")
+        # Nếu content ngắn hơn desc, dùng desc làm content
+        full_text = content_text if len(content_text) > len(desc_text) else desc_text
         add({
-            "title":     a.get("title", "").strip(),
-            "desc":      strip_html(a.get("description") or "")[:300],
-            "url":       a.get("link", ""),
-            "image":     (a.get("image_url") or ""),
-            "source":    a.get("source_id", "NewsData.io"),
-            "cat":       cat_ui,
-            "time":      a.get("pubDate", ""),
+            "title":   a.get("title", "").strip(),
+            "desc":    desc_text[:300],
+            "content": full_text,
+            "url":     a.get("link", ""),
+            "image":   (a.get("image_url") or ""),
+            "source":  a.get("source_id", "NewsData.io"),
+            "cat":     cat_ui,
+            "time":    a.get("pubDate", ""),
             "sentiment": None,
-            "content":   "",
         })
 
 
 # ── 3. GNews — Chứng khoán, Công nghệ & Doanh nghiệp ───────────────────────
+# GNews có trường content (thường 500-1500 ký tự kể cả [+ N chars])
 print("📡 Fetching GNews...")
 for topic, cat_ui in [("business", "biz"), ("technology", "tech"), ("finance", "stock")]:
     data = safe_get(
@@ -131,16 +141,21 @@ for topic, cat_ui in [("business", "biz"), ("technology", "tech"), ("finance", "
         label=f"GNews/{topic}",
     )
     for a in (data.get("articles") or []):
+        desc_text = strip_html(a.get("description", ""))
+        # GNews content thường có "[+NNN chars]" ở cuối — xóa đi
+        raw_content = strip_html(a.get("content", ""))
+        content_text = re.sub(r'\[\+\d+\s+chars?\].*$', '', raw_content).strip()
+        full_text = content_text if len(content_text) > len(desc_text) else desc_text
         add({
-            "title":     a.get("title", "").strip(),
-            "desc":      strip_html(a.get("description", ""))[:300],
-            "url":       a.get("url", ""),
-            "image":     a.get("image", ""),
-            "source":    (a.get("source") or {}).get("name", "GNews"),
-            "cat":       cat_ui,
-            "time":      a.get("publishedAt", ""),
+            "title":   a.get("title", "").strip(),
+            "desc":    desc_text[:300],
+            "content": full_text,
+            "url":     a.get("url", ""),
+            "image":   a.get("image", ""),
+            "source":  (a.get("source") or {}).get("name", "GNews"),
+            "cat":     cat_ui,
+            "time":    a.get("publishedAt", ""),
             "sentiment": None,
-            "content":   "",
         })
 
 
@@ -150,23 +165,6 @@ articles_clean = [
     if a.get("title") and len(a["title"]) > 10 and a.get("url")
 ]
 articles_clean.sort(key=lambda a: a.get("time") or "", reverse=True)
-
-# ── Extract nội dung song song (tối đa 8 luồng, timeout 20s/bài) ─────────────
-print(f"\n📰 Extracting content for {len(articles_clean)} articles...")
-
-def fetch_one(idx_article):
-    idx, article = idx_article
-    url = article["url"]
-    content = extract_content(url)
-    status = f"✓ {len(content)}c" if content else "✗ blocked/empty"
-    print(f"  [{idx+1:02d}/{len(articles_clean)}] {status} — {url[:60]}")
-    return idx, content
-
-with ThreadPoolExecutor(max_workers=8) as pool:
-    futures = {pool.submit(fetch_one, (i, a)): i for i, a in enumerate(articles_clean)}
-    for future in as_completed(futures):
-        idx, content = future.result()
-        articles_clean[idx]["content"] = content
 
 # ── Ghi ra JSON ───────────────────────────────────────────────────────────────
 output_path = os.path.join(os.path.dirname(__file__), "..", "data", "news.json")
@@ -178,7 +176,7 @@ output = {
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(output, f, ensure_ascii=False, indent=2)
 
-have_content = sum(1 for a in articles_clean if a.get("content"))
+have_content = sum(1 for a in articles_clean if len(a.get("content","")) > 100)
 print(f"\n✅ Đã lưu {len(articles_clean)} bài vào data/news.json")
 print(f"   Có nội dung đầy đủ: {have_content}/{len(articles_clean)} bài")
 print(f"   Tài chính:    {sum(1 for a in articles_clean if a['cat']=='finance')}")
