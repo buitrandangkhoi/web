@@ -614,6 +614,164 @@ body {
   transition: opacity .15s;
 }
 .reader-orig-btn:hover { opacity: .85; }
+
+/* ════════════════════════════════════════════════════════════════════
+   DICTIONARY POPUP
+   ════════════════════════════════════════════════════════════════════ */
+#dict-popup {
+  position: fixed;
+  z-index: 400;
+  width: 300px;
+  max-width: calc(100vw - 32px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.12);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(6px) scale(.97);
+  transition: opacity .18s, transform .18s;
+  pointer-events: none;
+}
+#dict-popup.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.dict-header {
+  background: var(--accent);
+  padding: 12px 16px 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  justify-content: space-between;
+}
+.dict-word {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  word-break: break-word;
+}
+.dict-phonetic {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,.75);
+  margin-top: 3px;
+  font-family: 'Inter', sans-serif;
+}
+.dict-close {
+  background: rgba(255,255,255,.18);
+  border: none;
+  border-radius: 6px;
+  width: 24px; height: 24px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.dict-close:hover { background: rgba(255,255,255,.3); }
+
+.dict-body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+/* translation row */
+.dict-vi {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-h);
+  line-height: 1.35;
+}
+.dict-vi-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--text-meta);
+  margin-bottom: 2px;
+}
+
+/* meaning rows */
+.dict-meaning {
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.dict-pos {
+  display: inline-block;
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 1px 7px;
+  border-radius: 4px;
+  background: var(--accent-hi);
+  color: var(--accent);
+  margin-bottom: 2px;
+  width: fit-content;
+}
+.dict-def {
+  font-size: 0.82rem;
+  color: var(--text-b);
+  line-height: 1.5;
+}
+.dict-example {
+  font-size: 0.78rem;
+  color: var(--text-meta);
+  font-style: italic;
+  line-height: 1.45;
+  padding-left: 10px;
+  border-left: 2px solid var(--border);
+}
+.dict-example::before { content: '"'; }
+.dict-example::after  { content: '"'; }
+
+/* loading / error */
+.dict-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-meta);
+  padding: 4px 0;
+}
+.dict-loading .spinner {
+  width: 16px; height: 16px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .6s linear infinite;
+  flex-shrink: 0;
+}
+.dict-error {
+  font-size: 0.82rem;
+  color: var(--text-meta);
+  font-style: italic;
+}
+
+/* hint bar at bottom of reader */
+.dict-hint {
+  position: sticky;
+  bottom: 0;
+  background: linear-gradient(transparent, var(--bg) 40%);
+  padding: 20px 0 8px;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-meta);
+  pointer-events: none;
+  margin-top: 24px;
+}
 </style>
 </head>
 <body>
@@ -657,6 +815,21 @@ body {
   </div>
   <div class="reader-body" id="reader-body">
     <div class="reader-inner" id="reader-inner"></div>
+    <div class="dict-hint">💡 Bôi đen bất kỳ từ hoặc cụm từ để tra từ điển</div>
+  </div>
+</div>
+
+<!-- Dictionary popup -->
+<div id="dict-popup" role="tooltip" aria-live="polite">
+  <div class="dict-header">
+    <div>
+      <div class="dict-word" id="dict-word"></div>
+      <div class="dict-phonetic" id="dict-phonetic"></div>
+    </div>
+    <button class="dict-close" onclick="closeDict()" aria-label="Đóng">✕</button>
+  </div>
+  <div class="dict-body" id="dict-body">
+    <div class="dict-loading"><div class="spinner"></div> Đang tra...</div>
   </div>
 </div>
 
@@ -839,10 +1012,7 @@ window.addEventListener('popstate', (e) => {
   if (!overlay.hidden) closeReader();
 });
 
-// Keyboard escape to close
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !document.getElementById('reader').hidden) closeReader();
-});
+// (Escape handling moved to dictionary section below)
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Render helpers
@@ -1004,6 +1174,179 @@ async function init() {
 }
 
 init();
+
+// ═════════════════════════════════════════════════════════════════════════════
+// DICTIONARY — bôi đen để tra từ
+// ═════════════════════════════════════════════════════════════════════════════
+const dictPopup  = document.getElementById('dict-popup');
+const dictWord   = document.getElementById('dict-word');
+const dictPhone  = document.getElementById('dict-phonetic');
+const dictBody   = document.getElementById('dict-body');
+let   dictActive = false;
+
+// Cache để tránh gọi API lại với từ đã tra
+const dictCache  = {};
+
+function closeDict() {
+  dictPopup.classList.remove('visible');
+  dictActive = false;
+}
+
+function positionPopup(rect) {
+  const GAP = 10;
+  const pw  = dictPopup.offsetWidth  || 300;
+  const ph  = dictPopup.offsetHeight || 200;
+  const vw  = window.innerWidth;
+  const vh  = window.innerHeight;
+
+  // Ưu tiên hiện TRÊN selection, nếu không đủ chỗ thì hiện DƯỚI
+  let top  = rect.top - ph - GAP;
+  if (top < 8) top = rect.bottom + GAP;
+
+  // Căn giữa theo chiều ngang, giữ trong viewport
+  let left = rect.left + rect.width / 2 - pw / 2;
+  left = Math.max(8, Math.min(left, vw - pw - 8));
+
+  dictPopup.style.top  = `${top}px`;
+  dictPopup.style.left = `${left}px`;
+}
+
+async function lookupWord(query, rect) {
+  const q = query.trim();
+  if (!q || q.length > 120) return;
+
+  // Hiện popup với loading state
+  dictWord.textContent  = q;
+  dictPhone.textContent = '';
+  dictBody.innerHTML    = '<div class="dict-loading"><div class="spinner"></div> Đang tra...</div>';
+  dictPopup.classList.add('visible');
+  dictActive = true;
+
+  // Định vị (sau khi visible để có kích thước thực)
+  requestAnimationFrame(() => positionPopup(rect));
+
+  // Dùng cache nếu có
+  if (dictCache[q]) { renderDict(dictCache[q]); return; }
+
+  // Gọi song song 2 API
+  const isSingleWord = !/\s/.test(q);
+  const [dictRes, transRes] = await Promise.allSettled([
+    isSingleWord
+      ? fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(q)}`)
+          .then(r => r.ok ? r.json() : null).catch(() => null)
+      : Promise.resolve(null),
+    fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(q)}&langpair=en|vi`)
+      .then(r => r.ok ? r.json() : null).catch(() => null),
+  ]);
+
+  const dictData  = dictRes.status  === 'fulfilled' ? dictRes.value  : null;
+  const transData = transRes.status === 'fulfilled' ? transRes.value : null;
+
+  const result = { query: q, dictData, transData };
+  dictCache[q] = result;
+  renderDict(result);
+}
+
+function renderDict({ query, dictData, transData }) {
+  // Phiên âm từ Dictionary API
+  let phonetic = '';
+  if (Array.isArray(dictData) && dictData[0]) {
+    const entry = dictData[0];
+    phonetic = entry.phonetic
+      || (entry.phonetics || []).find(p => p.text)?.text
+      || '';
+  }
+  dictPhone.textContent = phonetic;
+
+  // Bản dịch tiếng Việt
+  const viText = transData?.responseData?.translatedText || '';
+
+  // Meanings (tối đa 2 từ loại, mỗi loại 1 definition)
+  let meaningsHTML = '';
+  if (Array.isArray(dictData) && dictData[0]?.meanings?.length) {
+    const meanings = dictData[0].meanings.slice(0, 2);
+    meaningsHTML = meanings.map(m => {
+      const def  = m.definitions?.[0];
+      if (!def) return '';
+      const exHTML = def.example
+        ? `<div class="dict-example">${esc(def.example)}</div>`
+        : '';
+      return `
+        <div class="dict-meaning">
+          <span class="dict-pos">${esc(m.partOfSpeech)}</span>
+          <div class="dict-def">${esc(def.definition)}</div>
+          ${exHTML}
+        </div>`;
+    }).join('');
+  }
+
+  // Nếu không có từ điển entry, chỉ hiện bản dịch
+  if (!meaningsHTML && !viText) {
+    dictBody.innerHTML = `<div class="dict-error">Không tìm thấy kết quả cho "<em>${esc(query)}</em>"</div>`;
+    return;
+  }
+
+  dictBody.innerHTML = `
+    ${viText ? `
+      <div>
+        <div class="dict-vi-label">Tiếng Việt</div>
+        <div class="dict-vi">${esc(viText)}</div>
+      </div>` : ''}
+    ${meaningsHTML}`;
+
+  // Định vị lại sau khi nội dung đã render
+  const sel = window.getSelection();
+  if (sel?.rangeCount) {
+    positionPopup(sel.getRangeAt(0).getBoundingClientRect());
+  }
+}
+
+// ── Event: bôi đen text trong reader body ────────────────────────────────────
+function handleSelection() {
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed) {
+    // Không có selection — đóng popup nếu không click vào popup
+    return;
+  }
+
+  const q = sel.toString().trim();
+  if (!q || q.length < 2) return;
+
+  // Chỉ hoạt động trong reader body
+  const readerBody = document.getElementById('reader-body');
+  if (!readerBody) return;
+  const range = sel.getRangeAt(0);
+  if (!readerBody.contains(range.commonAncestorContainer)) return;
+
+  const rect = range.getBoundingClientRect();
+  lookupWord(q, rect);
+}
+
+// Dùng mouseup + touchend để bắt cả desktop lẫn mobile
+document.addEventListener('mouseup', (e) => {
+  // Nếu click vào popup thì bỏ qua
+  if (dictPopup.contains(e.target)) return;
+  setTimeout(handleSelection, 10);
+});
+document.addEventListener('touchend', (e) => {
+  if (dictPopup.contains(e.target)) return;
+  setTimeout(handleSelection, 100); // chờ selection ổn định trên mobile
+});
+
+// Click bên ngoài popup → đóng
+document.addEventListener('mousedown', (e) => {
+  if (dictActive && !dictPopup.contains(e.target)) {
+    closeDict();
+  }
+});
+
+// Escape đóng popup (ưu tiên hơn đóng reader)
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (dictActive) { closeDict(); return; }
+    if (!document.getElementById('reader').hidden) closeReader();
+  }
+});
 </script>
 </body>
 </html>
