@@ -1273,62 +1273,66 @@ async function lookupWord(query, rect) {
   const q = query.trim();
   if (!q || q.length > 120) return;
 
-  // Hiện popup với loading state
   dictWord.textContent  = q;
   dictPhone.textContent = '';
   dictBody.innerHTML    = '<div class="dict-loading"><div class="spinner"></div> Đang tra...</div>';
   dictPopup.classList.add('visible');
   dictActive = true;
-
-  // Định vị (sau khi visible để có kích thước thực)
   requestAnimationFrame(() => positionPopup(rect));
 
-  // Dùng cache nếu có
   if (dictCache[q]) { renderDict(dictCache[q]); return; }
 
-  // Gọi song song 2 API
   const isSingleWord = !/\s/.test(q);
-  const [dictRes, transRes] = await Promise.allSettled([
-    isSingleWord
-      ? fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(q)}`)
-          .then(r => r.ok ? r.json() : null).catch(() => null)
-      : Promise.resolve(null),
-    fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(q)}&langpair=en|vi`)
-      .then(r => r.ok ? r.json() : null).catch(() => null),
-  ]);
 
-  const dictData  = dictRes.status  === 'fulfilled' ? dictRes.value  : null;
-  const transData = transRes.status === 'fulfilled' ? transRes.value : null;
+  // Google Translate unofficial — no API key, CDN speed (~100-200ms vs MyMemory ~600ms+)
+  const transPromise = fetch(
+    `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=vi&dt=t&q=${encodeURIComponent(q)}`
+  ).then(r => r.ok ? r.json() : null).catch(() => null);
 
-  const result = { query: q, dictData, transData };
+  const dictPromise = isSingleWord
+    ? fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(q)}`)
+        .then(r => r.ok ? r.json() : null).catch(() => null)
+    : Promise.resolve(null);
+
+  // Progressive: show translation immediately when it arrives, don't wait for dict
+  transPromise.then(raw => {
+    if (!dictActive || dictWord.textContent !== q) return;
+    const viText = parseGoogleTrans(raw);
+    if (viText) renderDict({ query: q, viText, dictData: null, pending: isSingleWord });
+  });
+
+  // Full render once both arrive
+  const [transRaw, dictData] = await Promise.all([transPromise, dictPromise]);
+  if (!dictActive || dictWord.textContent !== q) return;
+
+  const viText = parseGoogleTrans(transRaw);
+  const result = { query: q, viText, dictData, pending: false };
   dictCache[q] = result;
   renderDict(result);
 }
 
-function renderDict({ query, dictData, transData }) {
-  // Phiên âm từ Dictionary API
+function parseGoogleTrans(raw) {
+  // raw[0] is array of [translated_segment, original_segment, ...]
+  if (!Array.isArray(raw?.[0])) return '';
+  return raw[0].map(seg => seg[0] || '').join('').trim();
+}
+
+function renderDict({ query, viText, dictData, pending }) {
+  // Phonetic from Dictionary API
   let phonetic = '';
   if (Array.isArray(dictData) && dictData[0]) {
     const entry = dictData[0];
-    phonetic = entry.phonetic
-      || (entry.phonetics || []).find(p => p.text)?.text
-      || '';
+    phonetic = entry.phonetic || (entry.phonetics || []).find(p => p.text)?.text || '';
   }
   dictPhone.textContent = phonetic;
 
-  // Bản dịch tiếng Việt
-  const viText = transData?.responseData?.translatedText || '';
-
-  // Meanings (tối đa 2 từ loại, mỗi loại 1 definition)
+  // Meanings (max 2 parts of speech, 1 definition each)
   let meaningsHTML = '';
   if (Array.isArray(dictData) && dictData[0]?.meanings?.length) {
-    const meanings = dictData[0].meanings.slice(0, 2);
-    meaningsHTML = meanings.map(m => {
-      const def  = m.definitions?.[0];
+    meaningsHTML = dictData[0].meanings.slice(0, 2).map(m => {
+      const def = m.definitions?.[0];
       if (!def) return '';
-      const exHTML = def.example
-        ? `<div class="dict-example">${esc(def.example)}</div>`
-        : '';
+      const exHTML = def.example ? `<div class="dict-example">${esc(def.example)}</div>` : '';
       return `
         <div class="dict-meaning">
           <span class="dict-pos">${esc(m.partOfSpeech)}</span>
@@ -1338,25 +1342,28 @@ function renderDict({ query, dictData, transData }) {
     }).join('');
   }
 
-  // Nếu không có từ điển entry, chỉ hiện bản dịch
   if (!meaningsHTML && !viText) {
     dictBody.innerHTML = `<div class="dict-error">Không tìm thấy kết quả cho "<em>${esc(query)}</em>"</div>`;
     return;
   }
 
-  dictBody.innerHTML = `
-    ${viText ? `
-      <div>
-        <div class="dict-vi-label">Tiếng Việt</div>
-        <div class="dict-vi">${esc(viText)}</div>
-      </div>` : ''}
-    ${meaningsHTML}`;
+  // pending=true → definition still loading, show mini spinner after translation
+  const defLoadingHTML = pending
+    ? `<div class="dict-loading" style="margin-top:4px;border-top:1px solid var(--border);padding-top:8px">
+         <div class="spinner"></div> Đang tải định nghĩa…
+       </div>`
+    : '';
 
-  // Định vị lại sau khi nội dung đã render
+  dictBody.innerHTML = `
+    ${viText ? `<div>
+      <div class="dict-vi-label">Tiếng Việt</div>
+      <div class="dict-vi">${esc(viText)}</div>
+    </div>` : ''}
+    ${meaningsHTML}
+    ${defLoadingHTML}`;
+
   const sel = window.getSelection();
-  if (sel?.rangeCount) {
-    positionPopup(sel.getRangeAt(0).getBoundingClientRect());
-  }
+  if (sel?.rangeCount) positionPopup(sel.getRangeAt(0).getBoundingClientRect());
 }
 
 // ── Event: bôi đen text trong reader body ────────────────────────────────────
