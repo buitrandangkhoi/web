@@ -912,14 +912,24 @@ function extractJinaBody(text) {
   const marker = 'Markdown Content:';
   const idx = text.indexOf(marker);
   const body = idx > -1 ? text.slice(idx + marker.length) : text;
-  return body.replace(/^\s*[-=]{3,}\s*/m, '').trim();
+  // Jina prepends page nav before article — skip to first # heading (actual content)
+  const headingIdx = body.search(/\n#{1,3} \S/);
+  return (headingIdx > -1 ? body.slice(headingIdx) : body).trim();
 }
 
 function mdToHtml(md) {
   return md
     .split(/\n{2,}/)
     .map(b => b.trim())
-    .filter(b => b.length > 15 && !b.startsWith('!['))
+    .filter(b => {
+      // Strip all markdown/links to get plain text, then check length
+      const plain = b
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+        .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+        .replace(/[*_`~#>\-]/g, '')
+        .trim();
+      return plain.length > 20;
+    })
     .slice(0, 60)
     .map(b => {
       const isHeading = /^#{1,4}\s/.test(b);
@@ -931,6 +941,7 @@ function mdToHtml(md) {
         .replace(/\*([^*]+)\*/g, '$1')
         .replace(/`([^`]+)`/g, '$1')
         .replace(/~~([^~]+)~~/g, '$1')
+        .replace(/^[>\-\*\+]\s+/gm, '')
         .trim();
       if (!plain) return '';
       return isHeading
@@ -970,7 +981,11 @@ async function buildBodyHTML(article) {
   // 2. Fetch on-demand via Jina Reader (client-side, handles CORS automatically)
   try {
     const res = await fetch(`https://r.jina.ai/${article.url}`, {
-      headers: { Accept: 'text/plain' },
+      headers: {
+        'Accept': 'text/plain',
+        'X-Retain-Images': 'none',   // cleaner text-only output
+        'X-No-Cache': 'true',
+      },
       signal: AbortSignal.timeout(15000),
     });
     if (res.ok) {
@@ -992,7 +1007,10 @@ async function buildBodyHTML(article) {
   return `<p class="reader-no-content">Không có nội dung.</p>${origLink(article)}`;
 }
 
+let _readerGen = 0; // incremented on each open; stale fetches compare and bail
+
 async function openReader(article) {
+  const gen = ++_readerGen;
   const overlay  = document.getElementById('reader');
   const inner    = document.getElementById('reader-inner');
   const titleBar = document.getElementById('reader-title-bar');
@@ -1031,8 +1049,9 @@ async function openReader(article) {
   history.pushState({ reader: true, url: article.url }, '', '');
   overlay.focus();
 
-  // Async: fetch content and swap in
+  // Async: fetch content and swap in — bail if a newer article was opened
   const bodyHTML = await buildBodyHTML(article);
+  if (_readerGen !== gen) return;
   const slot = document.getElementById('reader-content-slot');
   if (slot) slot.outerHTML = bodyHTML;
 }
