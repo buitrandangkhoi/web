@@ -8,8 +8,52 @@ Chạy bởi GitHub Actions mỗi ngày lúc 07:00 giờ Việt Nam (00:00 UTC)
 import os
 import re
 import json
+import urllib.request
 import requests
+from html.parser import HTMLParser
 from datetime import datetime, timezone
+
+
+class _TextExtractor(HTMLParser):
+    """Pull readable text from an article page; skip nav/footer/scripts."""
+    _SKIP = {'script', 'style', 'noscript', 'nav', 'header', 'footer', 'aside',
+             'figure', 'figcaption', 'form', 'button', 'select', 'textarea'}
+
+    def __init__(self):
+        super().__init__()
+        self.parts = []
+        self._depth = 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self._SKIP:
+            self._depth += 1
+
+    def handle_endtag(self, tag):
+        if tag in self._SKIP and self._depth > 0:
+            self._depth -= 1
+
+    def handle_data(self, data):
+        if self._depth == 0:
+            t = data.strip()
+            if len(t) > 40:
+                self.parts.append(t)
+
+
+def scrape_article(url: str, timeout: int = 12) -> str:
+    """Fetch an article URL and extract its main text. Returns '' on failure."""
+    try:
+        req = urllib.request.Request(
+            url, headers={'User-Agent': 'Mozilla/5.0 (compatible; newsbot/1.0)'}
+        )
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            raw = r.read(500_000).decode('utf-8', errors='replace')
+        parser = _TextExtractor()
+        parser.feed(raw)
+        text = ' '.join(parser.parts)
+        return re.sub(r'\s+', ' ', text).strip()[:4000]
+    except Exception as exc:
+        print(f"    scrape failed {url[:60]}: {exc}")
+        return ''
 
 
 def strip_html(text: str) -> str:
@@ -158,6 +202,17 @@ for topic, cat_ui in [("business", "biz"), ("technology", "tech"), ("finance", "
             "sentiment": None,
         })
 
+
+# ── Scrape full content for articles that got nothing from APIs ───────────────
+print("🔍 Scraping content for articles with missing/short content...")
+scraped_count = 0
+for a in articles:
+    if len(a.get("content", "")) < 200 and a.get("url"):
+        text = scrape_article(a["url"])
+        if len(text) > 200:
+            a["content"] = text
+            scraped_count += 1
+print(f"   Scraped {scraped_count} articles from source URLs")
 
 # ── Lọc & sắp xếp ────────────────────────────────────────────────────────────
 articles_clean = [

@@ -778,7 +778,7 @@ body {
 
 <!-- ── List view ── -->
 <header class="site-header" id="list-header">
-  <a class="nav-back" href="index.html">Trang chủ</a>
+  <a class="nav-back" href="Home.html">Trang chủ</a>
   <h1 class="page-heading">Tin Tức</h1>
   <div class="header-right">
     <span class="update-badge" id="update-label">Đang tải...</span>
@@ -987,9 +987,10 @@ function openReader(article) {
   // Scroll reader to top
   document.getElementById('reader-body').scrollTop = 0;
 
-  // Show overlay with animation
+  // Show overlay with animation — force reflow so CSS transform transition fires
   overlay.hidden = false;
-  requestAnimationFrame(() => overlay.classList.add('open'));
+  void overlay.offsetWidth;
+  overlay.classList.add('open');
 
   // Update browser URL/history so back button works
   history.pushState({ reader: true, url: article.url }, '', '');
