@@ -905,71 +905,107 @@ function stripHtml(s) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Reader view
+// Reader view — content fetched on-demand via Jina Reader (bypasses CORS)
 // ─────────────────────────────────────────────────────────────────────────────
-function openReader(article) {
-  const overlay = document.getElementById('reader');
-  const inner   = document.getElementById('reader-inner');
+
+function extractJinaBody(text) {
+  const marker = 'Markdown Content:';
+  const idx = text.indexOf(marker);
+  const body = idx > -1 ? text.slice(idx + marker.length) : text;
+  return body.replace(/^\s*[-=]{3,}\s*/m, '').trim();
+}
+
+function mdToHtml(md) {
+  return md
+    .split(/\n{2,}/)
+    .map(b => b.trim())
+    .filter(b => b.length > 15 && !b.startsWith('!['))
+    .slice(0, 60)
+    .map(b => {
+      const isHeading = /^#{1,4}\s/.test(b);
+      const plain = b
+        .replace(/^#+\s*/, '')
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+        .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+        .replace(/\*\*([^*]+)\*\*/g, '$1')
+        .replace(/\*([^*]+)\*/g, '$1')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/~~([^~]+)~~/g, '$1')
+        .trim();
+      if (!plain) return '';
+      return isHeading
+        ? `<p><strong>${esc(plain)}</strong></p>`
+        : `<p>${esc(plain)}</p>`;
+    })
+    .filter(Boolean)
+    .join('\n');
+}
+
+function origLink(article) {
+  return `<div class="reader-orig-row">
+    <a class="reader-orig-btn" href="${esc(article.url)}" target="_blank" rel="noopener">
+      Read full article on ${esc(article.source)} ↗
+    </a>
+  </div>`;
+}
+
+async function buildBodyHTML(article) {
+  // 1. Use cached content from news.json if available
+  const cached = (article.content || '').trim();
+  if (cached.length > 80) {
+    const paras = cached
+      .split(/\n{2,}|(?<=[.!?])\s{2,}(?=[A-Z])/)
+      .map(p => p.trim()).filter(p => p.length > 20);
+    let finalParas = paras;
+    if (paras.length === 1 && paras[0].split(' ').length > 60) {
+      const words = paras[0].split(' ');
+      finalParas = [];
+      for (let i = 0; i < words.length; i += 100)
+        finalParas.push(words.slice(i, i + 100).join(' '));
+    }
+    return `<div class="reader-content">${finalParas.map(p => `<p>${esc(p)}</p>`).join('')}</div>`
+      + origLink(article);
+  }
+
+  // 2. Fetch on-demand via Jina Reader (client-side, handles CORS automatically)
+  try {
+    const res = await fetch(`https://r.jina.ai/${article.url}`, {
+      headers: { Accept: 'text/plain' },
+      signal: AbortSignal.timeout(15000),
+    });
+    if (res.ok) {
+      const text = await res.text();
+      const md   = extractJinaBody(text);
+      const html = mdToHtml(md);
+      if (html.length > 100)
+        return `<div class="reader-content">${html}</div>` + origLink(article);
+    }
+  } catch (_) { /* fall through */ }
+
+  // 3. Fallback: desc summary + link
+  const desc = stripHtml(article.desc || '');
+  if (desc.length > 20) {
+    return `<div class="reader-summary">${esc(desc)}</div>
+      <p class="reader-no-content">Nội dung đầy đủ có trên trang gốc.</p>
+      ${origLink(article)}`;
+  }
+  return `<p class="reader-no-content">Không có nội dung.</p>${origLink(article)}`;
+}
+
+async function openReader(article) {
+  const overlay  = document.getElementById('reader');
+  const inner    = document.getElementById('reader-inner');
   const titleBar = document.getElementById('reader-title-bar');
   const srcLink  = document.getElementById('reader-src-link');
 
   titleBar.textContent = article.source || '';
   srcLink.href = article.url || '#';
 
-  // Build article image (if available)
   const imgHTML = article.image
     ? `<img class="reader-image" src="${esc(article.image)}" alt="" loading="lazy" onerror="this.remove()">`
     : '';
 
-  // Build content section
-  const rawContent = (article.content || '').trim();
-  const rawDesc    = stripHtml(article.desc || '');
-  let bodyHTML = '';
-
-  if (rawContent.length > 80) {
-    // Có content từ API — chia thành đoạn văn
-    const paras = rawContent
-      .split(/\n{2,}|(?<=[.!?])\s{2,}(?=[A-Z])/)
-      .map(p => p.trim())
-      .filter(p => p.length > 20);
-
-    // Nếu chỉ có 1 đoạn dài, cắt thành nhiều đoạn ~120 từ
-    let finalParas = paras;
-    if (paras.length === 1 && paras[0].split(' ').length > 60) {
-      const words = paras[0].split(' ');
-      finalParas = [];
-      for (let i = 0; i < words.length; i += 100) {
-        finalParas.push(words.slice(i, i + 100).join(' '));
-      }
-    }
-
-    bodyHTML = `
-      <div class="reader-content">
-        ${finalParas.map(p => `<p>${esc(p)}</p>`).join('')}
-      </div>
-      <div class="reader-orig-row">
-        <a class="reader-orig-btn" href="${esc(article.url)}" target="_blank" rel="noopener">
-          Read full article on ${esc(article.source)} ↗
-        </a>
-      </div>`;
-  } else if (rawDesc.length > 20) {
-    // Chỉ có desc — hiển thị + link bài gốc
-    bodyHTML = `
-      <div class="reader-summary">${esc(rawDesc)}</div>
-      <p class="reader-no-content">
-        This article's full content is available on the original site.
-      </p>
-      <a class="reader-orig-btn" href="${esc(article.url)}" target="_blank" rel="noopener">
-        Read full article on ${esc(article.source)} ↗
-      </a>`;
-  } else {
-    bodyHTML = `
-      <p class="reader-no-content">No content available.</p>
-      <a class="reader-orig-btn" href="${esc(article.url)}" target="_blank" rel="noopener">
-        Read on ${esc(article.source)} ↗
-      </a>`;
-  }
-
+  // Render header immediately with loading placeholder for body
   inner.innerHTML = `
     <div class="reader-cat-row">
       ${tagHTML(article.cat)}
@@ -982,21 +1018,23 @@ function openReader(article) {
     </div>
     <hr class="reader-divider">
     ${imgHTML}
-    ${bodyHTML}`;
+    <div id="reader-content-slot">
+      <div class="state-box" style="margin-bottom:0">
+        <div class="spinner"></div><br>Đang tải nội dung bài báo…
+      </div>
+    </div>`;
 
-  // Scroll reader to top
   document.getElementById('reader-body').scrollTop = 0;
-
-  // Show overlay with animation — force reflow so CSS transform transition fires
   overlay.hidden = false;
   void overlay.offsetWidth;
   overlay.classList.add('open');
-
-  // Update browser URL/history so back button works
   history.pushState({ reader: true, url: article.url }, '', '');
-
-  // Trap focus in overlay
   overlay.focus();
+
+  // Async: fetch content and swap in
+  const bodyHTML = await buildBodyHTML(article);
+  const slot = document.getElementById('reader-content-slot');
+  if (slot) slot.outerHTML = bodyHTML;
 }
 
 function closeReader() {
