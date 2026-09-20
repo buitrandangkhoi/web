@@ -369,28 +369,30 @@ if ('speechSynthesis' in window) {
   _loadVoices(); // kick off early load
 }
 
-function speak(word) {
-  if (!('speechSynthesis' in window)) {
-    alert('Trình duyệt này không hỗ trợ phát âm.\nVui lòng dùng Chrome hoặc Edge.');
-    return;
-  }
-  // Chrome bug: synthesis can freeze — cancel + tiny delay fixes it
-  window.speechSynthesis.cancel();
-  const delay = _voicesReady ? 50 : 300;
-  setTimeout(() => {
-    const u = new SpeechSynthesisUtterance(word);
-    u.lang = 'en-US';
-    u.rate = 0.85;
-    u.pitch = 1.0;
-    // Pick best English voice if available
-    const voices = _loadVoices();
-    const en = voices.find(v => v.lang === 'en-US' && v.localService)
-            || voices.find(v => v.lang.startsWith('en-US'))
-            || voices.find(v => v.lang.startsWith('en-'))
-            || null;
-    if (en) u.voice = en;
-    window.speechSynthesis.speak(u);
-  }, delay);
+function _wordToMp3(id, word) {
+  const slug = word.trim().toLowerCase().replace(/'/g, '').replace(/[\s-]+/g, '_');
+  return 'data/vocabulary/audio/w' + String(id).padStart(4,'0') + '_' + slug + '.mp3';
+}
+
+let _audioEl = null;
+function speak(id, word) {
+  const src = _wordToMp3(id, word);
+  if (!_audioEl) _audioEl = new Audio();
+  _audioEl.pause();
+  _audioEl.src = src;
+  _audioEl.play().catch(() => {
+    // fallback to speechSynthesis if file missing
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const delay = _voicesReady ? 50 : 300;
+    setTimeout(() => {
+      const u = new SpeechSynthesisUtterance(word);
+      u.lang = 'en-US'; u.rate = 0.85;
+      const en = _loadVoices().find(v => v.lang.startsWith('en-'));
+      if (en) u.voice = en;
+      window.speechSynthesis.speak(u);
+    }, delay);
+  });
 }
 
 // ── Grid / List views ──
@@ -418,7 +420,7 @@ function renderWords() {
       <div class="word-card">
         <div class="word-card-top">
           <div class="word">${w.word}</div>
-          <button class="card-speak-btn" onclick="speak('${w.word.replace(/'/g,"\\'")}')" title="Phát âm">🔊</button>
+          <button class="card-speak-btn" onclick="speak(${w.id},'${w.word.replace(/'/g,"\\'")}')" title="Phát âm">🔊</button>
         </div>
         <span class="pos ${getPosClass(w.pos)}">${w.pos||'n'}</span>
         <div class="ipa">${w.ipa||''}</div>
@@ -434,7 +436,7 @@ function renderWords() {
           <td><span class="pos ${getPosClass(w.pos)}">${w.pos||'n'}</span></td>
           <td class="td-ipa">${w.ipa||''}</td>
           <td class="td-meaning">${w.meaning}</td>
-          <td><button class="tbl-speak-btn" onclick="speak('${w.word.replace(/'/g,"\\'")}')">🔊</button></td>
+          <td><button class="tbl-speak-btn" onclick="speak(${w.id},'${w.word.replace(/'/g,"\\'")}')">🔊</button></td>
         </tr>`).join('')}
       </tbody></table>`;
   }
@@ -499,7 +501,7 @@ function renderFlashcard() {
     </div>
 
     <!-- Speak button -->
-    <button class="fc-speak" onclick="event.stopPropagation();speak('${w.word.replace(/'/g,"\\'")}')">
+    <button class="fc-speak" onclick="event.stopPropagation();speak(${w.id},'${w.word.replace(/'/g,"\\'")}')">
       🔊 Phát âm
     </button>
 

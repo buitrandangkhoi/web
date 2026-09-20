@@ -16,8 +16,8 @@ data/pronunciation/us/en_US_ipa.txt
 *.pdf
 
 # ── File trùng lặp ở thư mục gốc (bản chính nằm trong data/vocabulary/) ─────
-3000_oxford_words_by_topic.json
-3000_oxford_words_by_topic.csv
+/3000_oxford_words_by_topic.json
+/3000_oxford_words_by_topic.csv
 
 # ── Secrets & environment ─────────────────────────────────────────────────────
 .env
